@@ -14,7 +14,7 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <!-- Login professor -->
+          <!-- Logsor -->
           <form action="loginProf.php" class="sign-in-form" method="POST">
             <img class="img" src="../SENAI_LOGISTICA/imagens/Captura de tela 2024-04-03 075038.png" alt="LOGO SENAI">
             <div class="title2">
