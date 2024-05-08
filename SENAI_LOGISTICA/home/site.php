@@ -33,8 +33,8 @@
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Recebimento</a></li>
-                    <li><a href="#">Container</a></li>
+                    <li><a class="link_name">Recebimento</a></li>
+                    <li><a href="../home/recebimento/Container/recebimento_container.php">Container</a></li>
                     <li><a href="#">Carga</a></li>
                 </ul>
             </li>
@@ -47,7 +47,7 @@
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Controle</a></li>
+                    <li><a class="link_name">Controle</a></li>
                     <li><a href="#">Doca de recebimento</a></li>
                     <li><a href="#">Estoque</a></li>
                 </ul>
@@ -78,7 +78,7 @@
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Controle</a></li>
+                    <li><a class="link_name">Controle</a></li>
                     <li><a href="#">Doca de recebimento</a></li>
                     <li><a href="#">Estoque</a></li>
                 </ul>
@@ -116,8 +116,8 @@
                     <img src="IMG_2347.jpg" alt="LUCAS">
                 </div>
                     <div class="name-job">
-                        <div class="profile-name">Lucas Becker</div>
-                        <div class="job">Dev Backend</div>
+                        <div class="profile-name">a</div>
+                        <div class="job">a</div>
                     </div>
                     <i class='bx bx-log-out'></i>
             </div>
