@@ -19,21 +19,21 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="#">
+                <a href="site.php">
                     <i class='bx bx-home' ></i>
                     <span class="link_name">Home</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="#">Home</a></li>
+                    <li><a class="blank" href="site.php">Home</a></li>
                 </ul>
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="#">
+                    <a href="site.php">
                         <i class='bx bx-sidebar'></i>
                         <span class="link_name">Recebimento</span>
                     </a>
-                    <i class='bx bx-chevron-down arrow'></i>
+                    <i class='bx bx-chevron-down arrow'></i>    
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Recebimento</a></li>
