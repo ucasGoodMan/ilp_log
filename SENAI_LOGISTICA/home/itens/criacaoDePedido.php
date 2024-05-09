@@ -5,41 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Container</title>
     <style>
-        .divContainer {
-            vertical-align: top;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-left: 16%;
-            margin-right: 16%;
-        }
-
         .texto1 {
-            width: 10%; /* Reduzindo um pouco a largura para acomodar o terceiro bloco */
-            text-align: center;
-            display: inline;
-
+            margin-top: -15px;
+            margin-left: 500px;
         }
 
-        .blocoB {
-            width: 50%;
-            text-align: center;
-            display: inline;
-            margin-top: 10%;
+        .b {
+            margin-top:  -10px;
         }
 
-        .blocoC {
-            width: 80%;
-            text-align: center;
-            display: inline;
-            margin-top: 10%;
+        .d {
+            margin-top: -10px;
         }
+
+        .f {
+            margin-top: -10px;
+        }
+
+        .h {
+            margin-top: -10px;
+        }
+
+        .d {
+            margin-top: -10px;
+        }
+
+        .textos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+            margin-right: 1100px;
+        }
+
     </style>
 </head>
 <body>
@@ -47,63 +45,60 @@
 <div class="textos">
     <form method="post" action="" id="form1" name="form1">
         
-        <div class="texto1">
-            <label>Placa do caminhão:</label><br>
-            <input type="text" name="placa" id="placa" size="20"><br><br>
+        <div class="texto1 a">
+            
+            <input type="text" name="placa" id="placa"placeholder="Produtos" ><br><br>
         </div>
        
-        <div class="blocoB">
-            <label>Cliente:</label><br>
-            <input type="text" name="cliente" id="cliente" size="20"><br><br>
+        <div class="texto1 b">
+            
+            <input type="text" name="cliente" id="cliente" placeholder="UNIDADE"><br><br>
         </div>
 
-        <div class="texto1">
-            <label>Lacre SIF:</label><br>
-            <input type="number" name="lacresif" id="lacresif" size="20"><br><br>
+        <div class="texto1 c">
+            
+            <input type="number" name="lacresif" id="lacresif" placeholder="QUATIDADE"><br><br>
         </div>
         
-        <div class="blocoB">
-            <label>Nome do Motorista:</label><br>
-            <input type="text" name="nomemotori" id="nomemotori" size="20"><br><br>
+        <div class="texto1 d">
+            
+            <input type="text" name="nomemotori" id="nomemotori" placeholder="R$/UNIT"><br><br>
         </div>
 
-        <div class="texto1">
-            <label>Tipo:</label><br>
-            <input type="text" name="tipo" id="tipo" size="20"><br><br>
+        <div class="texto1 e">
+            
+            <input type="text" name="tipo" id="tipo"  placeholder="NCM"><br><br>
         </div>
         
-        <div class="blocoB">
-            <label>Nº ONU:</label><br>
-            <input type="number" name="onu" id="onu" size="20"><br><br>
+        <div class="texto1 f">
+            
+            <input type="number" name="onu" id="onu"  placeholder="CST"><br><br>
         </div>    
         
-        <div class="texto1">
-            <label>Container:</label><br>
-            <input type="text" name="container" id="container" size="20"><br><br>
+        <div class="texto1 g">
+            
+            <input type="text" name="container" id="container" placeholder="CFOP"><br><br>
         </div>
         
-        <div class="blocoB">
-            <label>Lacre:</label><br>
-            <input type="text" name="lacre" id="lacre" size="20"><br><br>
+        <div class="texto1 h">
+            
+            <input type="text" name="lacre" id="lacre" placeholder="Navio"><br><br>
         </div>
 
-        <div class="texto1">
-            <label>Temperatura:</label><br>
-            <input type="number" name="temp" id="temp" size="20"><br><br>
+        <div class="texto1 i">
+            
+            <input type="number" name="temp" id="temp" placeholder="Navio"><br><br>
         </div>
             
-        <div class="blocoC">
-            <label>Navio:</label><br>
-            <input type="text" name="navio" id="navio" size="20"><br><br>
-        </div>
-
-        <div class="blocoB">
+        <div class="texto1 j">
             
+            <input type="text" name="navio" id="navio" placeholder="Navio"><br><br>
         </div>
 
-        <div class="blocoB">
-            <label>IMO:</label><br>
-            <input type="number" name="imo" id="imo" size="20"><br><br>
+
+
+        <div class="texto1 k">
+            <input type="number" name="imo" id="imo" placeholder="Navio"><br><br>
     </div class="botao" > 
         
     </div>
