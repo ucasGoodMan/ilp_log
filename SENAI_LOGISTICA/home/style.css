@@ -64,7 +64,7 @@
 }
 
 .sidebar.close .logo-details .logo_name {
-    transition-delay: 0s;
+    transition-delay: -0.2s;
     opacity: 0;
     pointer-events: none;
 }
@@ -230,14 +230,13 @@
 }
 
 .sidebar .profile-details img {
-    height: 60px;
-    width: 60px;
+    height: 55px;
+    width: 180px;
     object-fit: cover;
-    border-radius: 16px;
     margin: 0 14px 0 12px;
     padding: 10px;
     transition: all 0.5s ease;
-}
+    margin-left: -15px;
 
 .sidebar.close .profile-details img {
     padding: 10px;
