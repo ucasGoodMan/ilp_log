@@ -6,28 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>SIDEBAR</title>
-
-
+    
 </head>
 
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <img class="img1" src="ILP ICONE BRANCO sf.png" alt="LUCAS">
+            <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
             <li>
                 <a href="site.php">
-                    <i class='bx bx-home' ></i>
+                    <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
             </li>
             <li>
                 <div class="iocn-links">
                     <a href="site.php">
-                        <i class='bx bx-receipt'></i>
+                        <i class="fa-solid fa-truck"></i>   
                         <span class="link_name">Recebimento</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
@@ -41,7 +41,7 @@
             <li>
                 <div class="iocn-links">
                     <a href="#">
-                        <i class='bx bx-joystick-button' ></i>
+                        <i class="fa-solid fa-sliders"></i>
                         <span class="link_name">Controle</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
@@ -54,7 +54,7 @@
             </li>   
             <li>
                 <a href="#">
-                    <i class='bx bx-sidebar'></i>
+                    <i class="fa-solid fa-dolly"></i>    
                     <span class="link_name">Movimentação</span>
                 </a>
                 <ul class="sub-menu">
@@ -63,7 +63,7 @@
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-sidebar'></i>
+                    <i class="fa-solid fa-hand-holding"></i>
                     <span class="link_name">Picking</span>
                 </a>
                 <ul class="sub-menu">
@@ -71,7 +71,7 @@
                 </ul>
             <li>
                 <a href="#">
-                    <i class='bx bx-sidebar'></i>
+                    <i class="fa-solid fa-truck-fast"></i>
                     <span class="link_name">Expedição</span>
                 </a>
                 <ul class="sub-menu">
@@ -80,7 +80,7 @@
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-sidebar'></i>
+                    <i class="fa-solid fa-boxes-stacked"></i>
                     <span class="link_name">Estoque</span>
                 </a>
                 <ul class="sub-menu">
@@ -89,7 +89,7 @@
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-sidebar'></i>
+                    <i class="fa-solid fa-receipt"></i>
                     <span class="link_name">Relatórios</span>
                 </a>
                 <ul class="sub-menu">
@@ -99,7 +99,7 @@
             <li>
             <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="senai-logo-1.png" alt="senai">
+                    <img src="../imagens/senai-logo-1.png" alt="senai">
             </div>
             </li>
         </ul>
