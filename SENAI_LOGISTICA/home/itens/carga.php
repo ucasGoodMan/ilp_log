@@ -29,6 +29,12 @@
             display: inline-block;
             margin-right: 2%; /* Espaçamento entre os blocos */
         }
+        .bloco1 {
+            width: 1%; /* Largura para acomodar as cinco colunas na mesma linha */
+            text-align: left;
+            display: inline-block;
+            margin-right: 1%; /* Espaçamento entre os blocos */
+        }
 
 
         .bloco label {
@@ -52,7 +58,7 @@
 <body>
  
 <div class="divContainer">
-    <form method="post" action="procesitens.php" id="form1" name="form1">
+    <form method="post" action="process.php" id="form1" name="form1">
         <center>
      <input type="number" id="nPedido" placeholder="Numero do Pedido" size="10"><br>
     </center>
@@ -70,7 +76,7 @@
            
             <div class="bloco">
                 
-                <input type="text" id="cliente1" placeholder="Tipo de Pacote" size="12"><br>
+                <input type="text" id="cliente1" placeholder="Unidade" size="12"><br>
                
             </div>
 
@@ -84,17 +90,30 @@
 
             <!-- Adicionando a tabela QTD2 -->
             <div class="bloco">
-             
-                <input type="number" id="extra1" placeholder="Quantidade 2" size="1"><br>
+            
+                <input type="text" id="valorUnit" placeholder="R$/unit " size="5"><br>
                 
             </div>
 
 
-            <div class="bloco">
+            <div class="bloco1">
                 
-                <input type="text" id="extra6" placeholder="Posição" size="3"><br>
+                <input type="alphanumeric" id="NCM" placeholder="NCM" size="3"><br>
               
             </div>
+
+            <div class="bloco1">
+                
+                <input type="alphanumeric" id="CST" placeholder="CST" size="3"><br>
+              
+            </div>
+
+            <div class="bloco1">
+                
+                <input type="alphanumeric" id="CFOP" placeholder="CFOP" size="3"><br>
+              
+            </div>
+
             <div>
             
             <input type="alphanumeric" id="doca" placeholder="Doca" size="10"><br>
