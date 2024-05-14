@@ -52,7 +52,7 @@
 <body>
  
 <div class="divContainer">
-    <form method="post" action="process.php" id="form1" name="form1">
+    <form method="post" action="procesitens.php" id="form1" name="form1">
         <center>
      <input type="number" id="nPedido" placeholder="Numero do Pedido" size="10"><br>
     </center>
