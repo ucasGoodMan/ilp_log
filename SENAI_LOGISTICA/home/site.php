@@ -21,7 +21,7 @@
             <li>
                 <a href="site.php">
                     <i class="fa-solid fa-house"></i>
-                    <span class="link_name">Home</span>
+                    <span class="link_name">Home do aluno</span>
                 </a>
             </li>
             <li>

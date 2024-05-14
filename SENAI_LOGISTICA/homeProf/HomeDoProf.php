@@ -22,7 +22,7 @@
             <li>
                 <a href="HomeDoProf.php">
                     <i class="fa-solid fa-house"></i>
-                    <span class="link_name">Home</span>
+                    <span class="link_name">Home do professor</span>
                 </a>
             </li>
             <li>
@@ -43,12 +43,12 @@
                 <div class="iocn-links">
                     <a href="#">
                         <i class="fa-solid fa-file-invoice-dollar"></i>
-                        <span class="link_name">Nota fiscal</span>
+                        <span class="link_name">Danfe</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name">Nota fiscal</a></li>
+                    <li><a class="link_name">Danfe</a></li>
                     <li><a href="#">Criar danfe</a></li>
                     <li><a href="#">Minhas danfe</a></li>
                 </ul>
@@ -70,6 +70,19 @@
                 <ul class="sub-menu">
                     <li><a class="blank" href="#">Controle</a></li>
                 </ul>
+                <li>
+                    <div class="iocn-links">
+                        <a href="#">
+                            <i class="fa-solid fa-address-card"></i>
+                            <span class="link_name">Aluno</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name">Aluno</a></li>
+                        <li><a href="#">Turmas</a></li>
+                    </ul>
+                </li>
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
