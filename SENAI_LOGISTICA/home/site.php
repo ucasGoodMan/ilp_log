@@ -21,7 +21,7 @@
             <li>
                 <a href="site.php">
                     <i class="fa-solid fa-house"></i>
-                    <span class="link_name">Home do aluno</span>
+                    <span class="link_name">Home</span>
                 </a>
             </li>
             <li>
@@ -106,7 +106,7 @@
     </div>
     <section class="home-section">
             <i class='bx bx-menu'></i>
-            <span class="text">HOME</span>
+            <span class="text">Home do aluno</span>
     </section>
     <script src="sidebar.js"></script>
 </body>
