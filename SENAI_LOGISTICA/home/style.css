@@ -241,7 +241,7 @@
 
 
 .sidebar.close .profile-details img {
-    padding: 10px;
+    display: none;
 }
 
 .sidebar .profile-details .profile-name,
@@ -266,16 +266,17 @@
 .home-section {
     position: absolute;
     background: #fff;
-    left: 5px;
+    left: -20px;
     transition: all 0.5s ease;
 }
 
 .sidebar.close ~ .home-section { 
-    left: -200px;   
+    left: -220px;   
     position: absolute;
 }
 
 .home-section  {
+    margin-top: 10px;
     height: 60px;
     display: flex;
     margin-left: 300px;
@@ -283,6 +284,7 @@
 
 .home-section  .bx-menu, 
     .home-section  .text {
+    margin-top: -2px;
     color: #11101d;
     font-size: 35px;
 }
