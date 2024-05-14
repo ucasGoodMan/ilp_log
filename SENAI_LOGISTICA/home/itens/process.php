@@ -11,10 +11,10 @@
 		exit();
 	} else {
 		// Evita caracteres especiais (SQL Inject)
-		$placa = $conexao -> real_escape_string($_POST['placa']);
-		$cliente = $conexao -> real_escape_string($_POST['cliente']);
-        $lacresif = $conexao -> real_escape_string($_POST['lacresif']);
-		$nomemotori = $conexao -> real_escape_string($_POST['nomemotori']);
+		$produto = $conexao -> real_escape_string($_POST['placa']);
+		$tipopro = $conexao -> real_escape_string($_POST['cliente']);
+        $quantidade = $conexao -> real_escape_string($_POST['lacresif']);
+		$quantidade2 = $conexao -> real_escape_string($_POST['nomemotori']);
         $tipo = $conexao -> real_escape_string($_POST['tipo']);
 		$onu = $conexao -> real_escape_string($_POST['onu']);
         $container = $conexao -> real_escape_string($_POST['container']);
