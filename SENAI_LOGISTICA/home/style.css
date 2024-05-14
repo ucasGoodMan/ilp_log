@@ -229,7 +229,7 @@
     align-items: center;
 }
 
-.sidebar .profile-details img 
+.sidebar .profile-details img {
     height: 55px;
     width: 180px;
     object-fit: cover;
@@ -237,12 +237,12 @@
     padding: 10px;
     transition: all 0.5s ease;
     margin-left: -15px;
+}
 
 
-
-.sidebar.close .profile-details img  
+.sidebar.close .profile-details img {
     padding: 10px;
-
+}
 
 .sidebar .profile-details .profile-name,
 .sidebar .profile-details .job {
@@ -251,6 +251,8 @@
     font-weight: 500;
     white-space: nowrap;
 }
+
+
 .sidebar.close .profile-details i,
 .sidebar.close .profile-details .profile-name,
 .sidebar.close .profile-details .job{
