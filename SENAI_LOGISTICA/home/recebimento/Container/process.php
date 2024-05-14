@@ -114,7 +114,7 @@
     VALUES
         ('".$placa."', '".$nomemotori."', '".$container."', '".$navio."','".$cliente."','".$tipo."', '".$lacre."', '".$lacresif."', '".$temp."', '".$imo."', '".$onu."', '".$containerD."', '".$avariaLD."', '".$avariaLE."', '".$avariaT."','".$avariaF."','".$semlacre."', '".$adesivoAV."', '".$excessoALT."', '".$excessoD."', '".$excessoE."', '".$excessoF."', '".$painelAV."', '".$semcaboE."', '".$semlona."')";
             
-
+echo $sql;
             $resultado = $conexao->query($sql);
         
             $conexao -> close();
