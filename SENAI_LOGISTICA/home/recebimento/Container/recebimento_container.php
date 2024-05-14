@@ -95,22 +95,13 @@
         </div>
 
         <div class="blocoB">
-            
-        </div>
-
-        <div class="blocoB">
             <label>IMO:</label><br>
             <input type="number" name="imo" id="imo" size="20"><br><br>
-    </div class="botao" > 
-        
-    </div>
-    
+        </div>
 
         </div>
-    </form>
-</div>
-<br><br><br><br>
-<div class="divContainer">
+        <br><br><br><br>
+        <div class="divContainer">
         <div class="bloco">
             <label>Checklist:</label><br>
             <input type="checkbox" name="ContainerDesgastado" value="0"> Container Bem Desgastado <br>
