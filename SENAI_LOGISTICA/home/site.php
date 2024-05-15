@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="logo-details">
+         <div class="logo-details">
             <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
             <span class="logo_name">ILP LOG</span>
         </div>
@@ -108,7 +107,8 @@
             <i class='bx bx-menu'></i>
             <span class="text">Home do aluno</span>
     </section>
-    <script src="sidebar.js"></script>
+    <script src="sidebar.js"></script>   <div class="sidebar">
+
 </body>
 
 </html>
