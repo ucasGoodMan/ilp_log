@@ -35,7 +35,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Pedidos</a></li>
-                    <li><a href="../home/recebimento/Container/recebimento_container.php">Criar pedidos</a></li>
+                    <li><a href="../home/itens/pedidos.php">Criar pedidos</a></li>
                     <li><a href="#">Meus pedidos</a></li>
                 </ul>
             </li>
