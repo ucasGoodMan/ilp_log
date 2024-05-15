@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleS.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>SIDEBAR</title>
-    
+
+
 </head>
 
 <body>
@@ -105,8 +106,8 @@
         </ul>
     </div>
     <section class="home-section">
-            <i class='bx bx-menu'></i>
-            <span class="text">Home do aluno</span>
+        <i class='bx bx-menu'></i>
+        <span class="text">Home do aluno</span>
     </section>
     <script src="sidebar.js"></script>
 </body>
