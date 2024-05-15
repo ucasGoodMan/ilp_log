@@ -112,74 +112,69 @@
     <script src="sidebarI.js"></script>
 
 
-    <div class="divContainer">
-        <form method="post" action="process.php" id="form1" name="form1">
-            <center>
-         <input type="number" id="nPedido" placeholder="Numero do Pedido" size="10"><br>
-        </center>
-          <br><br><br><br>
-          <br>    
-        <div class="container">
+          <div class="divContainer">
+            <form method="post" action="process.php">
+                <center>
+                    <input type="number" name="npedido" placeholder="Numero do Pedido"><br>
+                </center>
+                <br><br><br><br>
+                <br>
+                <div class="container">
     
-
-                <div class="bloco">
-                    <input type="text"  placeholder="Produto" size="40"><br>
-                    
+                    <div class="bloco">
+                        <label></label>
+                        <input type="text" name="produtos" placeholder="Produto"><br>
+    
+                    </div>
+    
+                    <div class="bloco">
+    
+                        <input type="text" name="unidade" placeholder="Unidade"><br>
+    
+                    </div>
+    
+                    <div class="bloco">
+    
+                        <input type="number" name="quantidade" placeholder="Quantidade"><br>
+    
+                    </div>
+    
+                    <div class="bloco">
+    
+                        <input type="number" name="vlrporunidade" placeholder="R$/unit"><br>
+    
+                    </div>
+    
+                    <div class="bloco">
+    
+                        <input type="number" name="ncm" placeholder="NCM"><br>
+    
+                    </div>
+    
+                    <div class="bloco">
+    
+                        <input type="number" name="cst" placeholder="CST"><br>
+    
+                    </div>
+    
+                    <div class="bloco">
+    
+                        <input type="number" name="cfop" placeholder="CFOP"><br>
+    
+                    </div>
+    
+                    <div class="bloco">
+    
+                        <input type="text" name="doca" placeholder="Doca"><br>
+                    </div>
+    
+                    <div>
+                        <input type="submit" id="enviar" value="Enviar">
+                    </div>
+    
                 </div>
-               
-                <div class="bloco">
-                    
-                    <input type="text" placeholder="Unidade" size="12"><br>
-                   
-                </div>
-    
-    
-                <div class="bloco">
-                    
-                    <input type="number"  placeholder="Quantidade" size="1"><br>
-                   
-                </div>
-    
-    
-                <!-- Adicionando a tabela QTD2 -->
-                <div class="bloco">
-                
-                    <input type="text" id="valorUnit" placeholder="R$/unit " size="5"><br>
-                    
-                </div>
-    
-    
-                <div class="bloco1">
-                    
-                    <input type="alphanumeric" id="NCM" placeholder="NCM" size="3"><br>
-                  
-                </div>
-    
-                <div class="bloco1">
-                    
-                    <input type="alphanumeric" id="CST" placeholder="CST" size="3"><br>
-                  
-                </div>
-    
-                <div class="bloco1">
-                    
-                    <input type="alphanumeric" id="CFOP" placeholder="CFOP" size="3"><br>
-                  
-                </div>
-    
-                <div>
-                
-                <input type="alphanumeric" id="doca" placeholder="Doca" size="10"><br>
-                </div>
-    
-                <div>
-                    <input type="submit" id="enviar" value="Enviar">
-                </div>
-               
-            </div>
-        </form>
-    </div>
-</div>
+            </form>
+        </div>
 </body>
 
 </html>

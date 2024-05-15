@@ -306,49 +306,47 @@
     vertical-align: top;
     display: inline-block;
     width: 100%;
+    margin: 100px;
 }
 
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    display: flex;   
     margin-left: 20%;
-    margin-right: 5%;
+    margin-right: -80%;
     margin-bottom: 5px; /* Espaço entre os containers */
 }
 
 
 .bloco {
-    width: 10%; /* Largura para acomodar as cinco colunas na mesma linha */
+    width: 5%; /* Largura para acomodar as cinco colunas na mesma linha */
     text-align: left;
     display: inline-block;
-    margin-right: 2%; /* Espaçamento entre os blocos */
+    margin-right: 5%; /* Espaçamento entre os blocos */
     outline: none;
     border-radius: 10px;
 }
-.bloco1 {
+.bloco{
     width: 1%; /* Largura para acomodar as cinco colunas na mesma linha */
     text-align: left;
     display: inline-block;
-    margin-right: 1%; /* Espaçamento entre os blocos */
+    margin-right: 5%; /* Espaçamento entre os blocos */
     
 }
 
 
 .bloco label {
     display: block; /* Para forçar cada label a ficar em uma nova linha */
+    
 }
 
 
 /* Adicionando algum espaçamento entre os campos */
 .bloco input {
     margin-bottom: 5px;
-    outline: none;
-    border: none;
     background-color: rgb(206, 205, 205);
     padding: 10px;
+    border: none;
 
 }
     .numero-pedido,
