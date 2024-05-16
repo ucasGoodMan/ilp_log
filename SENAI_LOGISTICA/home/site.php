@@ -41,7 +41,7 @@
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="#">
+                    <a href="">
                         <i class="fa-solid fa-sliders"></i>
                         <span class="link_name">Controle</span>
                     </a>
@@ -49,52 +49,52 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Controle</a></li>
-                    <li><a href="#">Doca de recebimento</a></li>
-                    <li><a href="#">Estoque</a></li>
+                    <li><a href="">Doca de recebimento</a></li>
+                    <li><a href="">Estoque</a></li>
                 </ul>
             </li>   
             <li>
-                <a href="#">
+                <a href="">
                     <i class="fa-solid fa-dolly"></i>    
                     <span class="link_name">Movimentação</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="#">Movimentação</a></li>
+                    <li><a class="blank" href="">Movimentação</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="">
                     <i class="fa-solid fa-hand-holding"></i>
                     <span class="link_name">Picking</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="#">Picking</a></li>
+                    <li><a class="blank" href="">Picking</a></li>
                 </ul>
             <li>
-                <a href="#">
+                <a href="">
                     <i class="fa-solid fa-truck-fast"></i>
                     <span class="link_name">Expedição</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="#">Expedição</a></li>
+                    <li><a class="blank" href="">Expedição</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="">
                     <i class="fa-solid fa-boxes-stacked"></i>
                     <span class="link_name">Estoque</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="#">Estoque</a></li>
+                    <li><a class="blank" href="">Estoque</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="">
                     <i class="fa-solid fa-receipt"></i>
                     <span class="link_name">Relatórios</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="#">Relatórios</a></li>
+                    <li><a class="blank" href="">Relatórios</a></li>
                 </ul>
             </li>
             <li>
