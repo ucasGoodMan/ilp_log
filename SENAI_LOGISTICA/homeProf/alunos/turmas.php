@@ -154,11 +154,9 @@
         // Fecha a conexão com o banco de dados
         mysqli_close($conexao);
     ?>
-    <form action="process.php" method="post" id="formularioCriarTabela">
+    <form action="../alunos/process.php" method="post" id="formularioCriarTabela">
         <div class="criar">
-            <input type="checkbox" id="confirmar" name="confirmar" required>
-            <label for="confirmar">Confirmar</label>
-            <button type="submit">Criar Tabela</button>
+            <button type="submit">Criar Turma</button>
         </div>
       </form>
 </body>

@@ -19,5 +19,9 @@ table { /* Seleciona a tag <table> */
   } 
 
 .criar{
+  position: absolute;
+  left: 1250px;
+  top: 100px;
   width: 500px;
+
 }
