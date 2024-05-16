@@ -4,130 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carga</title>
-    <style>
-        .divContainer {
-            vertical-align: top;
-            display: inline-block;
-            width: 100%;
-        }
+    <link rel="stylesheet" href="styleI.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>SIDEBAR</title>
 
 
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-left: 5%;
-            margin-right: 5%;
-            margin-bottom: 20px;
-            /* Espaço entre os containers */
-        }
-
-
-        .bloco {
-            width: 5%;
-            /* Largura para acomodar as cinco colunas na mesma linha */
-            text-align: left;
-            display: inline-block;
-            margin-right: 2%;
-            /* Espaçamento entre os blocos */
-        }
-
-        .bloco1 {
-            width: 1%;
-            /* Largura para acomodar as cinco colunas na mesma linha */
-            text-align: left;
-            display: inline-block;
-            margin-right: 1%;
-            /* Espaçamento entre os blocos */
-        }
-
-
-        .bloco label {
-            display: block;
-            /* Para forçar cada label a ficar em uma nova linha */
-        }
-
-
-        /* Adicionando algum espaçamento entre os campos */
-        .bloco input {
-            margin-bottom: 5px;
-        }
-
-        .numero-pedido,
-        .doca {
-            width: 100%;
-            font-weight: bold;
-            color: blue;
-        }
-    </style>
 </head>
 
 <body>
-
-    <div class="divContainer">
-        <form method="post" action="process.php">
-            <center>
-                <input type="number" name="npedido" placeholder="Numero do Pedido" size="10"><br>
-            </center>
-            <br><br><br><br>
-            <br>
-            <div class="container">
-
-                <div class="bloco">
-                    <label></label>
-                    <input type="text" name="produtos" placeholder="Produto" size="40"><br>
-
+    <div class="sidebar">
+        <div class="logo-details">
+            <img class="img1" src="/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+            <span class="logo_name">ILP LOG</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="site.php">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="link_name">Home</span>
+                </a>
+            </li>
+            <li>
+                <div class="iocn-links">
+                    <a href="site.php">
+                        <i class="fa-solid fa-truck"></i>   
+                        <span class="link_name">Recebimento</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow'></i>
                 </div>
-
-                <div class="bloco">
-
-                    <input type="text" name="unidade" placeholder="Unidade" size="12"><br>
-
+                <ul class="sub-menu">
+                    <li><a class="link_name">Recebimento</a></li>
+                    <li><a href="../home/recebimento/Container/recebimento_container.php">Container</a></li>
+                    <li><a href="#">Carga</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-links">
+                    <a href="#">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="link_name">Controle</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow'></i>
                 </div>
-
-                <div class="bloco">
-
-                    <input type="number" name="quantidade" placeholder="Quantidade" size="1"><br>
-
-                </div>
-
-                <div class="bloco">
-
-                    <input type="number" name="vlrporunidade" placeholder="R$/unit " size="5"><br>
-
-                </div>
-
-                <div class="bloco1">
-
-                    <input type="number" name="ncm" placeholder="NCM" size="3"><br>
-
-                </div>
-
-                <div class="bloco1">
-
-                    <input type="number" name="cst" placeholder="CST" size="3"><br>
-
-                </div>
-
-                <div class="bloco1">
-
-                    <input type="number" name="cfop" placeholder="CFOP" size="3"><br>
-
-                </div>
-
-                <div>
-
-                    <input type="text" name="doca" placeholder="Doca" size="10"><br>
-                </div>
-
-                <div>
-                    <input type="submit" id="enviar" value="Enviar">
-                </div>
-
+                <ul class="sub-menu">
+                    <li><a class="link_name">Controle</a></li>
+                    <li><a href="#">Doca de recebimento</a></li>
+                    <li><a href="#">Estoque</a></li>
+                </ul>
+            </li>   
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-dolly"></i>    
+                    <span class="link_name">Movimentação</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a class="blank" href="#">Movimentação</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-hand-holding"></i>
+                    <span class="link_name">Picking</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a class="blank" href="#">Picking</a></li>
+                </ul>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <span class="link_name">Expedição</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a class="blank" href="#">Expedição</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                    <span class="link_name">Estoque</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a class="blank" href="#">Estoque</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-receipt"></i>
+                    <span class="link_name">Relatórios</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a class="blank" href="#">Relatórios</a></li>
+                </ul>
+            </li>
+            <li>
+            <div class="profile-details">
+                    <i class='bx bx-log-out'></i>
+                    <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
             </div>
-        </form>
+            </li>
+        </ul>
     </div>
+    <section class="home-section">
+        <i class='bx bx-menu'></i>
+        <span class="text">Pedido</span>
+    </section>
+    <div class="back"></div>
+    <script src="sidebarI.js"></script>
+
+    <form action="process.php" method="post">
+        <div class="forms">
+            <input class="i a" type="text" name="npedido" placeholder="Número de pedidos">
+            <input class="i b" type="text" name="produtos" placeholder="Produtos">
+            <input class="i c" type="text" name="unidade" placeholder="Unidade">
+            <input class="i d" type="text" name="quantidade" placeholder="quantidade">
+            <input class="i e" type="text" name="vlrporunidade" placeholder="valor por unidade">
+            <input class="i f" type="text" name="ncm" placeholder="NCM">
+            <input class="i g" type="text" name="cst" placeholder="CST">
+            <input class="i h" type="text" name="cfop" placeholder="CFOP">
+            <input class="i j" type="text" name="doca" placeholder="DOCA">
+            <input class="i k" type="submit" value="Enviar">
+        
+        </div>
+    </form>
 </body>
 </html>
