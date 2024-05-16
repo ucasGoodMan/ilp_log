@@ -1,0 +1,19 @@
+table { /* Seleciona a tag <table> */
+    border: 1px solid black; /* Adiciona borda preta na tabela */
+    border-radius: 10px;
+    width: 500px; /* Define a largura da tabela */
+    margin: 20px auto; /* Centraliza a tabela na página */
+  }
+  
+  th, td { /* Seleciona as tags <th> e <td> */
+    padding: 10px; /* Adiciona espaço interno nas células */
+    text-align: center; /* Alinha o texto no centro das células */
+  }
+  
+  th { /* Seleciona apenas as tags <th> (cabeçalhos) */
+    background-color: rgb(37, 91, 168); /* Define cor de fundo cinza claro para os cabeçalhos */
+    font-size: 18px;
+    color: white;
+    font-weight: 400px;
+    border-radius: 5px;
+  } 

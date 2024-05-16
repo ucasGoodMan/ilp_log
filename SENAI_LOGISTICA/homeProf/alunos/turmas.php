@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styleProf.css">
+    <link rel="stylesheet" href="../alunos/turmas.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>SIDEBAR</title>
@@ -70,19 +71,19 @@
                 <ul class="sub-menu">
                     <li><a class="blank" href="#">Controle</a></li>
                 </ul>
-                <li>
-                    <div class="iocn-links">
-                        <a href="#">
-                            <i class="fa-solid fa-address-card"></i>
-                            <span class="link_name">Aluno</span>
-                        </a>
-                        <i class='bx bx-chevron-down arrow'></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name">Aluno</a></li>
-                        <li><a href="turmas.php">Turmas</a></li>
-                    </ul>
-                </li>
+            <li>
+                <div class="iocn-links">
+                    <a href="#">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span class="link_name">Aluno</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name">Aluno</a></li>
+                    <li><a href="turmas.php">Turmas</a></li>
+                </ul>
+            </li>
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
@@ -93,9 +94,65 @@
     </div>
     <section class="home-section">
         <i class='bx bx-menu'></i>
-        <span class="text">Home do professor</span>
+        <span class="text">Turmas</span>
     </section>
-    <script src="sidebar.js"></script>
-</body>
+    <script src="../sidebar.js"></script>
 
+    <body>
+    <?php
+
+        $hostname = "127.0.0.1";
+        $user = "root";
+        $password = "usbw";
+        $database = "senai";
+
+        $conexao = mysqli_connect($host, $user, $password, $database);
+
+        if (!$conexao) {
+        echo "Falha na conexão com o banco de dados: " . mysqli_connect_error();
+        exit;
+        }
+
+        // Consulta SQL para buscar os dados
+        $tabela = "turma_id";
+        $colunas = "id"; // Selecione as colunas que você precisa
+        $consulta = "SELECT $colunas FROM $tabela";
+
+        // Executa a consulta e obtém os resultados
+        $resultado = mysqli_query($conexao, $consulta);
+
+        if (!$resultado) {
+        echo "Falha na consulta SQL: " . mysqli_error($conexao);
+        exit;
+        }
+
+        // Verifica se há resultados na consulta
+        if (mysqli_num_rows($resultado) > 0) {
+        // Exibe os dados em uma tabela HTML
+        echo "<table>";
+        echo "<tr>";
+        // Exibe os nomes das colunas como cabeçalhos da tabela
+        foreach (explode(", ", $colunas) as $coluna) {
+            echo "<th>" . $coluna . "</th>";
+        }
+        echo "</tr>";
+
+        // Exibe os dados linha a linha
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            echo "<tr>";
+            foreach ($linha as $coluna => $valor) {
+                echo "<td>" . $valor . "</td>";
+            }
+            echo "</tr>";
+        }
+
+            echo "</table>";
+        } else {
+            echo "Não há resultados na consulta.";
+        }
+
+        // Fecha a conexão com o banco de dados
+        mysqli_close($conexao);
+    ?>
+</body>
 </html>
