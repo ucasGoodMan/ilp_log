@@ -109,72 +109,26 @@
         <i class='bx bx-menu'></i>
         <span class="text">Pedido</span>
     </section>
+    <div class="back"></div>
     <script src="sidebarI.js"></script>
 
-
-          <div class="divContainer">
-            <form method="post" action="process.php">
-                <center>
-                    <input type="number" name="npedido" placeholder="Numero do Pedido"><br>
-                </center>
-                <br><br><br><br>
-                <br>
-                <div class="container">
-    
-                    <div class="bloco">
-                        <label></label>
-                        <input type="text" name="produtos" placeholder="Produto"><br>
-    
-                    </div>
-    
-                    <div class="bloco">
-    
-                        <input type="text" name="unidade" placeholder="Unidade"><br>
-    
-                    </div>
-    
-                    <div class="bloco">
-    
-                        <input type="number" name="quantidade" placeholder="Quantidade"><br>
-    
-                    </div>
-    
-                    <div class="bloco">
-    
-                        <input type="number" name="vlrporunidade" placeholder="R$/unit"><br>
-    
-                    </div>
-    
-                    <div class="bloco">
-    
-                        <input type="number" name="ncm" placeholder="NCM"><br>
-    
-                    </div>
-    
-                    <div class="bloco">
-    
-                        <input type="number" name="cst" placeholder="CST"><br>
-    
-                    </div>
-    
-                    <div class="bloco">
-    
-                        <input type="number" name="cfop" placeholder="CFOP"><br>
-    
-                    </div>
-    
-                    <div class="bloco">
-    
-                        <input type="text" name="doca" placeholder="Doca"><br>
-                    </div>
-    
-                    <div>
-                        <input type="submit" id="enviar" value="Enviar">
-                    </div>
-    
-                </div>
-            </form>
+    <form action="process.php" method="post">
+        <div class="forms">
+            <input class="i a" type="text" placeholder="produtos">
+            <input class="i b" type="text" placeholder="produtos">
+            <input class="i c" type="text" placeholder="produtos">
+            <input class="i d" type="text" placeholder="produtos">
+            <input class="i e" type="text" placeholder="produtos">
+            <input class="i f" type="text" placeholder="produtos">
+            <input class="i g" type="text" placeholder="produtos">
+            <input class="i h" type="text" placeholder="produtos">
+            <input class="i o" type="submit" value="Enviar">
+        
         </div>
+
+
+    </form>
+
 </body>
 
 </html>
