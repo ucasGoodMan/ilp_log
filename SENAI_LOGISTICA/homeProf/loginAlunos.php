@@ -25,7 +25,7 @@
         }
 
         // Receber o nome personalizado do cabeçalho
-        $cabecalho = filter_input(INPUT_POST, 'turmas');
+        $cabecalho = filter_input(INPUT_POST, '');
 
         // Consulta SQL para buscar os dados
         $tabela = "alunos";
@@ -46,7 +46,7 @@
         echo "<table>";
         echo "<tr>";
         // Exibe os nomes das colunas como cabeçalhos da tabela
-        foreach (explode(", ", $coluna) as $coluna) {
+        foreach (explode(", ", $colunas) as $coluna) {
             echo "<th>" . $coluna . "</th>";
         }
         echo "</tr>";
@@ -68,10 +68,4 @@
         // Fecha a conexão com o banco de dados
         mysqli_close($conexao);
     ?>
-
-    <form action="process.php" method="post"
-        <div class="forms">
-            <input type="submit" value="enviar">
-        </div>
-    </form>
 </body>

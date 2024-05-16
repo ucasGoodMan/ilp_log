@@ -17,3 +17,7 @@ table { /* Seleciona a tag <table> */
     font-weight: 400px;
     border-radius: 5px;
   } 
+
+.criar{
+  width: 500px;
+}
