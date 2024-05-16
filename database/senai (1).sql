@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 15-Maio-2024 às 10:28
+-- Tempo de geração: 16-Maio-2024 às 12:05
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 8.1.3
 
@@ -30,14 +30,25 @@ SET time_zone = "+00:00";
 CREATE TABLE `criacaopedido` (
   `id` int(11) NOT NULL,
   `produtos` varchar(100) NOT NULL,
-  `unidade` int(50) NOT NULL,
+  `unidade` varchar(50) NOT NULL,
   `quantidade` int(50) NOT NULL,
-  `vlrporunidade` int(50) NOT NULL,
+  `vlrporunidade` double NOT NULL,
   `ncm` int(50) NOT NULL,
   `cst` int(50) NOT NULL,
   `cfop` int(50) NOT NULL,
   `doca` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `criacaopedido`
+--
+
+INSERT INTO `criacaopedido` (`id`, `produtos`, `unidade`, `quantidade`, `vlrporunidade`, `ncm`, `cst`, `cfop`, `doca`) VALUES
+(1, '1', '1', 1, 1, 1, 1, 1, '1'),
+(2, '2', '2', 2, 2, 2, 2, 2, '2'),
+(9, 'bala', 'caixa', 35, 3, 35, 35, 12, '2b'),
+(34, 'tesoura', 'caixa', 2, 123, 123, 53, 123, '123'),
+(123, 'ca', '231', 123, 123, 123, 123, 123, '123');
 
 -- --------------------------------------------------------
 
@@ -182,12 +193,6 @@ ALTER TABLE `vistoriaconferenciacontainer`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
-
---
--- AUTO_INCREMENT de tabela `criacaopedido`
---
-ALTER TABLE `criacaopedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `logina`
