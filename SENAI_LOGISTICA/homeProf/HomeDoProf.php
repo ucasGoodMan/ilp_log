@@ -97,21 +97,5 @@
     </section>
     <script src="sidebar.js"></script>
 
-    <form action="process.php" method="post">
-        <div class="forms">
-            <input class="i a" type="text" name="npedido" placeholder="Número de pedidos">
-            <input class="i b" type="text" name="produtos" placeholder="Produtos">
-            <input class="i c" type="text" name="unidade" placeholder="Unidade">
-            <input class="i d" type="text" name="quantidade" placeholder="quantidade">
-            <input class="i e" type="text" name="vlrporunidade" placeholder="valor por unidade">
-            <input class="i f" type="text" name="ncm" placeholder="NCM">
-            <input class="i g" type="text" name="cst" placeholder="CST">
-            <input class="i h" type="text" name="cfop" placeholder="CFOP">
-            <input class="i j" type="text" name="doca" placeholder="DOCA">
-            <input class="i k" type="submit" value="Enviar">
-        
-        </div>
-    </form>
-</body>
 
 </html>
