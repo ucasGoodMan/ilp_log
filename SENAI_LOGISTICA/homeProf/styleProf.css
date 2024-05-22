@@ -7,11 +7,11 @@
     margin: 0;
 }
 
-/* background color: 245 245 245 */
+/*   color: 245 245 245 */
 
 .body {
     overflow: none;
-
+    
 }
 
 .sidebar {
@@ -268,6 +268,7 @@
     background: #fff;
     left: -20px;
     transition: all 0.5s ease;
+    
 }
 
 .sidebar.close ~ .home-section { 
@@ -277,7 +278,8 @@
 
 .home-section  {
     margin-top: 10px;
-    height: 60px;
+    width: 100vh;
+    height: 100vh;
     display: flex;
     margin-left: 300px;
 }

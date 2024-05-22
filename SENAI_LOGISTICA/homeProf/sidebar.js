@@ -12,3 +12,6 @@ sidebarBtn.addEventListener("click", () => {
     sidebar.classList.toggle("close");
 });
 console.log(sidebarBtn);
+
+
+
