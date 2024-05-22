@@ -1,10 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../homeProf/alunos/turmas.css"> 
+    <link rel="stylesheet" href="../homeProf/alunos/css">
+  
     <title>Document</title>
 </head>
 
@@ -22,18 +24,23 @@
     }
 
     // Conectar ao banco de dados
-    $hostname = "127.0.0.1";
-    $user = "root";
-    $password = "usbw";
-    $database = "senai";
+        $hostname = "127.0.0.1";
+        $user = "root";
+        $password = "usbw";
+        $database = "senai";
 
+        $conexao = mysqli_connect($host, $user, $password, $database);
     $conexao = mysqli_connect($hostname, $user, $password, $database);
 
+        if (!$conexao) {
     if (!$conexao) {
         echo "Falha na conexão com o banco de dados: " . mysqli_connect_error();
         exit;
+        }
     }
 
+        // Receber o nome personalizado do cabeçalho
+        $cabecalho = filter_input(INPUT_POST, '');
     // Processar a alteração de senha se um e-mail de usuário específico foi enviado
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
         $email = $_POST['email'];
@@ -46,22 +53,33 @@
         }
     }
 
+        // Consulta SQL para buscar os dados
+        $tabela = "alunos";
+        $colunas = "turma_id, email, senha"; // Selecione as colunas que você precisa
+        $consulta = "SELECT $colunas FROM $tabela";
     // Consulta SQL para buscar os dados
     $tabela = "alunos";
     $colunas = "turma_id, email, senha"; // Selecione as colunas que você precisa
     $consulta = "SELECT $colunas FROM $tabela";
 
+        // Executa a consulta e obtém os resultados
+        $resultado = mysqli_query($conexao, $consulta);
     // Executa a consulta e obtém os resultados
     $resultado = mysqli_query($conexao, $consulta);
 
+        if (!$resultado) {
     if (!$resultado) {
         echo "Falha na consulta SQL: " . mysqli_error($conexao);
         exit;
+        }
     }
 
+        // Verifica se há resultados na consulta
+        if (mysqli_num_rows($resultado) > 0) {
     // Verifica se há resultados na consulta
     if (mysqli_num_rows($resultado) > 0) {
         // Exibe os dados em uma tabela HTML
+        echo "<table>";
         echo "<table border='1'>";
         echo "<tr>";
         // Exibe os nomes das colunas como cabeçalhos da tabela
@@ -72,8 +90,7 @@
         echo "</tr>";
 
         // Exibe os dados linha a linha
-        while ($linha = mysqli_fetch_assoc($resultado)) {
-            echo "<tr>";
+
             foreach ($linha as $coluna => $valor) {
                 echo "<td>" . $valor . "</td>";
             }
@@ -87,14 +104,19 @@
             echo "</tr>";
         }
 
+            echo "</table>";
+        } else {
+            echo "Não há resultados na consulta.";
+        }
         echo "</table>";
-    } else {
-        echo "Não há resultados na consulta.";
-    }
+    
 
+        // Fecha a conexão com o banco de dados
+        mysqli_close($conexao);
     // Fecha a conexão com o banco de dados
     mysqli_close($conexao);
     ?>
 </body>
+
 
 </html>
