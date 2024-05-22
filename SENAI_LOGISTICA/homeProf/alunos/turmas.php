@@ -102,7 +102,7 @@
         
             <div class="divTable">
               <table>
-                <thead>dasd
+                <thead>
                   <tr>
                     <th>N° Turma</th>
                     <th>Nome da turma</th>
