@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleProf.css">
+    <link rel="stylesheet" href="turmas.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>SIDEBAR</title>
+
 
 </head>
 
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+            <img class="img1" src="/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
@@ -85,17 +86,56 @@
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="../imagens/senai-logo-1.png" alt="senai">
+                    <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
                 </div>
             </li>
         </ul>
     </div>
     <section class="home-section">
         <i class='bx bx-menu'></i>
-        <span class="text">Home do professor</span>
+        <span class="text">Turmas</span>
+        <div class="container">
+            <div class="header">
+              <span>Cadastro de turmas</span>
+              <button class="button-79" role="button" onclick="openModal()" id="new">Adicionar turma</i></button>
+            </div>
+        
+            <div class="divTable">
+              <table>
+                <thead>
+                  <tr>
+                    <th>N° Turma</th>
+                    <th>Nome da turma</th>
+                    <th>Quantidade de alunos</th>
+                    <th class="acao">Editar</th>
+                    <th class="acao">Excluir</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+        
+            <div class="modal-container">
+              <div class="modal">
+                <form>
+                  <label for="m-nome">N° da turma</label>
+                  <input id="m-nome" type="number" required />
+          
+                  <label for="m-funcao">Nome da turma</label>
+                  <input id="m-funcao" type="text" required />
+          
+                  <label for="m-salario">Quantidade de alunos</label>
+                  <input id="m-salario" type="number" required />
+                  <button id="btnSalvar">Salvar</button>
+                </form>
+              </div>
+            </div>
+        
+          </div>
+          <script src="script.js"></script>
     </section>
     <script src="sidebar.js"></script>
 
-</body>
 
 </html>
