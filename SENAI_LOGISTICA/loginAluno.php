@@ -16,7 +16,7 @@
 		
 		$sql="SELECT `user` FROM `senai`.`alunos`
 			WHERE `user` = '".$email."'
-			AND `senha` = '".$senha."';
+			AND `senha` = '".hash('sha256',$senha)."';";
             
 		$resultado = $conexao->query($sql);
 			
