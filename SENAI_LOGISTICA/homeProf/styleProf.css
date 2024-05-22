@@ -272,16 +272,16 @@
 }
 
 .sidebar.close ~ .home-section { 
-    left: -220px;   
+    left: 80px;   
     position: absolute;
 }
 
 .home-section  {
-    margin-top: 10px;
+    position: absolute;
     width: 100vh;
     height: 100vh;
     display: flex;
-    margin-left: 300px;
+    left: 280px;
 }
 
 .home-section  .bx-menu, 
