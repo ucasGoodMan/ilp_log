@@ -11,11 +11,11 @@
 		exit();
 	} else {
 		// Evita caracteres especiais (SQL Inject)
-		$email = $conexao -> real_escape_string($_POST['emaila']);
+		$user = $conexao -> real_escape_string($_POST['user']);
 		$senha = $conexao -> real_escape_string($_POST['senhaa']);
 		
-		$sql="SELECT `email` FROM `senai`.`logina`
-			WHERE `email` = '".$email."'
+		$sql="SELECT `user` FROM `senai`.`alunos`
+			WHERE `user` = '".$email."'
 			AND `senha` = '".hash('sha256',$senha)."';";
             
 		$resultado = $conexao->query($sql);
@@ -23,156 +23,6 @@
 		if($resultado->num_rows != 0) {
 			session_start();
 			$row = $resultado -> fetch_array();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			
 			$_SESSION['id'] = $row[0];
 			$conexao -> close();

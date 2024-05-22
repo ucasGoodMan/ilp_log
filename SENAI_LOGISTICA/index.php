@@ -41,7 +41,7 @@
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" name="emaila" id="emaila" />
+              <input type="text" placeholder="Email" name="user" id="user" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>

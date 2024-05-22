@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../homeProf/alunos/turmas.css"> 
-    <title>Document</title>
-</head>
-
-<body>
-<body>
     <?php
     // Função para gerar uma nova senha
-    function gerarSenha($tamanho = 3) {
-        $caracteres = '123';
+    function gerarSenha($tamanho = 4) {
+        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $senha = '';
         for ($i = 0; $i < $tamanho; $i++) {
             $senha .= $caracteres[rand(0, strlen($caracteres) - 1)];
@@ -95,6 +84,5 @@
     // Fecha a conexão com o banco de dados
     mysqli_close($conexao);
     ?>
-</body>
 
-</html>
+
