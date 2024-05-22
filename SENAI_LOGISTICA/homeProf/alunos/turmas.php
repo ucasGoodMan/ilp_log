@@ -118,16 +118,17 @@
         
             <div class="modal-container">
               <div class="modal">
-                <form action="process.php" method="POST">
+              <form method="post" action="process.php">
                   <label for="m-nome">N° da turma</label>
-                  <input id="m-nome" name="ndaturma" type="number" required />
+                  <input id="m-nome" name="id" type="number" required />
           
                   <label for="m-funcao">Nome da turma</label>
-                  <input id="m-funcao" name="nome" type="text" required />
+                  <input id="m-funcao" name="nometurma" type="text" required />
           
                   <label for="m-salario">Quantidade de alunos</label>
                   <input id="m-salario" name="qntalunos" type="number" required />
-                  <button type="submit" id="btnSalvar" name="btn">Salvar</button>
+                  
+                  <input type="submit" id="btnSalvar" name="btn" value="Salvar"/>
                 </form>
               </div>
             </div>

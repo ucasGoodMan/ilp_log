@@ -11,19 +11,18 @@
 		exit();
 	} else {
 		// Evita caracteres especiais (SQL Inject)
-		$placa = $conexao -> real_escape_string($_POST['placa']);
-		$cliente = $conexao -> real_escape_string($_POST['cliente']);
-        $lacresif = $conexao -> real_escape_string($_POST['lacresif']);
+		$id = $conexao -> real_escape_string($_POST['id']);
+		$nometurma = $conexao -> real_escape_string($_POST['nometurma']);
+        $qntalunos = $conexao -> real_escape_string($_POST['qntalunos']);
 		
-
-    $sql="INSERT INTO `vistoriaconferenciacontainer`
-        (`PlacaCaminhao`, `NomeMotorista`, `Container`, `Navio`, `Cliente`,`Tipo`, `Lacre`, `LacreSif`, `Temperatura`, `IMO`, `NumeroOnu`, `ContainerDesgastado`, `AvariaLateralDireita`,`AvariaLateralEsquerda`, `AvariaTeto`, `AvariaFrentre`,`SemLacre`, `AdesivoAvariado`, `ExcessoAltura`, `ExcessoDireita`, `ExcessoEsquerda`, `ExcessoFrontal`, `PainelAvariado`, `SemCaboEnergia`, `SemLona`)
+    $sql="INSERT INTO `turmas`
+        (`id`, `nometurma`, `qntalunos`)
     VALUES
-        ('".$placa."', '".$nomemotori."', '".$container."', '".$navio."','".$cliente."','".$tipo."', '".$lacre."', '".$lacresif."', '".$temp."', '".$imo."', '".$onu."', '".$containerD."', '".$avariaLD."', '".$avariaLE."', '".$avariaT."','".$avariaF."','".$semlacre."', '".$adesivoAV."', '".$excessoALT."', '".$excessoD."', '".$excessoE."', '".$excessoF."', '".$painelAV."', '".$semcaboE."', '".$semlona."')";
+        ('".$id."', '".$nometurma."', '".$qntalunos."')";
             
             $resultado = $conexao->query($sql);
         
             $conexao -> close();
-            header('Location: ../Container/recebimento_container.php', true, 301);
+            header('Location: ../alunos/turmas.php', true, 301);
             }
-        ?>
+        ?>  
