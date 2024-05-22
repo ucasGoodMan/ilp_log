@@ -265,12 +265,18 @@
 
 .home-section {
     position: absolute;
-    background: #b62828;
+    background-color: rgba(0, 0, 0, 0.1);   
     transition: all 0.5s ease;
 
 }
 
-.sidebar.close ~ .home-section { 
+.sidebar.close ~ .home-section  .text { 
+    left: 8%;
+    position: absolute;
+}
+
+.sidebar.close ~ .home-section  .bx-menu { 
+    left: 5%;
     position: absolute;
 }
 
@@ -283,18 +289,19 @@
 
 
 .home-section  .text {
-    margin-top: -2px;
     color: #11101d;
     font-size: 35px;    
     position: absolute;
-    left: 300px;
+    left: 18%;
+    transition: all 0.5s ease;
 }
 
 .home-section .bx-menu {
-    width: 200px;
     position: relative;
+    left: 15%;
     cursor: pointer;
-    left: 280px;
+    font-size: 2.5rem;
+    transition: all 0.5s ease;
 }
 
 .home-section  .text {
