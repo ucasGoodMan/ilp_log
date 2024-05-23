@@ -16,7 +16,7 @@
 		
 		$sql="SELECT `email` FROM `senai`.`loginp`
 			WHERE `email` = '".$email."'
-			AND `senha` = '".hash('sha256',$senha)."';";
+			AND `senha` = '".$senha."';";
 
 		$resultado = $conexao->query($sql);
 				
