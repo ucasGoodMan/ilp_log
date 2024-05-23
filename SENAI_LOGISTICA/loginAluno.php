@@ -14,9 +14,9 @@
 		$user = $conexao -> real_escape_string($_POST['user']);
 		$senha = $conexao -> real_escape_string($_POST['senhaa']);
 		
-		$sql="SELECT `user` FROM `senai`.`alunos`
-			WHERE `user` = '".$email."'
-			AND `senha` = '".hash('sha256',$senha)."';";
+		$sql="SELECT `email` FROM `senai`.`alunos`
+			WHERE `email` = '".$user."'
+			AND `senha` = '".$senha."';";
             
 		$resultado = $conexao->query($sql);
 			

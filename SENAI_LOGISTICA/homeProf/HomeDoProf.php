@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styleProf.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>SIDEBAR</title>
+    <title>HOME PROF</title>
 
 
 </head>
@@ -15,7 +15,7 @@
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <img class="img1" src="/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+            <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
@@ -86,7 +86,7 @@
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
+                    <img src="../imagens/senai-logo-1.png" alt="senai">
                 </div>
             </li>
         </ul>
@@ -94,6 +94,8 @@
     <section class="home-section">
         <i class='bx bx-menu'></i>
         <span class="text">Home do prof</span>
+        <span class="prof">Bem vindo, Professor(a)</span>
+        <img class="imgProf" src="../imagens/Classroom-cuate.svg" alt="Professor img">
     </section>
     <script src="sidebar.js"></script>
 
