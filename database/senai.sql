@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 21-Maio-2024 às 10:46
+-- Tempo de geração: 23-Maio-2024 às 12:30
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 8.1.3
 
@@ -29,8 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alunos` (
   `id` int(11) NOT NULL,
-  `turma_id` int(11) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -38,47 +37,47 @@ CREATE TABLE `alunos` (
 -- Extraindo dados da tabela `alunos`
 --
 
-INSERT INTO `alunos` (`id`, `turma_id`, `email`, `senha`) VALUES
-(1, 0, 'aluno1', '123'),
-(2, 0, 'aluno2', '123'),
-(3, 0, 'aluno3', '123'),
-(4, 0, 'aluno4', '123'),
-(5, 0, 'aluno5', '123'),
-(6, 0, 'aluno6', '123'),
-(7, 0, 'aluno7', '123'),
-(8, 0, 'aluno8', '123'),
-(9, 0, 'aluno9', '123'),
-(10, 0, 'aluno10', '123'),
-(11, 0, 'aluno11', '123'),
-(12, 0, 'aluno12', '123'),
-(13, 0, 'aluno13', '123'),
-(14, 0, 'aluno14', '123'),
-(15, 0, 'aluno15', '123'),
-(16, 0, 'aluno16', '123'),
-(17, 0, 'aluno17', '123'),
-(18, 0, 'aluno18', '123'),
-(19, 0, 'aluno19', '123'),
-(20, 0, 'aluno20', '123'),
-(21, 0, 'aluno21', '123'),
-(22, 0, 'aluno22', '123'),
-(23, 0, 'aluno23', '123'),
-(24, 0, 'aluno24', '123'),
-(25, 0, 'aluno25', '123'),
-(26, 0, 'aluno26', '123'),
-(27, 0, 'aluno27', '123'),
-(28, 0, 'aluno28', '123'),
-(29, 0, 'aluno29', '123'),
-(30, 0, 'aluno30', '123'),
-(31, 0, 'aluno31', '123'),
-(32, 0, 'aluno32', '123'),
-(33, 0, 'aluno33', '123'),
-(34, 0, 'aluno34', '123'),
-(35, 0, 'aluno35', '123'),
-(36, 0, 'aluno36', '123'),
-(37, 0, 'aluno37', '123'),
-(38, 0, 'aluno38', '123'),
-(39, 0, 'aluno39', '123'),
-(40, 0, 'aluno40', '123');
+INSERT INTO `alunos` (`id`, `email`, `senha`) VALUES
+(1, 'aluno1', '123'),
+(2, 'aluno2', '123'),
+(3, 'aluno3', '123'),
+(4, 'aluno4', '123'),
+(5, 'aluno5', '123'),
+(6, 'aluno6', '123'),
+(7, 'aluno7', '123'),
+(8, 'aluno8', '123'),
+(9, 'aluno9', '123'),
+(10, 'aluno10', '123'),
+(11, 'aluno11', '123'),
+(12, 'aluno12', '123'),
+(13, 'aluno13', '123'),
+(14, 'aluno14', '123'),
+(15, 'aluno15', '123'),
+(16, 'aluno16', '123'),
+(17, 'aluno17', '123'),
+(18, 'aluno18', '123'),
+(19, 'aluno19', '123'),
+(20, 'aluno20', '123'),
+(21, 'aluno21', '123'),
+(22, 'aluno22', '123'),
+(23, 'aluno23', '123'),
+(24, 'aluno24', '123'),
+(25, 'aluno25', '123'),
+(26, 'aluno26', '123'),
+(27, 'aluno27', '123'),
+(28, 'aluno28', '123'),
+(29, 'aluno29', '123'),
+(30, 'aluno30', '123'),
+(31, 'aluno31', '123'),
+(32, 'aluno32', '123'),
+(33, 'aluno33', '123'),
+(34, 'aluno34', '123'),
+(35, 'aluno35', '123'),
+(36, 'aluno36', '123'),
+(37, 'aluno37', '123'),
+(38, 'aluno38', '123'),
+(39, 'aluno39', '123'),
+(40, 'aluno40', '123');
 
 -- --------------------------------------------------------
 
@@ -112,26 +111,6 @@ INSERT INTO `criacaopedido` (`id`, `produtos`, `unidade`, `quantidade`, `vlrporu
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `logina`
---
-
-CREATE TABLE `logina` (
-  `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL COMMENT '\r\n',
-  `senha` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `logina`
---
-
-INSERT INTO `logina` (`id`, `email`, `senha`) VALUES
-(32, 'a@a', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
-(33, 'lucas@123', 'ad1e10c7f2d809520c2191e442ed016ed7507debeaad03d061a97ec69dc2361e');
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `loginp`
 --
 
@@ -146,27 +125,26 @@ CREATE TABLE `loginp` (
 --
 
 INSERT INTO `loginp` (`id`, `email`, `senha`) VALUES
-(1, 'prof@prof', 'ad1e10c7f2d809520c2191e442ed016ed7507debeaad03d061a97ec69dc2361e');
+(1, 'prof@prof', 'lucas123');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `turma_id`
+-- Estrutura da tabela `turma`
 --
 
-CREATE TABLE `turma_id` (
+CREATE TABLE `turma` (
   `id` int(11) NOT NULL,
-  `nome_turma` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nometurma` varchar(60) NOT NULL,
+  `qntalunos` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Extraindo dados da tabela `turma_id`
+-- Extraindo dados da tabela `turma`
 --
 
-INSERT INTO `turma_id` (`id`, `nome_turma`) VALUES
-(1, ''),
-(2, ''),
-(3, '');
+INSERT INTO `turma` (`id`, `nometurma`, `qntalunos`) VALUES
+(1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -250,18 +228,12 @@ INSERT INTO `vistoriaconferenciacontainer` (`id`, `PlacaCaminhao`, `NomeMotorist
 --
 ALTER TABLE `alunos`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`email`);
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Índices para tabela `criacaopedido`
 --
 ALTER TABLE `criacaopedido`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `logina`
---
-ALTER TABLE `logina`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -271,9 +243,9 @@ ALTER TABLE `loginp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `turma_id`
+-- Índices para tabela `turma`
 --
-ALTER TABLE `turma_id`
+ALTER TABLE `turma`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -291,12 +263,6 @@ ALTER TABLE `vistoriaconferenciacontainer`
 --
 ALTER TABLE `alunos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
--- AUTO_INCREMENT de tabela `logina`
---
-ALTER TABLE `logina`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de tabela `loginp`

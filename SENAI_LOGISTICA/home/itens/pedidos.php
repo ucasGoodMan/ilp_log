@@ -87,7 +87,7 @@
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
                     <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
-                </div>
+            </div>
             </li>
         </ul>
     </div>
