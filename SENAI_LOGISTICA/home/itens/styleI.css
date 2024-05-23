@@ -583,3 +583,18 @@ td button i {
 td button i:first-child {
   margin-right: 10px;
 }
+
+.forms {
+    align-items: center;
+    justify-content: center;
+    top: 100px;
+    left: 300px;
+    position: absolute;
+}
+
+input {
+    width: 155px;
+    border-radius: 5px;
+    border: 0.1px solid #787878;    
+    padding: 10px;
+}
