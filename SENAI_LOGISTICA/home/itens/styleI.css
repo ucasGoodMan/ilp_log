@@ -7,16 +7,11 @@
     margin: 0;
 }
 
-/* background color: 245 245 245 */
+/*   color: 245 245 245 */
 
-.back {
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(255, 255, 255);
-}
 .body {
     overflow: none;
-
+    
 }
 
 .sidebar {
@@ -24,8 +19,8 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 280px;
-    background: rgb(37, 91, 168);
+    width: 14%;
+    background: #255ba8;
     z-index: 100;
     transition: all 0.5s ease;
 }
@@ -270,34 +265,43 @@
 
 .home-section {
     position: absolute;
-    background: #fff;
-    left: -20px;
+    background-color: rgba(233, 117, 117, 0.1);   
     transition: all 0.5s ease;
+
 }
 
-.sidebar.close ~ .home-section { 
-    left: -220px;   
+.sidebar.close ~ .home-section  .text { 
+    left: 8%;
+    position: absolute;
+}
+
+.sidebar.close ~ .home-section  .bx-menu { 
+    left: 5%;
     position: absolute;
 }
 
 .home-section  {
-    margin-top: 10px;
-    height: 60px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
-    margin-left: 300px;
 }
 
-.home-section  .bx-menu, 
-    .home-section  .text {
-    margin-top: -2px;
+
+.home-section  .text {
     color: #11101d;
-    font-size: 35px;
+    font-size: 35px;    
+    position: absolute;
+    left: 18%;
+    transition: all 0.5s ease;
 }
 
 .home-section .bx-menu {
-    margin: 0 15px;
+    position: relative;
+    left: 15%;
     cursor: pointer;
-
+    font-size: 2.5rem;
+    transition: all 0.5s ease;
 }
 
 .home-section  .text {
@@ -306,16 +310,276 @@
 }
 
 
-.forms {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    margin-left: 1000px;
-    top: 200px;
+.button-79 {
+  backface-visibility: hidden;
+  background: #332cf2;
+  border: 0;
+  border-radius: .375rem;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular,Helvetica,sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  padding: 1rem 1.25rem;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transform: translateZ(0) scale(1);
+  transition: transform .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-.i {
-    margin: 2px;
+.button-79:disabled {
+  color: #787878;
+  cursor: auto;
+}
+
+.button-79:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.button-79:not(:disabled):hover:active {
+  transform: scale(1.05) translateY(.125rem);
+}
+
+.button-79:focus {
+  outline: 0 solid transparent;
+}
+
+.button-79:focus:before {
+  border-width: .125rem;
+  content: "";
+  left: calc(-1*.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1*.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-79:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-79:not(:disabled):active {
+  transform: translateY(.125rem);
+}
+
+.container {
+  top: 80px;
+  left: 320px;
+  position: absolute;
+  width: 80%;
+  height: 85%;
+  border-radius: 10px;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.header {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto 12px;
+}
+
+.header span {
+  font-weight: 900;
+  font-size: 20px;
+  word-break: break-all;
+}
+
+#new {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background-color: rgb(53, 90, 166);
+}
+
+.divTable {
+  padding: 10px;
+  width: auto; 
+  height:inherit; 
+  overflow:auto;
+}
+
+.divTable::-webkit-scrollbar {
+  width: 12px;
+  background-color: whitesmoke; 
+}
+
+.divTable::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: darkgray; 
+}
+
+table {
+  width: 100%;
+  border-spacing: 10px;
+  word-break: break-all;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: whitesmoke;
+}
+
+tr {
+  border-bottom: 1px solid rgb(238, 235, 235)!important;
+}
+
+tbody tr td {
+  vertical-align: text-top;
+  padding: 6px;
+  max-width: 50px;
+}
+
+thead tr th {
+  padding: 5px;
+  text-align: start;
+  margin-bottom: 50px;
+}
+
+tbody tr {
+  margin-bottom: 50px;
+}
+
+thead tr th.acao {
+  width: 100px!important;
+  text-align: center;
+}
+
+tbody tr td.acao {
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  body {
+    font-size: 10px;
+  }
+  
+  .header span {
+    font-size: 15px;
+  }
+
+  #new {
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  thead tr th.acao {
+    width: auto!important;
+  }
+  
+  td button i {
+    font-size: 20px!important;
+  }
+
+  td button i:first-child {
+    margin-right: 0;
+  }
+
+  .modal {
+    width: 90%!important;
+  }
+
+  .modal label {
+    font-size: 12px!important;
+  }
+}
+
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+  width: 50%;
+}
+
+.modal label {
+  font-size: 14px;
+  width: 100%;
+}
+
+.modal input {
+  width: 100%;
+  outline: none;
+  padding: 5px 10px; 
+  width: 100%;
+  margin-bottom: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.modal .button {
+  cursor: pointer;
+  width: 100%;
+  margin: 10px auto;
+  outline: none;
+  border-radius: 20px; 
+  padding: 5px 10px; 
+  width: 100%;
+  border: none;
+  background-color: rgb(57, 57, 226);
+  color: white;
+}
+
+
+
+.active {
+  display: flex;
+}
+
+.active .modal {
+  animation: modal .4s;
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -60px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+td button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+td button i {
+  font-size: 25px;
+}
+
+td button i:first-child {
+  margin-right: 10px;
 }
