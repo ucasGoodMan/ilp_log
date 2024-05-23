@@ -20,7 +20,7 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="site.php">
+                <a href="HomeDoProf.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
@@ -28,88 +28,73 @@
             <li>
                 <div class="iocn-links">
                     <a href="site.php">
-                        <i class="fa-solid fa-truck"></i>   
-                        <span class="link_name">Recebimento</span>
+                        <i class="fa-solid fa-file-circle-plus"></i>
+                        <span class="link_name">Pedidos</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name">Recebimento</a></li>
-                    <li><a href="../home/recebimento/Container/recebimento_container.php">Container</a></li>
-                    <li><a href="#">Carga</a></li>
+                    <li><a class="link_name">Pedidos</a></li>
+                    <li><a href="../home/itens/pedidos.php">Criar pedidos</a></li>
+                    <li><a href="#">Meus pedidos</a></li>
                 </ul>
             </li>
             <li>
                 <div class="iocn-links">
                     <a href="#">
-                        <i class="fa-solid fa-sliders"></i>
-                        <span class="link_name">Controle</span>
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <span class="link_name">Danfe</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name">Controle</a></li>
-                    <li><a href="#">Doca de recebimento</a></li>
-                    <li><a href="#">Estoque</a></li>
-                </ul>
-            </li>   
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-dolly"></i>    
-                    <span class="link_name">Movimentação</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="#">Movimentação</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-hand-holding"></i>
-                    <span class="link_name">Picking</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="#">Picking</a></li>
-                </ul>
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-truck-fast"></i>
-                    <span class="link_name">Expedição</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="#">Expedição</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-boxes-stacked"></i>
-                    <span class="link_name">Estoque</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="#">Estoque</a></li>
+                    <li><a class="link_name">Danfe</a></li>
+                    <li><a href="#">Criar danfe</a></li>
+                    <li><a href="#">Minhas danfe</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#">
                     <i class="fa-solid fa-receipt"></i>
-                    <span class="link_name">Relatórios</span>
+                    <span class="link_name">Relatório</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="#">Relatórios</a></li>
+                    <li><a class="blank" href="#">Relatório</a></li>
                 </ul>
             </li>
             <li>
-            <div class="profile-details">
+                <a href="#">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span class="link_name">Controle</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a class="blank" href="#">Controle</a></li>
+                </ul>
+                <li>
+                    <div class="iocn-links">
+                        <a href="#">
+                            <i class="fa-solid fa-address-card"></i>
+                            <span class="link_name">Aluno</span>
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name">Aluno</a></li>
+                        <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
+                    </ul>
+                </li>
+            <li>
+                <div class="profile-details">
                     <i class='bx bx-log-out'></i>
                     <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
-            </div>
+                </div>
             </li>
         </ul>
     </div>
     <section class="home-section">
         <i class='bx bx-menu'></i>
-        <span class="text">Pedido</span>
+        <span class="text">Criação de Pedidos</span>
     </section>
-    <div class="back"></div>
     <script src="sidebarI.js"></script>
 
     <form action="process.php" method="post">
