@@ -1,5 +1,6 @@
-
+    
     <?php
+    //NAO FUNCIONA MAIS ESSA PORRA
     // Função para gerar uma nova senha
     function gerarSenha($tamanho = 4) {
         $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
