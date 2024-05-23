@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>SIDEBAR</title>
 
-
 </head>
 
 <body>
@@ -119,16 +118,16 @@
             <div class="modal-container">
               <div class="modal">
               <form method="post" action="process.php">
-                  <label for="m-nome">N° da turma</label>
-                  <input id="m-nome" name="id" type="number" required />
+                  <label for="id">N° da turma</label>
+                  <input id="id" name="id" type="number" required />
           
-                  <label for="m-funcao">Nome da turma</label>
-                  <input id="m-funcao" name="nometurma" type="text" required />
+                  <label for="nometurma">Nome da turma</label>
+                  <input id="nometurma" name="nometurma" type="text" required />
           
-                  <label for="m-salario">Quantidade de alunos</label>
-                  <input id="m-salario" name="qntalunos" type="number" required />
+                  <label for="qntalunos">Quantidade de alunos</label>
+                  <input id="qntalunos" name="qntalunos" type="number" required />
                   
-                  <input type="submit" id="btnSalvar" name="btn" value="Salvar"/>
+                  <input type="submit" id="btn" name="btn" value="Salvar"/>
                 </form>
               </div>
             </div>

@@ -15,7 +15,7 @@
 		$nometurma = $conexao -> real_escape_string($_POST['nometurma']);
         $qntalunos = $conexao -> real_escape_string($_POST['qntalunos']);
 		
-    $sql="INSERT INTO `turmas`
+    $sql="INSERT INTO `turma`
         (`id`, `nometurma`, `qntalunos`)
     VALUES
         ('".$id."', '".$nometurma."', '".$qntalunos."')";

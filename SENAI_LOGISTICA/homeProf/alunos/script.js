@@ -1,9 +1,9 @@
 const modal = document.querySelector('.modal-container')
 const tbody = document.querySelector('tbody')
-const sNome = document.querySelector('#m-nome')
-const sFuncao = document.querySelector('#m-funcao')
-const sSalario = document.querySelector('#m-salario')
-const btnSalvar = document.querySelector('#btnSalvar')
+const sNome = document.querySelector('#id')
+const sFuncao = document.querySelector('#nometurma')
+const sSalario = document.querySelector('#qntalunos')
+const btnSalvar = document.querySelector('#btn')
 
 let itens
 let id
