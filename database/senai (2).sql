@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 23-Maio-2024 às 12:30
+-- Tempo de geração: 28-Maio-2024 às 15:28
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 8.1.3
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `senai`
 --
+CREATE DATABASE IF NOT EXISTS `senai` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `senai`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `alunos`
 --
 
+DROP TABLE IF EXISTS `alunos`;
 CREATE TABLE `alunos` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -85,6 +88,7 @@ INSERT INTO `alunos` (`id`, `email`, `senha`) VALUES
 -- Estrutura da tabela `criacaopedido`
 --
 
+DROP TABLE IF EXISTS `criacaopedido`;
 CREATE TABLE `criacaopedido` (
   `id` int(11) NOT NULL,
   `produtos` varchar(100) NOT NULL,
@@ -114,6 +118,7 @@ INSERT INTO `criacaopedido` (`id`, `produtos`, `unidade`, `quantidade`, `vlrporu
 -- Estrutura da tabela `loginp`
 --
 
+DROP TABLE IF EXISTS `loginp`;
 CREATE TABLE `loginp` (
   `id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -133,18 +138,12 @@ INSERT INTO `loginp` (`id`, `email`, `senha`) VALUES
 -- Estrutura da tabela `turma`
 --
 
+DROP TABLE IF EXISTS `turma`;
 CREATE TABLE `turma` (
   `id` int(11) NOT NULL,
   `nometurma` varchar(60) NOT NULL,
   `qntalunos` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
---
--- Extraindo dados da tabela `turma`
---
-
-INSERT INTO `turma` (`id`, `nometurma`, `qntalunos`) VALUES
-(1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -152,6 +151,7 @@ INSERT INTO `turma` (`id`, `nometurma`, `qntalunos`) VALUES
 -- Estrutura da tabela `vistoriaconferenciacarga`
 --
 
+DROP TABLE IF EXISTS `vistoriaconferenciacarga`;
 CREATE TABLE `vistoriaconferenciacarga` (
   `NotaFiscal` int(11) NOT NULL,
   `PedidoCompra` varchar(50) NOT NULL,
@@ -174,6 +174,7 @@ CREATE TABLE `vistoriaconferenciacarga` (
 -- Estrutura da tabela `vistoriaconferenciacontainer`
 --
 
+DROP TABLE IF EXISTS `vistoriaconferenciacontainer`;
 CREATE TABLE `vistoriaconferenciacontainer` (
   `id` int(11) NOT NULL,
   `PlacaCaminhao` varchar(8) DEFAULT NULL,
