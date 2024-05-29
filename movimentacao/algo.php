@@ -82,14 +82,15 @@
             <br>
             <input type="submit" value="PEGAR" size="20"><br><br>
         </div>
-       
-
-        </div>
-        <br><br><br><br>
-    
-        <div><input type="submit" value="cadastrar"/></div>
     </form>
-</div>
 
+    </div>
+    <br><br><br><br>
+
+    
+</div>
+<form method="post" action="isacboiola.php">
+    <button>CARALH</button>
+</form>
 </body>
 </html>
