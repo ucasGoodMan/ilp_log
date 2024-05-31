@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vistoria e Conferência - CARGA</title>
+    <title>tela 2 Vistoria e Conferência - CARGA</title>
 </head>
     <style>
         .divContainer {
@@ -63,7 +63,7 @@
     <div class="Container">
 
     <center><label>RECARREGAR PÁGINA ACARRETERÁ EM PERDA DAS INFORMAÇÕES</LABEL></center><br>
-<label>solicitação n</label>
+<label>Solicitação Nº</label>
 <input type="text">
 <BR><BR>
 
@@ -71,7 +71,7 @@
 <form method="post" action="process.php" id="form1" name="form1">
            
             <div class='bloco'>
-            produtos da solicitação<br>
+            Produtos da Solicitação<br>
                 <input type="text" placeholder='Insira aqui o item' name='item' id='item' size='20'><br>
                 <input type="text" placeholder='Insira aqui o item' name='item' id='item' size='20'><br>
                 <input type="text" placeholder='Insira aqui o item' name='item' id='item' size='20'><br>

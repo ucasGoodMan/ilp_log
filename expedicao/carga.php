@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vistoria e Conferência - CARGA</title>
+    <title>tela 2 Vistoria e Conferência - CARGA</title>
 </head>
     <style>
         .divContainer {
