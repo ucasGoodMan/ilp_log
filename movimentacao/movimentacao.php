@@ -52,6 +52,24 @@
 
     </style>
 </head>
+
+<datalist id="unidade">
+                <option value="ROLO">
+                <option value="PACOTE">
+                <option value="CAIXA">
+                <option value="METRO">
+                <option value="PEÇA">
+                <!-- ADICIONAR MAIS OPÇÕES AQUI -->
+                </datalist>
+    <datalist id='quantidade'>
+                <option value="1">
+                <option value="2">
+                <option value="3">
+                <option value="4">
+                <option value="5">
+                <!-- ADICIONAR MAIS OPÇÕES AQUI -->
+                </datalist>
+
 <body>
  
 <div class="Container">
@@ -65,12 +83,13 @@
        
         <div class="blocoB">
             <label>UN:</label><br>
-            <input type="text" placeholder="RL" name="unidade" id="unidade" size="1"><br><br>
+            
+            <input type="text" placeholder="RL" name="unidade" id="unidade" list="unidade" size="1"><br><br>
         </div>
 
         <div class="bloco">
             <label>Quantidade:</label><br>
-            <input type="number" placeholder="5" name="quantidade" id="quantidade" size="5"><br><br>
+            <input type="number" placeholder="5" name="quantidade" list="quantidade" id="quantidade" size="5"><br><br>
         </div>
         
         <div class="blocoB">
@@ -82,14 +101,10 @@
             <br>
             <input type="submit" value="PEGAR" size="20"><br><br>
         </div>
-       
-
-        </div>
-        <br><br><br><br>
-    
-        <div><input type="submit" value="cadastrar"/></div>
     </form>
-</div>
 
+    </div>
+    <br><br><br><br>
+</form>
 </body>
 </html>
