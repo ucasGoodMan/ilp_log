@@ -69,23 +69,23 @@
                 <ul class="sub-menu">
                     <li><a class="blank" href="#">Controle</a></li>
                 </ul>
-                <li>
-                    <div class="iocn-links">
-                        <a href="#">
-                            <i class="fa-solid fa-address-card"></i>
-                            <span class="link_name">Aluno</span>
-                        </a>
-                        <i class='bx bx-chevron-down arrow'></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name">Aluno</a></li>
-                        <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
-                    </ul>
-                </li>
+            <li>
+                <div class="iocn-links">
+                    <a href="#">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span class="link_name">Aluno</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name">Aluno</a></li>
+                    <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
+                </ul>
+            </li>
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
+                    <img src="../imagens/senai-logo-1.png" alt="senai">
                 </div>
             </li>
         </ul>
@@ -95,45 +95,49 @@
         <span class="text">Turmas</span>
         <div class="container">
             <div class="header">
-              <span>Cadastro de turmas</span>
-              <button class="button-79" role="button" onclick="openModal()" id="new">Adicionar turma</i></button>
+                <span>Cadastro de turmas</span>
+                <button class="button-79" role="button" onclick="openModal()" id="new">Adicionar turma</i></button>
             </div>
-        
+
             <div class="divTable">
-              <table>
-                <thead>
-                  <tr>
-                    <th>N° Turma</th>
-                    <th>Nome da turma</th>
-                    <th>Quantidade de alunos</th>
-                    <th class="acao">Editar</th>
-                    <th class="acao">Excluir</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>N° Turma</th>
+                            <th>Nome da turma</th>
+                            <th>Quantidade de alunos</th>
+                            <th class="acao">Editar</th>
+                            <th class="acao">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
-        
+
             <div class="modal-container">
-              <div class="modal">
-              <form method="post" action="process.php">
-                  <label for="id">N° da turma</label>
-                  <input id="id" name="id" type="number" required />
-          
-                  <label for="nometurma">Nome da turma</label>
-                  <input id="nometurma" name="nometurma" type="text" required />
-          
-                  <label for="qntalunos">Quantidade de alunos</label>
-                  <input id="qntalunos" name="qntalunos" type="number" required />
-                  
-                  <input type="submit" id="btn" name="btn" value="Salvar"/>
-                </form>
-              </div>
+                <div class="modal">
+                    <form method="post" action="process.php">
+                        <label for="id">N° da turma</label>
+                        <input id="id" name="id" type="number" required />
+
+                        <label for="nometurma">Nome da turma</label>
+                        <input id="nometurma" name="nometurma" type="text" required />
+
+                        <label for="qntalunos">Quantidade de alunos</label>
+                        <input id="qntalunos" name="qntalunos" type="number" required />
+                        <button id="btn" onclick=submitform()>Enviar</button>
+                    </form>
+                    <script type="text/javascript">
+                        function submitform() {
+                            document.formulario.submit();
+                        }
+                    </script>
+                </div>
             </div>
-        
-          </div>
-          <script src="script.js"></script>
+
+        </div>
+        <script src="script.js"></script>
     </section>
     <script src="sidebar.js"></script>
 
