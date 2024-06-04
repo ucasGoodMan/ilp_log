@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body onLoad="nome_função();">
     <div class="sidebar">
         <div class="logo-details">
             <img class="img1" src="/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
@@ -94,6 +94,22 @@
         <i class='bx bx-menu'></i>
         <span class="text">Turmas</span>
         <div class="container">
+            <table>
+                <tr>
+                    <td>${item.nome}</td>
+                    <td>${item.funcao}</td>
+                    <td> ${item.salario}</td>
+                    select listar os valroes da tabela
+                    <td class="acao">
+                        <button onclick="editItem(${index})"><i class='bx bx-edit' ></i></button>
+                    </td>
+                    <td class="acao">
+                        <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
+                    </td>
+                </tr>
+            </tabe>
+        </div>
+        <!--<div class="container">
             <div class="header">
                 <span>Cadastro de turmas</span>
                 <button class="button-79" role="button" onclick="openModal()" id="new">Adicionar turma</i></button>
@@ -117,7 +133,7 @@
 
             <div class="modal-container">
                 <div class="modal">
-                    <form method="post" action="process.php" id='formulario'>
+                    <form method="POST" action="process.php" id='formulario'>
                         <label for="id">N° da turma</label>
                         <input id="id" name="id" type="number" required />
 
@@ -126,21 +142,15 @@
 
                         <label for="qntalunos">Quantidade de alunos</label>
                         <input id="qntalunos" name="qntalunos" type="number" required />
+                        <input type='submit' value='cadastrar'>
                         <button id="botao" onclick=submitform()>Enviar</button>
                     </form>
-                    <script>
-                        function submitform() {
-                            let form = document.getElementById("formulario");
-                            form.submit();
-                        }
-                    </script>
                 </div>
             </div>
 
-        </div>
+        </div>-->
+
         <script src="script.js"></script>
     </section>
     <script src="sidebar.js"></script>
-
-
 </html>
