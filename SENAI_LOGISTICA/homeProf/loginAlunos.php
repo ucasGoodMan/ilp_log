@@ -1,5 +1,4 @@
-    
-    <?php
+<?php
     //NAO FUNCIONA MAIS ESSA PORRA
     // Função para gerar uma nova senha
     function gerarSenha($tamanho = 4) {
@@ -85,5 +84,3 @@
     // Fecha a conexão com o banco de dados
     mysqli_close($conexao);
     ?>
-
-
