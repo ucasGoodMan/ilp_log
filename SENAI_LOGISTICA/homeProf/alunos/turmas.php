@@ -19,14 +19,14 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="HomeDoProf.php">
+                <a href="/SENAI_LOGISTICA/homeProf/HomeDoProf.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="site.php">
+                    <a href="">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         <span class="link_name">Pedidos</span>
                     </a>
@@ -34,7 +34,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Pedidos</a></li>
-                    <li><a href="../home/itens/pedidos.php">Criar pedidos</a></li>
+                    <li><a href="">Criar pedidos</a></li>
                     <li><a href="#">Meus pedidos</a></li>
                 </ul>
             </li>
@@ -62,7 +62,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="/SENAI_LOGISTICA/home/controle/DOCA DE RECEBIMENTO/PedidosDaDoca.php">
                     <i class="fa-solid fa-sliders"></i>
                     <span class="link_name">Controle</span>
                 </a>
@@ -71,7 +71,7 @@
                 </ul>
             <li>
                 <div class="iocn-links">
-                    <a href="#">
+                    <a href="">
                         <i class="fa-solid fa-address-card"></i>
                         <span class="link_name">Aluno</span>
                     </a>
@@ -79,13 +79,13 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Aluno</a></li>
-                    <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
+                    <li><a href="/SENAI_LOGISTICA/homeProf/alunos/turmas.php">Turmas</a></li>
                 </ul>
             </li>
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="../imagens/senai-logo-1.png" alt="senai">
+                    <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
                 </div>
             </li>
         </ul>
@@ -94,22 +94,6 @@
         <i class='bx bx-menu'></i>
         <span class="text">Turmas</span>
         <div class="container">
-            <table>
-                <tr>
-                    <td>${item.nome}</td>
-                    <td>${item.funcao}</td>
-                    <td> ${item.salario}</td>
-                    select listar os valroes da tabela
-                    <td class="acao">
-                        <button onclick="editItem(${index})"><i class='bx bx-edit' ></i></button>
-                    </td>
-                    <td class="acao">
-                        <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
-                    </td>
-                </tr>
-            </tabe>
-        </div>
-        <!--<div class="container">
             <div class="header">
                 <span>Cadastro de turmas</span>
                 <button class="button-79" role="button" onclick="openModal()" id="new">Adicionar turma</i></button>
@@ -142,13 +126,13 @@
 
                         <label for="qntalunos">Quantidade de alunos</label>
                         <input id="qntalunos" name="qntalunos" type="number" required />
-                        <input type='submit' value='cadastrar'>
+
                         <button id="botao" onclick=submitform()>Enviar</button>
                     </form>
                 </div>
             </div>
 
-        </div>-->
+        </div>
 
         <script src="script.js"></script>
     </section>
