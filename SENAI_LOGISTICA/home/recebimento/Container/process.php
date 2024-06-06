@@ -3,7 +3,7 @@
 	$user = "root";
 	$password = "usbw";
 	$database = "senai";
-		
+		 
 	$conexao = new mysqli($hostname, $user, $password, $database);
 
 	if ($conexao -> connect_errno) {
