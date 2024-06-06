@@ -130,8 +130,7 @@
                     </form>
                     <script>
                         function submitform() {
-                            let form = document.getElementById("formulario");
-                            form.submit();
+                            let form = document.getElementById("formulario")
                         }
                     </script>
                 </div>
