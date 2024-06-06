@@ -25,17 +25,17 @@
             text-align: center;
             display: inline-block;
         }
-        .okdetudo{
+        .okdetudo {
             margin-left: 29.8%;
         }
-        .doca{
+        .doca {
             margin-left: 13.7%;
             width: 5%;
         }
-        .doca2{
+        .doca2 {
             margin-left: 4.1%;
         }
-        .process{
+        .process {
             margin-left: 27.6%;
         }
     </style>
@@ -48,7 +48,7 @@
         // Configurações do banco de dados
         $servername = "localhost";
         $username = "root";
-        $password = usbw";
+        $password = "usbw";
         $dbname = "senai";
 
         // Criar conexão
@@ -166,3 +166,4 @@
     </script>
 </body>
 </html>
+ 

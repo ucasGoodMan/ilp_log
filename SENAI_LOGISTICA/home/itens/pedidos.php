@@ -88,7 +88,7 @@
                     <i class='bx bx-log-out'></i>
                     <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
             </div>
-            </li>
+            </li> 
         </ul>
     </div>
     <section class="home-section">

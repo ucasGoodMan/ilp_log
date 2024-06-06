@@ -11,18 +11,31 @@
 		exit();
 	} else {
 		// Evita caracteres especiais (SQL Inject)
-		$id = $conexao -> real_escape_string($_POST['id']);
+	
 		$nometurma = $conexao -> real_escape_string($_POST['nometurma']);
         $qntalunos = $conexao -> real_escape_string($_POST['qntalunos']);
+
 		
-		$sql="INSERT INTO `turma`
-			(`id`, `nometurma`, `qntalunos`)
-		VALUES
-			('".$id."', '".$nometurma."', '".$qntalunos."')";
+		$sql = "INSERT INTO `turma`
+			 (`nometurma`, `qntalunos`) 
+			 VALUES 
+			 ('".$nometurma."', '".$qntalunos."')";
+			 
 		
-		$resultado = $conexao->query($sql);
-			
-		$conexao -> close();
-	}
-	header('Location: ../alunos/turmas.php', true, 301);
-?>  
+		$sql = "INSERT INTO `turma`
+		(`nometurma`, `qntalunos`) 
+		VALUES 
+		('".$nometurma."', '".$qntalunos."')";
+
+		   $resultado = $conexao->query($sql);
+			   
+		   $conexao -> close();
+		   header('Location: ../alunos/turmas.php', true, 301);
+		   }
+?>
+
+
+
+
+
+

@@ -19,7 +19,7 @@
         $ncm = $conexao -> real_escape_string($_POST['ncm']);
 		$cst = $conexao -> real_escape_string($_POST['cst']);
         $cfop = $conexao -> real_escape_string($_POST['cfop']);
-		$doca = $conexao -> real_escape_string($_POST['doca']);
+		$doca = $conexao -> real_escape_string($_POST['doca']); 
 
     $sql="INSERT INTO `criacaopedido`
         (`produtos`, `unidade`, `quantidade`, `vlrporunidade`, `ncm`,`cst`, `cfop`, `doca`)

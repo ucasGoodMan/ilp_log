@@ -118,15 +118,15 @@
             <div class="modal-container">
                 <div class="modal">
                     <form method="post" action="process.php" id='formulario'>
-                        <label for="id">N° da turma</label>
-                        <input id="id" name="id" type="number" required />
+                       <label for="id">N° da turma</label> 
+                        <input id="id" name="id" type="number"  /> 
 
                         <label for="nometurma">Nome da turma</label>
                         <input id="nometurma" name="nometurma" type="text" required />
 
                         <label for="qntalunos">Quantidade de alunos</label>
                         <input id="qntalunos" name="qntalunos" type="number" required />
-                        <button id="botao" onclick=submitform()>Enviar</button>
+                    <button id="botao" onclick=submitform()>Enviar</button>
                     </form>
                     <script>
                         function submitform() {
