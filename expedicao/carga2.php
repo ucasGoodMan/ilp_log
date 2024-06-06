@@ -45,71 +45,78 @@
         <center><label>RECARREGAR PÁGINA ACARRETERÁ EM PERDA DAS INFORMAÇÕES</label></center><br>
 
         <?php
-        // Simulação de dados de solicitação
-        $solicitacoes = [
-            1 => [
-                "produtos" => ["Produto A", "Produto B"],
-                "quantidades" => [10, 20],
-                "unidades" => ["Caixa", "Pacote"]
-            ],
-            2 => [
-                "produtos" => ["Produto C", "Produto D"],
-                "quantidades" => [5, 15],
-                "unidades" => ["Metro", "Peça"]
-            ]
-            // Adicionar mais solicitações conforme necessário
-        ];
+        // Configurações do banco de dados
+        $servername = "localhost";
+        $username = "root";
+        $password = usbw";
+        $dbname = "senai";
+
+        // Criar conexão
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Verificar conexão
+        if ($conn->connect_error) {
+            die("Falha na conexão: " . $conn->connect_error);
+        }
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $numeroSolicitacao = '';
+            $produtoID = '';
             for ($i = 1; $i <= 5; $i++) {
                 $field = 'sltc' . $i;
                 if (!empty($_POST[$field])) {
-                    $numeroSolicitacao = $_POST[$field];
+                    $produtoID = $_POST[$field];
                     break;
                 }
             }
 
-            if (!empty($numeroSolicitacao) && isset($solicitacoes[$numeroSolicitacao])) {
-                $dadosSolicitacao = $solicitacoes[$numeroSolicitacao];
-                echo "<label>Solicitação Nº $numeroSolicitacao</label> 
-                      <input type='text' value='" . htmlspecialchars($numeroSolicitacao) . "'><br><br>";
+            if (!empty($produtoID)) {
+                // Consultar o banco de dados
+                $sql = "SELECT * FROM produtos WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $produtoID);
+                $stmt->execute();
+                $result = $stmt->get_result();
 
-                echo "<div class='bloco'>";
-                echo "Produtos da Solicitação<br>";
-                foreach ($dadosSolicitacao["produtos"] as $produto) {
-                    echo "<input type='text' value='" . htmlspecialchars($produto) . "' size='20'><br>";
-                }
-                echo "</div>";
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    echo "<label>Produto ID $produtoID</label> 
+                          <input type='text' value='" . htmlspecialchars($produtoID) . "'><br><br>";
 
-                echo "<div class='bloco'>";
-                echo "Tipo de Unidade<br>";
-                foreach ($dadosSolicitacao["unidades"] as $unidade) {
-                    echo "<input type='text' value='" . htmlspecialchars($unidade) . "' list='unidade'><br>";
-                }
-                echo "</div>";
+                    echo "<div class='bloco'>";
+                    echo "Nome do Produto<br>";
+                    echo "<input type='text' value='" . htmlspecialchars($row["nome"]) . "' size='20'><br>";
+                    echo "</div>";
 
-                echo "<div class='bloco'>";
-                echo "QTD<br>";
-                foreach ($dadosSolicitacao["quantidades"] as $quantidade) {
-                    echo "<input type='number' value='" . htmlspecialchars($quantidade) . "' list='quantidade'><br>";
+                    echo "<div class='bloco'>";
+                    echo "Tipo de Unidade<br>";
+                    echo "<input type='text' value='" . htmlspecialchars($row["unidade"]) . "' list='unidade'><br>";
+                    echo "</div>";
+
+                    echo "<div class='bloco'>";
+                    echo "QTD<br>";
+                    echo "<input type='number' value='" . htmlspecialchars($row["quantidade"]) . "' list='quantidade'><br>";
+                    echo "</div>";
+                } else {
+                    echo "<label>Produto ID $produtoID não encontrado</label><br><br>";
                 }
-                echo "</div>";
+
+                $stmt->close();
             } else {
-                echo "<label>Solicitação Nº $numeroSolicitacao não encontrada</label><br><br>";
+                echo "<label>ID do Produto não fornecido</label><br><br>";
             }
         }
+
+        $conn->close();
         ?>
 
-        <form method="post" action="process.php" id="form1" name="form1">
+        <form method="post" action="" id="form1" name="form1">
             <div class='bloco'>
                 Produtos da Solicitação<br>
-                <input type="text" placeholder='Insira aqui o item' name='item' id='item' size='20'><br>
-                <input type="text" placeholder='Insira aqui o item' name='item' id='item' size='20'><br>
-                <input type="text" placeholder='Insira aqui o item' name='item' id='item' size='20'><br>
-                <input type="text" placeholder='Insira aqui o item' name='item' id='item' size='20'><br>
-                <input type="text" placeholder='Insira aqui o item' name='item' id='item' size='20'><br>
-                <input type="text" placeholder='Insira aqui o item' name='item' id='item' size='20'><br>
+                <input type="text" placeholder='Insira aqui o ID do produto' name='sltc1' id='sltc1' size='20'><br>
+                <input type="text" placeholder='Insira aqui o ID do produto' name='sltc2' id='sltc2' size='20'><br>
+                <input type="text" placeholder='Insira aqui o ID do produto' name='sltc3' id='sltc3' size='20'><br>
+                <input type="text" placeholder='Insira aqui o ID do produto' name='sltc4' id='sltc4' size='20'><br>
+                <input type="text" placeholder='Insira aqui o ID do produto' name='sltc5' id='sltc5' size='20'><br>
             </div>
             <div class='bloco'>
                 Tipo de Unidade<br>
