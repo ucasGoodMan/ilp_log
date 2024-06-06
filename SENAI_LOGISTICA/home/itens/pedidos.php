@@ -15,12 +15,12 @@
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <img class="img1" src="/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+            <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="img">
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="HomeDoProf.php">
+                <a href="../homeProf/HomeDoProf.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
@@ -86,7 +86,7 @@
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
+                    <img src="../imagens/senai-logo-1.png" alt="senai">
             </div>
             </li> 
         </ul>

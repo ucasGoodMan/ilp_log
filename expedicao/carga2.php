@@ -42,9 +42,9 @@
 </head>
 <body>
     <div class="Container">
-        <center><label>RECARREGAR PÁGINA ACARRETERÁ EM PERDA DAS INFORMAÇÕES</label></center><br>
+        <center><label></label></center><br>
 
-        <?php
+        <!--<?php
         // Configurações do banco de dados
         $servername = "localhost";
         $username = "root";
@@ -107,7 +107,7 @@
         }
 
         $conn->close();
-        ?>
+        ?> -->
 
         <form method="post" action="" id="form1" name="form1">
             <div class='bloco'>

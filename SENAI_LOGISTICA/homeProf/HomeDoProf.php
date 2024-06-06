@@ -15,19 +15,19 @@
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <img class="img1" src="/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+            <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="/SENAI_LOGISTICA/homeProf/HomeDoProf.html">
+                <a href="../homeProf/HomeDoProf.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="site.php">
+                    <a href="../SENAI_LOGISTICA/home/itens/pedidos.php">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         <span class="link_name">Pedidos</span>
                     </a>
@@ -35,7 +35,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Pedidos</a></li>
-                    <li><a href="/SENAI_LOGISTICA/home/itens/pedidos.html">Criar pedidos</a></li>
+                    <li><a href="../home/itens/pedidos.php">Criar pedidos</a></li>
                     <li><a href="#">Meus pedidos</a></li>
                 </ul>
             </li>
