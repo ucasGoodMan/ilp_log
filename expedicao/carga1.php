@@ -49,6 +49,13 @@
             <input type="text" id='sltc1' name='sltc1'>
             <input type='submit' value='abrir'><br><br>
 
+            <form method="post" action="carga2.php" id="form1" name="form1">
+                <label for='sltc1'>ID do Pedido</label> 
+                <input type="text" id='sltc1' name='sltc1'>
+                <input type='submit' value='abrir'><br><br>
+            </form>
+
+
             <label for='sltc2'>Solicitação Nº</label> 
             <input type="text" id='sltc2' name='sltc2'>
             <input type='submit' value='abrir'><br><br>
