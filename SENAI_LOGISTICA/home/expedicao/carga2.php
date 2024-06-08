@@ -3,53 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tela 2 Vistoria e Conferência</title>
+    <title>Tela 2 - Vistoria e Conferência</title>
     <style>
-        .divContainer {
-            vertical-align: top;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-left: 16%;
-            margin-right: 16%;
-        }
-
         .bloco {
             width: 12%;
             text-align: center;
             display: inline-block;
         }
-        .okdetudo{
+        .okdetudo {
             margin-left: 29.8%;
         }
-        .doca{
-            margin-left: 13.7%;
+        .doca {            margin-left: 13.7%;
             width: 5%;
         }
-        .doca2{
+        .doca2 {
             margin-left: 4.1%;
         }
-        .process{
+        .process {
             margin-left: 27.6%;
         }
+
     </style>
 </head>
 <body>
     <div class="Container">
+
+        <center><label>RECARREGAR PÁGINA ACARRETARÁ EM PERDA DAS INFORMAÇÕES</label></center><br>
+
+        <?php
+        // Conexão com o banco de dados (substitua as credenciais conforme necessário)
+
         <center><label></label></center><br>
 
-        <!--<?php
+        <?php
         // Configurações do banco de dados
         $servername = "localhost";
         $username = "root";
-        $password = usbw";
+        $password = "usbw";
         $dbname = "senai";
+
+        // Criar conexão
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Verificar conexão
+        if ($conn->connect_error) {
+            die("Falha na conexão: " . $conn->connect_error);
+        }
+
+        // Verificar se o ID da solicitação foi enviado via POST
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sltc1'])) {
+            $id_solicitacao = $_POST['sltc1'];
+            echo "ID da Solicitação: " . $id_solicitacao; // Adicionando echo para verificar o valor recebido
+
+            // Consultar o banco de dados para obter os produtos relacionados a esta solicitação
+            $sql_produtos = "SELECT * FROM produtos WHERE id = $id_solicitacao";
+            $result_produtos = $conn->query($sql_produtos);
+
+            if ($result_produtos->num_rows > 0) {
+                echo "<label>Produtos da Solicitação Nº $id_solicitacao</label><br><br>";
+
+                echo "<div class='bloco'>";
+                while($row_produto = $result_produtos->fetch_assoc()) {
+                    echo "<input type='text' value='" . htmlspecialchars($row_produto["nome"]) . "' size='20'><br>";
+
 
         // Criar conexão
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -98,16 +114,25 @@
                     echo "</div>";
                 } else {
                     echo "<label>Produto ID $produtoID não encontrado</label><br><br>";
+
                 }
 
                 $stmt->close();
             } else {
+
+                echo "Nenhum produto encontrado para esta solicitação.";
+            }
+        }
+
+        $conn->close(); // Fechar conexão
+        ?>
+
                 echo "<label>ID do Produto não fornecido</label><br><br>";
             }
         }
 
         $conn->close();
-        ?> -->
+        ?> 
 
         <form method="post" action="" id="form1" name="form1">
             <div class='bloco'>
@@ -135,7 +160,7 @@
                 <input type="text" list="quantidade" id="qtd">
                 <input type="text" list="quantidade" id="qtd">
                 <input type="text" list="quantidade" id="qtd">
-            </div>
+            </div> 
             <div class='bloco'>
                 Observações<br>
                 <input type='text' size='10'>
@@ -159,10 +184,6 @@
             <input type='submit' class='process' value='Pedido OK Carregado'>  
         </form>
     </div>
-    <script>
-        function placeboClick(event) {
-            event.preventDefault();
-        }
-    </script>
 </body>
 </html>
+ 
