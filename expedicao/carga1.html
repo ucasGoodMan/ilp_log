@@ -42,7 +42,7 @@
 </head>
 <body>
     <div class="Container">
-        <center><label>RECARREGAR PÁGINA ACARRETERÁ EM PERDA DAS INFORMAÇÕES</label></center><br>
+        <center><label></label></center><br>
         
         <form method="post" action="carga2.php" id="form1" name="form1">
             <label for='sltc1'>Solicitação Nº</label> 

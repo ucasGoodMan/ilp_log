@@ -11,7 +11,7 @@
 
 </head>
 
-<body onLoad="nome_função();">
+<body>
     <div class="sidebar">
         <div class="logo-details">
             <img class="img1" src="/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
@@ -19,14 +19,14 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="/SENAI_LOGISTICA/homeProf/HomeDoProf.php">
+                <a href="HomeDoProf.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="">
+                    <a href="site.php">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         <span class="link_name">Pedidos</span>
                     </a>
@@ -34,7 +34,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Pedidos</a></li>
-                    <li><a href="">Criar pedidos</a></li>
+                    <li><a href="../home/itens/pedidos.php">Criar pedidos</a></li>
                     <li><a href="#">Meus pedidos</a></li>
                 </ul>
             </li>
@@ -62,7 +62,7 @@
                 </ul>
             </li>
             <li>
-                <a href="/SENAI_LOGISTICA/home/controle/DOCA DE RECEBIMENTO/PedidosDaDoca.php">
+                <a href="#">
                     <i class="fa-solid fa-sliders"></i>
                     <span class="link_name">Controle</span>
                 </a>
@@ -71,7 +71,7 @@
                 </ul>
             <li>
                 <div class="iocn-links">
-                    <a href="">
+                    <a href="#">
                         <i class="fa-solid fa-address-card"></i>
                         <span class="link_name">Aluno</span>
                     </a>
@@ -79,7 +79,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Aluno</a></li>
-                    <li><a href="/SENAI_LOGISTICA/homeProf/alunos/turmas.php">Turmas</a></li>
+                    <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
                 </ul>
             </li>
             <li>
@@ -117,24 +117,29 @@
 
             <div class="modal-container">
                 <div class="modal">
-                    <form method="POST" action="process.php" id='formulario'>
-                        <label for="id">N° da turma</label>
-                        <input id="id" name="id" type="number" required />
+                    <form method="post" action="process.php" id='formulario'>
+                       <label for="id">N° da turma</label> 
+                        <input id="id" name="id" type="number"  /> 
 
                         <label for="nometurma">Nome da turma</label>
                         <input id="nometurma" name="nometurma" type="text" required />
 
                         <label for="qntalunos">Quantidade de alunos</label>
                         <input id="qntalunos" name="qntalunos" type="number" required />
-
-                        <button id="botao" onclick=submitform()>Enviar</button>
+                    <button id="botao" onclick=submitform()>Enviar</button>
                     </form>
+                    <script>
+                        function submitform() {
+                            let form = document.getElementById("formulario")
+                        }
+                    </script>
                 </div>
             </div>
 
         </div>
-
         <script src="script.js"></script>
     </section>
     <script src="sidebar.js"></script>
+
+
 </html>

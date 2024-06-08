@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleI.css">
+    <link rel="stylesheet" href="styleProf.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>SIDEBAR</title>
+    <title>HOME PROF</title>
 
 
 </head>
@@ -15,19 +15,19 @@
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <img class="img1" src="/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+            <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="HomeDoProf.php">
+                <a href="../homeProf/HomeDoProf.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="site.php">
+                    <a href="../SENAI_LOGISTICA/home/itens/pedidos.php">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         <span class="link_name">Pedidos</span>
                     </a>
@@ -86,31 +86,18 @@
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
+                    <img src="../imagens/senai-logo-1.png" alt="senai">
                 </div>
             </li>
         </ul>
     </div>
     <section class="home-section">
         <i class='bx bx-menu'></i>
-        <span class="text">Criação de Pedidos</span>
+        <span class="text">Home do prof</span>
+        <span class="prof">Bem vindo, Professor(a)</span>
+        <img class="imgProf" src="../imagens/Classroom-cuate.svg" alt="Professor img">
     </section>
-    <script src="sidebarI.js"></script>
+    <script src="sidebar.js"></script>
 
-    <form action="process.php" method="post">
-        <div class="forms">
-            <input class="i a" type="text" name="npedido" placeholder="Número de pedidos">
-            <input class="i b" type="text" name="produtos" placeholder="Produtos">
-            <input class="i c" type="text" name="unidade" placeholder="Unidade">
-            <input class="i d" type="text" name="quantidade" placeholder="quantidade">
-            <input class="i e" type="text" name="vlrporunidade" placeholder="valor por unidade">
-            <input class="i f" type="text" name="ncm" placeholder="NCM">
-            <input class="i g" type="text" name="cst" placeholder="CST">
-            <input class="i h" type="text" name="cfop" placeholder="CFOP">
-            <input class="i j" type="text" name="doca" placeholder="DOCA">
-            <input class="i k" type="submit" value="Enviar">
-        
-        </div>
-    </form>
-</body>
+
 </html>
