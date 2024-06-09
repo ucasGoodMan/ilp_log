@@ -11,7 +11,7 @@
 		exit();
 	} else {
 		// Evita caracteres especiais (SQL Inject)
-		//$numeropedido = $conexao -> real_escape_string($_POST['npedido']);
+		$npedido = $conexao -> real_escape_string($_POST['npedido']);
 		$produto = $conexao -> real_escape_string($_POST['produtos']);
 		$unidade = $conexao -> real_escape_string($_POST['unidade']);
         $quantidade = $conexao -> real_escape_string($_POST['quantidade']);
@@ -22,9 +22,9 @@
 		$doca = $conexao -> real_escape_string($_POST['doca']); 
 
     $sql="INSERT INTO `criacaopedido`
-        (`produtos`, `unidade`, `quantidade`, `vlrporunidade`, `ncm`,`cst`, `cfop`, `doca`)
+        (`npedido`,  `produtos`, `unidade`, `quantidade`, `vlrporunidade`, `ncm`,`cst`, `cfop`, `doca`)
     VALUES
-        ('".$produto."', '".$unidade."', '".$quantidade."', '".$vlrporunidade."','".$ncm."','".$cst."', '".$cfop."', '".$doca."');";
+        ('".$npedido."', '".$produto."', '".$unidade."', '".$quantidade."', '".$vlrporunidade."','".$ncm."','".$cst."', '".$cfop."', '".$doca."');";
 
 			$resultado = $conexao->query($sql);
        
