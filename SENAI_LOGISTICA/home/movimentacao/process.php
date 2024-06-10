@@ -1,7 +1,7 @@
 <?php
 	$hostname = "127.0.0.1";
 	$user = "root";
-	$password = "root";
+	$password = "usbw";
 	$database = "senai";
 		
 	$conexao = new mysqli($hostname, $user, $password, $database);
@@ -14,7 +14,7 @@
 		$item = $conexao -> real_escape_string($_POST['item']);
 		$unidade = $conexao -> real_escape_string($_POST['unidade']);
         $quantidade = $conexao -> real_escape_string($_POST['quantidade']);
-		$posicao = $conexao -> real_escape_string($_POST['posicao']);
+		$posicao = $conexao -> real_escape_string($_POST['posicao']); 
 		
 		$sql="SELECT `item` FROM `senai`.`alunos`
 			WHERE `user` = '".$email."'
