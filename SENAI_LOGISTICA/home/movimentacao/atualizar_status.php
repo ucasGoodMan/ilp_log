@@ -1,12 +1,12 @@
 <body>
-<a href="estoque.php">Retornar à tela de atualização de vagas</a>
+<a href="estoque.php">Retornar a tela de atualizacao de vagas</a>
 </body>
 <br><br><br>
 <?php
 // Conexão ao banco de dados (substitua pelas suas credenciais)
 $servername = "localhost";
 $username = "root";
-$password = "usbw";
+$password = "root";
 $dbname = "senai";
 
 // Dados recebidos via GET

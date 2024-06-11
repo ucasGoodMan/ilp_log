@@ -8,7 +8,7 @@ NÃO APAGAR
 // Conexão ao banco de dados (substitua pelas suas credenciais)
 $servername = "localhost";
 $username = "root";
-$password = "usbw";
+$password = "root";
 $dbname = "senai";
 
 // Cria a conexão
@@ -61,7 +61,7 @@ if (isset($npedido) && isset($doca)) {
     // Verifica se há resultados
     if ($result->num_rows > 0) {
         echo "<table border='1'>";
-        echo "<tr><th>Produto</th><th>Unidade</th><th>Quantidade</th><th>Qtd</th><th>Posição</th><th>Ação</th></tr>";
+        echo "<tr><th>Produto</th><th>Unidade</th><th>Quantidade</th><th>Qtd</th><th>Posicao</th><th>Acao</th></tr>";
         while($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . htmlspecialchars($row["produtos"]) . "</td>";

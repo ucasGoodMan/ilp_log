@@ -10,7 +10,7 @@
     // Conexão ao banco de dados (substitua pelas suas credenciais)
     $servername = "localhost";
     $username = "root";
-    $password = "usbw";
+    $password = "root";
     $dbname = "senai";
 
     // Cria a conexão
