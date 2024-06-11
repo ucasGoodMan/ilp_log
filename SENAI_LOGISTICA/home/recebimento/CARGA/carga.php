@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="estiloCarga.css">
     <title>Carga</title>
 </head>
-<body>
+<body> 
     <form action="">
         Nota Fiscal:
         <input type="text" name="NotaFiscal" id="NotalFiscal">

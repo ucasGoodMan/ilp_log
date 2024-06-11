@@ -36,9 +36,9 @@
                 <ul class="sub-menu">
                     <li><a class="link_name">Recebimento</a></li>
                     <li><a href="../home/recebimento/Container/recebimento_container.php">Container</a></li>
-                    <li><a href="#">Carga</a></li>
+                    <li><a href="../home/recebimento/CARGA/carga.php">Carga</a></li>
                 </ul>
-            </li>
+            </li> 
             <li>
                 <div class="iocn-links">
                     <a href="">
@@ -49,12 +49,12 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Controle</a></li>
-                    <li><a href="">Doca de recebimento</a></li>
-                    <li><a href="">Estoque</a></li>
+                    <li><a href="movimentacao\pedidosDoca.php">Doca de recebimento</a></li>
+                    <li><a href="movimentacao\estoque.php">Estoque</a></li>
                 </ul>
             </li>   
             <li>
-                <a href="">
+                <a href="movimentacao\solicitacoesMovimentacao.php">
                     <i class="fa-solid fa-dolly"></i>    
                     <span class="link_name">Movimentação</span>
                 </a>

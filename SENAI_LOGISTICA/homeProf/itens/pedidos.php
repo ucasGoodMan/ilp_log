@@ -100,6 +100,7 @@
     <form action="process.php" method="post">
         <div class="forms">
             <input class="i a" type="text" name="npedido" placeholder="Número do pedido" required>
+
             <input class="i b" type="text" name="produtos" placeholder="Produtos" required>
             <input class="i c" type="text" name="unidade" placeholder="Unidade" required>
             <input class="i d" type="text" name="quantidade" placeholder="quantidade" required>
@@ -108,6 +109,7 @@
             <input class="i g" type="text" name="cst" placeholder="CST" required>
             <input class="i h" type="text" name="cfop" placeholder="CFOP" required>
             <input class="i j" type="text" name="doca" placeholder="DOCA" required>
+            
             <input class="i k" type="submit" value="Enviar">
         
         </div>
