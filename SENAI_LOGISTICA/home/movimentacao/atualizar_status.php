@@ -1,5 +1,5 @@
 <body>
-<a href="estoque.php">Retornar a tela de atualizacao de vagas</a>
+<a href="estadoEstoque.php">Retornar a tela de atualizacao de vagas</a>
 </body>
 <br><br><br>
 <?php

@@ -58,7 +58,7 @@ tr:nth-child(even) {
 <table>
   <tr>
     <th>Nota fiscal</th>
-    <td><input type="text" class="input" placeholder="123456"></td>
+    <td><input type="text" name="nf" class="input" placeholder="123456"></td>
     <td rowspan="4"><button class="button">OK</button></td>
   </tr>
   <tr>
