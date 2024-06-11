@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Recebimento Aluno</title>
-<!--<style>
+<style>
 body {
   font-family: sans-serif;
 }
@@ -49,7 +49,7 @@ tr:nth-child(even) {
 .checkbox input {
   margin-right: 5px;
 }
-</style>-->
+</style>
 </head>
 <body>
 

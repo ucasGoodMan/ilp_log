@@ -88,7 +88,7 @@
                     <img src="../../imagens/senai-logo-1.png" alt="senai">
                 </div>
             </li>
-        </ul>
+        </ul> 
     </div>
     <section class="home-section">
         <i class='bx bx-menu'></i>
