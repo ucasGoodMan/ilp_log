@@ -25,7 +25,7 @@
                     <span class="link_name">Home</span>
                 </a>
             </li>
-            <li>
+            <li> 
                 <div class="iocn-links">
                     <a href="site.php">
                         <i class="fa-solid fa-truck"></i>   
@@ -49,8 +49,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Controle</a></li>
-                    <li><a href="movimentacao\pedidosDoca.php">Doca de recebimento</a></li>
-                    <li><a href="movimentacao\estoque.php">Estoque</a></li>
+                    <li><a href="movimentacao\docaRecebimento.php">Doca de recebimento</a></li>
+                    <li><a href="movimentacao\estadoEstoque.php">Estoque</a></li>
                 </ul>
             </li>   
             <li>
