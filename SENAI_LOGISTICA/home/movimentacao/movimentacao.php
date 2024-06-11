@@ -1,5 +1,9 @@
-
+<!-- nao sei pra que serve,
  
+NÃO APAGAR
+ 
+-->
+
 <?php
 // Conexão ao banco de dados (substitua pelas suas credenciais)
 $servername = "localhost";
