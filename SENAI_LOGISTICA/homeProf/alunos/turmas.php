@@ -34,7 +34,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Pedidos</a></li>
-                    <li><a href="../../home/itens/pedidos.php">Criar pedidos</a></li>
+                    <li><a href="../itens/pedidos.php">Criar pedidos</a></li>
                     <li><a href="#">Meus pedidos</a></li>
                 </ul>
             </li>
@@ -79,7 +79,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Aluno</a></li>
-                    <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
+                    <li><a href="../alunos/turmas.php">Turmas</a></li>
                 </ul>
             </li>
             <li>
