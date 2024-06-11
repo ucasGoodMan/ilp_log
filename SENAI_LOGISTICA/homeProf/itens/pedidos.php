@@ -15,19 +15,19 @@
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="img">
+            <img class="img1" src="../../imagens/ILP ICONE BRANCO sf.png" alt="img">
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="../homeProf/HomeDoProf.php">
+                <a href="../../homeProf/HomeDoProf.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="site.php">
+                    <a href="">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         <span class="link_name">Pedidos</span>
                     </a>
@@ -35,7 +35,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Pedidos</a></li>
-                    <li><a href="../home/itens/pedidos.php">Criar pedidos</a></li>
+                    <li><a href="../itens/pedidos.php">Criar pedidos</a></li>
                     <li><a href="#">Meus pedidos</a></li>
                 </ul>
             </li>
@@ -80,13 +80,13 @@
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link_name">Aluno</a></li>
-                        <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
+                        <li><a href="../../homeProf/alunos/turmas.php">Turmas</a></li>
                     </ul>
                 </li>
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="../imagens/senai-logo-1.png" alt="senai">
+                    <img src="../../imagens/senai-logo-1.png" alt="senai">
             </div>
             </li> 
         </ul>

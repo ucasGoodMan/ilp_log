@@ -27,7 +27,7 @@
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="../SENAI_LOGISTICA/home/itens/pedidos.php">
+                    <a href="">
                         <i class="fa-solid fa-file-circle-plus"></i>
                         <span class="link_name">Pedidos</span>
                     </a>
@@ -35,13 +35,13 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Pedidos</a></li>
-                    <li><a href="../home/itens/pedidos.php">Criar pedidos</a></li>
-                    <li><a href="#">Meus pedidos</a></li>
+                    <li><a href="../homeProf/itens/pedidos.php">Criar pedidos</a></li>
+                    <li><a href="">Meus pedidos</a></li>
                 </ul>
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="#">
+                    <a href="">
                         <i class="fa-solid fa-file-invoice-dollar"></i>
                         <span class="link_name">Danfe</span>
                     </a>
@@ -49,30 +49,30 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Danfe</a></li>
-                    <li><a href="#">Criar danfe</a></li>
-                    <li><a href="#">Minhas danfe</a></li>
+                    <li><a href="">Criar danfe</a></li>
+                    <li><a href="">Minhas danfe</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="">
                     <i class="fa-solid fa-receipt"></i>
                     <span class="link_name">Relatório</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="#">Relatório</a></li>
+                    <li><a class="blank" href="">Relatório</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="">
                     <i class="fa-solid fa-sliders"></i>
                     <span class="link_name">Controle</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="#">Controle</a></li>
+                    <li><a class="blank" href="">Controle</a></li>
                 </ul>
                 <li>
                     <div class="iocn-links">
-                        <a href="#">
+                        <a href="">
                             <i class="fa-solid fa-address-card"></i>
                             <span class="link_name">Aluno</span>
                         </a>
