@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Pedidos Doca</title>
+    <meta charset="UTF-8"/>
 </head>
 <body>
     <h1>Lista de Pedidos</h1>
