@@ -48,6 +48,29 @@ foreach (range('A', 'E') as $letra) {
 ?>
 </tr>
 <?php
+
+$hostname = "127.0.0.1";
+	$user = "root";
+	$password = "root"; 
+	$database = "senai";
+		
+	$conexao = new mysqli($hostname, $user, $password, $database);
+
+	if ($conexao -> connect_errno) {
+		echo "Failed to connect to MySQL: " . $conexao -> connect_error;
+		exit();
+	} else {
+		
+		$sql = "SELECT `status` FROM `estoque`";
+
+        $status = $conexao -> real_escape_string($_POST['status']);
+
+		   $resultado = $conexao->query($sql);
+			   
+		   $conexao -> close();
+		   header('Location: ', true, 301);
+		   }
+
 // Exibir vagas de A1 a E5 em linhas e colunas
 foreach (range(1, 5) as $linha) {
     echo "<tr>";
@@ -58,7 +81,7 @@ foreach (range(1, 5) as $linha) {
         $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "";
         echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>$status</span>";
         echo "<div class='dropdown'>";
-        echo "<button class='dropbtn'>Alterar Status</button>";
+        echo "<button class='dropbtn'>$status</button>";
         echo "<div class='dropdown-content'>";
         echo "<a href='atualizar_status.php?vaga=$vaga&status=Cheia'>Cheia</a><br>";
         echo "<a href='atualizar_status.php?vaga=$vaga&status=Quase Cheia'>Quase Cheia</a><br>";
