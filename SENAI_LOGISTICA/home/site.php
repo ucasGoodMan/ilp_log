@@ -50,7 +50,7 @@
                 <ul class="sub-menu">
                     <li><a class="link_name">Controle</a></li>
                     <li><a href="movimentacao\docaRecebimento.php">Doca de recebimento</a></li>
-                    <li><a href="movimentacao\estadoEstoque.php">Estoque</a></li>
+                    <li><a href="../home/movimentacao/estadoEstoque.php">Estoque</a></li>
                 </ul>
             </li>   
             <li>
