@@ -43,14 +43,14 @@
                 <div class="iocn-links">
                     <a href="">
                         <i class="fa-solid fa-sliders"></i>
-                        <span class="link_name">Controle</span>
+                        <span class="link_name">Controle</span> 
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Controle</a></li>
                     <li><a href="movimentacao\docaRecebimento.php">Doca de recebimento</a></li>
-                    <li><a href="../home/movimentacao/estadoEstoque.php">Estoque</a></li>
+                    <li><a href="../home/movimentacao/estadoEstoque.php">Esssstoque</a></li>
                 </ul>
             </li>   
             <li>
