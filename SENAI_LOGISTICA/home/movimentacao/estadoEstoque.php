@@ -1,3 +1,6 @@
+
+.
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +56,7 @@ foreach (range(1, 5) as $linha) {
     foreach (range('A', 'E') as $letra) {
         $vaga = "$letra$linha";
         $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "";
-        echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>Status: $status</span>";
+        echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>$status</span>";
         echo "<div class='dropdown'>";
         echo "<button class='dropbtn'>Alterar Status</button>";
         echo "<div class='dropdown-content'>";
