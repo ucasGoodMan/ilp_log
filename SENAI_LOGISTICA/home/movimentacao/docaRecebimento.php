@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos Doca</title>
    
-</head>
+</head> 
 <body>
     <h1>Lista de Pedidos</h1>
     <?php

@@ -26,14 +26,14 @@ if ($conn->connect_error) {
 }
 
 // Obtém os parâmetros GET
-$npedido = $_GET['npedido'];
-$doca = $_GET['doca'];
+$nPedido = $_GET['nPedido'];
+$nVaga = $_GET['nVaga'];
 
 // Verifica se os parâmetros foram recebidos
-if (isset($npedido) && isset($doca)) {
+if (isset($nPedido) && isset($nVaga)) {
     // Exibe o número do pedido e a doca no topo da página
     echo "<h1>Detalhes do Pedido</h1>";
-    echo "<p><strong>Número do Pedido:</strong> " . htmlspecialchars($npedido) . "</p>";
+    echo "<p><strong>Número do Pedido:</strong> " . htmlspecialchars($nPedido) . "</p>";
     echo "<p><strong>Doca:</strong> " . htmlspecialchars($doca) . "</p>";
     
     // Processa o formulário se foi enviado

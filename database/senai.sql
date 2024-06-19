@@ -183,7 +183,12 @@ CREATE TABLE `movimentacao` (
   `qtd` int(11) NOT NULL,
   `posicao` varchar(255) NOT NULL,
   `status` varchar(20) DEFAULT 'Pendente'
+  `id` int(11) NOT NULL,
+  `vaga` varchar(20) NOT NULL,
+  `status` varchar(20) DEFAULT 'Vazia',
+  `itens` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 --
 -- Extraindo dados da tabela `movimentacao`
