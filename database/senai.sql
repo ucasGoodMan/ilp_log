@@ -182,7 +182,16 @@ CREATE TABLE IF NOT EXISTS `movimentacao` (
   `qtd` int(11) NOT NULL,
   `posicao` varchar(255) NOT NULL,
   `status` varchar(20) DEFAULT 'Pendente'
+<<<<<<< HEAD
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+=======
+  `id` int(11) NOT NULL,
+  `vaga` varchar(20) NOT NULL,
+  `status` varchar(20) DEFAULT 'Vazia',
+  `itens` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+>>>>>>> 8698872a588bd284ea0354795373b289d9316a4b
+
 
 --
 -- Extraindo dados da tabela `movimentacao`

@@ -37,35 +37,61 @@
 <table id="estoque">
 <tr>
     <th></th>
-<?php
-// Exibir letras (A, B, C, D, E) como cabeçalho da coluna
+    <?php
+// Valores pré-definidos para cada andar
+$valoresAndares = [
+    1 => 900,
+    2 => 700,
+    3 => 500,
+    4 => 300,
+    5 => 150,
+];
+
+
 foreach (range('A', 'E') as $letra) {
-    echo "<th>$letra</th>";
+    echo "<th>Rua $letra</th>";
 }
-?>
-</tr>
-<?php
+echo "</tr>";
+
 // Exibir vagas de A1 a E5 em linhas e colunas
-foreach (range(1, 5) as $linha) {
+foreach (range(5, 1) as $linha) {
     echo "<tr>";
-    // Exibir números (1, 2, 3, 4, 5) como cabeçalho da linha
-    echo "<th>$linha</th>";
+    echo "<th>Andar $linha";
+    
+    // Exibir o valor fixo ao lado do número do andar
+    if (isset($valoresAndares[$linha])) {
+        echo " - Valor: " . $valoresAndares[$linha] . "kg";
+    }
+    
+    echo "</th>";
+    
     foreach (range('A', 'E') as $letra) {
-        $vaga = "$letra$linha";
-        $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "";
-        echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>Status: $status</span>";
+        $statusVaga = "$letra$linha";
+        $status = isset($statusstatusVagas[$statusVaga]) ? $statusVagas[$statusVaga] : "";
+        $carga = isset($cargas[$statusVaga]) ? $cargas[$statusVaga] : "";
+        
+        //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas
+        echo "<td class='statusVaga' data-statusVaga='$statusVaga'>";
+        echo "$statusVaga<br><span>Status: $status</span>";
         echo "<div class='dropdown'>";
         echo "<button class='dropbtn'>Alterar Status</button>";
         echo "<div class='dropdown-content'>";
-        echo "<a href='atualizar_status.php?vaga=$vaga&status=Cheia'>Cheia</a><br>";
-        echo "<a href='atualizar_status.php?vaga=$vaga&status=Quase Cheia'>Quase Cheia</a><br>";
-        echo "<a href='atualizar_status.php?vaga=$vaga&status=Vazia'>Vazia</a>";
+        echo "<a href='atualizar_status.php?statusVaga=$statusVaga&status=Cheia'>Cheia</a><br>";
+        echo "<a href='atualizar_status.php?statusVaga=$statusVaga&status=Quase Cheia'>Quase Cheia</a><br>";
+        echo "<a href='atualizar_status.php?statusVaga=$statusVaga&status=Vazia'>Vazia</a>";
         echo "</div>";
         echo "</div>";
+        echo "<form action='atualizar_status.php' method='POST'>";
+        echo "<input type='hidden' name='statusVaga' value='$statusVaga'>";
+        echo "<input type='number' name='carga' value='$carga' placeholder='Carga'>";
+        echo "<button type='submit'>Salvar</button>";
+        echo "</form>";
+        echo "</td>";
     }
     echo "</tr>";
 }
 ?>
+
 </table>
 
 </body>
