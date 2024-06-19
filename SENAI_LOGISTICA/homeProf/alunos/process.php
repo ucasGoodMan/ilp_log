@@ -12,15 +12,15 @@
 	} else {
 		// Evita caracteres especiais (SQL Inject)
 	
-		$id = $conexao -> real_escape_string($_POST['id']);
+		$nturma = $conexao -> real_escape_string($_POST['nturma']);
 		$nometurma = $conexao -> real_escape_string($_POST['nometurma']);
         $qntalunos = $conexao -> real_escape_string($_POST['qntalunos']);
 
 		
 		$sql = "INSERT INTO `turma`
-			 (`id`, `nometurma`, `qntalunos`) 
+			 (`nturma`, `nometurma`, `qntalunos`) 
 			 VALUES 
-			 ('".$id."', '".$nometurma."', '".$qntalunos."')";
+			 ('".$nturma."', '".$nometurma."', '".$qntalunos."')";
 
 		   $resultado = $conexao->query($sql);
 			   
