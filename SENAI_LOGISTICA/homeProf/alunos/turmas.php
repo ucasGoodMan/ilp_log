@@ -118,8 +118,8 @@
             <div class="modal-container">
                 <div class="modal">
                     <form method="post" action="process.php" id='formulario'>
-                       <label for="id">N° da turma</label> 
-                        <input id="id" name="id" type="number"  /> 
+                       <label for="nturma">N° da turma</label> 
+                        <input id="nturma" name="nturma" type="number"  /> 
 
                         <label for="nometurma">Nome da turma</label>
                         <input id="nometurma" name="nometurma" type="text" required />
