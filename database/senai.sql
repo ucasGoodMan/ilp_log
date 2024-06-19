@@ -1,24 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
--- https://www.phpmyadmin.net/
+-- version 4.2.7.1
+-- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Tempo de geração: 11-Jun-2024 às 02:01
--- Versão do servidor: 5.7.36
--- versão do PHP: 8.1.3
+-- Generation Time: 19-Jun-2024 às 14:44
+-- Versão do servidor: 5.6.20-log
+-- PHP Version: 5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Banco de dados: `senai`
+-- Database: `senai`
 --
 
 -- --------------------------------------------------------
@@ -27,11 +26,11 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `alunos`
 --
 
-CREATE TABLE `alunos` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `alunos` (
+`id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
 --
 -- Extraindo dados da tabela `alunos`
@@ -85,7 +84,7 @@ INSERT INTO `alunos` (`id`, `email`, `senha`) VALUES
 -- Estrutura da tabela `criacaopedido`
 --
 
-CREATE TABLE `criacaopedido` (
+CREATE TABLE IF NOT EXISTS `criacaopedido` (
   `npedido` int(11) NOT NULL,
   `produtos` varchar(100) NOT NULL,
   `unidade` varchar(50) NOT NULL,
@@ -112,12 +111,12 @@ INSERT INTO `criacaopedido` (`npedido`, `produtos`, `unidade`, `quantidade`, `vl
 -- Estrutura da tabela `estoque`
 --
 
-CREATE TABLE `estoque` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `estoque` (
+`id` int(11) NOT NULL,
   `vaga` varchar(20) NOT NULL,
   `status` varchar(20) DEFAULT 'Vazia',
   `itens` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Extraindo dados da tabela `estoque`
@@ -157,18 +156,18 @@ INSERT INTO `estoque` (`id`, `vaga`, `status`, `itens`) VALUES
 -- Estrutura da tabela `loginp`
 --
 
-CREATE TABLE `loginp` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `loginp` (
+`id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `loginp`
 --
 
 INSERT INTO `loginp` (`id`, `email`, `senha`) VALUES
-(1, 'prof@prof', 'lucas123');
+(1, 'prof@prof', '123');
 
 -- --------------------------------------------------------
 
@@ -176,14 +175,14 @@ INSERT INTO `loginp` (`id`, `email`, `senha`) VALUES
 -- Estrutura da tabela `movimentacao`
 --
 
-CREATE TABLE `movimentacao` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `movimentacao` (
+`id` int(11) NOT NULL,
   `npedido` varchar(255) NOT NULL,
   `produto` varchar(255) NOT NULL,
   `qtd` int(11) NOT NULL,
   `posicao` varchar(255) NOT NULL,
   `status` varchar(20) DEFAULT 'Pendente'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Extraindo dados da tabela `movimentacao`
@@ -204,11 +203,21 @@ INSERT INTO `movimentacao` (`id`, `npedido`, `produto`, `qtd`, `posicao`, `statu
 -- Estrutura da tabela `turma`
 --
 
-CREATE TABLE `turma` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `turma` (
+`id` int(11) NOT NULL,
+  `nturma` int(11) NOT NULL,
   `nometurma` varchar(60) NOT NULL,
   `qntalunos` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=12 ;
+
+--
+-- Extraindo dados da tabela `turma`
+--
+
+INSERT INTO `turma` (`id`, `nturma`, `nometurma`, `qntalunos`) VALUES
+(9, 12, 'df', 12),
+(10, 0, 'sd', 12),
+(11, 23, 'asd', 121);
 
 -- --------------------------------------------------------
 
@@ -216,7 +225,7 @@ CREATE TABLE `turma` (
 -- Estrutura da tabela `vistoriaconferenciacarga`
 --
 
-CREATE TABLE `vistoriaconferenciacarga` (
+CREATE TABLE IF NOT EXISTS `vistoriaconferenciacarga` (
   `NotaFiscal` int(11) NOT NULL,
   `PedidoCompra` varchar(50) NOT NULL,
   `Doca` varchar(30) NOT NULL,
@@ -238,8 +247,8 @@ CREATE TABLE `vistoriaconferenciacarga` (
 -- Estrutura da tabela `vistoriaconferenciacontainer`
 --
 
-CREATE TABLE `vistoriaconferenciacontainer` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vistoriaconferenciacontainer` (
+`id` int(11) NOT NULL,
   `PlacaCaminhao` varchar(8) DEFAULT NULL,
   `NomeMotorista` varchar(55) DEFAULT NULL,
   `Container` varchar(15) DEFAULT NULL,
@@ -265,7 +274,7 @@ CREATE TABLE `vistoriaconferenciacontainer` (
   `PainelAvariado` tinyint(1) DEFAULT NULL,
   `SemCaboEnergia` tinyint(1) DEFAULT NULL,
   `SemLona` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Extraindo dados da tabela `vistoriaconferenciacontainer`
@@ -281,90 +290,89 @@ INSERT INTO `vistoriaconferenciacontainer` (`id`, `PlacaCaminhao`, `NomeMotorist
 (7, 'a', 'a', 'aa', 'a', 'a', 'a', 'a', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (8, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (9, 'a', 'q', 'w', 'e', 'a', 'w', 'e', -1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(10, 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1);
+(10, 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1),
+(11, 'zxc2', 'clie', '345tgr', 'simnue', 'sim', 'hijak', 'lockr3', 456, 12, 122, 142, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1);
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `alunos`
+-- Indexes for table `alunos`
 --
 ALTER TABLE `alunos`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email` (`email`);
 
 --
--- Índices para tabela `criacaopedido`
+-- Indexes for table `criacaopedido`
 --
 ALTER TABLE `criacaopedido`
-  ADD PRIMARY KEY (`npedido`);
+ ADD PRIMARY KEY (`npedido`);
 
 --
--- Índices para tabela `estoque`
+-- Indexes for table `estoque`
 --
 ALTER TABLE `estoque`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `loginp`
+-- Indexes for table `loginp`
 --
 ALTER TABLE `loginp`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `movimentacao`
+-- Indexes for table `movimentacao`
 --
 ALTER TABLE `movimentacao`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `turma`
+-- Indexes for table `turma`
 --
 ALTER TABLE `turma`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `vistoriaconferenciacontainer`
+-- Indexes for table `vistoriaconferenciacontainer`
 --
 ALTER TABLE `vistoriaconferenciacontainer`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `alunos`
+-- AUTO_INCREMENT for table `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
 --
--- AUTO_INCREMENT de tabela `estoque`
+-- AUTO_INCREMENT for table `estoque`
 --
 ALTER TABLE `estoque`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
--- AUTO_INCREMENT de tabela `loginp`
+-- AUTO_INCREMENT for table `loginp`
 --
 ALTER TABLE `loginp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de tabela `movimentacao`
+-- AUTO_INCREMENT for table `movimentacao`
 --
 ALTER TABLE `movimentacao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
--- AUTO_INCREMENT de tabela `vistoriaconferenciacontainer`
+-- AUTO_INCREMENT for table `turma`
+--
+ALTER TABLE `turma`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `vistoriaconferenciacontainer`
 --
 ALTER TABLE `vistoriaconferenciacontainer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-COMMIT;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
