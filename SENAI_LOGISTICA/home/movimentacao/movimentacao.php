@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>solicitação movimentação de pedido</title>
+    <title>solicitação movimentação de pedido depois da conferencia</title>
 </head>
 <body>
     
@@ -26,14 +26,14 @@ if ($conn->connect_error) {
 }
 
 // Obtém os parâmetros GET
-$nPedido = $_GET['nPedido'];
-$nVaga = $_GET['nVaga'];
+$npedido = $_GET['npedido'];
+$doca = $_GET['doca'];
 
 // Verifica se os parâmetros foram recebidos
-if (isset($nPedido) && isset($nVaga)) {
+if (isset($npedido) && isset($doca)) {
     // Exibe o número do pedido e a doca no topo da página
-    echo "<h1>Detalhes do Pedido</h1>";
-    echo "<p><strong>Número do Pedido:</strong> " . htmlspecialchars($nPedido) . "</p>";
+    echo "<h1>solicitar movimentaçao (depois da vistoria)</h1>";
+    echo "<p><strong>Número do Pedido:</strong> " . htmlspecialchars($npedido) . "</p>";
     echo "<p><strong>Doca:</strong> " . htmlspecialchars($doca) . "</p>";
     
     // Processa o formulário se foi enviado
