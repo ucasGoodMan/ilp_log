@@ -141,5 +141,4 @@
     </section>
     <script src="sidebar.js"></script>
 
-
 </html>

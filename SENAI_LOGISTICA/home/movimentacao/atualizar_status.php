@@ -1,5 +1,5 @@
 <?php
-// Conexão ao banco de dados (substitua pelas suas credenciais)
+// relacionado com estoque
 $servername = "localhost";
 $username = "root";
 $password = "root";

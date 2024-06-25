@@ -8,7 +8,7 @@
 
     <h1>Solicitacoes de Movimentacao</h1>
     <?php
-    // Conexão ao banco de dados (substitua pelas suas credenciais)
+    // relacionado com o banco
     $servername = "localhost";
     $username = "root";
     $password = "root";

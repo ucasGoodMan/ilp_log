@@ -23,7 +23,7 @@
 			 ('".$nturma."', '".$nometurma."', '".$qntalunos."')";
 
 		   $resultado = $conexao->query($sql);
-			   
+		   
 		   $conexao -> close();
 		   header('Location: ../alunos/turmas.php', true, 301);
 		   }
