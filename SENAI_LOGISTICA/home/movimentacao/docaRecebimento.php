@@ -11,7 +11,7 @@
 <body>
     <h1>Lista de Pedidos</h1>
     <?php
-    // Conexão ao banco de dados (substitua pelas suas credenciais)
+    //relacionado a pedidos
     $servername = "localhost";
     $username = "root";
     $password = "root";

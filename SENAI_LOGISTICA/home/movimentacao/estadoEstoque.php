@@ -38,7 +38,7 @@
 <tr>
     <th></th>
     <?php
-// Valores pré-definidos para cada andar
+//relacionado com estoque
 $valoresAndares = [
     1 => 900,
     2 => 700,
