@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 19-Jun-2024 às 14:44
+-- Generation Time: 25-Jun-2024 às 13:22
 -- Versão do servidor: 5.6.20-log
 -- PHP Version: 5.4.31
 
@@ -113,7 +113,7 @@ INSERT INTO `criacaopedido` (`npedido`, `produtos`, `unidade`, `quantidade`, `vl
 
 CREATE TABLE IF NOT EXISTS `estoque` (
 `id` int(11) NOT NULL,
-  `vaga` varchar(20) NOT NULL,
+  `posicao` varchar(20) NOT NULL,
   `status` varchar(20) DEFAULT 'Vazia',
   `itens` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `estoque` (
 -- Extraindo dados da tabela `estoque`
 --
 
-INSERT INTO `estoque` (`id`, `vaga`, `status`, `itens`) VALUES
+INSERT INTO `estoque` (`id`, `posicao`, `status`, `itens`) VALUES
 (1, 'A1', 'Vazia', NULL),
 (2, 'A2', 'Vazia', NULL),
 (3, 'A3', 'Vazia', NULL),
@@ -182,16 +182,7 @@ CREATE TABLE IF NOT EXISTS `movimentacao` (
   `qtd` int(11) NOT NULL,
   `posicao` varchar(255) NOT NULL,
   `status` varchar(20) DEFAULT 'Pendente'
-<<<<<<< HEAD
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
-=======
-  `id` int(11) NOT NULL,
-  `vaga` varchar(20) NOT NULL,
-  `status` varchar(20) DEFAULT 'Vazia',
-  `itens` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
->>>>>>> 8698872a588bd284ea0354795373b289d9316a4b
-
 
 --
 -- Extraindo dados da tabela `movimentacao`
@@ -209,6 +200,22 @@ INSERT INTO `movimentacao` (`id`, `npedido`, `produto`, `qtd`, `posicao`, `statu
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `movimentacaoestoque`
+--
+
+CREATE TABLE IF NOT EXISTS `movimentacaoestoque` (
+`id` int(11) NOT NULL,
+  `nPedido` int(11) NOT NULL COMMENT 'puxa o numero do pedido e o adiciona na vaga correspondente, com status pendente ou concluida',
+  `statusVaga` varchar(20) NOT NULL DEFAULT 'Vazia' COMMENT 'vazia, cheia, quase cheia',
+  `item` varchar(255) NOT NULL COMMENT 'itens na vaga',
+  `vaga` varchar(20) NOT NULL COMMENT 'a1,a2,a3...',
+  `qtdItem` int(11) NOT NULL COMMENT 'qtd de itens na vaga',
+  `statusMovimentacao` varchar(20) NOT NULL DEFAULT 'Pendente' COMMENT 'status da moviemntação: pendente/concluida'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `turma`
 --
 
@@ -217,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `turma` (
   `nturma` int(11) NOT NULL,
   `nometurma` varchar(60) NOT NULL,
   `qntalunos` int(3) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=13 ;
 
 --
 -- Extraindo dados da tabela `turma`
@@ -226,7 +233,8 @@ CREATE TABLE IF NOT EXISTS `turma` (
 INSERT INTO `turma` (`id`, `nturma`, `nometurma`, `qntalunos`) VALUES
 (9, 12, 'df', 12),
 (10, 0, 'sd', 12),
-(11, 23, 'asd', 121);
+(11, 23, 'asd', 121),
+(12, 5, 'sa', 45);
 
 -- --------------------------------------------------------
 
@@ -337,6 +345,12 @@ ALTER TABLE `movimentacao`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `movimentacaoestoque`
+--
+ALTER TABLE `movimentacaoestoque`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `turma`
 --
 ALTER TABLE `turma`
@@ -373,10 +387,15 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 ALTER TABLE `movimentacao`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
+-- AUTO_INCREMENT for table `movimentacaoestoque`
+--
+ALTER TABLE `movimentacaoestoque`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `turma`
 --
 ALTER TABLE `turma`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `vistoriaconferenciacontainer`
 --

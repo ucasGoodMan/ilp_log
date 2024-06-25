@@ -57,17 +57,17 @@ echo "</tr>";
 foreach (range(5, 1) as $linha) {
     echo "<tr>";
     echo "<th>Andar $linha";
-    
+       
     // Exibir o valor fixo ao lado do número do andar
     if (isset($valoresAndares[$linha])) {
-        echo " - Valor: " . $valoresAndares[$linha] . "kg";
+        echo " - Peso Máximo: " . $valoresAndares[$linha] . "kg";
     }
     
     echo "</th>";
     
     foreach (range('A', 'E') as $letra) {
-        $statusVaga = "$letra$linha";
-        $status = isset($statusstatusVagas[$statusVaga]) ? $statusVagas[$statusVaga] : "";
+        $vaga = "$letra$linha";
+        $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "";
         $carga = isset($cargas[$statusVaga]) ? $cargas[$statusVaga] : "";
         
         //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas     //sem aspas
@@ -76,9 +76,9 @@ foreach (range(5, 1) as $linha) {
         echo "<div class='dropdown'>";
         echo "<button class='dropbtn'>Alterar Status</button>";
         echo "<div class='dropdown-content'>";
-        echo "<a href='atualizar_status.php?statusVaga=$statusVaga&status=Cheia'>Cheia</a><br>";
-        echo "<a href='atualizar_status.php?statusVaga=$statusVaga&status=Quase Cheia'>Quase Cheia</a><br>";
-        echo "<a href='atualizar_status.php?statusVaga=$statusVaga&status=Vazia'>Vazia</a>";
+        echo "<a href='atualizar_status.php?statusVaga=$vaga&status=Cheia'>Cheia</a><br>";
+        echo "<a href='atualizar_status.php?statusVaga=$vaga&status=Quase Cheia'>Quase Cheia</a><br>";
+        echo "<a href='atualizar_status.php?statusVaga=$vaga&status=Vazia'>Vazia</a>";
         echo "</div>";
         echo "</div>";
         echo "<form action='atualizar_status.php' method='POST'>";
