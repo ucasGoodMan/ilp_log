@@ -1,9 +1,10 @@
 const modal = document.querySelector('.modal-container');
 const tbody = document.querySelector('tbody');
-const sNome = document.querySelector('#id');
+const sNome = document.querySelector('#nturma');
 const sFuncao = document.querySelector('#nometurma');
 const sSalario = document.querySelector('#qntalunos');
 const btnSalvar = document.querySelector('#botao');
+const form = document.getElementById('formulario');
 
 let itens = [];
 let id;
@@ -56,12 +57,11 @@ function insertItem(item, index) {
   tbody.appendChild(tr);
 }
 
-btnSalvar.onclick = async e => {
+form.onsubmit = async e => {
+  e.preventDefault();
   if (sNome.value === '' || sFuncao.value === '' || sSalario.value === '') {
     return;
   }
-
-  e.preventDefault();
 
   if (id !== undefined) {
     itens[id].nome = sNome.value;
@@ -106,7 +106,7 @@ const getItensBD = async () => {
     return data;
   } catch (error) {
     console.error('Erro ao buscar itens do banco de dados:', error);
-    throw error; // Propaga o erro para o chamador de getItensBD
+    throw error;
   }
 };
 
@@ -126,7 +126,7 @@ const setItensBD = async (itens) => {
     return data;
   } catch (error) {
     console.error('Erro ao salvar itens no banco de dados:', error);
-    throw error; // Propaga o erro para o chamador de setItensBD
+    throw error;
   }
 };
 
