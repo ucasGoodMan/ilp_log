@@ -10,7 +10,7 @@ if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-header('Content-Type: application/json');
+header('Content-Type: text/xml');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
@@ -22,50 +22,54 @@ if ($method == 'GET') {
     $result = $conn->query($sql);
 
     if (!$result) {
-        echo json_encode(["mensagem" => "Erro ao executar a consulta: " . $conn->error]);
+        echo "<mensagem>Erro ao executar a consulta: " . $conn->error . "</mensagem>";
         $conn->close();
         exit;
     }
 
-    $items = [];
+    $xml = new SimpleXMLElement('<turmas/>');
+
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $items[] = $row;
+            $turma = $xml->addChild('turma');
+            $turma->addChild('nturma', $row['nturma']);
+            $turma->addChild('nometurma', $row['nometurma']);
+            $turma->addChild('qntalunos', $row['qntalunos']);
         }
     } else {
-        echo json_encode(["mensagem" => "Nenhum registro encontrado"]);
+        echo "<mensagem>Nenhum registro encontrado</mensagem>";
     }
-    echo json_encode($items);
+    echo $xml->asXML();
 
 } elseif ($method == 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true);
-    if (is_array($data)) {
+    $xml = simplexml_load_string(file_get_contents('php://input'));
+    if ($xml) {
         if ($conn->query("DELETE FROM turma") === FALSE) {
-            echo json_encode(["mensagem" => "Falha ao deletar registros: " . $conn->error]);
+            echo "<mensagem>Falha ao deletar registros: " . $conn->error . "</mensagem>";
             $conn->close();
             exit;
         }
 
         $stmt = $conn->prepare("INSERT INTO turma (nturma, nometurma, qntalunos) VALUES (?, ?, ?)");
         if ($stmt === false) {
-            echo json_encode(["mensagem" => "Falha ao preparar a declaração: " . $conn->error]);
+            echo "<mensagem>Falha ao preparar a declaração: " . $conn->error . "</mensagem>";
             $conn->close();
             exit;
         }
 
-        foreach ($data as $item) {
-            $stmt->bind_param("isi", $item['nturma'], $item['nometurma'], $item['qntalunos']);
+        foreach ($xml->turma as $turma) {
+            $stmt->bind_param("isi", (int)$turma->nturma, (string)$turma->nometurma, (int)$turma->qntalunos);
             if (!$stmt->execute()) {
-                echo json_encode(["mensagem" => "Falha ao executar a declaração: " . $stmt->error]);
+                echo "<mensagem>Falha ao executar a declaração: " . $stmt->error . "</mensagem>";
                 $stmt->close();
                 $conn->close();
                 exit;
             }
         }
         $stmt->close();
-        echo json_encode(["mensagem" => "Itens salvos com sucesso!"]);
+        echo "<mensagem>Itens salvos com sucesso!</mensagem>";
     } else {
-        echo json_encode(["mensagem" => "Dados inválidos"], JSON_UNESCAPED_UNICODE);
+        echo "<mensagem>Dados inválidos</mensagem>";
     }
 }
 
