@@ -33,7 +33,6 @@
         ?>
     </tr>
     <?php
-<<<<<<< HEAD
     // Pesos correspondentes para os andares
     $pesos = [
         1 => '900kg',
@@ -42,16 +41,6 @@
         4 => '200kg',
         5 => '150kg'
     ];
-=======
-//relacionado com estoque
-$valoresAndares = [
-    1 => 900,
-    2 => 700,
-    3 => 500,
-    4 => 300,
-    5 => 150,
-];
->>>>>>> 8cb1743b7970a59f3268afc0f3ce1ed0e129548d
 
     // Exibir vagas de A1 a E5 em linhas e colunas
     foreach (range(5, 1) as $linha) {

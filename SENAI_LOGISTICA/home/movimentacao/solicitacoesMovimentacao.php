@@ -56,7 +56,7 @@
                 echo "</form>";
                 echo "</td>";
             } else {
-                echo "<td>Concluida</td>";
+                echo "<td>Concluida</td>";  
             }
             echo "</tr>";
         }

@@ -213,6 +213,7 @@ CREATE TABLE IF NOT EXISTS `movimentacaoestoque` (
   `statusMovimentacao` varchar(20) NOT NULL DEFAULT 'Pendente' COMMENT 'status da moviemntação: pendente/concluida'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+
 -- --------------------------------------------------------
 
 --

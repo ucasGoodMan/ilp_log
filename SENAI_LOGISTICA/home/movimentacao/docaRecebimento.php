@@ -16,7 +16,7 @@
     $username = "root";
     $password = "root";
     $dbname = "senai";
-
+ 
     // Cria a conexão
     $conn = new mysqli($servername, $username, $password, $dbname);
 

@@ -39,7 +39,7 @@ if ($conn->connect_error) {
 }
 
 // Atualiza a carga da vaga no banco de dados
-$updateSql = "UPDATE movimentacaoestoque SET pesoProd = '$pesoProd' WHERE statusVaga = '$statusVaga'";
+$updateSql = "UPDATE estoque SET pesoProd = '$pesoProd' WHERE statusVaga = '$statusVaga'";
 if ($conn->query($updateSql) === TRUE) {
     echo "Carga da vaga $statusVaga atualizada para $pesoProd.";
 } else {
