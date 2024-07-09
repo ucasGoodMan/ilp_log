@@ -1,7 +1,4 @@
-if (isset($_POST['Pedido'])) {
-$pedido = $_POST['Pedido'];
-       
-       <!DOCTYPE html>
+<!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
@@ -101,8 +98,4 @@ $pedido = $_POST['Pedido'];
         ?>
         </body>
         </html>
-
-    } else {
-    echo 'Pedido não definido';
-}
 

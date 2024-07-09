@@ -13,7 +13,8 @@ $hostname = "127.0.0.1";
 	} else {
 		// Evita caracteres especiais (SQL Inject)
 		$pedido = $conexao -> real_escape_string($_POST['pedido']);
-		$doca = $conexao -> real_escape_string($_POST['doca']);
+		$doca = $conexao ->
+		 real_escape_string($_POST['doca']);
 
     
         $sql="INSERT INTO `pedidosdoca`
