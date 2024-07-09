@@ -254,7 +254,7 @@
 
 
 .sidebar.close .profile-details i,
-.sidebar.close .profile-details .profile-name,
+.sidebar.close .profile-details .profile-name,  
 .sidebar.close .profile-details .job{
     display: none;
 }
@@ -265,7 +265,7 @@
 
 .home-section {
     position: absolute;
-    background-color: rgba(233, 117, 117, 0.1);   
+    background-color: rgb(255, 255, 255);   
     transition: all 0.5s ease;
 
 }
