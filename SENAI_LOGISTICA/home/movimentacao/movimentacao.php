@@ -1,6 +1,3 @@
-if (isset($_POST['Pedido'])) {
-$pedido = $_POST['Pedido'];
-       
        <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -10,9 +7,6 @@ $pedido = $_POST['Pedido'];
         </head>
         <body>
             
-        // Supondo que $array seja o array que você está acessando
-    
-
         <?php
         // Conexão ao banco de dados (substitua pelas suas credenciais)
         $servername = "localhost";
@@ -30,14 +24,14 @@ $pedido = $_POST['Pedido'];
 
         // Obtém os parâmetros GET
         $npedido = $_GET['nPedido'];
-        $doca = $_GET['nVaga'];
+        $doca = $_GET['doca'];
 
         // Verifica se os parâmetros foram recebidos
         if (isset($npedido) && isset($doca)) {
             // Exibe o número do pedido e a doca no topo da página
             echo "<h1>solicitar movimentaçao (depois da vistoria)</h1>";
             echo "<p><strong>Número do Pedido:</strong> " . htmlspecialchars($nPedido) . "</p>";
-            echo "<p><strong>Doca:</strong> " . htmlspecialchars($nVaga) . "</p>";
+            echo "<p><strong>Doca:</strong> " . htmlspecialchars($doca) . "</p>";
             
             // Processa o formulário se foi enviado
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -48,7 +42,7 @@ $pedido = $_POST['Pedido'];
                 // Atualiza a quantidade na tabela original
                 $updateSql = "UPDATE criacaopedido SET quantidade = quantidade - ? WHERE npedido = ? AND doca = ? AND produtos = ?";
                 $updateStmt = $conn->prepare($updateSql);
-                $updateStmt->bind_param("isss", $qtd, $npedido, $doca, $produto);
+                $updateStmt->bind_param("isss", $qtd, $nPedido, $doca, $produto);
                 $updateStmt->execute();
 
                 // Insere os dados na tabela de movimentação
@@ -102,7 +96,5 @@ $pedido = $_POST['Pedido'];
         </body>
         </html>
 
-    } else {
-    echo 'Pedido não definido';
-}
+  
 
