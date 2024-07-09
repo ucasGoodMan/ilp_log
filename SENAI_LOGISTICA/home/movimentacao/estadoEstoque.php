@@ -1,9 +1,10 @@
+@ -1,98 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>estoque</title>
+    <title>Estoque</title>
     <style>
         table {
             width: 100%;
