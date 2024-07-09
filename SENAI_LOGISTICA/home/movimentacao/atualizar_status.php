@@ -7,8 +7,8 @@ $dbname = "senai";
 
 // Dados recebidos via POST
 $statusVaga = $_POST['statusVaga'];
-$pesoProd = $_POST['pesoProd'];
-
+$pesoProd = $_POST['pesoProd']; 
+ 
 // Ajusta a carga padrão para os andares 1
 if (strpos($statusVaga, '1') !== false) {
     $pesoProd = 900;
