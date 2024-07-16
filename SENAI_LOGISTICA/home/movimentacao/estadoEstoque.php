@@ -1,4 +1,4 @@
-@ -1,98 +1,70 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +34,10 @@
         ?>
     </tr>
     <?php
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     // Pesos correspondentes para os andares
     $pesos = [
         1 => '900kg',
@@ -42,6 +46,19 @@
         4 => '200kg',
         5 => '150kg'
     ];
+<<<<<<< Updated upstream
+=======
+
+//relacionado com estoque
+$valoresAndares = [
+    1 => 900,
+    2 => 700,
+    3 => 500,
+    4 => 300,
+    5 => 150,
+];
+>>>>>>> 8cb1743b7970a59f3268afc0f3ce1ed0e129548d
+>>>>>>> Stashed changes
 
     // Exibir vagas de A1 a E5 em linhas e colunas
     foreach (range(5, 1) as $linha) {
