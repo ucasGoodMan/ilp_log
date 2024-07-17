@@ -117,6 +117,7 @@
             ?>
         </tr>
         <?php
+  
         // Pesos correspondentes para os andares
         $pesos = [
             1 => '900kg',
@@ -125,7 +126,7 @@
             4 => '200kg',
             5 => '150kg'
         ];
-
+    
         // Exibir vagas de A1 a E5 em linhas e colunas
         foreach (range(5, 1) as $linha) {
             echo "<tr>";
@@ -137,6 +138,7 @@
                 $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "";
                 echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>Status: $status</span>";
                 echo "<div class='dropdown'>";
+       
                 echo "<button class='dropbtn'>Alterar Status</button>";
                 echo "<div class='dropdown-content'>";
                 echo "<a href='atualizar_status.php?vaga=$vaga&status=Cheia'>Cheia</a><br>";
@@ -144,10 +146,11 @@
                 echo "<a href='atualizar_status.php?vaga=$vaga&status=Vazia'>Vazia</a>";
                 echo "</div>";
                 echo "</div>";
-                echo "</td>";
+                echo "</td>"; 
             }
             echo "</tr>";
         }
+        </form>
         ?>
     </table>
 </body>
