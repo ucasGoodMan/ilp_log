@@ -9,9 +9,26 @@
 
 /* background color: 245 245 245 */
 
-.body {
-    overflow: none;
 
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.image-aluno {
+    position: absolute;
+    max-height: 100%;
+    width: 800px;
+}
+
+.aluno {
+    max-width: 100%;
+    height: auto;
 }
 
 .sidebar {
@@ -263,19 +280,17 @@
     font-size: 12px;
 }
 
-.home-section {
-    position: absolute;
-    background: #fff;
-    left: -20px;
-    transition: all 0.5s ease;
-}
-
 .sidebar.close ~ .home-section { 
     left: -220px;   
     position: absolute;
 }
 
 .home-section  {
+    position: absolute;
+    top: 0px;
+    background: #fff;
+    left: -20px;
+    transition: all 0.5s ease;
     margin-top: 10px;
     height: 60px;
     display: flex;

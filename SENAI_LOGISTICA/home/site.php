@@ -13,6 +13,10 @@
 </head>
 
 <body>
+    <div class="container">
+    <div class="image-aluno">
+            <img class="aluno" src="../imagens/Students-rafiki.svg" alt="Estudantes">
+    </div>
     <div class="sidebar">
         <div class="logo-details">
             <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
@@ -109,7 +113,8 @@
         <i class='bx bx-menu'></i>
         <span class="text">Home do aluno</span>
     </section>
-    <script src="sidebar.js"></script>
+    <script src="sidebar.js"></script>  
+    </div>
 </body>
 
 </html>

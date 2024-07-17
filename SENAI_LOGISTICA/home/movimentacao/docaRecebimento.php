@@ -12,9 +12,10 @@
    
 </head> 
 <body>
+<div class="container">
 <div class="sidebar">
         <div class="logo-details">
-            <img class="img1" src="/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+            <img class="img1" src="../../imagens/ILP ICONE BRANCO sf.png" alt="LUCA">
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
@@ -99,7 +100,7 @@
             <li>
             <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
+                    <img src="../../imagens/senai-logo-1.png" alt="senai">
             </div>
             </li>
         </ul>
@@ -108,49 +109,50 @@
         <i class='bx bx-menu'></i>
         <span class="text">Doca de Recebimento</span>
     </section>
+    </div>
     <h1>Lista de Pedidos</h1>
     <?php
-    //relacionado a pedidos
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "senai";
- 
-    // Cria a conexão
-    $conn = new mysqli($servername, $username, $password, $dbname);
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "senai";
 
-    // Verifica a conexão
-    if ($conn->connect_error) {
-        die("Falha na conexão: " . $conn->connect_error);
-    } 
+// Cria a conexão
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Consulta SQL para obter todos os pedidos
-    $sql = "SELECT npedido, doca FROM criacaopedido";
-    $result = $conn->query($sql);
+// Verifica a conexão
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+} 
 
-    // Verifica se há resultados
-    if ($result->num_rows > 0) {
-        echo "<table>";
-        echo "<tr><th>Número do Pedido</th><th>Doca</th><th>Ação</th></tr>";
-        while($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $row["npedido"] . "</td>";
-            echo "<td>" . $row["doca"] . "</td>";
-            echo "<td><form action='movimentacao.php' method='GET'>";
-            echo "<input type='hidden' name='npedido' v alue='" . $row["npedido"] . "'>";
-            echo "<input type='hidden' name='doca' value='" . $row["doca"] . "'>";
-            echo "<input type='submit' value='ABRIR'>";
-            echo "</form></td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "Nenhum pedido encontrado.";
+// Consulta SQL para obter todos os pedidos
+$sql = "SELECT npedido, doca FROM criacaopedido";
+$result = $conn->query($sql);
+
+// Verifica se há resultados
+if ($result->num_rows > 0) {
+    echo "<ul class='pedido-list'>";
+    while($row = $result->fetch_assoc()) {
+        echo "<li class='pedido-item'>";
+        echo "<div class='pedido-info'>";
+        echo "<span class='pedido-npedido'>Número do Pedido: " . $row["npedido"] . "</span>";
+        echo "<span class='pedido-doca'>Doca: " . $row["doca"] . "</span>";
+        echo "</div>";
+        echo "<form action='movimentacao.php' method='GET'>";
+        echo "<input type='hidden' name='npedido' value='" . $row["npedido"] . "'>";
+        echo "<input type='hidden' name='doca' value='" . $row["doca"] . "'>";
+        echo "<input class='pedido-submit' type='submit' value='ABRIR'>";
+        echo "</form>";
+        echo "</li>";
     }
+    echo "</ul>";
+} else {
+    echo "Nenhum pedido encontrado.";
+}
 
-    // Fecha a conexão
-    $conn->close();
-    ?>
+// Fecha a conexão
+$conn->close();
+?>
     <script src="sidebar.js"></script>
 </body>
 </html>
