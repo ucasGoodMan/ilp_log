@@ -109,7 +109,6 @@
         <i class='bx bx-menu'></i>
         <span class="text">Doca de Recebimento</span>
     </section>
-    </div>
     <h1>Lista de Pedidos</h1>
     <?php
 $servername = "localhost";
@@ -153,6 +152,7 @@ if ($result->num_rows > 0) {
 // Fecha a conexão
 $conn->close();
 ?>
+</div>
     <script src="sidebar.js"></script>
 </body>
 </html>
