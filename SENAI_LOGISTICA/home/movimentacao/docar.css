@@ -9,10 +9,71 @@
 
 /* background color: 245 245 245 */
 
-.body {
-    overflow: none;
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}   
+
+.pedido-list {
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    width: 30%; /* Largura da lista */  
+    max-width: 100%; /* Largura máxima da lista para garantir responsividade */
+    top: 200px;
+    left: 40%;
+}
+
+.pedido-item {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pedido-info {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.pedido-npedido {
+    font-weight: bold;
+    margin-right: 20px;
 
 }
+
+.pedido-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.pedido-submit:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .sidebar {
     position: fixed; 
@@ -263,12 +324,6 @@
     font-size: 12px;
 }
 
-.home-section {
-    position: absolute;
-    background: #fff;
-    left: -20px;
-    transition: all 0.5s ease;
-}
 
 .sidebar.close ~ .home-section { 
     left: -220px;   
@@ -276,6 +331,11 @@
 }
 
 .home-section  {
+    position: absolute;
+    top: 0px;
+    background: #fff;
+    left: -20px;
+    transition: all 0.5s ease;
     margin-top: 10px;
     height: 60px;
     display: flex;
