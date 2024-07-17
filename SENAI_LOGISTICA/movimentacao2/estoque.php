@@ -23,7 +23,7 @@
         </tr>
         <?php
         // Dados fictícios para o estoque, ajuste conforme necessário
-        $andar = [900, 700, 500, 300, 150];
+        $andar = [9234200, 700, 500, 300, 150];
         for ($i = 0; $i < count($andar); $i++) {
             echo "<tr>";
             echo "<td>Andar " . ($i + 1) . " - Valor: " . $andar[$i] . "kg</td>";

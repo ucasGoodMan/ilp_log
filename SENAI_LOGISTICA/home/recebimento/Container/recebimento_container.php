@@ -39,7 +39,7 @@
         }
     </style>
 </head>
-<body>
+<body> 
  
 <div class="Container">
     <form method="post" action="process.php" id="form1" name="form1">
