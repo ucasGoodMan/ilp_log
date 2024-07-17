@@ -40,7 +40,7 @@
                 <ul class="sub-menu">
                     <li><a class="link_name">Recebimento</a></li>
                     <li><a href="../home/recebimento/Container/recebimento_container.php">Container</a></li>
-                    <li><a href="../home/recebimento/CARGA/carga.php">Carga</a></li>
+                    <li><a href="../home/recebimento/CARGA/vistoriaCarga.php">Carga</a></li>
                 </ul>
             </li> 
             <li>
@@ -54,11 +54,10 @@
                 <ul class="sub-menu">
                     <li><a class="link_name">Controle</a></li>
                     <li><a href="movimentacao\docaRecebimento.php">Doca de recebimento</a></li>
-                    <li><a href="../home/movimentacao/estadoEstoque.php">Esssstoque</a></li>
                 </ul>
             </li>   
             <li>
-                <a href="movimentacao\solicitacoesMovimentacao.php">
+                <a href="../home/movimentacao/solicitacoesMovimentacao.php">
                     <i class="fa-solid fa-dolly"></i>    
                     <span class="link_name">Movimentação</span>
                 </a>
@@ -84,12 +83,12 @@
                 </ul>
             </li>
             <li>
-                <a href="">
+                <a href="../home/movimentacao/estadoEstoque.php">
                     <i class="fa-solid fa-boxes-stacked"></i>
                     <span class="link_name">Estoque</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="">Estoque</a></li>
+                    <li><a class="blank" href="../home/movimentacao/estadoEstoque.php">Estoque</a></li>
                 </ul>
             </li>
             <li>

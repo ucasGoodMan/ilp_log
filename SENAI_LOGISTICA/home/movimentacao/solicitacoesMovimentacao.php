@@ -36,7 +36,7 @@
     $sql = "SELECT id, npedido, produto, qtd, posicao, status FROM movimentacao";
     $result = $conn->query($sql);
 
-    // Verifica se há resultados
+    // Verifica se há resultados 
     if ($result->num_rows > 0) {
         echo "<table border='1'>";
         echo "<tr><th>ID</th><th>Numero do Pedido</th><th>Produto</th><th>Quantidade</th><th>Posicao</th><th>Status</th><th>Acao</th></tr>";
