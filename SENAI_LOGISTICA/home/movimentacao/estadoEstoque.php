@@ -150,7 +150,7 @@
             }
             echo "</tr>";
         }
-        </form>
+        
         ?>
     </table>
 </body>
