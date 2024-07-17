@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 25-Jun-2024 às 13:22
+-- Generation Time: 17-Jul-2024 às 04:52
 -- Versão do servidor: 5.6.20-log
 -- PHP Version: 5.4.31
 
@@ -101,9 +101,11 @@ CREATE TABLE IF NOT EXISTS `criacaopedido` (
 --
 
 INSERT INTO `criacaopedido` (`npedido`, `produtos`, `unidade`, `quantidade`, `vlrporunidade`, `ncm`, `cst`, `cfop`, `doca`) VALUES
+(12, 'notebook', 'PÃ‡', 23, 7900, 1, 1, 1, '2'),
 (98, 'guardaroupa', 'pÃ§', 12, 1, 1, 1, 1, '6'),
 (909, 'maquina', 'pÃ§', 16, 1, 1, 1, 1, '1'),
-(7777, 'ESPELHO', 'PÃ‡', 95, 55, 1, 1, 1, '9');
+(7777, 'ESPELHO', 'PÃ‡', 95, 55, 1, 1, 1, '9'),
+(9898, 'luan', 'PÃ‡', 45, 67, 1, 1, 1, '3');
 
 -- --------------------------------------------------------
 
@@ -113,42 +115,43 @@ INSERT INTO `criacaopedido` (`npedido`, `produtos`, `unidade`, `quantidade`, `vl
 
 CREATE TABLE IF NOT EXISTS `estoque` (
 `id` int(11) NOT NULL,
-  `posicao` varchar(20) NOT NULL,
-  `status` varchar(20) DEFAULT 'Vazia',
-  `itens` varchar(255) DEFAULT NULL
+  `posicaoVaga` varchar(20) NOT NULL,
+  `statusVaga` varchar(20) DEFAULT 'Vazia',
+  `itens` varchar(255) DEFAULT NULL,
+  `posicao` varchar(255) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Extraindo dados da tabela `estoque`
 --
 
-INSERT INTO `estoque` (`id`, `posicao`, `status`, `itens`) VALUES
-(1, 'A1', 'Vazia', NULL),
-(2, 'A2', 'Vazia', NULL),
-(3, 'A3', 'Vazia', NULL),
-(4, 'A4', 'Vazia', NULL),
-(5, 'A5', 'Vazia', NULL),
-(6, 'B1', 'Vazia', NULL),
-(7, 'B2', 'Vazia', NULL),
-(8, 'B3', 'Vazia', NULL),
-(9, 'B4', 'Vazia', NULL),
-(10, 'B5', 'Vazia', NULL),
-(11, 'C1', 'Vazia', NULL),
-(12, 'C2', 'Vazia', NULL),
-(13, 'C3', 'Vazia', NULL),
-(14, 'C4', 'Vazia', NULL),
-(15, 'C5', 'Vazia', NULL),
-(16, 'D1', 'Vazia', NULL),
-(17, 'D2', 'Vazia', NULL),
-(18, 'D3', 'Vazia', NULL),
-(19, 'D4', 'Vazia', NULL),
-(20, 'D5', 'Vazia', NULL),
-(21, 'E1', 'Vazia', NULL),
-(22, 'E2', 'Vazia', NULL),
-(23, 'E3', 'Vazia', NULL),
-(24, 'E4', 'Vazia', NULL),
-(25, 'E5', 'Cheia', NULL),
-(26, 'B2', 'Vazia', NULL);
+INSERT INTO `estoque` (`id`, `posicaoVaga`, `statusVaga`, `itens`, `posicao`) VALUES
+(1, 'A1', 'Vazia', NULL, ''),
+(2, 'A2', 'Vazia', NULL, ''),
+(3, 'A3', 'Vazia', NULL, ''),
+(4, 'A4', 'Vazia', NULL, ''),
+(5, 'A5', 'Vazia', NULL, ''),
+(6, 'B1', 'Vazia', NULL, ''),
+(7, 'B2', 'Vazia', NULL, ''),
+(8, 'B3', 'Vazia', NULL, ''),
+(9, 'B4', 'Vazia', NULL, ''),
+(10, 'B5', 'Vazia', NULL, ''),
+(11, 'C1', 'Vazia', NULL, ''),
+(12, 'C2', 'Vazia', NULL, ''),
+(13, 'C3', 'Vazia', NULL, ''),
+(14, 'C4', 'Vazia', NULL, ''),
+(15, 'C5', 'Vazia', NULL, ''),
+(16, 'D1', 'Vazia', NULL, ''),
+(17, 'D2', 'Vazia', NULL, ''),
+(18, 'D3', 'Vazia', NULL, ''),
+(19, 'D4', 'Vazia', NULL, ''),
+(20, 'D5', 'Vazia', NULL, ''),
+(21, 'E1', 'Vazia', NULL, ''),
+(22, 'E2', 'Vazia', NULL, ''),
+(23, 'E3', 'Vazia', NULL, ''),
+(24, 'E4', 'Vazia', NULL, ''),
+(25, 'E5', 'Vazia', NULL, ''),
+(26, 'B2', 'Vazia', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -182,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `movimentacao` (
   `qtd` int(11) NOT NULL,
   `posicao` varchar(255) NOT NULL,
   `status` varchar(20) DEFAULT 'Pendente'
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Extraindo dados da tabela `movimentacao`
@@ -195,7 +198,12 @@ INSERT INTO `movimentacao` (`id`, `npedido`, `produto`, `qtd`, `posicao`, `statu
 (21, '909', 'maquina', 3, 'A3', 'Pendente'),
 (22, '98', 'guardaroupa', 3, 'A3', 'ConcluÃ­do'),
 (23, '98', 'guardaroupa', 8, 'A3', 'ConcluÃ­do'),
-(24, '7777', 'ESPELHO', 3, 'b4', 'ConcluÃ­do');
+(24, '7777', 'ESPELHO', 3, 'b4', 'ConcluÃ­do'),
+(25, '9898', 'luan', 2, 'A3', 'Pendente'),
+(26, '9898', 'luan', 2, 'A3', 'Pendente'),
+(27, '9898', 'luan', 2, 'A3', 'Pendente'),
+(28, '9898', 'luan', 2, 'A3', 'Pendente'),
+(29, '9898', 'luan', 5, 'A3', 'Concluido');
 
 -- --------------------------------------------------------
 
@@ -212,7 +220,6 @@ CREATE TABLE IF NOT EXISTS `movimentacaoestoque` (
   `qtdItem` int(11) NOT NULL COMMENT 'qtd de itens na vaga',
   `statusMovimentacao` varchar(20) NOT NULL DEFAULT 'Pendente' COMMENT 'status da moviemntação: pendente/concluida'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
 
 -- --------------------------------------------------------
 
@@ -240,24 +247,32 @@ INSERT INTO `turma` (`id`, `nturma`, `nometurma`, `qntalunos`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `vistoriaconferenciacarga`
+-- Estrutura da tabela `vistoriacarga`
 --
 
-CREATE TABLE IF NOT EXISTS `vistoriaconferenciacarga` (
-  `NotaFiscal` int(11) NOT NULL,
-  `PedidoCompra` varchar(50) NOT NULL,
-  `Doca` varchar(30) NOT NULL,
-  `Produtos1` varchar(50) NOT NULL,
-  `UN1` varchar(30) NOT NULL,
-  `QTD1` int(20) NOT NULL,
-  `ValorUnit1` int(20) NOT NULL,
-  `ValorTotal1` int(20) NOT NULL,
-  `Produtos2` varchar(50) NOT NULL,
-  `UN2` varchar(30) NOT NULL,
-  `QTD2` int(20) NOT NULL,
-  `ValorUnit2` int(20) NOT NULL,
-  `ValorTotal2` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `vistoriacarga` (
+`id` int(11) NOT NULL,
+  `npedido` varchar(50) NOT NULL,
+  `produtos` text NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `vlrporunidade` decimal(10,2) NOT NULL,
+  `doca` varchar(50) NOT NULL,
+  `avariado` tinyint(1) NOT NULL DEFAULT '0',
+  `faltando` tinyint(1) NOT NULL DEFAULT '0',
+  `observacoes` text,
+  `data_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Extraindo dados da tabela `vistoriacarga`
+--
+
+INSERT INTO `vistoriacarga` (`id`, `npedido`, `produtos`, `quantidade`, `vlrporunidade`, `doca`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
+(1, '7777', 'ESPELHO', 95, '55.00', '9', 0, 0, 'scawcwcw', '2024-07-17 04:20:58'),
+(2, '9898', 'luan', 45, '67.00', '3', 1, 1, 'sem observacoes', '2024-07-17 04:21:26'),
+(3, '12', 'notebook', 23, '7900.00', '2', 1, 1, '2 unidades faltando, 1 avariada', '2024-07-17 04:28:04'),
+(4, '12', 'notebook', 23, '7900.00', '2', 1, 1, '2 unidades fwdwdwwdwwaltando, 1 avariada', '2024-07-17 04:32:35'),
+(5, '12', 'notebook', 23, '7900.00', '2', 1, 0, '', '2024-07-17 04:35:56');
 
 -- --------------------------------------------------------
 
@@ -292,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `vistoriaconferenciacontainer` (
   `PainelAvariado` tinyint(1) DEFAULT NULL,
   `SemCaboEnergia` tinyint(1) DEFAULT NULL,
   `SemLona` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Extraindo dados da tabela `vistoriaconferenciacontainer`
@@ -309,7 +324,8 @@ INSERT INTO `vistoriaconferenciacontainer` (`id`, `PlacaCaminhao`, `NomeMotorist
 (8, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (9, 'a', 'q', 'w', 'e', 'a', 'w', 'e', -1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (10, 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1),
-(11, 'zxc2', 'clie', '345tgr', 'simnue', 'sim', 'hijak', 'lockr3', 456, 12, 122, 142, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1);
+(11, 'zxc2', 'clie', '345tgr', 'simnue', 'sim', 'hijak', 'lockr3', 456, 12, 122, 142, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1),
+(12, '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -358,6 +374,12 @@ ALTER TABLE `turma`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vistoriacarga`
+--
+ALTER TABLE `vistoriacarga`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vistoriaconferenciacontainer`
 --
 ALTER TABLE `vistoriaconferenciacontainer`
@@ -386,7 +408,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `movimentacao`
 --
 ALTER TABLE `movimentacao`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `movimentacaoestoque`
 --
@@ -398,10 +420,15 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `turma`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
+-- AUTO_INCREMENT for table `vistoriacarga`
+--
+ALTER TABLE `vistoriacarga`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `vistoriaconferenciacontainer`
 --
 ALTER TABLE `vistoriaconferenciacontainer`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

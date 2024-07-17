@@ -34,8 +34,7 @@
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name">Pedidos</a></li>
-                    <li><a href="../homeProf/itens/pedidos.php">Criar pedidos</a></li>
+                    <li><a href="SENAI_LOGISTICA/homeProf/itens/pedidos.php">Pedidos</a></li>
                     <li><a href="">Meus pedidos</a></li>
                 </ul>
             </li>
