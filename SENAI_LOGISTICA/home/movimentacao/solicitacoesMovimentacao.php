@@ -1,6 +1,7 @@
+<!-- ABRE AS REQUISIÇÕES DE MOVIMENTAÇÃO -->
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
     <meta charset='UTF-8'>
     <title>Solicitacoes de Movimentacao</title>
 </head>
@@ -30,7 +31,7 @@
         $updateStmt->bind_param("i", $movimentacao_id);
         $updateStmt->execute();
         echo "<p>Movimentação ID $movimentacao_id marcada como concluida.</p>";
-    }
+    } 
 
     // Consulta SQL para obter as solicitações de movimentação
     $sql = "SELECT id, npedido, produto, qtd, posicao, status FROM movimentacao";
