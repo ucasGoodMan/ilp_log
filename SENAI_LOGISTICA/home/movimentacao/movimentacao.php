@@ -23,22 +23,27 @@
             die("Falha na conexão: " . $conn->connect_error);
         }
 
+        // Variáveis para armazenar o resultado da consulta
+        $resultado = "";
+        $erro = "";
+        $dadosPedido = [];
+
          // Obtém os parâmetros GET
-        $nPedido = isset($_GET['nPedido']) ? $_GET['nPedido'] : null;
+        $npedido = isset($_GET['npedido']) ? $_GET['npedido'] : null;
         $doca = isset($_GET['doca']) ? $_GET['doca'] : null;
 
         // Depuração: Exibir os valores dos parâmetros
         echo "<pre>";
-        echo "Valor de nPedido: " . htmlspecialchars($nPedido) . "\n";
+        echo "Valor de npedido: " . htmlspecialchars($npedido) . "\n";
         echo "Valor de doca: " . htmlspecialchars($doca) . "\n";
         echo "</pre>";
 
 
         // Verifica se os parâmetros foram recebidos
-        if (isset($nPedido) && isset($doca)) {
+        if (isset($npedido) && isset($doca)) {
             // Exibe o número do pedido e a doca no topo da página
             echo "<h1>solicitar movimentaçao (depois da vistoria)</h1>";
-            echo "<p><strong>Número do Pedido:</strong> " . htmlspecialchars($nPedido) . "</p>";
+            echo "<p><strong>Número do Pedido:</strong> " . htmlspecialchars($npedido) . "</p>";
             echo "<p><strong>Doca:</strong> " . htmlspecialchars($doca) . "</p>";
             
             // Processa o formulário se foi enviado
@@ -48,24 +53,24 @@
                 $posicao = $_POST['posicao'];
 
                 // Atualiza a quantidade na tabela original
-                $updateSql = "UPDATE criacaopedido SET quantidade = quantidade - ? WHERE nPedido = ? AND doca = ? AND produtos = ?";
+                $updateSql = "UPDATE criacaopedido SET quantidade = quantidade - ? WHERE npedido = ? AND doca = ? AND produtos = ?";
                 $updateStmt = $conn->prepare($updateSql);
-                $updateStmt->bind_param("isss", $qtd, $nPedido, $doca, $produto);
+                $updateStmt->bind_param("isss", $qtd, $npedido, $doca, $produto);
                 $updateStmt->execute();
 
                 // Insere os dados na tabela de movimentação
-                $insertSql = "INSERT INTO movimentacao (nPedido, produto, qtd, posicao) VALUES (?, ?, ?, ?)";
+                $insertSql = "INSERT INTO movimentacao (npedido, produto, qtd, posicao) VALUES (?, ?, ?, ?)";
                 $insertStmt = $conn->prepare($insertSql);
-                $insertStmt->bind_param("ssds", $nPedido, $produto, $qtd, $posicao);
+                $insertStmt->bind_param("ssds", $npedido, $produto, $qtd, $posicao);
                 $insertStmt->execute();
 
                 echo "<p>Movimentação registrada com sucesso!</p>";
             }
 
             // Consulta SQL para obter os dados
-            $sql = "SELECT produtos, unidade, quantidade FROM criacaopedido WHERE nPedido = ? AND doca = ?";
+            $sql = "SELECT produtos, unidade, quantidade FROM criacaopedido WHERE npedido = ? AND doca = ?";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ss", $nPedido, $doca);
+            $stmt->bind_param("ss", $npedido, $doca);
             $stmt->execute();
             $result = $stmt->get_result();
 
@@ -96,7 +101,7 @@
             // Fecha a conexão
             $stmt->close();
         } else {
-            echo "Parâmetros 'nPedido' ou 'doca' não fornecidos.";
+            echo "Parâmetros 'npedido' ou 'doca' não fornecidos.";
         }
 
         $conn->close();
