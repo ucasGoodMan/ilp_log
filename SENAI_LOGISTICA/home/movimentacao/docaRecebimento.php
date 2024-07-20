@@ -125,9 +125,9 @@ if ($conn->connect_error) {
 } 
 
 // Consulta SQL para obter todos os pedidos
-$sql = "SELECT npedido, doca FROM criacaopedido";
+$sql = "SELECT npedido, doca FROM vistoriacarga";
 $result = $conn->query($sql);
-
+ 
 // Verifica se há resultados
 if ($result->num_rows > 0) {
     echo "<ul class='pedido-list'>";
