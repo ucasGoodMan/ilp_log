@@ -29,12 +29,12 @@
                 <div class="iocn-links">
                     <a href="">
                         <i class="fa-solid fa-file-circle-plus"></i>
-                        <span class="link_name">Pedidos</span>
+                        <span class="link_name">Pedidos A SETA TA AQUI Ó --></span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="SENAI_LOGISTICA/homeProf/itens/pedidos.php">Pedidos</a></li>
+                    <li><a href="..\homeProf\itens\pedidos.php">Pedidos</a></li>
                     <li><a href="">Meus pedidos</a></li>
                 </ul>
             </li>
