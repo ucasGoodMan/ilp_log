@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 17-Jul-2024 às 04:52
+-- Generation Time: 27-Jul-2024 às 22:57
 -- Versão do servidor: 5.6.20-log
 -- PHP Version: 5.4.31
 
@@ -101,11 +101,11 @@ CREATE TABLE IF NOT EXISTS `criacaopedido` (
 --
 
 INSERT INTO `criacaopedido` (`npedido`, `produtos`, `unidade`, `quantidade`, `vlrporunidade`, `ncm`, `cst`, `cfop`, `doca`) VALUES
-(12, 'notebook', 'PÃ‡', 23, 7900, 1, 1, 1, '2'),
-(98, 'guardaroupa', 'pÃ§', 12, 1, 1, 1, 1, '6'),
-(909, 'maquina', 'pÃ§', 16, 1, 1, 1, 1, '1'),
-(7777, 'ESPELHO', 'PÃ‡', 95, 55, 1, 1, 1, '9'),
-(9898, 'luan', 'PÃ‡', 45, 67, 1, 1, 1, '3');
+(11, 'mouse', 'PÃ‡', 23, 109, 1, 1, 1, '9'),
+(12, 'mouse', 'pÃ§', 94, 55, 1, 1, 1, '12'),
+(19, 'Isac', 'negro', 15, 1, 0, 0, 0, '9'),
+(20, 'mouse', 'PÃ‡', 0, 55, 9, 4, 1, '9'),
+(21, '1', '1', 0, 1, 1, 1, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -185,25 +185,18 @@ CREATE TABLE IF NOT EXISTS `movimentacao` (
   `qtd` int(11) NOT NULL,
   `posicao` varchar(255) NOT NULL,
   `status` varchar(20) DEFAULT 'Pendente'
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `movimentacao`
 --
 
 INSERT INTO `movimentacao` (`id`, `npedido`, `produto`, `qtd`, `posicao`, `status`) VALUES
-(18, '909', 'maquina', 1, 'A3', 'Pendente'),
-(19, '909', 'maquina', 20, 'A3', 'Pendente'),
-(20, '909', 'maquina', 1, 'A3', 'ConcluÃ­do'),
-(21, '909', 'maquina', 3, 'A3', 'Pendente'),
-(22, '98', 'guardaroupa', 3, 'A3', 'ConcluÃ­do'),
-(23, '98', 'guardaroupa', 8, 'A3', 'ConcluÃ­do'),
-(24, '7777', 'ESPELHO', 3, 'b4', 'ConcluÃ­do'),
-(25, '9898', 'luan', 2, 'A3', 'Pendente'),
-(26, '9898', 'luan', 2, 'A3', 'Pendente'),
-(27, '9898', 'luan', 2, 'A3', 'Pendente'),
-(28, '9898', 'luan', 2, 'A3', 'Pendente'),
-(29, '9898', 'luan', 5, 'A3', 'Concluido');
+(1, '12', 'mouse', 5, 'A3', 'Concluido'),
+(2, '12', 'mouse', 1, 'A3', 'Concluido'),
+(3, '19', 'Isac', 3, 'A3', 'Concluido'),
+(4, '20', 'mouse', 1, 'A3', 'Concluido'),
+(5, '21', '1', 1, 'A3', 'ConcluÃ­do');
 
 -- --------------------------------------------------------
 
@@ -247,6 +240,101 @@ INSERT INTO `turma` (`id`, `nturma`, `nometurma`, `qntalunos`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `vagas`
+--
+
+CREATE TABLE IF NOT EXISTS `vagas` (
+`id` int(3) NOT NULL,
+  `vaga` varchar(64) NOT NULL,
+  `statusVaga` varchar(10) DEFAULT 'vazia',
+  `itens` varchar(500) NOT NULL
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=77 ;
+
+--
+-- Extraindo dados da tabela `vagas`
+--
+
+INSERT INTO `vagas` (`id`, `vaga`, `statusVaga`, `itens`) VALUES
+(1, '', 'vazia', ''),
+(2, '', 'vazia', ''),
+(3, '', 'vazia', ''),
+(4, '', 'vazia', ''),
+(5, '', 'vazia', ''),
+(6, '', 'vazia', ''),
+(7, '', 'vazia', ''),
+(8, '', 'vazia', ''),
+(9, '', 'vazia', ''),
+(10, '', 'vazia', ''),
+(11, '', 'vazia', ''),
+(12, '', 'vazia', ''),
+(13, '', 'vazia', ''),
+(14, '', 'vazia', ''),
+(15, '', 'vazia', ''),
+(16, '', 'vazia', ''),
+(17, '', 'vazia', ''),
+(18, '', 'vazia', ''),
+(19, '', 'vazia', ''),
+(20, '', 'vazia', ''),
+(21, '', 'vazia', ''),
+(22, '', 'vazia', ''),
+(23, '', 'vazia', ''),
+(24, '', 'vazia', ''),
+(25, '', 'vazia', ''),
+(26, 'A1', 'vazia', ''),
+(27, 'A1', 'vazia', ''),
+(28, 'A2', 'vazia', ''),
+(29, 'A3', 'vazia', ''),
+(30, 'A4', 'vazia', ''),
+(31, 'A5', 'vazia', ''),
+(32, 'B1', 'vazia', ''),
+(33, 'B2', 'vazia', ''),
+(34, 'B3', 'vazia', ''),
+(35, 'B4', 'vazia', ''),
+(36, 'B5', 'vazia', ''),
+(37, 'C1', 'vazia', ''),
+(38, 'C2', 'vazia', ''),
+(39, 'C3', 'vazia', ''),
+(40, 'C4', 'vazia', ''),
+(41, 'C5', 'vazia', ''),
+(42, 'D1', 'vazia', ''),
+(43, 'D2', 'vazia', ''),
+(44, 'D3', 'vazia', ''),
+(45, 'D4', 'vazia', ''),
+(46, 'D5', 'vazia', ''),
+(47, 'E1', 'vazia', ''),
+(48, 'E2', 'vazia', ''),
+(49, 'E3', 'vazia', ''),
+(50, 'E4', 'vazia', ''),
+(51, 'E5', 'vazia', ''),
+(52, 'A1', 'vazia', ''),
+(53, 'A2', 'vazia', ''),
+(54, 'A3', 'vazia', ''),
+(55, 'A4', 'vazia', ''),
+(56, 'A5', 'vazia', ''),
+(57, 'B1', 'vazia', ''),
+(58, 'B2', 'vazia', ''),
+(59, 'B3', 'vazia', ''),
+(60, 'B4', 'vazia', ''),
+(61, 'B5', 'vazia', ''),
+(62, 'C1', 'vazia', ''),
+(63, 'C2', 'vazia', ''),
+(64, 'C3', 'vazia', ''),
+(65, 'C4', 'vazia', ''),
+(66, 'C5', 'vazia', ''),
+(67, 'D1', 'vazia', ''),
+(68, 'D2', 'vazia', ''),
+(69, 'D3', 'vazia', ''),
+(70, 'D4', 'vazia', ''),
+(71, 'D5', 'vazia', ''),
+(72, 'E1', 'vazia', ''),
+(73, 'E2', 'vazia', ''),
+(74, 'E3', 'vazia', ''),
+(75, 'E4', 'vazia', ''),
+(76, 'E5', 'vazia', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `vistoriacarga`
 --
 
@@ -261,18 +349,20 @@ CREATE TABLE IF NOT EXISTS `vistoriacarga` (
   `faltando` tinyint(1) NOT NULL DEFAULT '0',
   `observacoes` text,
   `data_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Extraindo dados da tabela `vistoriacarga`
 --
 
 INSERT INTO `vistoriacarga` (`id`, `npedido`, `produtos`, `quantidade`, `vlrporunidade`, `doca`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
-(1, '7777', 'ESPELHO', 95, '55.00', '9', 0, 0, 'scawcwcw', '2024-07-17 04:20:58'),
-(2, '9898', 'luan', 45, '67.00', '3', 1, 1, 'sem observacoes', '2024-07-17 04:21:26'),
-(3, '12', 'notebook', 23, '7900.00', '2', 1, 1, '2 unidades faltando, 1 avariada', '2024-07-17 04:28:04'),
-(4, '12', 'notebook', 23, '7900.00', '2', 1, 1, '2 unidades fwdwdwwdwwaltando, 1 avariada', '2024-07-17 04:32:35'),
-(5, '12', 'notebook', 23, '7900.00', '2', 1, 0, '', '2024-07-17 04:35:56');
+(4, '19', 'Isac', 18, '1.00', '9', 1, 0, 'problema no joelho', '2024-07-20 01:47:08'),
+(3, '12', 'mouse', 100, '55.00', '12', 0, 0, '', '2024-07-20 01:24:22'),
+(5, '11', 'mouse', 23, '109.00', '9', 0, 0, '', '2024-07-24 00:14:25'),
+(6, '20', 'mouse', 1, '55.00', '9', 0, 0, '', '2024-07-24 02:06:33'),
+(7, '21', '1', 1, '1.00', '1', 0, 0, '', '2024-07-24 02:12:38'),
+(8, '11', 'mouse', 23, '109.00', '9', 1, 1, 'aaaaaaa', '2024-07-27 22:55:00'),
+(9, '11', 'mouse', 23, '109.00', '9', 1, 1, 'sem observacoes', '2024-07-27 22:55:24');
 
 -- --------------------------------------------------------
 
@@ -307,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `vistoriaconferenciacontainer` (
   `PainelAvariado` tinyint(1) DEFAULT NULL,
   `SemCaboEnergia` tinyint(1) DEFAULT NULL,
   `SemLona` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Extraindo dados da tabela `vistoriaconferenciacontainer`
@@ -325,7 +415,8 @@ INSERT INTO `vistoriaconferenciacontainer` (`id`, `PlacaCaminhao`, `NomeMotorist
 (9, 'a', 'q', 'w', 'e', 'a', 'w', 'e', -1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (10, 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1),
 (11, 'zxc2', 'clie', '345tgr', 'simnue', 'sim', 'hijak', 'lockr3', 456, 12, 122, 142, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1),
-(12, '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(12, '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(13, 'abc1234', 'joao', 'senu123456-2', 'msk alabama', 'sesi', '22g1', 'ty6423', 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -374,6 +465,12 @@ ALTER TABLE `turma`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vagas`
+--
+ALTER TABLE `vagas`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vistoriacarga`
 --
 ALTER TABLE `vistoriacarga`
@@ -408,7 +505,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `movimentacao`
 --
 ALTER TABLE `movimentacao`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `movimentacaoestoque`
 --
@@ -420,15 +517,20 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `turma`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
+-- AUTO_INCREMENT for table `vagas`
+--
+ALTER TABLE `vagas`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=77;
+--
 -- AUTO_INCREMENT for table `vistoriacarga`
 --
 ALTER TABLE `vistoriacarga`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `vistoriaconferenciacontainer`
 --
 ALTER TABLE `vistoriaconferenciacontainer`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
