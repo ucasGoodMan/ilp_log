@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styleS.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>SIDEBAR</title>
+    <title>SIDEBAR ALUNO</title>
 
 
 </head>
@@ -69,7 +69,7 @@
             <li>
                 <a href="">
                     <i class="fa-solid fa-hand-holding"></i>
-                    <span class="link_name">Picking sla pra que serve</span>
+                    <span class="link_name">Picking (VAZIO)</span>
                 </a>
                 <ul class="sub-menu">
                     <li><a class="blank" href="">Picking</a></li>
