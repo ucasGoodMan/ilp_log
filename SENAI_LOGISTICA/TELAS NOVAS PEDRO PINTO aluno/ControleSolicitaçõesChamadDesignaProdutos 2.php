@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela 2 - Controle de Solicitações</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border: 2px solid #ccc;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 10px;
+        }
+
+        .row {
+            display: contents;
+        }
+
+        .label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            color: black;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: rgb(37, 91, 168);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            background-color: rgb(29, 70, 130);
+        }
+
+        .produto-grid {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .produto-header, .produto-item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+
+        .produto-header {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .status-ok {
+            background-color: rgb(37, 91, 168);
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .status-ok:hover {
+            background-color: rgb(29, 70, 130);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tela 2 - Controle de Solicitações chamada Designar Produtos</h1>
+        <form>
+            <div class="grid">
+                <div class="row">
+                    <span class="label">Solicitação nº</span>
+                    <input type="text" name="solicitacao">
+                </div>
+            </div>
+            <div class="produto-grid">
+                <div class="produto-header">Produto</div>
+                <div class="produto-header">UN</div>
+                <div class="produto-header">QTD</div>
+                <div class="produto-header">QTD</div>
+                <div class="produto-header">Posição</div>
+                <div class="produto-header"></div>
+
+                <input class="produto-item" type="text" value="Barbante">
+                <input class="produto-item" type="text" value="RL">
+                <input class="produto-item" type="text" value="3">
+                <input class="produto-item" type="number">
+                <input class="produto-item" type="text" value="A1">
+                <button class="produto-item status-ok">Enviar</button>
+
+                <input class="produto-item" type="text" value="Tesoura">
+                <input class="produto-item" type="text" value="UN">
+                <input class="produto-item" type="text" value="7">
+                <input class="produto-item" type="number">
+                <input class="produto-item" type="text" value="B3">
+                <button class="produto-item status-ok">Enviar</button>
+
+                <input class="produto-item" type="text" value="Arame">
+                <input class="produto-item" type="text" value="RL">
+                <input class="produto-item" type="text" value="2">
+                <input class="produto-item" type="number">
+                <input class="produto-item" type="text" value="A5">
+                <button class="produto-item status-ok">Enviar</button>
+
+                <input class="produto-item" type="text" value="Placa de indução">
+                <input class="produto-item" type="text" value="PQ">
+                <input class="produto-item" type="text" value="7">
+                <input class="produto-item" type="number">
+                <input class="produto-item" type="text" value="D1">
+                <button class="produto-item status-ok">Enviar</button>
+
+                <input class="produto-item" type="text" value="Fio de Nylon">
+                <input class="produto-item" type="text" value="CX">
+                <input class="produto-item" type="text" value="1">
+                <input class="produto-item" type="number">
+                <input class="produto-item" type="text" value="C1">
+                <button class="produto-item status-ok">Enviar</button>
+
+                <input class="produto-item" type="text" value="Tesoura">
+                <input class="produto-item" type="text" value="MT">
+                <input class="produto-item" type="text" value="8">
+                <input class="produto-item" type="number">
+                <input class="produto-item" type="text" value="C3">
+                <button class="produto-item status-ok">Enviar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

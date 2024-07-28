@@ -58,14 +58,6 @@
                 </ul>
             </li>   
             <li>
-                <a href="../home/picking/picking.php">
-                    <i class="fa-solid fa-hand-holding"></i>
-                    <span class="link_name">Picking (VAZIO)</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="">Picking</a></li>
-                </ul>
-            <li>
                 <a href="">
                     <i class="fa-solid fa-truck-fast"></i>
                     <span class="link_name">Expedição</span>
