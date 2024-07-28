@@ -46,7 +46,7 @@
             text-align: center;
         }
 
-        input[type="text"], input[type="number"], textarea {
+        input[type="text"], input[type="number"], textarea, select {
             padding: 10px;
             width: 100%;
             box-sizing: border-box;
@@ -88,7 +88,22 @@
                 grid.innerHTML = `
                     <input type="text" name="cod[]" placeholder="Código">
                     <input type="text" name="produto[]" placeholder="Produto">
-                    <input type="text" name="un[]" placeholder="UN">
+                    <select name="un[]">
+                        <option value="caixa">caixa</option>
+                        <option value="unidade">unidade</option>
+                        <option value="peça">peça</option>
+                        <option value="kilograma">kilograma</option>
+                        <option value="litro">litro</option>
+                        <option value="palete">palete</option>
+                        <option value="pacote">pacote</option>
+                        <option value="cartão">cartão</option>
+                        <option value="rolo">rolo</option>
+                        <option value="tonelada">tonelada</option>
+                        <option value="bloco">bloco</option>
+                        <option value="saco">saco</option>
+                        <option value="fardo">fardo</option>
+                        <option value="bandeja">bandeja</option>
+                    </select>
                     <input type="number" name="qtd[]" placeholder="Quantidade">
                     <input type="text" name="rsunit[]" placeholder="Preço Unitário">
                     <input type="text" name="ncm[]" placeholder="NCM">
@@ -135,7 +150,22 @@
                 <div class="grid" id="product1">
                     <input id="npedido" type="number" name="cod[]" placeholder="Código">
                     <input id="produtos" type="text" name="produto[]" placeholder="Produto">
-                    <input id="unidade" type="text" name="un[]" placeholder="UN">
+                    <select name="un[]">
+                        <option value="caixa">caixa</option>
+                        <option value="unidade">unidade</option>
+                        <option value="peça">peça</option>
+                        <option value="kilograma">kilograma</option>
+                        <option value="litro">litro</option>
+                        <option value="palete">palete</option>
+                        <option value="pacote">pacote</option>
+                        <option value="cartão">cartão</option>
+                        <option value="rolo">rolo</option>
+                        <option value="tonelada">tonelada</option>
+                        <option value="bloco">bloco</option>
+                        <option value="saco">saco</option>
+                        <option value="fardo">fardo</option>
+                        <option value="bandeja">bandeja</option>
+                    </select>
                     <input id="quantidade" type="number" name="qtd[]" placeholder="Quantidade">
                     <input id="vlrporunidade" type="number" name="rsunit[]" placeholder="Preço">
                     <input id="ncm" type="number" name="ncm[]" placeholder="NCM">
