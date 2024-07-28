@@ -23,7 +23,7 @@
             top: 20px;
             left: 20px;
             background-color: rgb(37, 91, 168);
-            color: #000;
+            color: white;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 4px;

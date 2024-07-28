@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             top: 20px;
             left: 20px;
             background-color: rgb(37, 91, 168);
-            color: #000;
+            color: white;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 4px;
