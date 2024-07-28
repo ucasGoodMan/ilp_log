@@ -58,15 +58,6 @@
                 </ul>
             </li>   
             <li>
-                <a href="../home/movimentacao/solicitacoesMovimentacao.php">
-                    <i class="fa-solid fa-dolly"></i>    
-                    <span class="link_name">Movimentação ja ta em controle opção de baixo</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="">Movimentação</a></li>
-                </ul>
-            </li>
-            <li>
                 <a href="">
                     <i class="fa-solid fa-hand-holding"></i>
                     <span class="link_name">Picking (VAZIO)</span>

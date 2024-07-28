@@ -2,7 +2,7 @@
 // Configurações do banco de dados
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "root"; // Adicione a senha do banco de dados, se necessário
 $dbname = "senai";
 
 // Variáveis para armazenar o resultado da consulta
@@ -101,50 +101,106 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
 <head>
     <meta charset="UTF-8">
     <title>Consulta de Pedido</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 97%; /* Define uma largura específica */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            background-color:  rgb(37, 91, 168);
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: rgb(37, 91, 140);
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
-<!-- Formulário de consulta -->
-<form action="vistoriaCarga.php" method="post">
-    <label for="npedido">Número do Pedido:</label>
-    <input type="text" id="npedido" name="npedido" required>
-    <input type="submit" value="Consultar">
-</form>
-
-<?php
-// Exibe o resultado ou a mensagem de erro
-if ($resultado) {
-    echo $resultado;
-
-    // Exibe o formulário de salvamento apenas se houver resultados
-    if (!empty($dadosPedido)) {
-?>
-    <h2>Salvar Informações Adicionais</h2>
+<div class="container">
+    <!-- Formulário de consulta -->
     <form action="vistoriaCarga.php" method="post">
-        <input type="hidden" name="npedido" value="<?php echo $dadosPedido['npedido']; ?>">
-        <input type="hidden" name="produtos" value="<?php echo $dadosPedido['produtos']; ?>">
-        <input type="hidden" name="quantidade" value="<?php echo $dadosPedido['quantidade']; ?>">
-        <input type="hidden" name="vlrporunidade" value="<?php echo $dadosPedido['vlrporunidade']; ?>">
-        <input type="hidden" name="doca" value="<?php echo $dadosPedido['doca']; ?>">
-
-        <label for="checkAvaria">Avariado?</label>
-        <input type="checkbox" id="checkAvaria" name="checkAvaria" value="1"><br>
-
-        <label for="checkFalta">Faltando?</label>
-        <input type="checkbox" id="checkFalta" name="checkFalta" value="1"><br>
-
-        <label for="comentarios">Observações:</label>
-        <input type="text" id="comentarios" name="comentarios"><br>
-
-        <input type="hidden" name="salvar" value="1">
-        <input type="submit" value="Salvar">
+        <label for="npedido">Número do Pedido:</label>
+        <input type="text" id="npedido" name="npedido" required>
+        <input type="submit" value="Consultar">
     </form>
-<?php
+
+    <div class="result">
+    <?php
+    // Exibe o resultado ou a mensagem de erro
+    if ($resultado) {
+        echo $resultado;
+
+        // Exibe o formulário de salvamento apenas se houver resultados
+        if (!empty($dadosPedido)) {
+    ?>
+        <h2>Salvar Informações Adicionais</h2>
+        <form action="vistoriaCarga.php" method="post">
+            <input type="hidden" name="npedido" value="<?php echo $dadosPedido['npedido']; ?>">
+            <input type="hidden" name="produtos" value="<?php echo $dadosPedido['produtos']; ?>">
+            <input type="hidden" name="quantidade" value="<?php echo $dadosPedido['quantidade']; ?>">
+            <input type="hidden" name="vlrporunidade" value="<?php echo $dadosPedido['vlrporunidade']; ?>">
+            <input type="hidden" name="doca" value="<?php echo $dadosPedido['doca']; ?>">
+
+            <label for="checkAvaria">Avariado?</label>
+            <input type="checkbox" id="checkAvaria" name="checkAvaria" value="1"><br>
+
+            <label for="checkFalta">Faltando?</label>
+            <input type="checkbox" id="checkFalta" name="checkFalta" value="1"><br>
+
+            <label for="comentarios">Observações:</label>
+            <input type="text" id="comentarios" name="comentarios"><br>
+
+            <input type="hidden" name="salvar" value="1">
+            <input type="submit" value="Salvar">
+        </form>
+    <?php
+        }
+    } elseif ($erro) {
+        echo '<p class="error">' . $erro . '</p>';
     }
-} elseif ($erro) {
-    echo $erro;
-}
-?>
+    ?>
+    </div>
+</div>
 
 </body>
 </html>
