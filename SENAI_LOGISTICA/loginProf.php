@@ -26,7 +26,7 @@
 			$_SESSION['id'] = $row[0];
 			$conexao -> close();
 			
-			header('Location: ../SENAI_LOGISTICA/homeProf/HomeDoProf.php', true, 301);
+			header('Location: ../SENAI_LOGISTICA/homeProf/index.php', true, 301);
 			exit();
 		} else {
 			

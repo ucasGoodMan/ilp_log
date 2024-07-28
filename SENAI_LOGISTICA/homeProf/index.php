@@ -29,7 +29,7 @@
                 <div class="iocn-links">
                     <a href="">
                         <i class="fa-solid fa-file-circle-plus"></i>
-                        <span class="link_name">Pedidos A SETA TA AQUI Ó --></span>
+                        <span class="link_name">Pedidos</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>

@@ -1,34 +1,63 @@
 <?php
-	$hostname = "127.0.0.1";
-	$user = "root";
-	$password = "root";
-	$database = "senai";
-		 
-	$conexao = new mysqli($hostname, $user, $password, $database);
+// Configuração do banco de dados
+$servername = "127.0.0.1";
+$username = "root";
+$password = "root";
+$dbname = "senai";
 
-	if ($conexao -> connect_errno) {
-		echo "Failed to connect to MySQL: " . $conexao -> connect_error;
-		exit();
-	} else {
-		// Evita caracteres especiais (SQL Inject)
-		$npedido = $conexao -> real_escape_string($_POST['npedido']);
-		$produto = $conexao -> real_escape_string($_POST['produtos']);
-		$unidade = $conexao -> real_escape_string($_POST['unidade']);
-        $quantidade = $conexao -> real_escape_string($_POST['quantidade']);
-		$vlrporunidade = $conexao -> real_escape_string($_POST['vlrporunidade']);
-        $ncm = $conexao -> real_escape_string($_POST['ncm']);
-		$cst = $conexao -> real_escape_string($_POST['cst']);
-        $cfop = $conexao -> real_escape_string($_POST['cfop']);
-		$doca = $conexao -> real_escape_string($_POST['doca']); 
+// Cria conexão com o banco de dados
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    $sql="INSERT INTO `criacaopedido`
-        (`npedido`,  `produtos`, `unidade`, `quantidade`, `vlrporunidade`, `ncm`,`cst`, `cfop`, `doca`)
-    VALUES
-        ('".$npedido."', '".$produto."', '".$unidade."', '".$quantidade."', '".$vlrporunidade."','".$ncm."','".$cst."', '".$cfop."', '".$doca."');";
+// Verifica a conexão
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}
 
-			$resultado = $conexao->query($sql);
-       
-            $conexao -> close();
-            header('Location: ../itens/pedidos.php', true, 301);
-            }
-	?>
+// Obtém os dados do formulário
+$pedido = isset($_POST['pedido']) ? $_POST['pedido'] : '';
+$data_entrega = isset($_POST['data_entrega']) ? $_POST['data_entrega'] : '';
+$data_pedido = isset($_POST['data_pedido']) ? $_POST['data_pedido'] : '';
+$observacoes = isset($_POST['observacoes']) ? $_POST['observacoes'] : '';
+
+$cod = isset($_POST['cod']) ? $_POST['cod'] : [];
+$produto = isset($_POST['produto']) ? $_POST['produto'] : [];
+$un = isset($_POST['un']) ? $_POST['un'] : [];
+$qtd = isset($_POST['qtd']) ? $_POST['qtd'] : [];
+$rsunit = isset($_POST['rsunit']) ? $_POST['rsunit'] : [];
+$ncm = isset($_POST['ncm']) ? $_POST['ncm'] : [];
+$cst = isset($_POST['cst']) ? $_POST['cst'] : [];
+$cfop = isset($_POST['cfop']) ? $_POST['cfop'] : [];
+
+// Insere os dados do pedido na tabela pedidos
+$sql_pedido = "INSERT INTO pedidos (pedido, data_entrega, data_pedido, observacoes) VALUES ('$pedido', '$data_entrega', '$data_pedido', '$observacoes')";
+
+if ($conn->query($sql_pedido) === TRUE) {
+    $pedido_id = $conn->insert_id; // Obtém o ID do pedido inserido
+
+    // Insere os dados dos produtos na tabela produtos
+    for ($i = 0; $i < count($cod); $i++) {
+        $cod_prod = $cod[$i];
+        $nome_produto = $produto[$i];
+        $un_prod = $un[$i];
+        $qtd_prod = $qtd[$i];
+        $rsunit_prod = $rsunit[$i];
+        $ncm_prod = $ncm[$i];
+        $cst_prod = $cst[$i];
+        $cfop_prod = $cfop[$i];
+
+        $sql_produto = "INSERT INTO produtos (pedido_id, cod_prod, nome_produto, un_prod, qtd_prod, rsunit_prod, ncm_prod, cst_prod, cfop_prod) 
+                        VALUES ('$pedido_id', '$cod_prod', '$nome_produto', '$un_prod', '$qtd_prod', '$rsunit_prod', '$ncm_prod', '$cst_prod', '$cfop_prod')";
+        
+        if ($conn->query($sql_produto) === FALSE) {
+            echo "Erro ao inserir produto: " . $conn->error;
+        }
+    }
+
+    echo "Pedido inserido com sucesso!";
+} else {
+    echo "Erro ao inserir pedido: " . $conn->error;
+}
+
+$conn->close();
+header('Location: pedidos.php', true, 301);
+?>
