@@ -100,6 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <title>Consulta de Pedido</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -117,6 +118,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgb(37, 91, 168);
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: rgb(37, 91, 140);
+        }
+
+        .back-button i {
+            margin-right: 5px;
+        }
+
         h2 {
             color: #333;
         }
@@ -155,7 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     </style>
 </head>
 <body>
-
+<a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
 <div class="container">
     <!-- Formulário de consulta -->
     <form action="vistoriaCarga.php" method="post">

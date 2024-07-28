@@ -6,7 +6,7 @@ $password = "root";
 $dbname = "senai";
 
 // Conexão com o banco de dados
-$conn = new mysqli("localhost", "username", "password", "database");
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Estoque</title>
     <style>
         body {
@@ -11,6 +13,29 @@
             margin: 0;
             padding: 0;
         }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgb(37, 91, 168);
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: rgb(37, 91, 140);
+        }
+
+        .back-button i {
+            margin-right: 5px;
+        }
+
 
         table {
             position: relative;
@@ -23,7 +48,8 @@
             border-radius: 8px;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #f2f2f2;
             padding: 12px;
             text-align: center;
@@ -83,7 +109,7 @@
             position: absolute;
             background-color: #f9f9f9;
             min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
             border-radius: 4px;
         }
@@ -106,7 +132,9 @@
         }
     </style>
 </head>
+
 <body>
+    <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
     <table>
         <tr>
             <th></th>
@@ -117,7 +145,7 @@
             ?>
         </tr>
         <?php
-  
+
         // Pesos correspondentes para os andares
         $pesos = [
             1 => '900kg',
@@ -126,19 +154,19 @@
             4 => '200kg',
             5 => '150kg'
         ];
-    
+
         // Exibir vagas de A1 a E5 em linhas e colunas
         foreach (range(5, 1) as $linha) {
             echo "<tr>";
             // Exibir números (1, 2, 3, 4, 5) como cabeçalho da linha com peso correspondente
             echo "<th>Andar $linha<br><span>Peso: {$pesos[$linha]}</span></th>";
-            
+
             foreach (range('A', 'E') as $letra) {
                 $vaga = "$letra$linha";
                 $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "";
                 echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>Status: $status</span>";
                 echo "<div class='dropdown'>";
-       
+
                 echo "<button class='dropbtn'>Alterar Status</button>";
                 echo "<div class='dropdown-content'>";
                 echo "<a href='atualizar_status.php?vaga=$vaga&status=Cheia'>Cheia</a><br>";
@@ -146,12 +174,13 @@
                 echo "<a href='atualizar_status.php?vaga=$vaga&status=Vazia'>Vazia</a>";
                 echo "</div>";
                 echo "</div>";
-                echo "</td>"; 
-            } 
+                echo "</td>";
+            }
             echo "</tr>";
         }
-        
+
         ?>
     </table>
 </body>
+
 </html>

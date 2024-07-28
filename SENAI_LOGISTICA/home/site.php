@@ -58,7 +58,7 @@
                 </ul>
             </li>   
             <li>
-                <a href="">
+                <a href="../home/picking/picking.php">
                     <i class="fa-solid fa-hand-holding"></i>
                     <span class="link_name">Picking (VAZIO)</span>
                 </a>
