@@ -35,7 +35,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a href="..\homeProf\itens\pedidos.php">Pedidos</a></li>
-                    <li><a href="../homeProf/itens/solicitacaoproduto.php">Meus pedidos</a></li>
+                    <li><a href="../homeProf/itens/solicitacaoproduto.php">Meus pedidos (n ta certo)</a></li>
                 </ul>
             </li>
             <li>

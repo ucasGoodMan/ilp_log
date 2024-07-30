@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 30-Jul-2024 às 13:33
+-- Generation Time: 30-Jul-2024 às 15:38
 -- Versão do servidor: 5.7.11
 -- PHP Version: 5.6.18
 
@@ -188,6 +188,39 @@ CREATE TABLE `movimentacaoestoque` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id` int(11) NOT NULL,
+  `pedido` varchar(255) NOT NULL,
+  `data_entrega` date DEFAULT NULL,
+  `data_pedido` date DEFAULT NULL,
+  `observacoes` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `produtos`
+--
+
+CREATE TABLE `produtos` (
+  `id` int(11) NOT NULL,
+  `pedido_id` int(11) DEFAULT NULL,
+  `cod_prod` varchar(255) NOT NULL,
+  `nome_produto` varchar(255) NOT NULL,
+  `un_prod` varchar(50) DEFAULT NULL,
+  `qtd_prod` int(11) DEFAULT NULL,
+  `rsunit_prod` decimal(10,2) DEFAULT NULL,
+  `ncm_prod` varchar(50) DEFAULT NULL,
+  `cst_prod` varchar(50) DEFAULT NULL,
+  `cfop_prod` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `relatorio`
 --
 
@@ -203,6 +236,18 @@ CREATE TABLE `relatorio` (
 
 INSERT INTO `relatorio` (`id`, `conteudo`, `data`) VALUES
 (1, 'adadadad', '2024-07-27 23:41:42');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `solicitacoes`
+--
+
+CREATE TABLE `solicitacoes` (
+  `id` int(11) NOT NULL,
+  `solicitacao` varchar(255) DEFAULT NULL,
+  `observacoes` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -446,9 +491,28 @@ ALTER TABLE `movimentacaoestoque`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `produtos`
+--
+ALTER TABLE `produtos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pedido_id` (`pedido_id`);
+
+--
 -- Indexes for table `relatorio`
 --
 ALTER TABLE `relatorio`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `solicitacoes`
+--
+ALTER TABLE `solicitacoes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -505,10 +569,25 @@ ALTER TABLE `movimentacao`
 ALTER TABLE `movimentacaoestoque`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `produtos`
+--
+ALTER TABLE `produtos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `relatorio`
 --
 ALTER TABLE `relatorio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `solicitacoes`
+--
+ALTER TABLE `solicitacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `turma`
 --
