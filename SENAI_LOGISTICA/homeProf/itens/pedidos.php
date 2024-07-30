@@ -46,7 +46,7 @@
             text-align: center;
         }
 
-        input[type="text"], input[type="number"], textarea, select {
+        input[type="text"], input[type="number"], textarea, select, input[type="date"] {
             padding: 10px;
             width: 100%;
             box-sizing: border-box;
@@ -174,12 +174,14 @@
                     <button type="button" onclick="removeProductLine('product1')">Remover</button>
                 </div>
             </div>
-            <button type="button" onclick="addProductLine()" style="grid-column: span 9;">Adicionar Produto</button>
             <div class="grid">
-                <textarea name="observacoes" rows="4" style="grid-column: span 9;"></textarea>
+                <button type="button" onclick="addProductLine()" style="grid-column: span 10;">Adicionar Produto</button>
             </div>
             <div class="grid">
-                <button type="submit" style="grid-column: span 9;">Enviar</button>
+                <textarea name="observacoes" rows="4" style="grid-column: span 10;"></textarea>
+            </div>
+            <div class="grid">
+                <button type="submit" style="grid-column: span 10;">Enviar</button>
             </div>
         </form>
     </div>
