@@ -20,7 +20,7 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="../homeProf/HomeDoProf.php">
+                <a href="../homeProf/index.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
