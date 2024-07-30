@@ -60,4 +60,5 @@ if ($conn->query($sql_pedido) === TRUE) {
 
 $conn->close();
 header('Location: pedidos.php', true, 301);
+exit;
 ?>
