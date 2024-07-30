@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 30-Jul-2024 às 15:38
+-- Generation Time: 30-Jul-2024 às 23:48
 -- Versão do servidor: 5.7.11
--- PHP Version: 5.6.18
+-- PHP Version: 7.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -166,8 +166,7 @@ INSERT INTO `movimentacao` (`id`, `npedido`, `produto`, `qtd`, `posicao`, `statu
 (1, '12', 'mouse', 5, 'A3', 'Concluido'),
 (2, '12', 'mouse', 1, 'A3', 'Concluido'),
 (3, '19', 'Isac', 3, 'A3', 'Concluido'),
-(4, '20', 'mouse', 1, 'A3', 'Concluido'),
-(5, '21', '1', 1, 'A3', 'ConcluÃ­do');
+(4, '20', 'mouse', 1, 'A3', 'Concluido');
 
 -- --------------------------------------------------------
 
@@ -199,6 +198,15 @@ CREATE TABLE `pedidos` (
   `observacoes` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `pedidos`
+--
+
+INSERT INTO `pedidos` (`id`, `pedido`, `data_entrega`, `data_pedido`, `observacoes`) VALUES
+(1, '10', '2010-10-10', '2010-10-10', ''),
+(2, '11', '2020-02-20', '2020-02-02', ''),
+(3, '12', '1212-12-12', '1211-12-12', '');
+
 -- --------------------------------------------------------
 
 --
@@ -217,6 +225,16 @@ CREATE TABLE `produtos` (
   `cst_prod` varchar(50) DEFAULT NULL,
   `cfop_prod` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id`, `pedido_id`, `cod_prod`, `nome_produto`, `un_prod`, `qtd_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
+(1, 1, '20', 'tesoura', 'unidade', 2, '24.00', '123', '123', '123'),
+(2, 1, '21', 'papel', 'rolo', 1, '25.00', '321', '321', '321'),
+(3, 2, '1', '1', 'caixa', 1, '1.00', '1', '1', '1'),
+(4, 3, '12', '12', 'caixa', 12, '12.00', '12', '12', '12');
 
 -- --------------------------------------------------------
 
@@ -572,12 +590,12 @@ ALTER TABLE `movimentacaoestoque`
 -- AUTO_INCREMENT for table `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --
