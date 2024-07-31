@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 30-Jul-2024 às 23:48
+-- Generation Time: 31-Jul-2024 às 14:26
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -203,9 +203,9 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id`, `pedido`, `data_entrega`, `data_pedido`, `observacoes`) VALUES
-(1, '10', '2010-10-10', '2010-10-10', ''),
-(2, '11', '2020-02-20', '2020-02-02', ''),
-(3, '12', '1212-12-12', '1211-12-12', '');
+(6, '1', '2024-07-31', '2024-07-23', ''),
+(7, '555', '2024-07-31', '2024-07-31', ''),
+(8, '333333', '2024-07-31', '2024-07-31', '');
 
 -- --------------------------------------------------------
 
@@ -231,10 +231,8 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `pedido_id`, `cod_prod`, `nome_produto`, `un_prod`, `qtd_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
-(1, 1, '20', 'tesoura', 'unidade', 2, '24.00', '123', '123', '123'),
-(2, 1, '21', 'papel', 'rolo', 1, '25.00', '321', '321', '321'),
-(3, 2, '1', '1', 'caixa', 1, '1.00', '1', '1', '1'),
-(4, 3, '12', '12', 'caixa', 12, '12.00', '12', '12', '12');
+(6, 6, '1', '1', 'caixa', 1, '1.00', '1', '1', '1'),
+(7, 8, '32', 'eeeee', 'caixa', 1111, '1111.00', '111111', '11111', '111111');
 
 -- --------------------------------------------------------
 
@@ -393,29 +391,27 @@ INSERT INTO `vagas` (`id`, `vaga`, `statusVaga`, `itens`) VALUES
 
 CREATE TABLE `vistoriacarga` (
   `id` int(11) NOT NULL,
-  `npedido` varchar(50) NOT NULL,
-  `produtos` text NOT NULL,
-  `quantidade` int(11) NOT NULL,
-  `vlrporunidade` decimal(10,2) NOT NULL,
-  `doca` varchar(50) NOT NULL,
-  `avariado` tinyint(1) NOT NULL DEFAULT '0',
-  `faltando` tinyint(1) NOT NULL DEFAULT '0',
-  `observacoes` text,
-  `data_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `pedido` varchar(50) NOT NULL,
+  `nome_produto` varchar(50) NOT NULL,
+  `qnt_prod` int(11) NOT NULL,
+  `avariado` tinyint(4) DEFAULT NULL,
+  `faltando` tinyint(50) NOT NULL,
+  `observacoes` varchar(50) DEFAULT NULL,
+  `data_registro` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `vistoriacarga`
 --
 
-INSERT INTO `vistoriacarga` (`id`, `npedido`, `produtos`, `quantidade`, `vlrporunidade`, `doca`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
-(4, '19', 'Isac', 18, '1.00', '9', 1, 0, 'problema no joelho', '2024-07-20 01:47:08'),
-(3, '12', 'mouse', 100, '55.00', '12', 0, 0, '', '2024-07-20 01:24:22'),
-(5, '11', 'mouse', 23, '109.00', '9', 0, 0, '', '2024-07-24 00:14:25'),
-(6, '20', 'mouse', 1, '55.00', '9', 0, 0, '', '2024-07-24 02:06:33'),
-(7, '21', '1', 1, '1.00', '1', 0, 0, '', '2024-07-24 02:12:38'),
-(8, '11', 'mouse', 23, '109.00', '9', 1, 1, 'aaaaaaa', '2024-07-27 22:55:00'),
-(9, '11', 'mouse', 23, '109.00', '9', 1, 1, 'sem observacoes', '2024-07-27 22:55:24');
+INSERT INTO `vistoriacarga` (`id`, `pedido`, `nome_produto`, `qnt_prod`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
+(4, '19', '18', 9, 1, 0, 'problema no joelho', '2024-07-19'),
+(3, '12', '100', 12, 0, 0, '', '2024-07-19'),
+(5, '11', '23', 9, 0, 0, '', '2024-07-23'),
+(6, '20', '1', 9, 0, 0, '', '2024-07-23'),
+(7, '21', '1', 1, 0, 0, '', '2024-07-23'),
+(8, '11', '23', 9, 1, 1, 'aaaaaaa', '2024-07-27'),
+(9, '11', '23', 9, 1, 1, 'sem observacoes', '2024-07-27');
 
 -- --------------------------------------------------------
 
@@ -590,12 +586,12 @@ ALTER TABLE `movimentacaoestoque`
 -- AUTO_INCREMENT for table `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --

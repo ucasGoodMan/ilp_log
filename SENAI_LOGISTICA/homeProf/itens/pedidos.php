@@ -170,6 +170,7 @@
                         <option value="bandeja">bandeja</option>
                     </select>
                 
+                    <input id="quantidade" type="number" name="qtd[]" placeholder="Quantidade">
                     <input id="vlrporunidade" type="number" name="rsunit[]" placeholder="Preço">
                     <input id="ncm" type="number" name="ncm[]" placeholder="NCM">
                     <input id="cst" type="number" name="cst[]" placeholder="CST">
