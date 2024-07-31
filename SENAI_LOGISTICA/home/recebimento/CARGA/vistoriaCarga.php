@@ -39,13 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedido_id']) && !isset
             while ($row = $result->fetch_assoc()) {
                 $resultado .= "Número do Pedido: " . htmlspecialchars($row['pedido_id']) . "<br>";
                 $resultado .= "Nome do Produto: " . htmlspecialchars($row['nome_produto']) . "<br>";
-                $resultado .= "Quantidade: " . htmlspecialchars($row['qtd_prod']) . "<br>";
+                $resultado .= "Quantidade: " . htmlspecialchars($row['qnt_prod']) . "<br>";
 
                 // Adiciona os dados para o formulário de inserção na nova tabela
                 $dadosPedido = [
                     'pedido_id' => htmlspecialchars($row['pedido_id']),
                     'nome_produto' => htmlspecialchars($row['nome_produto']),
-                    'qtd_prod' => htmlspecialchars($row['qtd_prod']),
+                    'qnt_prod' => htmlspecialchars($row['qnt_prod']),
                 ];
             }
         } else {
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     // Obtém os dados do formulário
     $pedido_id = $_POST['pedido_id'];
     $nome_produto = $_POST['nome_produto'];
-    $qtd_prod = $_POST['qtd_prod'];
+    $qnt_prod = $_POST['qnt_prod'];
     $avariado = isset($_POST['avariado']) ? 1 : 0;
     $faltando = isset($_POST['faltando']) ? 1 : 0;
     $observacoes = $_POST['comentarios'];
@@ -80,11 +80,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     }
 
     // Inserção na nova tabela
-    $sql = "INSERT INTO vistoriacarga (pedido_id, nome_produto, qtd_prod, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO vistoriacarga (pedido_id, nome_produto, qnt_prod, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
-        $stmt->bind_param("ssisii", $pedido_id, $nome_produto, $qtd_prod, $avariado, $faltando, $observacoes);
+        $stmt->bind_param("ssisii", $pedido_id, $nome_produto, $qnt_prod, $avariado, $faltando, $observacoes);
 
         if ($stmt->execute()) {
             $resultado = "Dados salvos com sucesso!";
@@ -207,14 +207,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
         <form action="vistoriaCarga.php" method="post">
             <input type="hidden" name="pedido_id" value="<?php echo $dadosPedido['pedido_id']; ?>">
             <input type="hidden" name="nome_produto" value="<?php echo $dadosPedido['nome_produto']; ?>">
-            <input type="hidden" name="qtd_prod" value="<?php echo $dadosPedido['qtd_prod']; ?>">
+            <input type="hidden" name="qnt_prod" value="<?php echo $dadosPedido['qnt_prod']; ?>">
 
             <label for="avariado">Avariado?</label>
             <input type="checkbox" id="avariado" name="avariado" value="1"><br>
 
             <label for="faltando">Faltando?</label>
             <input type="checkbox" id="faltando" name="faltando" value="1"><br>
-            
+
             <label for="comentarios">Observações:</label>
             <input type="text" id="comentarios" name="comentarios"><br>
 
