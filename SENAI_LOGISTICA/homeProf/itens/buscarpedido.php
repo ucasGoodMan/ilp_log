@@ -9,32 +9,115 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
     <title>Detalhes do Pedido</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            font-family: "Poppins", sans-serif;
+
+        }
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
         .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
             text-align: center;
-            margin-top: 20px;
+            position: relative;
+            
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            top: -10px;
         }
  
         .produto-list {
             list-style-type: none;
-            padding: 250px;
-            margin-top: 20px;
-            text-align: left;
-            display: inline-block;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
         .produto-item {
-            margin-bottom: 15px;
+            list-style-type: none;
+            padding: 20px;
+            width: calc(33.333% - 20px);
+            background-color: rgb(37, 91, 168);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            width: 300px;
+            color: white;
+        }
+
+        .produto-item:hover {
+            transform: translateY(-5px);
         }
 
         .produto-info {
             list-style-type: none;
-            padding: 0px;
+            padding: 0;
             margin: 0;
+        }
+
+        .produto-info li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .produto-info li:last-child {
+            border-bottom: none;
+        }
+
+        .produto-info strong {
+            color: #fff;
         }
 
         .back-button {
             display: inline-block;
             margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button i {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        @media (max-width: 900px) {
+            .produto-item {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .produto-item {
+                width: calc(100% - 20px);
+            }
         }
         .info-danfe{
             
@@ -53,26 +136,41 @@
             $password = "root";
             $dbname = "senai";
 
-            // Cria a conexão
+<<<<<<< HEAD
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Verifica a conexão
+=======
+            
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+
+>>>>>>> 5b14f294469006e01ed7cdb91185118f0395bd5a
             if ($conn->connect_error) {
                 die("Falha na conexão: " . $conn->connect_error);
             }
 
-            // Obtém o pedido_id da URL e verifica se está definido
             if (isset($_GET['pedido_id'])) {
                 $pedido_id = $_GET['pedido_id'];
 
-                // Consulta SQL para obter os produtos do pedido
                 $sql_produtos = "SELECT * FROM produtos WHERE pedido_id = '$pedido_id'";
                 $result_produtos = $conn->query($sql_produtos);
 
-                // Verifica se há resultados
                 if ($result_produtos->num_rows > 0) {
-                    // Loop através dos produtos do pedido
                     while ($row_produtos = $result_produtos->fetch_assoc()) {
+<<<<<<< HEAD
+                        echo "<li class='produto-item'>
+                                <ul class='produto-info'>
+                                    <li class='produto-cod'><strong>Código:</strong> {$row_produtos['cod_prod']}</li>
+                                    <li class='produto-nome'><strong>Produto:</strong> {$row_produtos['nome_produto']}</li>
+                                    <li class='produto-un'><strong>Unidade:</strong> {$row_produtos['un_prod']}</li>
+                                    <li class='produto-quantidade'><strong>Quantidade:</strong> {$row_produtos['qtd_prod']}</li>
+                                    <li class='produto-rsunit'><strong>Preço Unitário:</strong> R$ " . number_format($row_produtos['rsunit_prod'], 2, ',', '.') . "</li>
+                                    <li class='produto-ncm'><strong>NCM:</strong> {$row_produtos['ncm_prod']}</li>
+                                    <li class='produto-cst'><strong>CST:</strong> {$row_produtos['cst_prod']}</li>
+                                    <li class='produto-cfop'><strong>CFOP:</strong> {$row_produtos['cfop_prod']}</li>
+                                </ul>
+                              </li>";
+=======
                         echo "<li class='produto-item'>";
                         echo "  <ul class='produto-info'>";
                         echo "    <li class='produto-cod'>Código: " . $row_produtos["cod_prod"] . "</li>";
@@ -83,17 +181,17 @@
                         echo "    <li class='produto-ncm'>NCM: " . $row_produtos["ncm_prod"] . "</li>";
                         echo "    <li class='produto-cst'>CST: " . $row_produtos["cst_prod"] . "</li>";
                         echo "    <li class='produto-cfop'>CFOP: " . $row_produtos["cfop_prod"] . "</li>";
-                        echo "  </ul>"; 
-                        echo "</li>"; 
+                        echo "  </ul>";
+                        echo "</li>";
+>>>>>>> 5b14f294469006e01ed7cdb91185118f0395bd5a
                     }
                 } else {
-                    echo "<li>Nenhum produto encontrado para este pedido.</li>";
+                    echo "<li class='produto-item'>Nenhum produto encontrado para este pedido.</li>";
                 }
             } else {
-                echo "<li>Erro: Pedido ID não fornecido.</li>";
+                echo "<li class='produto-item'>Erro: Pedido ID não fornecido.</li>";
             }
 
-            // Fecha a conexão
             $conn->close();
             ?>
         </ul>

@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: white;
+            background-color: #f2f2f2;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,9 +16,10 @@
         }
 
         .container {
-            background-color: #f0f0f0;
+            background-color: white;
             padding: 20px;
             border: 2px solid #ccc;
+            border-radius: 5px;
             width: 900px;
         }
 
@@ -39,7 +40,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f0f0f0;
+            background-color: white;
             color: black;
             padding: 10px;
             border: 1px solid #ccc;
