@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 31-Jul-2024 às 13:55
+-- Generation Time: 31-Jul-2024 às 14:16
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `vistoriacarga` (
   `id` int(11) NOT NULL,
+  `pedido_id` varchar(50) NOT NULL,
   `pedido` varchar(50) NOT NULL,
   `nome_produto` varchar(50) NOT NULL,
   `qnt_prod` int(11) NOT NULL,
@@ -41,14 +42,14 @@ CREATE TABLE `vistoriacarga` (
 -- Extraindo dados da tabela `vistoriacarga`
 --
 
-INSERT INTO `vistoriacarga` (`id`, `pedido`, `nome_produto`, `qnt_prod`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
-(4, '19', '18', 9, 1, 0, 'problema no joelho', '2024-07-19'),
-(3, '12', '100', 12, 0, 0, '', '2024-07-19'),
-(5, '11', '23', 9, 0, 0, '', '2024-07-23'),
-(6, '20', '1', 9, 0, 0, '', '2024-07-23'),
-(7, '21', '1', 1, 0, 0, '', '2024-07-23'),
-(8, '11', '23', 9, 1, 1, 'aaaaaaa', '2024-07-27'),
-(9, '11', '23', 9, 1, 1, 'sem observacoes', '2024-07-27');
+INSERT INTO `vistoriacarga` (`id`, `pedido_id`, `pedido`, `nome_produto`, `qnt_prod`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
+(4, '', '19', '18', 9, 1, 0, 'problema no joelho', '2024-07-19'),
+(3, '', '12', '100', 12, 0, 0, '', '2024-07-19'),
+(5, '', '11', '23', 9, 0, 0, '', '2024-07-23'),
+(6, '', '20', '1', 9, 0, 0, '', '2024-07-23'),
+(7, '', '21', '1', 1, 0, 0, '', '2024-07-23'),
+(8, '', '11', '23', 9, 1, 1, 'aaaaaaa', '2024-07-27'),
+(9, '', '11', '23', 9, 1, 1, 'sem observacoes', '2024-07-27');
 
 --
 -- Indexes for dumped tables
