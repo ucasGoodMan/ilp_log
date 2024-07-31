@@ -8,6 +8,35 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Detalhes do Pedido</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .produto-list {
+            list-style-type: none;
+            padding: 250px;
+            margin-top: 20px;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .produto-item {
+            margin-bottom: 15px;
+        }
+
+        .produto-info {
+            list-style-type: none;
+            padding: 0px;
+            margin: 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
