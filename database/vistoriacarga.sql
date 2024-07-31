@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 31-Jul-2024 às 13:38
+-- Generation Time: 31-Jul-2024 às 13:55
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -29,28 +29,26 @@ SET time_zone = "+00:00";
 CREATE TABLE `vistoriacarga` (
   `id` int(11) NOT NULL,
   `pedido` varchar(50) NOT NULL,
-  `cod_prod` varchar(50) NOT NULL,
   `nome_produto` varchar(50) NOT NULL,
-  `un_prod` varchar(50) NOT NULL,
   `qnt_prod` int(11) NOT NULL,
-  `rsunit_prod` decimal(10,2) NOT NULL,
-  `ncm_prod` varchar(50) NOT NULL,
-  `cst_prod` varchar(50) DEFAULT NULL,
-  `cfop_prod` varchar(50) DEFAULT NULL
+  `avariado` tinyint(4) DEFAULT NULL,
+  `faltando` tinyint(50) NOT NULL,
+  `observacoes` varchar(50) DEFAULT NULL,
+  `data_registro` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `vistoriacarga`
 --
 
-INSERT INTO `vistoriacarga` (`id`, `pedido`, `cod_prod`, `nome_produto`, `un_prod`, `qnt_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
-(4, '19', 'Isac', '18', '1.00', 9, '1.00', '0', 'problema no joelho', '2024-07-19 22:47:08'),
-(3, '12', 'mouse', '100', '55.00', 12, '0.00', '0', '', '2024-07-19 22:24:22'),
-(5, '11', 'mouse', '23', '109.00', 9, '0.00', '0', '', '2024-07-23 21:14:25'),
-(6, '20', 'mouse', '1', '55.00', 9, '0.00', '0', '', '2024-07-23 23:06:33'),
-(7, '21', '1', '1', '1.00', 1, '0.00', '0', '', '2024-07-23 23:12:38'),
-(8, '11', 'mouse', '23', '109.00', 9, '1.00', '1', 'aaaaaaa', '2024-07-27 19:55:00'),
-(9, '11', 'mouse', '23', '109.00', 9, '1.00', '1', 'sem observacoes', '2024-07-27 19:55:24');
+INSERT INTO `vistoriacarga` (`id`, `pedido`, `nome_produto`, `qnt_prod`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
+(4, '19', '18', 9, 1, 0, 'problema no joelho', '2024-07-19'),
+(3, '12', '100', 12, 0, 0, '', '2024-07-19'),
+(5, '11', '23', 9, 0, 0, '', '2024-07-23'),
+(6, '20', '1', 9, 0, 0, '', '2024-07-23'),
+(7, '21', '1', 1, 0, 0, '', '2024-07-23'),
+(8, '11', '23', 9, 1, 1, 'aaaaaaa', '2024-07-27'),
+(9, '11', '23', 9, 1, 1, 'sem observacoes', '2024-07-27');
 
 --
 -- Indexes for dumped tables
