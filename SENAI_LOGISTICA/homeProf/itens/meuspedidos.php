@@ -37,9 +37,10 @@
             echo "<div class='pedido-info'>";
             echo "<span class='pedido-idpedido'>Número do Pedido: " . $pedido_id . "</span>";
             echo "</div>";
-            echo "<form action='buscarpedido.php' method='GET'>";
+            echo "<form action='' method='GET'>";
             echo "<input type='hidden' name='pedido_id' value='" . $pedido_id . "'>";
-            echo "<input class='pedido-submit' type='submit' value='ABRIR'>";
+            echo "<button class='pedido-submit' type='submit' formaction='buscarpedido.php'>ABRIR</button>";
+            echo "<button class='pedido-submit' type='submit' formaction='danfe.php'>DANFE</button>";
             echo "</form>";
             echo "</li>";
         }

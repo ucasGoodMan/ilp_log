@@ -11,9 +11,9 @@ $erro = "";
 $dadosPedido = [];
 
 // Verifica se o formulário de consulta foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['npedido']) && !isset($_POST['salvar'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedido_id']) && !isset($_POST['salvar'])) {
     // Obtém o número do pedido do formulário
-    $npedido = $_POST['npedido'];
+    $pedido_id = $_POST['pedido_id'];
 
     // Criando a conexão
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -24,9 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['npedido']) && !isset($
     }
 
     // Consulta ao banco de dados
-    $sql = "SELECT * FROM criacaopedido WHERE npedido = ?";
+    $sql = "SELECT * FROM produtos WHERE pedido_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $npedido);
+    $stmt->bind_param("s", $pedido_id);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -35,18 +35,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['npedido']) && !isset($
         // Exibindo as informações do pedido
         $resultado .= "<h2>Informações do Pedido</h2>";
         while ($row = $result->fetch_assoc()) {
-            $resultado .= "Número do Pedido: " . htmlspecialchars($row['npedido']) . "<br>";
-            $resultado .= "Produtos: " . htmlspecialchars($row['produtos']) . "<br>";
-            $resultado .= "Quantidade: " . htmlspecialchars($row['quantidade']) . "<br>";
-            $resultado .= "Valor por Unidade: " . htmlspecialchars($row['vlrporunidade']) . "<br>";
+            $resultado .= "Número do Pedido: " . htmlspecialchars($row['pedido_id']) . "<br>";
+            $resultado .= "nome_prod: " . htmlspecialchars($row['nome_prod']) . "<br>";
+            $resultado .= "qtd_prod: " . htmlspecialchars($row['qtd_prod']) . "<br>";
+            $resultado .= "Valor por Unidade: " . htmlspecialchars($row['rsunit_prod']) . "<br>";
             $resultado .= "Doca: " . htmlspecialchars($row['doca']) . "<br><br>";
 
             // Adiciona os dados para o formulário de inserção na nova tabela
             $dadosPedido = [
-                'npedido' => htmlspecialchars($row['npedido']),
-                'produtos' => htmlspecialchars($row['produtos']),
-                'quantidade' => htmlspecialchars($row['quantidade']),
-                'vlrporunidade' => htmlspecialchars($row['vlrporunidade']),
+                'pedido_id' => htmlspecialchars($row['pedido_id']),
+                'nome_prod' => htmlspecialchars($row['nome_prod']),
+                'qtd_prod' => htmlspecialchars($row['qtd_prod']),
+                'rsunit_prod' => htmlspecialchars($row['rsunit_prod']),
                 'doca' => htmlspecialchars($row['doca']),
             ];
         }
@@ -62,10 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['npedido']) && !isset($
 // Verifica se o formulário de salvamento foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     // Obtém os dados do formulário
-    $npedido = $_POST['npedido'];
-    $produtos = $_POST['produtos'];
-    $quantidade = $_POST['quantidade'];
-    $vlrporunidade = $_POST['vlrporunidade'];
+    $pedido_id = $_POST['pedido_id'];
+    $nome_prod = $_POST['nome_prod'];
+    $qtd_prod = $_POST['qtd_prod'];
+    $rsunit_prod = $_POST['rsunit_prod'];
     $doca = $_POST['doca'];
     $checkAvaria = isset($_POST['checkAvaria']) ? 1 : 0;
     $checkFalta = isset($_POST['checkFalta']) ? 1 : 0;
@@ -80,9 +80,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     }
 
     // Inserção na nova tabela
-    $sql = "INSERT INTO vistoriacarga (npedido, produtos, quantidade, vlrporunidade, doca, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO vistoriacarga (pedido_id, nome_prod, qtd_prod, rsunit_prod, doca, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssisiiis", $npedido, $produtos, $quantidade, $vlrporunidade, $doca, $checkAvaria, $checkFalta, $comentarios);
+    $stmt->bind_param("ssisiiis", $pedido_id, $nome_prod, $qtd_prod, $rsunit_prod, $doca, $checkAvaria, $checkFalta, $comentarios);
 
     if ($stmt->execute()) {
         $resultado = "Dados salvos com sucesso!";
@@ -183,8 +183,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
 <div class="container">
     <!-- Formulário de consulta -->
     <form action="vistoriaCarga.php" method="post">
-        <label for="npedido">Número do Pedido:</label>
-        <input type="text" id="npedido" name="npedido" required>
+        <label for="pedido_id">Número do Pedido:</label>
+        <input type="text" id="pedido_id" name="pedido_id" required>
         <input type="submit" value="Consultar">
     </form>
 
@@ -199,10 +199,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     ?>
         <h2>Salvar Informações Adicionais</h2>
         <form action="vistoriaCarga.php" method="post">
-            <input type="hidden" name="npedido" value="<?php echo $dadosPedido['npedido']; ?>">
-            <input type="hidden" name="produtos" value="<?php echo $dadosPedido['produtos']; ?>">
-            <input type="hidden" name="quantidade" value="<?php echo $dadosPedido['quantidade']; ?>">
-            <input type="hidden" name="vlrporunidade" value="<?php echo $dadosPedido['vlrporunidade']; ?>">
+            <input type="hidden" name="pedido_id" value="<?php echo $dadosPedido['pedido_id']; ?>">
+            <input type="hidden" name="nome_prod" value="<?php echo $dadosPedido['nome_prod']; ?>">
+            <input type="hidden" name="qtd_prod" value="<?php echo $dadosPedido['qtd_prod']; ?>">
+            <input type="hidden" name="rsunit_prod" value="<?php echo $dadosPedido['rsunit_prod']; ?>">
             <input type="hidden" name="doca" value="<?php echo $dadosPedido['doca']; ?>">
 
             <label for="checkAvaria">Avariado?</label>

@@ -137,6 +137,7 @@
                 <input type="date" name="data_pedido" style="grid-column: span 2;">
             </div>
             <div class="grid">
+                
                 <div class="label" style="grid-column: 1 / span 1;">COD. PROD (SKU)</div>
                 <div class="label" style="grid-column: 2 / span 1;">Produtos</div>
                 <div class="label" style="grid-column: 3 / span 1;">UN</div>
@@ -145,6 +146,7 @@
                 <div class="label" style="grid-column: 6 / span 1;">NCM</div>
                 <div class="label" style="grid-column: 7 / span 1;">CST</div>
                 <div class="label" style="grid-column: 8 / span 1;">CFOP</div>
+
             </div>
             <div id="products">
                 <div class="grid" id="product1">
@@ -166,7 +168,7 @@
                         <option value="fardo">fardo</option>
                         <option value="bandeja">bandeja</option>
                     </select>
-                    <input id="quantidade" type="number" name="qtd[]" placeholder="Quantidade">
+                
                     <input id="vlrporunidade" type="number" name="rsunit[]" placeholder="Preço">
                     <input id="ncm" type="number" name="ncm[]" placeholder="NCM">
                     <input id="cst" type="number" name="cst[]" placeholder="CST">
