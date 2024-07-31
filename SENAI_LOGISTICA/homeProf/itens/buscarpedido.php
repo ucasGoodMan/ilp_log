@@ -133,8 +133,15 @@
             $password = "root";
             $dbname = "senai";
 
+<<<<<<< HEAD
             $conn = new mysqli($servername, $username, $password, $dbname);
 
+=======
+            
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+
+>>>>>>> 5b14f294469006e01ed7cdb91185118f0395bd5a
             if ($conn->connect_error) {
                 die("Falha na conexão: " . $conn->connect_error);
             }
@@ -147,6 +154,7 @@
 
                 if ($result_produtos->num_rows > 0) {
                     while ($row_produtos = $result_produtos->fetch_assoc()) {
+<<<<<<< HEAD
                         echo "<li class='produto-item'>
                                 <ul class='produto-info'>
                                     <li class='produto-cod'><strong>Código:</strong> {$row_produtos['cod_prod']}</li>
@@ -159,6 +167,20 @@
                                     <li class='produto-cfop'><strong>CFOP:</strong> {$row_produtos['cfop_prod']}</li>
                                 </ul>
                               </li>";
+=======
+                        echo "<li class='produto-item'>";
+                        echo "  <ul class='produto-info'>";
+                        echo "    <li class='produto-cod'>Código: " . $row_produtos["cod_prod"] . "</li>";
+                        echo "    <li class='produto-nome'>Produto: " . $row_produtos["nome_produto"] . "</li>";
+                        echo "    <li class='produto-un'>Unidade: " . $row_produtos["un_prod"] . "</li>";
+                        echo "    <li class='produto-quantidade'>Quantidade: " . $row_produtos["qtd_prod"] . "</li>";
+                        echo "    <li class='produto-rsunit'>Preço Unitário: " . $row_produtos["rsunit_prod"] . "</li>";
+                        echo "    <li class='produto-ncm'>NCM: " . $row_produtos["ncm_prod"] . "</li>";
+                        echo "    <li class='produto-cst'>CST: " . $row_produtos["cst_prod"] . "</li>";
+                        echo "    <li class='produto-cfop'>CFOP: " . $row_produtos["cfop_prod"] . "</li>";
+                        echo "  </ul>";
+                        echo "</li>";
+>>>>>>> 5b14f294469006e01ed7cdb91185118f0395bd5a
                     }
                 } else {
                     echo "<li class='produto-item'>Nenhum produto encontrado para este pedido.</li>";
