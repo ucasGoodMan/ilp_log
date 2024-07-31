@@ -214,7 +214,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
 
             <label for="faltando">Faltando?</label>
             <input type="checkbox" id="faltando" name="faltando" value="1"><br>
-
+            
             <label for="comentarios">Observações:</label>
             <input type="text" id="comentarios" name="comentarios"><br>
 
