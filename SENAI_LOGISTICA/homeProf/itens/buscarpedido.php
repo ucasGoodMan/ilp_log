@@ -50,10 +50,10 @@
             $password = "root";
             $dbname = "senai";
 
-            // Cria a conexão
+            
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Verifica a conexão
+
             if ($conn->connect_error) {
                 die("Falha na conexão: " . $conn->connect_error);
             }
@@ -80,8 +80,8 @@
                         echo "    <li class='produto-ncm'>NCM: " . $row_produtos["ncm_prod"] . "</li>";
                         echo "    <li class='produto-cst'>CST: " . $row_produtos["cst_prod"] . "</li>";
                         echo "    <li class='produto-cfop'>CFOP: " . $row_produtos["cfop_prod"] . "</li>";
-                        echo "  </ul>"; 
-                        echo "</li>"; 
+                        echo "  </ul>";
+                        echo "</li>";
                     }
                 } else {
                     echo "<li>Nenhum produto encontrado para este pedido.</li>";
@@ -90,7 +90,6 @@
                 echo "<li>Erro: Pedido ID não fornecido.</li>";
             }
 
-            // Fecha a conexão
             $conn->close();
             ?>
         </ul>
