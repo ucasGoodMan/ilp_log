@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 100vh;
+        }
+        .produto-item {
+            list-style-type: none;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #fff;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            border-radius: 8px;
+        }
+        .produto-info {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .produto-info li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .produto-info li:last-child {
+            border-bottom: none;
+        }
+        .produto-info strong {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <li class='produto-item'>
+        <ul class='produto-info'>
+            <li class='produto-cod'><strong>Código:</strong> {$row_produtos['cod_prod']}</li>
+            <li class='produto-nome'><strong>Produto:</strong> {$row_produtos['nome_produto']}</li>
+            <li class='produto-un'><strong>Unidade:</strong> {$row_produtos['un_prod']}</li>
+            <li class='produto-quantidade'><strong>Quantidade:</strong> {$row_produtos['qtd_prod']}</li>
+            <li class='produto-rsunit'><strong>Preço Unitário:</strong> R$ " . number_format($row_produtos['rsunit_prod'], 2, ',', '.') . "</li>
+            <li class='produto-ncm'><strong>NCM:</strong> {$row_produtos['ncm_prod']}</li>
+            <li class='produto-cst'><strong>CST:</strong> {$row_produtos['cst_prod']}</li>
+            <li class='produto-cfop'><strong>CFOP:</strong> {$row_produtos['cfop_prod']}</li>
+        </ul>
+    </li>
+    <li class='produto-item'>
+        <ul class='produto-info'>
+            <li class='produto-cod'><strong>Código:</strong> {$row_produtos['cod_prod']}</li>
+            <li class='produto-nome'><strong>Produto:</strong> {$row_produtos['nome_produto']}</li>
+            <li class='produto-un'><strong>Unidade:</strong> {$row_produtos['un_prod']}</li>
+            <li class='produto-quantidade'><strong>Quantidade:</strong> {$row_produtos['qtd_prod']}</li>
+            <li class='produto-rsunit'><strong>Preço Unitário:</strong> R$ " . number_format($row_produtos['rsunit_prod'], 2, ',', '.') . "</li>
+            <li class='produto-ncm'><strong>NCM:</strong> {$row_produtos['ncm_prod']}</li>
+            <li class='produto-cst'><strong>CST:</strong> {$row_produtos['cst_prod']}</li>
+            <li class='produto-cfop'><strong>CFOP:</strong> {$row_produtos['cfop_prod']}</li>
+        </ul>
+    </li>
+    <li class='produto-item'>
+        <ul class='produto-info'>
+            <li class='produto-cod'><strong>Código:</strong> {$row_produtos['cod_prod']}</li>
+            <li class='produto-nome'><strong>Produto:</strong> {$row_produtos['nome_produto']}</li>
+            <li class='produto-un'><strong>Unidade:</strong> {$row_produtos['un_prod']}</li>
+            <li class='produto-quantidade'><strong>Quantidade:</strong> {$row_produtos['qtd_prod']}</li>
+            <li class='produto-rsunit'><strong>Preço Unitário:</strong> R$ " . number_format($row_produtos['rsunit_prod'], 2, ',', '.') . "</li>
+            <li class='produto-ncm'><strong>NCM:</strong> {$row_produtos['ncm_prod']}</li>
+            <li class='produto-cst'><strong>CST:</strong> {$row_produtos['cst_prod']}</li>
+            <li class='produto-cfop'><strong>CFOP:</strong> {$row_produtos['cfop_prod']}</li>
+        </ul>
+    </li>
+    <li class='produto-item'>
+        <ul class='produto-info'>
+            <li class='produto-cod'><strong>Código:</strong> {$row_produtos['cod_prod']}</li>
+            <li class='produto-nome'><strong>Produto:</strong> {$row_produtos['nome_produto']}</li>
+            <li class='produto-un'><strong>Unidade:</strong> {$row_produtos['un_prod']}</li>
+            <li class='produto-quantidade'><strong>Quantidade:</strong> {$row_produtos['qtd_prod']}</li>
+            <li class='produto-rsunit'><strong>Preço Unitário:</strong> R$ " . number_format($row_produtos['rsunit_prod'], 2, ',', '.') . "</li>
+            <li class='produto-ncm'><strong>NCM:</strong> {$row_produtos['ncm_prod']}</li>
+            <li class='produto-cst'><strong>CST:</strong> {$row_produtos['cst_prod']}</li>
+            <li class='produto-cfop'><strong>CFOP:</strong> {$row_produtos['cfop_prod']}</li>
+        </ul>
+    </li>
+</body>
+</html>

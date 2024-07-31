@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Estoque</title>
-    <style>
+    <!--<style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -131,6 +131,7 @@
             display: block;
         }
     </style>
+-->
 </head>
 
 <body>
