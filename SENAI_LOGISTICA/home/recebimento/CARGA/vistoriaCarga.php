@@ -26,36 +26,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedido_id']) && !isset
     // Consulta ao banco de dados
     $sql = "SELECT * FROM produtos WHERE pedido_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $pedido_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
 
-    // Verifica se há resultados
-    if ($result->num_rows > 0) {
-        // Exibindo as informações do pedido
-        $resultado .= "<h2>Informações do Pedido</h2>";
-        while ($row = $result->fetch_assoc()) {
-            $resultado .= "Número do Pedido: " . htmlspecialchars($row['pedido_id']) . "<br>";
-            $resultado .= "nome_prod: " . htmlspecialchars($row['nome_prod']) . "<br>";
-            $resultado .= "qtd_prod: " . htmlspecialchars($row['qtd_prod']) . "<br>";
-            $resultado .= "Valor por Unidade: " . htmlspecialchars($row['rsunit_prod']) . "<br>";
-            $resultado .= "Doca: " . htmlspecialchars($row['doca']) . "<br><br>";
+    if ($stmt) {
+        $stmt->bind_param("s", $pedido_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-            // Adiciona os dados para o formulário de inserção na nova tabela
-            $dadosPedido = [
-                'pedido_id' => htmlspecialchars($row['pedido_id']),
-                'nome_prod' => htmlspecialchars($row['nome_prod']),
-                'qtd_prod' => htmlspecialchars($row['qtd_prod']),
-                'rsunit_prod' => htmlspecialchars($row['rsunit_prod']),
-                'doca' => htmlspecialchars($row['doca']),
-            ];
+        // Verifica se há resultados
+        if ($result->num_rows > 0) {
+            // Exibindo as informações do pedido
+            $resultado .= "<h2>Informações do Pedido</h2>";
+            while ($row = $result->fetch_assoc()) {
+                $resultado .= "Número do Pedido: " . htmlspecialchars($row['pedido_id']) . "<br>";
+                $resultado .= "Nome do Produto: " . htmlspecialchars($row['nome_produto']) . "<br>";
+                $resultado .= "Quantidade: " . htmlspecialchars($row['qtd_prod']) . "<br>";
+
+                // Adiciona os dados para o formulário de inserção na nova tabela
+                $dadosPedido = [
+                    'pedido_id' => htmlspecialchars($row['pedido_id']),
+                    'nome_produto' => htmlspecialchars($row['nome_produto']),
+                    'qtd_prod' => htmlspecialchars($row['qtd_prod']),
+                ];
+            }
+        } else {
+            $erro = "Nenhum pedido encontrado com esse número.";
         }
-    } else {
-        $erro = "Nenhum pedido encontrado com esse número.";
-    }
 
-    // Fechando a conexão
-    $stmt->close();
+        // Fechando a conexão
+        $stmt->close();
+    } else {
+        $erro = "Erro na preparação da consulta: " . $conn->error;
+    }
+    
     $conn->close();
 }
 
@@ -63,13 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedido_id']) && !isset
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     // Obtém os dados do formulário
     $pedido_id = $_POST['pedido_id'];
-    $nome_prod = $_POST['nome_prod'];
+    $nome_produto = $_POST['nome_produto'];
     $qtd_prod = $_POST['qtd_prod'];
-    $rsunit_prod = $_POST['rsunit_prod'];
-    $doca = $_POST['doca'];
-    $checkAvaria = isset($_POST['checkAvaria']) ? 1 : 0;
-    $checkFalta = isset($_POST['checkFalta']) ? 1 : 0;
-    $comentarios = $_POST['comentarios'];
+    $avariado = isset($_POST['avariado']) ? 1 : 0;
+    $faltando = isset($_POST['faltando']) ? 1 : 0;
+    $observacoes = $_POST['comentarios'];
 
     // Criando a conexão
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -80,18 +80,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     }
 
     // Inserção na nova tabela
-    $sql = "INSERT INTO vistoriacarga (pedido_id, nome_prod, qtd_prod, rsunit_prod, doca, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO vistoriacarga (pedido_id, nome_produto, qtd_prod, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssisiiis", $pedido_id, $nome_prod, $qtd_prod, $rsunit_prod, $doca, $checkAvaria, $checkFalta, $comentarios);
 
-    if ($stmt->execute()) {
-        $resultado = "Dados salvos com sucesso!";
+    if ($stmt) {
+        $stmt->bind_param("ssisii", $pedido_id, $nome_produto, $qtd_prod, $avariado, $faltando, $observacoes);
+
+        if ($stmt->execute()) {
+            $resultado = "Dados salvos com sucesso!";
+        } else {
+            $erro = "Erro ao salvar os dados: " . $stmt->error;
+        }
+
+        // Fechando a conexão
+        $stmt->close();
     } else {
-        $erro = "Erro ao salvar os dados: " . $stmt->error;
+        $erro = "Erro na preparação da consulta: " . $conn->error;
     }
 
-    // Fechando a conexão
-    $stmt->close();
     $conn->close();
 }
 ?>
@@ -200,16 +206,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
         <h2>Salvar Informações Adicionais</h2>
         <form action="vistoriaCarga.php" method="post">
             <input type="hidden" name="pedido_id" value="<?php echo $dadosPedido['pedido_id']; ?>">
-            <input type="hidden" name="nome_prod" value="<?php echo $dadosPedido['nome_prod']; ?>">
+            <input type="hidden" name="nome_produto" value="<?php echo $dadosPedido['nome_produto']; ?>">
             <input type="hidden" name="qtd_prod" value="<?php echo $dadosPedido['qtd_prod']; ?>">
-            <input type="hidden" name="rsunit_prod" value="<?php echo $dadosPedido['rsunit_prod']; ?>">
-            <input type="hidden" name="doca" value="<?php echo $dadosPedido['doca']; ?>">
 
-            <label for="checkAvaria">Avariado?</label>
-            <input type="checkbox" id="checkAvaria" name="checkAvaria" value="1"><br>
+            <label for="avariado">Avariado?</label>
+            <input type="checkbox" id="avariado" name="avariado" value="1"><br>
 
-            <label for="checkFalta">Faltando?</label>
-            <input type="checkbox" id="checkFalta" name="checkFalta" value="1"><br>
+            <label for="faltando">Faltando?</label>
+            <input type="checkbox" id="faltando" name="faltando" value="1"><br>
 
             <label for="comentarios">Observações:</label>
             <input type="text" id="comentarios" name="comentarios"><br>
