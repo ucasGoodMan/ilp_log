@@ -118,7 +118,7 @@
 
         // Buscar os dados do pedido
         $sql = "SELECT p.cod_prod, p.nome_produto, p.un_prod, p.qtd_prod, ped.data_entrega, ped.data_pedido
-                FROM produto p
+                FROM produtos p
                 JOIN pedidos ped ON p.pedidob = ped.pedido
                 WHERE p.pedidob = ?";
         $stmt = $conn->prepare($sql);

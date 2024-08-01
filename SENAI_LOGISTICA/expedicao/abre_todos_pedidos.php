@@ -74,7 +74,7 @@
         <form class="grid" method="POST" action="abre_pedidos_especificados.php">
             <div class="row">
                 <span class="label">Solicitação nº</span>
-                <input type="text" name="solicitacao">
+                <input type="text" id='solicitacao' name="solicitacao">
                 <button type="submit">Abrir</button>
             </div>
             <!-- Adicione mais campos de solicitação conforme necessário -->

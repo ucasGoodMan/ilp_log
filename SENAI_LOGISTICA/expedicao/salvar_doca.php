@@ -2,46 +2,43 @@
 // Conectar ao banco de dados
 $conn = new mysqli("localhost", "root", "root", "senai");
 
+// Verificar se a conexão foi bem-sucedida
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
+}
+
+// Verificar se as variáveis necessárias estão definidas
+if (!isset($_POST['solicitacao']) || !isset($_POST['doca'])) {
+    die('Dados não enviados corretamente.');
 }
 
 $solicitacao = $_POST['solicitacao'];
 $doca = $_POST['doca'];
 
-// Buscar os dados do pedido e produto
-$sql = "SELECT ped.pedidob, ped.cod_prod, p.nome_produto, ped.un_prod, ped.qtd_prod, ped.data_entrega, ped.data_pedido, ped.observacoes
-        FROM pedidos ped
-        JOIN produto p ON ped.pedidob = p.pedidob
-        WHERE ped.pedido = ?";
+// Preparar a consulta SQL para atualizar a tabela 'expedidos'
+$sql = "UPDATE expedidos 
+        SET doca = ?
+        WHERE pedidob = ?";
+
+// Preparar a declaração
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $solicitacao);
-$stmt->execute();
-$result = $stmt->get_result();
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $pedidob = $row['pedidob'];
-        $cod_prod = $row['cod_prod'];
-        $nome_produto = $row['nome_produto'];
-        $un_prod = $row['un_prod'];
-        $qtd_prod = $row['qtd_prod'];
-        $data_entrega = $row['data_entrega'];
-        $data_pedido = $row['data_pedido'];
-        $observacoes = $row['observacoes'];
-
-        // Inserir os dados na tabela expedidos
-        $insert_sql = "INSERT INTO expedidos (pedidob, cod_prod, nome_produto, un_prod, qtd_prod, data_entrega, data_pedido, observacoes, doca)
-                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $insert_stmt = $conn->prepare($insert_sql);
-        $insert_stmt->bind_param("ssssissss", $pedidob, $cod_prod, $nome_produto, $un_prod, $qtd_prod, $data_entrega, $data_pedido, $observacoes, $doca);
-        $insert_stmt->execute();
-    }
-    echo "<p>Dados salvos com sucesso na tabela expedidos!</p>";
-} else {
-    echo "<p>Nenhum pedido encontrado para a solicitação nº $solicitacao.</p>";
+// Verificar se a preparação da declaração foi bem-sucedida
+if ($stmt === false) {
+    die('Erro na preparação da consulta: ' . $conn->error);
 }
 
+// Vincular os parâmetros
+$stmt->bind_param("ss", $doca, $solicitacao);
+
+// Executar a declaração
+if ($stmt->execute() === false) {
+    die('Erro ao executar a consulta: ' . $stmt->error);
+} else {
+    echo "Dados atualizados com sucesso!";
+}
+
+// Fechar a declaração e a conexão
 $stmt->close();
 $conn->close();
 ?>
