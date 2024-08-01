@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 01-Ago-2024 às 11:38
+-- Generation Time: 01-Ago-2024 às 13:58
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -202,7 +202,9 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`pedido`, `data_entrega`, `data_pedido`, `observacoes`) VALUES
-('11', '4444-04-04', '4444-04-04', NULL);
+('11', '4444-04-04', '4444-04-04', NULL),
+('3', '2024-08-13', '2024-08-24', ''),
+('5', '2024-08-06', '2024-08-05', '');
 
 -- --------------------------------------------------------
 
@@ -228,7 +230,10 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `pedidob`, `cod_prod`, `nome_produto`, `un_prod`, `qtd_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
-(1, '11', '1', '1', '1', 1, '1.00', '1', '1', '1');
+(1, '11', '1', '1', '1', 1, '1.00', '1', '1', '1'),
+(2, '3', '3', '3', 'litro', 3, '3.00', '3', '3', '3'),
+(3, '5', '5', '5', 'caixa', 5, '5.00', '5', '5', '5'),
+(4, '5', '5', '5', 'caixa', 5, '5.00', '5', '5', '5');
 
 -- --------------------------------------------------------
 
@@ -387,9 +392,9 @@ INSERT INTO `vagas` (`id`, `vaga`, `statusVaga`, `itens`) VALUES
 
 CREATE TABLE `vistoriacarga` (
   `id` int(11) NOT NULL,
-  `pedido` varchar(50) NOT NULL,
+  `pedidob` varchar(50) NOT NULL,
   `nome_produto` varchar(50) NOT NULL,
-  `qnt_prod` int(11) NOT NULL,
+  `qtd_prod` int(11) NOT NULL,
   `avariado` tinyint(4) DEFAULT NULL,
   `faltando` tinyint(50) NOT NULL,
   `observacoes` varchar(50) DEFAULT NULL,
@@ -400,14 +405,15 @@ CREATE TABLE `vistoriacarga` (
 -- Extraindo dados da tabela `vistoriacarga`
 --
 
-INSERT INTO `vistoriacarga` (`id`, `pedido`, `nome_produto`, `qnt_prod`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
+INSERT INTO `vistoriacarga` (`id`, `pedidob`, `nome_produto`, `qtd_prod`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
 (4, '19', '18', 9, 1, 0, 'problema no joelho', '2024-07-19'),
 (3, '12', '100', 12, 0, 0, '', '2024-07-19'),
 (5, '11', '23', 9, 0, 0, '', '2024-07-23'),
 (6, '20', '1', 9, 0, 0, '', '2024-07-23'),
 (7, '21', '1', 1, 0, 0, '', '2024-07-23'),
 (8, '11', '23', 9, 1, 1, 'aaaaaaa', '2024-07-27'),
-(9, '11', '23', 9, 1, 1, 'sem observacoes', '2024-07-27');
+(9, '11', '23', 9, 1, 1, 'sem observacoes', '2024-07-27'),
+(10, '5', '5', 5, 1, 1, '55', NULL);
 
 -- --------------------------------------------------------
 
@@ -582,7 +588,7 @@ ALTER TABLE `movimentacaoestoque`
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --
@@ -607,7 +613,7 @@ ALTER TABLE `vagas`
 -- AUTO_INCREMENT for table `vistoriacarga`
 --
 ALTER TABLE `vistoriacarga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `vistoriaconferenciacontainer`
 --
