@@ -32,8 +32,6 @@ $cfop = isset($_POST['cfop']) ? $_POST['cfop'] : [];
 $sql_pedido = "INSERT INTO pedidos (pedido, data_entrega, data_pedido, observacoes) VALUES ('$pedido', '$data_entrega', '$data_pedido', '$observacoes')";
 
 if ($conn->query($sql_pedido) === TRUE) {
-    $pedido_id = $conn->insert_id; // Obtém o ID do pedido inserido
-
     // Insere os dados dos produtos na tabela produtos
     for ($i = 0; $i < count($cod); $i++) {
         $cod_prod = $cod[$i];
@@ -45,8 +43,8 @@ if ($conn->query($sql_pedido) === TRUE) {
         $cst_prod = $cst[$i];
         $cfop_prod = $cfop[$i];
 
-        $sql_produto = "INSERT INTO produtos (pedido_id, cod_prod, nome_produto, un_prod, qtd_prod, rsunit_prod, ncm_prod, cst_prod, cfop_prod) 
-                        VALUES ('$pedido_id', '$cod_prod', '$nome_produto', '$un_prod', '$qtd_prod', '$rsunit_prod', '$ncm_prod', '$cst_prod', '$cfop_prod')";
+        $sql_produto = "INSERT INTO produtos (pedidob, cod_prod, nome_produto, un_prod, qtd_prod, rsunit_prod, ncm_prod, cst_prod, cfop_prod) 
+                        VALUES ('$pedido', '$cod_prod', '$nome_produto', '$un_prod', '$qtd_prod', '$rsunit_prod', '$ncm_prod', '$cst_prod', '$cfop_prod')";
         
         if ($conn->query($sql_produto) === FALSE) {
             echo "Erro ao inserir produto: " . $conn->error;

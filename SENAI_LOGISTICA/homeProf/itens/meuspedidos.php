@@ -24,17 +24,17 @@ if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-$sql_pedidos = "SELECT DISTINCT pedidos.id 
+$sql_pedidos = "SELECT DISTINCT pedidos.pedido 
                 FROM pedidos 
-                JOIN produtos ON pedidos.id = produtos.pedido";
+                JOIN produtos ON pedidos.pedido = produtos.pedidob";
 $result_pedidos = $conn->query($sql_pedidos);
 
 if ($result_pedidos) {
     if ($result_pedidos->num_rows > 0) {
         echo "<ul class='pedido-list'>";
         while($row_pedidos = $result_pedidos->fetch_assoc()) {
-            if (isset($row_pedidos["id"])) {
-                $pedido = $row_pedidos["id"];
+            if (isset($row_pedidos["pedido"])) {
+                $pedido = $row_pedidos["pedido"];
                 echo "<li class='pedido-item'>";
                 echo "<div class='pedido-info'>";
                 echo "<span class='pedido-idpedido'>Número do Pedido: " . $pedido . "</span>";
@@ -57,7 +57,6 @@ if ($result_pedidos) {
     echo "Erro na execução da consulta: " . $conn->error;
 }
 
-// Fecha a conexão
 $conn->close();
 ?>
 

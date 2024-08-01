@@ -58,23 +58,20 @@
                 die("Falha na conexão: " . $conn->connect_error);
             }
 
-            // Obtém o pedido_id da URL e verifica se está definido
+            // Verifica se o ID do pedido foi fornecido
             if (isset($_GET['pedido_id'])) {
-                $pedido_id = $conn->real_escape_string($_GET['pedido_id']); // Protege contra injeção SQL
+                $pedido_id = $_GET['pedido_id'];
 
-                // Consulta SQL para obter os produtos do pedido
-                $sql_produtos = "SELECT * FROM produtos WHERE pedido = '$pedido_id'";
+                // Consulta para buscar os produtos do pedido
+                $sql_produtos = "SELECT * FROM produtos WHERE pedidob = '$pedido_id'";
                 $result_produtos = $conn->query($sql_produtos);
 
-                // Verifica se a consulta foi bem-sucedida
                 if ($result_produtos) {
-                    // Verifica se há resultados
                     if ($result_produtos->num_rows > 0) {
-                        // Loop através dos produtos do pedido
                         while ($row_produtos = $result_produtos->fetch_assoc()) {
                             echo "<li class='produto-item'>";
                             echo "  <ul class='produto-info'>";
-                            echo "    <li class='produto-cod'>Código: " . htmlspecialchars($row_produtos["cod_prod"]) . "</li>";
+                            echo "    <li class='produto-codigo'>Código: " . htmlspecialchars($row_produtos["cod_prod"]) . "</li>";
                             echo "    <li class='produto-nome'>Produto: " . htmlspecialchars($row_produtos["nome_produto"]) . "</li>";
                             echo "    <li class='produto-un'>Unidade: " . htmlspecialchars($row_produtos["un_prod"]) . "</li>";
                             echo "    <li class='produto-quantidade'>Quantidade: " . htmlspecialchars($row_produtos["qtd_prod"]) . "</li>";
