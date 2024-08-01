@@ -2,7 +2,7 @@
 // Configurações do banco de dados
 $servername = "localhost";
 $username = "root";
-$password = "root"; // Adicione a senha do banco de dados, se necessário
+$password = "root";
 $dbname = "senai";
 
 // Variáveis para armazenar o resultado da consulta
@@ -27,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedido_id']) && !isset
     $sql = "SELECT * FROM produtos WHERE pedido_id = ?";
     $stmt = $conn->prepare($sql);
 
-<<<<<<< HEAD
     if ($stmt) {
         $stmt->bind_param("s", $pedido_id);
         $stmt->execute();
@@ -40,38 +39,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedido_id']) && !isset
             while ($row = $result->fetch_assoc()) {
                 $resultado .= "Número do Pedido: " . htmlspecialchars($row['pedido_id']) . "<br>";
                 $resultado .= "Nome do Produto: " . htmlspecialchars($row['nome_produto']) . "<br>";
-                $resultado .= "Quantidade: " . htmlspecialchars($row['qtd_prod']) . "<br>";
+                $resultado .= "Quantidade: " . htmlspecialchars($row['qnt_prod']) . "<br>";
 
                 // Adiciona os dados para o formulário de inserção na nova tabela
                 $dadosPedido = [
                     'pedido_id' => htmlspecialchars($row['pedido_id']),
                     'nome_produto' => htmlspecialchars($row['nome_produto']),
-                    'qtd_prod' => htmlspecialchars($row['qtd_prod']),
+                    'qnt_prod' => htmlspecialchars($row['qnt_prod']),
                 ];
             }
         } else {
             $erro = "Nenhum pedido encontrado com esse número.";
-=======
-    // Verifica se há resultados
-    if ($result->num_rows > 0) {
-        // Exibindo as informações do pedido
-        $resultado .= "<h2>Informações do Pedido</h2>";
-        while ($row = $result->fetch_assoc()) {
-            $resultado .= "Número do Pedido: " . htmlspecialchars($row['pedido_id']) . "<br>";
-            $resultado .= "nome_prod: " . htmlspecialchars($row['nome_prod']) . "<br>";
-            $resultado .= "qtd_prod: " . htmlspecialchars($row['qtd_prod']) . "<br>";
-            $resultado .= "Valor por Unidade: " . htmlspecialchars($row['rsunit_prod']) . "<br>";
-            $resultado .= "Doca: " . htmlspecialchars($row['doca']) . "<br><br>";
-
-            // Adiciona os dados para o formulário de inserção na nova tabela
-            $dadosPedido = [
-                'pedido_id' => htmlspecialchars($row['pedido_id']),
-                'nome_prod' => htmlspecialchars($row['nome_prod']),
-                'qtd_prod' => htmlspecialchars($row['qtd_prod']),
-                'rsunit_prod' => htmlspecialchars($row['rsunit_prod']),
-                'doca' => htmlspecialchars($row['doca']),
-            ];
->>>>>>> parent of 89f4741 (s)
         }
 
         // Fechando a conexão
@@ -87,19 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedido_id']) && !isset
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     // Obtém os dados do formulário
     $pedido_id = $_POST['pedido_id'];
-    $nome_prod = $_POST['nome_prod'];
-    $qtd_prod = $_POST['qtd_prod'];
-<<<<<<< HEAD
+    $nome_produto = $_POST['nome_produto'];
+    $qnt_prod = $_POST['qnt_prod'];
     $avariado = isset($_POST['avariado']) ? 1 : 0;
     $faltando = isset($_POST['faltando']) ? 1 : 0;
     $observacoes = $_POST['comentarios'];
-=======
-    $rsunit_prod = $_POST['rsunit_prod'];
-    $doca = $_POST['doca'];
-    $checkAvaria = isset($_POST['checkAvaria']) ? 1 : 0;
-    $checkFalta = isset($_POST['checkFalta']) ? 1 : 0;
-    $comentarios = $_POST['comentarios'];
->>>>>>> parent of 89f4741 (s)
 
     // Criando a conexão
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -110,17 +80,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     }
 
     // Inserção na nova tabela
-<<<<<<< HEAD
-    $sql = "INSERT INTO vistoriacarga (pedido_id, nome_produto, qtd_prod, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO vistoriacarga (pedido_id, nome_produto, qnt_prod, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-=======
-    $sql = "INSERT INTO vistoriacarga (pedido_id, nome_prod, qtd_prod, rsunit_prod, doca, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssisiiis", $pedido_id, $nome_prod, $qtd_prod, $rsunit_prod, $doca, $checkAvaria, $checkFalta, $comentarios);
->>>>>>> parent of 89f4741 (s)
 
     if ($stmt) {
-        $stmt->bind_param("ssisii", $pedido_id, $nome_produto, $qtd_prod, $avariado, $faltando, $observacoes);
+        $stmt->bind_param("ssisii", $pedido_id, $nome_produto, $qnt_prod, $avariado, $faltando, $observacoes);
 
         if ($stmt->execute()) {
             $resultado = "Dados salvos com sucesso!";
@@ -145,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <title>Consulta de Pedido</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
         body {
             font-family: "Poppins", sans-serif;
@@ -242,20 +206,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
         <h2>Salvar Informações Adicionais</h2>
         <form action="vistoriaCarga.php" method="post">
             <input type="hidden" name="pedido_id" value="<?php echo $dadosPedido['pedido_id']; ?>">
-            <input type="hidden" name="nome_prod" value="<?php echo $dadosPedido['nome_prod']; ?>">
-            <input type="hidden" name="qtd_prod" value="<?php echo $dadosPedido['qtd_prod']; ?>">
-<<<<<<< HEAD
-=======
-            <input type="hidden" name="rsunit_prod" value="<?php echo $dadosPedido['rsunit_prod']; ?>">
-            <input type="hidden" name="doca" value="<?php echo $dadosPedido['doca']; ?>">
->>>>>>> parent of 89f4741 (s)
+            <input type="hidden" name="nome_produto" value="<?php echo $dadosPedido['nome_produto']; ?>">
+            <input type="hidden" name="qnt_prod" value="<?php echo $dadosPedido['qnt_prod']; ?>">
 
             <label for="avariado">Avariado?</label>
             <input type="checkbox" id="avariado" name="avariado" value="1"><br>
 
             <label for="faltando">Faltando?</label>
             <input type="checkbox" id="faltando" name="faltando" value="1"><br>
-            
+
             <label for="comentarios">Observações:</label>
             <input type="text" id="comentarios" name="comentarios"><br>
 
