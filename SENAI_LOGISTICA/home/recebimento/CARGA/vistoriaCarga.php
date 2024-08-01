@@ -2,7 +2,7 @@
 // Configurações do banco de dados
 $servername = "localhost";
 $username = "root";
-$password = "root"; // Adicione a senha do banco de dados, se necessário
+$password = "root";
 $dbname = "senai";
 
 // Variáveis para armazenar o resultado da consulta
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <title>Consulta de Pedido</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
         body {
             font-family: "Poppins", sans-serif;
