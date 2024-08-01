@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 31-Jul-2024 às 14:26
+-- Generation Time: 01-Ago-2024 às 11:38
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -191,7 +191,6 @@ CREATE TABLE `movimentacaoestoque` (
 --
 
 CREATE TABLE `pedidos` (
-  `id` int(11) NOT NULL,
   `pedido` varchar(255) NOT NULL,
   `data_entrega` date DEFAULT NULL,
   `data_pedido` date DEFAULT NULL,
@@ -202,10 +201,8 @@ CREATE TABLE `pedidos` (
 -- Extraindo dados da tabela `pedidos`
 --
 
-INSERT INTO `pedidos` (`id`, `pedido`, `data_entrega`, `data_pedido`, `observacoes`) VALUES
-(6, '1', '2024-07-31', '2024-07-23', ''),
-(7, '555', '2024-07-31', '2024-07-31', ''),
-(8, '333333', '2024-07-31', '2024-07-31', '');
+INSERT INTO `pedidos` (`pedido`, `data_entrega`, `data_pedido`, `observacoes`) VALUES
+('11', '4444-04-04', '4444-04-04', NULL);
 
 -- --------------------------------------------------------
 
@@ -215,7 +212,7 @@ INSERT INTO `pedidos` (`id`, `pedido`, `data_entrega`, `data_pedido`, `observaco
 
 CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,
-  `pedido_id` int(11) DEFAULT NULL,
+  `pedidob` varchar(255) NOT NULL,
   `cod_prod` varchar(255) NOT NULL,
   `nome_produto` varchar(255) NOT NULL,
   `un_prod` varchar(50) DEFAULT NULL,
@@ -230,9 +227,8 @@ CREATE TABLE `produtos` (
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id`, `pedido_id`, `cod_prod`, `nome_produto`, `un_prod`, `qtd_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
-(6, 6, '1', '1', 'caixa', 1, '1.00', '1', '1', '1'),
-(7, 8, '32', 'eeeee', 'caixa', 1111, '1111.00', '111111', '11111', '111111');
+INSERT INTO `produtos` (`id`, `pedidob`, `cod_prod`, `nome_produto`, `un_prod`, `qtd_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
+(1, '11', '1', '1', '1', 1, '1.00', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -508,14 +504,14 @@ ALTER TABLE `movimentacaoestoque`
 -- Indexes for table `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`pedido`);
 
 --
 -- Indexes for table `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `pedido_id` (`pedido_id`);
+  ADD KEY `fk_pedido` (`pedidob`);
 
 --
 -- Indexes for table `relatorio`
@@ -576,22 +572,17 @@ ALTER TABLE `loginp`
 -- AUTO_INCREMENT for table `movimentacao`
 --
 ALTER TABLE `movimentacao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `movimentacaoestoque`
 --
 ALTER TABLE `movimentacaoestoque`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `pedidos`
---
-ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --
@@ -622,6 +613,17 @@ ALTER TABLE `vistoriacarga`
 --
 ALTER TABLE `vistoriaconferenciacontainer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `produtos`
+--
+ALTER TABLE `produtos`
+  ADD CONSTRAINT `fk_pedido` FOREIGN KEY (`pedidob`) REFERENCES `pedidos` (`pedido`) ON DELETE CASCADE,
+  ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`pedidob`) REFERENCES `pedidos` (`pedido`) ON DELETE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
