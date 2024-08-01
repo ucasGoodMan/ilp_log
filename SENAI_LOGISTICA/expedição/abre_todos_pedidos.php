@@ -71,30 +71,10 @@
 <body>
     <div class="container">
         <h1>Tela 1 - Expedição</h1>
-        <form class="grid">
+        <form class="grid" method="POST" action="abre_pedido_especificado.php">
             <div class="row">
                 <span class="label">Solicitação nº</span>
-                <input type="text" name="solicitacao1">
-                <button type="submit">Abrir</button>
-            </div>
-            <div class="row">
-                <span class="label">Solicitação nº</span>
-                <input type="text" name="solicitacao2">
-                <button type="submit">Abrir</button>
-            </div>
-            <div class="row">
-                <span class="label">Solicitação nº</span>
-                <input type="text" name="solicitacao3">
-                <button type="submit">Abrir</button>
-            </div>
-            <div class="row">
-                <span class="label">Solicitação nº</span>
-                <input type="text" name="solicitacao4">
-                <button type="submit">Abrir</button>
-            </div>
-            <div class="row">
-                <span class="label">Solicitação nº</span>
-                <input type="text" name="solicitacao5">
+                <input type="text" name="solicitacao">
                 <button type="submit">Abrir</button>
             </div>
         </form>
