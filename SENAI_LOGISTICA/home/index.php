@@ -60,7 +60,7 @@
             <li>
                 <a href="">
                     <i class="fa-solid fa-truck-fast"></i>
-                    <span class="link_name">Expedição</span>
+                    <span class="link_name">Expedição (WIP)</span>
                 </a>
                 <ul class="sub-menu">
                     <li><a class="blank" href="">Expedição</a></li>
@@ -76,12 +76,12 @@
                 </ul>
             </li>
             <li>
-                <a href="">
+                <a href="..\home\relatorios\relatorio.php">
                     <i class="fa-solid fa-receipt"></i>
-                    <span class="link_name">Relatórios</span>
+                    <span class="link_name">Relatórios (NF)</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="">Relatórios</a></li>
+                    <li><a class="blank" href="">Relatórios (NF)</a></li>
                 </ul>
             </li>
             <li>
