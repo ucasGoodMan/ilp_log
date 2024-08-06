@@ -33,7 +33,6 @@ if (isset($_POST['pedido_id'])) {
         
         // Exibe o formulário para editar cada produto
         while ($produto = $result_produtos->fetch_assoc()) {
-            echo "<h3>Produto ID: " . $produto['id'] . "</h3>";
             echo "<input type='hidden' name='produto_id[]' value='" . $produto['id'] . "'>";
             echo "Código: <input type='text' name='cod_prod[]' value='" . htmlspecialchars($produto['cod_prod']) . "'><br>";
             echo "Nome: <input type='text' name='nome_produto[]' value='" . htmlspecialchars($produto['nome_produto']) . "'><br>";
