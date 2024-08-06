@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 01-Ago-2024 às 13:58
+-- Generation Time: 06-Ago-2024 às 11:09
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `senai`
 --
+
 -- --------------------------------------------------------
 
 --
@@ -196,15 +197,6 @@ CREATE TABLE `pedidos` (
   `observacoes` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `pedidos`
---
-
-INSERT INTO `pedidos` (`pedido`, `data_entrega`, `data_pedido`, `observacoes`) VALUES
-('11', '4444-04-04', '4444-04-04', NULL),
-('3', '2024-08-13', '2024-08-24', ''),
-('5', '2024-08-06', '2024-08-05', '');
-
 -- --------------------------------------------------------
 
 --
@@ -223,16 +215,6 @@ CREATE TABLE `produtos` (
   `cst_prod` varchar(50) DEFAULT NULL,
   `cfop_prod` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `produtos`
---
-
-INSERT INTO `produtos` (`id`, `pedidob`, `cod_prod`, `nome_produto`, `un_prod`, `qtd_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
-(1, '11', '1', '1', '1', 1, '1.00', '1', '1', '1'),
-(2, '3', '3', '3', 'litro', 3, '3.00', '3', '3', '3'),
-(3, '5', '5', '5', 'caixa', 5, '5.00', '5', '5', '5'),
-(4, '5', '5', '5', 'caixa', 5, '5.00', '5', '5', '5');
 
 -- --------------------------------------------------------
 
@@ -412,7 +394,8 @@ INSERT INTO `vistoriacarga` (`id`, `pedidob`, `nome_produto`, `qtd_prod`, `avari
 (7, '21', '1', 1, 0, 0, '', '2024-07-23'),
 (8, '11', '23', 9, 1, 1, 'aaaaaaa', '2024-07-27'),
 (9, '11', '23', 9, 1, 1, 'sem observacoes', '2024-07-27'),
-(10, '5', '5', 5, 1, 1, '55', NULL);
+(10, '5', '5', 5, 1, 1, '55', NULL),
+(11, '4', '4', 4, 1, 1, '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -587,7 +570,7 @@ ALTER TABLE `movimentacaoestoque`
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --
@@ -612,7 +595,7 @@ ALTER TABLE `vagas`
 -- AUTO_INCREMENT for table `vistoriacarga`
 --
 ALTER TABLE `vistoriacarga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `vistoriaconferenciacontainer`
 --
