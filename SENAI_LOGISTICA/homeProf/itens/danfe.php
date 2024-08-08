@@ -9,18 +9,139 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Detalhes do Pedido</title>
     <style>
-        /* Seus estilos aqui */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .header p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        form input[type="text"],
+        form input[type="date"],
+        form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form input[type="submit"] {
+            background: #255ba8;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fafafa;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+
+        td {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .info-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        .info-section h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #4CAF50;
+        }
+
         .dropdown {
             position: relative;
             display: inline-block;
             margin-top: 20px;
+            width: 100%;
+        }
+
+        .dropdown-button {
+            background: #255ba8;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-button:hover {
+            background: #255ba8;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
             background-color: #f9f9f9;
-            min-width: 250px;
+            min-width: 100%;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
             padding: 10px;
@@ -29,67 +150,17 @@
 
         .dropdown-content div {
             cursor: pointer;
-            padding: 5px;
+            padding: 10px;
+            transition: background-color 0.3s ease;
         }
 
         .dropdown-content div:hover {
             background-color: #ddd;
         }
-
-        .dropdown-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .dropdown-button:hover {
-            background-color: #45a049;
-        }
-
-        .info-section {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        .container {
-            text-align: center;
-            margin-top: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        td {
-            padding-left: 20px; /* Adiciona espaço à esquerda das células */
-            padding-right: 20px; /* Adiciona espaço à direita das células */
-        }
     </style>
 </head>
 
 <body>
-
     <div class="container">
         <div class="header">
             <?php
@@ -167,17 +238,7 @@
 
                 if ($result_produtos) {
                     if ($result_produtos->num_rows > 0) {
-                        echo "<table>";
-                        echo "<tr>
-                                <th>Código</th>
-                                <th>Produto</th>
-                                <th>Unidade</th>
-                                <th>Quantidade</th>
-                                <th>Preço Unitário</th>
-                                <th>CST</th>
-                                <th>NCM</th>
-                                <th>CFOP</th>
-                              </tr>";
+                       
                         while ($row_produtos = $result_produtos->fetch_assoc()) {
                             echo "<tr>";
                             echo "<td>" . htmlspecialchars($row_produtos["cod_prod"]) . "</td>";
