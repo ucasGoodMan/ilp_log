@@ -24,14 +24,14 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="site.php">
+                <a href="index.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
             </li>
             <li> 
                 <div class="iocn-links">
-                    <a href="site.php">
+                    <a href="index.php">
                         <i class="fa-solid fa-truck"></i>   
                         <span class="link_name">Recebimento</span>
                     </a>
