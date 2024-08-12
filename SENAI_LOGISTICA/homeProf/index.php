@@ -51,15 +51,7 @@
                     <li><a href="">Minhas danfe</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="">
-                    <i class="fa-solid fa-receipt"></i>
-                    <span class="link_name">Relatório</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="">Relatório</a></li>
-                </ul>
-            </li>
+            
             <li>
                 <a href="">
                     <i class="fa-solid fa-sliders"></i>

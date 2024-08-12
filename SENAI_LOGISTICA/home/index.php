@@ -75,15 +75,7 @@
                     <li><a class="blank" href="../home/movimentacao/estadoEstoque.php">Estoque</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="..\home\relatorios\relatorio.php">
-                    <i class="fa-solid fa-receipt"></i>
-                    <span class="link_name">Relatórios (NF)</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="">Relatórios (NF)</a></li>
-                </ul>
-            </li>
+            
             <li>
             <div class="profile-details">
                     <i class='bx bx-log-out'></i>
