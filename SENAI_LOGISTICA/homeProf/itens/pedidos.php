@@ -82,7 +82,7 @@
             const maxProducts = 10;
             const productLines = document.querySelectorAll('#products .grid').length;
             
-            if (productLines < maxProducts) {
+            if (productLines < maxProducts) { 
                 productCount++;
                 
                 const grid = document.createElement('div');
@@ -109,7 +109,7 @@
                         <option value="bandeja">bandeja</option>
                     </select>
                     <input type="number" name="qtd[]" placeholder="Quantidade">
-                    <input type="text" name="rsunit[]" placeholder="Preço Unitário">
+                    <input type="number" name="rsunit[]" placeholder="Preço Unitário">
                     <input type="text" name="ncm[]" placeholder="NCM">
                     <input type="text" name="cst[]" placeholder="CST">
                     <input type="text" name="cfop[]" placeholder="CFOP">
