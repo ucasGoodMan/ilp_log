@@ -31,7 +31,7 @@
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="../">Pedidos</a></li>
+                    <li><a href=".">Pedidos</a></li>
                     <li><a href="../homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
                 </ul>
             </li>
