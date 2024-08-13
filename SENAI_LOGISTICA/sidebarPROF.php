@@ -67,7 +67,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Aluno</a></li>
-                    <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/alunos/turmas.php">Turmas</a></li>
+                    <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/turmas/turmas.php">Turmas</a></li>
                 </ul>
             </li>
             <li>

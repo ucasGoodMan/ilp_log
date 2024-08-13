@@ -70,7 +70,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Turmas</a></li>
-                    <li><a href="../homeProf/alunos/turmas.php">Alunos</a></li>
+                    <li><a href="../homeProf/turmas/turmas.php">Alunos</a></li>
                 </ul>
             </li>
             <li>
