@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 07-Ago-2024 às 10:43
+-- Generation Time: 13-Ago-2024 às 13:27
 -- Versão do servidor: 5.7.11
--- PHP Version: 5.6.18
+-- PHP Version: 7.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,55 +28,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alunos` (
   `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `senha` varchar(255) NOT NULL
+  `nome` varchar(60) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `turma_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `alunos`
 --
 
-INSERT INTO `alunos` (`id`, `email`, `senha`) VALUES
-(1, 'aluno1', '123'),
-(2, 'aluno2', '123'),
-(3, 'aluno3', '123'),
-(4, 'aluno4', '123'),
-(5, 'aluno5', '123'),
-(6, 'aluno6', '123'),
-(7, 'aluno7', '123'),
-(8, 'aluno8', '123'),
-(9, 'aluno9', '123'),
-(10, 'aluno10', '123'),
-(11, 'aluno11', '123'),
-(12, 'aluno12', '123'),
-(13, 'aluno13', '123'),
-(14, 'aluno14', '123'),
-(15, 'aluno15', '123'),
-(16, 'aluno16', '123'),
-(17, 'aluno17', '123'),
-(18, 'aluno18', '123'),
-(19, 'aluno19', '123'),
-(20, 'aluno20', '123'),
-(21, 'aluno21', '123'),
-(22, 'aluno22', '123'),
-(23, 'aluno23', '123'),
-(24, 'aluno24', '123'),
-(25, 'aluno25', '123'),
-(26, 'aluno26', '123'),
-(27, 'aluno27', '123'),
-(28, 'aluno28', '123'),
-(29, 'aluno29', '123'),
-(30, 'aluno30', '123'),
-(31, 'aluno31', '123'),
-(32, 'aluno32', '123'),
-(33, 'aluno33', '123'),
-(34, 'aluno34', '123'),
-(35, 'aluno35', '123'),
-(36, 'aluno36', '123'),
-(37, 'aluno37', '123'),
-(38, 'aluno38', '123'),
-(39, 'aluno39', '123'),
-(40, 'aluno40', '123');
+INSERT INTO `alunos` (`id`, `nome`, `senha`, `turma_id`) VALUES
+(53, 'aluno1', 'QZAQ0', 24),
+(54, 'aluno2', 'SZBKV', 24),
+(55, 'aluno3', '5J24C', 24),
+(56, 'aluno4', '10PHO', 24),
+(57, 'aluno5', '0V85E', 24);
 
 -- --------------------------------------------------------
 
@@ -90,17 +56,39 @@ CREATE TABLE `detalhes_danfe` (
   `cod_danfe` int(11) DEFAULT NULL,
   `chave_acesso_danfe` varchar(44) DEFAULT NULL,
   `data_emissao` date DEFAULT NULL,
-  `data_entrega` date DEFAULT NULL
+  `data_entrega` date DEFAULT NULL,
+  `nome_produto` varchar(255) NOT NULL,
+  `un_prod` varchar(4) NOT NULL,
+  `qtd_prod` int(5) NOT NULL,
+  `rsunit_prod` float NOT NULL,
+  `ncm_prod` int(8) NOT NULL,
+  `cst_prod` int(3) NOT NULL,
+  `cfop_prod` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `doca_pedidos`
+--
+
+CREATE TABLE `doca_pedidos` (
+  `id` int(11) NOT NULL,
+  `pedido_id` int(11) DEFAULT NULL,
+  `numero_doca` int(11) DEFAULT NULL,
+  `data_hora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `nome_produto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `detalhes_danfe`
+-- Extraindo dados da tabela `doca_pedidos`
 --
 
-INSERT INTO `detalhes_danfe` (`id`, `pedido_id`, `cod_danfe`, `chave_acesso_danfe`, `data_emissao`, `data_entrega`) VALUES
-(1, 123, 32415, '928382372837429202837785484684652484', '2024-08-06', '2024-08-05'),
-(2, 123, 32415, '928382372837429202837785484684652484', '2024-08-06', '2024-08-05'),
-(3, 123, 32415, '928382372837429202837785484684652484', '2024-08-06', '2024-08-05');
+INSERT INTO `doca_pedidos` (`id`, `pedido_id`, `numero_doca`, `data_hora`, `nome_produto`) VALUES
+(1, 11, 2, '2024-08-13 12:24:42', ''),
+(2, 11, 2, '2024-08-13 12:24:42', ''),
+(3, 11, 33, '2024-08-13 12:32:14', 'core i5'),
+(4, 11, 33, '2024-08-13 12:32:14', 'core i6');
 
 -- --------------------------------------------------------
 
@@ -147,24 +135,6 @@ INSERT INTO `estoque` (`id`, `posicaoVaga`, `statusVaga`, `itens`, `posicao`) VA
 (24, 'E4', 'Vazia', NULL, ''),
 (25, 'E5', 'Vazia', NULL, ''),
 (26, 'B2', 'Vazia', NULL, '');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `expedidos`
---
-
-CREATE TABLE `expedidos` (
-  `id` int(11) NOT NULL,
-  `pedidob` varchar(50) NOT NULL,
-  `cod_prod` varchar(50) NOT NULL,
-  `nome_produto` varchar(100) NOT NULL,
-  `un_prod` varchar(10) NOT NULL,
-  `qtd_prod` int(11) NOT NULL,
-  `data_entrega` date NOT NULL,
-  `data_pedido` date NOT NULL,
-  `doca` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -244,9 +214,7 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`pedido`, `data_entrega`, `data_pedido`, `observacoes`) VALUES
-('11', '4444-04-04', '4444-04-04', NULL),
-('123', '2024-08-06', '2024-07-30', ''),
-('52', '2024-08-01', '2024-08-01', '');
+('1', '2024-08-08', '2024-08-08', '');
 
 -- --------------------------------------------------------
 
@@ -272,12 +240,7 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `pedidob`, `cod_prod`, `nome_produto`, `un_prod`, `qtd_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
-(1, '11', '1', '1', '1', 1, '1.00', '1', '1', '1'),
-(2, '52', '1', '1', 'unidade', 1, '1.00', '1', '1', '1'),
-(3, '52', '2', '2', 'litro', 2, '2.00', '2', '2', '2'),
-(4, '52', '2', '2', 'peÃ§a', 2, '2.00', '2', '2', '2'),
-(5, '123', '123', 'telcado', 'caixa', 23, '1111.00', '1', '1', '1'),
-(6, '123', '124', 'mouse', 'caixa', 24, '2222.00', '1', '1', '1');
+(1, '1', '1', 'tesoura', 'palete', 1, '5.00', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -328,10 +291,7 @@ CREATE TABLE `turma` (
 --
 
 INSERT INTO `turma` (`id`, `nturma`, `nometurma`, `qntalunos`) VALUES
-(9, 12, 'df', 12),
-(10, 0, 'sd', 12),
-(11, 23, 'asd', 121),
-(12, 5, 'sa', 45);
+(24, 2, 'turma 2', 5);
 
 -- --------------------------------------------------------
 
@@ -436,9 +396,9 @@ INSERT INTO `vagas` (`id`, `vaga`, `statusVaga`, `itens`) VALUES
 
 CREATE TABLE `vistoriacarga` (
   `id` int(11) NOT NULL,
-  `pedido` varchar(50) NOT NULL,
+  `pedidob` varchar(50) NOT NULL,
   `nome_produto` varchar(50) NOT NULL,
-  `qnt_prod` int(11) NOT NULL,
+  `qtd_prod` int(11) NOT NULL,
   `avariado` tinyint(4) DEFAULT NULL,
   `faltando` tinyint(50) NOT NULL,
   `observacoes` varchar(50) DEFAULT NULL,
@@ -449,14 +409,16 @@ CREATE TABLE `vistoriacarga` (
 -- Extraindo dados da tabela `vistoriacarga`
 --
 
-INSERT INTO `vistoriacarga` (`id`, `pedido`, `nome_produto`, `qnt_prod`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
+INSERT INTO `vistoriacarga` (`id`, `pedidob`, `nome_produto`, `qtd_prod`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
 (4, '19', '18', 9, 1, 0, 'problema no joelho', '2024-07-19'),
 (3, '12', '100', 12, 0, 0, '', '2024-07-19'),
 (5, '11', '23', 9, 0, 0, '', '2024-07-23'),
 (6, '20', '1', 9, 0, 0, '', '2024-07-23'),
 (7, '21', '1', 1, 0, 0, '', '2024-07-23'),
 (8, '11', '23', 9, 1, 1, 'aaaaaaa', '2024-07-27'),
-(9, '11', '23', 9, 1, 1, 'sem observacoes', '2024-07-27');
+(9, '11', '23', 9, 1, 1, 'sem observacoes', '2024-07-27'),
+(10, '5', '5', 5, 1, 1, '55', NULL),
+(11, '4', '4', 4, 1, 1, '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -523,24 +485,35 @@ INSERT INTO `vistoriaconferenciacontainer` (`id`, `PlacaCaminhao`, `NomeMotorist
 --
 ALTER TABLE `alunos`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD KEY `turma_id` (`turma_id`);
 
 --
 -- Indexes for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `nome_produto` (`nome_produto`,`un_prod`,`qtd_prod`,`rsunit_prod`,`ncm_prod`,`cst_prod`,`cfop_prod`),
+  ADD KEY `cfop_prod` (`cfop_prod`),
+  ADD KEY `cfop_prod_2` (`cfop_prod`),
+  ADD KEY `un_prod` (`un_prod`,`qtd_prod`,`rsunit_prod`,`ncm_prod`,`cst_prod`),
+  ADD KEY `rsunit_prod` (`rsunit_prod`,`ncm_prod`,`cst_prod`),
+  ADD KEY `rsunit_prod_2` (`rsunit_prod`,`ncm_prod`,`cst_prod`),
+  ADD KEY `qtd_prod` (`qtd_prod`),
+  ADD KEY `cst_prod` (`cst_prod`),
+  ADD KEY `ncm_prod` (`ncm_prod`),
+  ADD KEY `nome_produto_2` (`nome_produto`),
+  ADD KEY `nome_produto_3` (`nome_produto`);
+
+--
+-- Indexes for table `doca_pedidos`
+--
+ALTER TABLE `doca_pedidos`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `estoque`
 --
 ALTER TABLE `estoque`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `expedidos`
---
-ALTER TABLE `expedidos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -618,22 +591,22 @@ ALTER TABLE `vistoriaconferenciacontainer`
 -- AUTO_INCREMENT for table `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `doca_pedidos`
+--
+ALTER TABLE `doca_pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `estoque`
 --
 ALTER TABLE `estoque`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
---
--- AUTO_INCREMENT for table `expedidos`
---
-ALTER TABLE `expedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `loginp`
 --
@@ -653,7 +626,7 @@ ALTER TABLE `movimentacaoestoque`
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --
@@ -668,7 +641,7 @@ ALTER TABLE `solicitacoes`
 -- AUTO_INCREMENT for table `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `vagas`
 --
@@ -678,7 +651,7 @@ ALTER TABLE `vagas`
 -- AUTO_INCREMENT for table `vistoriacarga`
 --
 ALTER TABLE `vistoriacarga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `vistoriaconferenciacontainer`
 --
@@ -687,6 +660,12 @@ ALTER TABLE `vistoriaconferenciacontainer`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Limitadores para a tabela `alunos`
+--
+ALTER TABLE `alunos`
+  ADD CONSTRAINT `alunos_ibfk_1` FOREIGN KEY (`turma_id`) REFERENCES `turma` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `produtos`
