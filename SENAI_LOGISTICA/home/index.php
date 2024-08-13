@@ -58,12 +58,12 @@
                 </ul>
             </li>   
             <li>
-                <a href="">
+                <a href="../home/picking/picking.php">
                     <i class="fa-solid fa-truck-fast"></i>
                     <span class="link_name">Expedição (WIP)</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="">Expedição</a></li>
+                    <li><a class="blank" href="../home/picking/picking.php">Expedição</a></li>
                 </ul>
             </li>
             <li>
