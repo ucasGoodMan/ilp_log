@@ -43,6 +43,20 @@
         .doca-section {
             margin-top: 20px;
         }
+
+        .ok-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 20px; /* Ajuste de margem para a direita */
+        }
+
+        .ok-button.clicked {
+            background-color: green;
+        }
     </style>
 </head>
 
@@ -109,7 +123,14 @@
             </div>
         </form>
     </div>
-    <script src="sidebar.js"></script>
+
+    <script>
+        document.querySelectorAll('.ok-button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('clicked');
+            });
+        });
+    </script>
 </body>
 
 </html>
