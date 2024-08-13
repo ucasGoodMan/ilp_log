@@ -58,12 +58,19 @@
                 </ul>
             </li>   
             <li>
-                <a href="../home/picking/picking.php">
-                    <i class="fa-solid fa-truck-fast"></i>
-                    <span class="link_name">Expedição (WIP)</span>
-                </a>
+                <div class="iocn-links">
+                        <a href="">
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <span class="link_name">Expedição</span> 
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="../home/picking/picking.php">Expedição</a></li>
+                    <li><a class="link_name">Expedição</a></li>
+                    <li><a href="../home/picking/picking.php">Expedir</a></li>
+                    <li><a href="../home/picking/processar_pedido.php">Pedido Carregado</a></li>
+                </ul>
+               
                 </ul>
             </li>
             <li>

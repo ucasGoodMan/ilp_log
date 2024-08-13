@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de movimentação</title>
+</head>
+<body>
+    
 <?php
 $servername = "localhost";
 $username = "root";
@@ -25,9 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    echo "Cadastro realizado com sucesso!";
+    echo "Solicitação de movimentação feita com sucesso!";
 }
 
 // Fecha a conexão
 $conn->close();
 ?>
+</body>
+</html>
