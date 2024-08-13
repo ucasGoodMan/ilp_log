@@ -16,12 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($turma_id) {
         // Atualiza todos os alunos da turma
-        foreach ($_POST['nome_aluno'] as $id => $nome) {
+        foreach ($_POST['nome'] as $index => $nome) {
             $nome = $conexao->real_escape_string($nome);
-            $senha = $conexao->real_escape_string($_POST['senha_aluno'][$id]);
+            $senha = $conexao->real_escape_string($_POST['senha'][$index]);
+            $id = isset($_POST['aluno_id'][$index]) ? (int)$_POST['aluno_id'][$index] : 0;
 
-            $sql = "UPDATE `alunos` SET `nome` = '$nome', `senha` = '$senha' WHERE `id` = $id";
-            $conexao->query($sql);
+            if ($id) {
+                $sql = "UPDATE `alunos` SET `nome` = '$nome', `senha` = '$senha' WHERE `id` = $id";
+                $conexao->query($sql);
+            }
         }
     }
 
