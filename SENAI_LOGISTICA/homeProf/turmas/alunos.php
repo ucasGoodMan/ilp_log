@@ -1,5 +1,5 @@
 <?php
-include "../../";
+include "../../sidebarPROF.php";
 $hostname = "127.0.0.1";
 $user = "root";
 $password = "root";
@@ -18,6 +18,7 @@ if (empty($turma_id)) {
 
 $sql = "SELECT * FROM `alunos` WHERE `turma_id` = '$turma_id'";
 $resultado = $conexao->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -115,6 +116,7 @@ $resultado = $conexao->query($sql);
                     <tbody>
                         <?php while ($row = $resultado->fetch_assoc()): ?>
                             <tr>
+                                <input type="hidden" name="aluno_id[]" value="<?= $row['id'] ?>">
                                 <td>
                                     <input type="text" name="nome[]" value="<?= htmlspecialchars($row['nome']) ?>" required>
                                 </td>
