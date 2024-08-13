@@ -8,7 +8,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Home Docente</title>
- 
+
 </head>
 
 <body>
@@ -51,7 +51,7 @@
                     <li><a href="">Minhas danfe</a></li>
                 </ul>
             </li>
-            
+
             <li>
                 <a href="">
                     <i class="fa-solid fa-sliders"></i>
@@ -60,19 +60,19 @@
                 <ul class="sub-menu">
                     <li><a class="blank" href="">Controle</a></li>
                 </ul>
-                <li>
-                    <div class="iocn-links">
-                        <a href="">
-                            <i class="fa-solid fa-address-card"></i>
-                            <span class="link_name">Aluno</span>
-                        </a>
-                        <i class='bx bx-chevron-down arrow'></i>
-                    </div>
-                    <ul class="sub-menu">
-                        <li><a class="link_name">Aluno</a></li>
-                        <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
-                    </ul>
-                </li>
+            <li>
+                <div class="iocn-links">
+                    <a href="">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span class="link_name">Turmas</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name">Turmas</a></li>
+                    <li><a href="../homeProf/alunos/turmas.php">Alunos</a></li>
+                </ul>
+            </li>
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>

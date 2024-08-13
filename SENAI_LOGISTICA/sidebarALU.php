@@ -12,111 +12,85 @@
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <img class="img1" src="imagens/ILP ICONE BRANCO sf.png" alt="LUCA">
+<<<<<<< HEAD
+            <img class="img1" src="../../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+=======
+            <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+>>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="site.php">
+                <a href="../homeProf/index.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="site.php">
-                        <i class="fa-solid fa-truck"></i>
-                        <span class="link_name">Recebimento</span>
+                    <a href="">
+                        <i class="fa-solid fa-file-circle-plus"></i>
+                        <span class="link_name">Pedidos</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name">Recebimento</a></li>
-                    <li><a href="../home/recebimento/Container/recebimento_container.php">Container</a></li>
-                    <li><a href="../home/recebimento/CARGA/carga.php">Carga</a></li>
+<<<<<<< HEAD
+                    <li><a href=".">Pedidos</a></li>
+=======
+                    <li><a href="..\homeProf\itens\pedidos.php">Pedidos</a></li>
+>>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
+                    <li><a href="../homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
                 </ul>
             </li>
             <li>
                 <div class="iocn-links">
                     <a href="">
-                        <i class="fa-solid fa-sliders"></i>
-                        <span class="link_name">Controle</span>
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <span class="link_name">Danfe</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name">Controle</a></li>
-                    <li><a href="movimentacao\docaRecebimento.php">Doca de recebimento</a></li>
-                    <li><a href="../home/movimentacao/estadoEstoque.php">Esssstoque</a></li>
+                    <li><a class="link_name">Danfe</a></li>
+                    <li><a href="">Criar danfe</a></li>
+                    <li><a href="">Minhas danfe</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="movimentacao\solicitacoesMovimentacao.php">
-                    <i class="fa-solid fa-dolly"></i>
-                    <span class="link_name">Movimentação</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="">Movimentação</a></li>
-                </ul>
-            </li>
+
             <li>
                 <a href="">
-                    <i class="fa-solid fa-hand-holding"></i>
-                    <span class="link_name">Picking</span>
+                    <i class="fa-solid fa-sliders"></i>
+                    <span class="link_name">Controle</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="">Picking</a></li>
+                    <li><a class="blank" href="">Controle</a></li>
                 </ul>
             <li>
-                <a href="">
-                    <i class="fa-solid fa-truck-fast"></i>
-                    <span class="link_name">Expedição</span>
-                </a>
+                <div class="iocn-links">
+                    <a href="">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span class="link_name">Aluno</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow'></i>
+                </div>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="">Expedição</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="">
-                    <i class="fa-solid fa-boxes-stacked"></i>
-                    <span class="link_name">Estoque</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="">Estoque</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="">
-                    <i class="fa-solid fa-receipt"></i>
-                    <span class="link_name">Relatórios</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="">Relatórios</a></li>
+                    <li><a class="link_name">Aluno</a></li>
+                    <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
                 </ul>
             </li>
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="imagens/senai-logo-1.png" alt="senai">
+<<<<<<< HEAD
+                    <img src="../../imagens/senai-logo-1.png" alt="senai">
+=======
+                    <img src="../imagens/senai-logo-1.png" alt="senai">
+>>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
                 </div>
             </li>
         </ul>
-        <script>
-            let arrow = document.querySelectorAll(".arrow")
-            for (var i = 0; i < arrow.length; i++) {
-                arrow[i].addEventListener("click", (e) => {
-                    let arrowParent = e.target.parentElement.parentElement;
-                    arrowParent.classList.toggle("showMenu");
-                });
-            }
 
-            let sidebar = document.querySelector(".sidebar");
-            let sidebarBtn = document.querySelector(".bx-menu");
-            sidebarBtn.addEventListener("click", () => {
-                sidebar.classList.toggle("close");
-            });
-            console.log(sidebarBtn);
-        </script>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -127,13 +101,20 @@
                 margin: 0;
             }
 
+            /*   color: 245 245 245 */
+
+            .body {
+                overflow: none;
+
+            }
+
             .sidebar {
                 position: fixed;
                 top: 0;
                 left: 0;
                 height: 100%;
-                width: 280px;
-                background: rgb(37, 91, 168);
+                width: 14%;
+                background: #255ba8;
                 z-index: 100;
                 transition: all 0.5s ease;
             }
@@ -376,12 +357,96 @@
                 font-size: 12px;
             }
 
-            .sidebar.close~.home-section {
-                left: -220px;
+            .home-section {
                 position: absolute;
+                background-color: rgba(233, 117, 117, 0.1);
+                transition: all 0.5s ease;
+
+            }
+
+            .sidebar.close~.home-section .text {
+                left: 8%;
+                position: absolute;
+            }
+
+            .sidebar.close~.home-section .bx-menu {
+                left: 5%;
+                position: absolute;
+            }
+
+            .home-section {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+            }
+
+
+            .home-section .text {
+                color: #11101d;
+                font-size: 35px;
+                position: absolute;
+                left: 18%;
+                transition: all 0.5s ease;
+            }
+
+            .home-section .bx-menu {
+                position: relative;
+                left: 15%;
+                cursor: pointer;
+                font-size: 2.5rem;
+                transition: all 0.5s ease;
+            }
+
+            .home-section .text {
+                font-size: 26px;
+                font-weight: 600;
+            }
+
+
+            .prof {
+                position: absolute;
+                left: 40%;
+                font-size: 2.3rem;
+                font-weight: 600;
+                top: 100px;
+            }
+
+            .imgProf {
+                position: absolute;
+                width: 850px;
+                left: 29%;
+                top: 200px;
             }
         </style>
     </div>
+    <section class="home-section">
+        <i class='bx bx-menu'></i>
+<<<<<<< HEAD
+=======
+        <span class="text">Home do Docente</span>
+        <span class="prof">Bem vindo, Docente</span>
+>>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
+        <img class="imgProf" src="../imagens/Classroom-cuate.svg" alt="Professor img">
+    </section>
+    <script>
+            let arrow = document.querySelectorAll(".arrow")
+            for (var i = 0; i < arrow.length; i++) {
+                arrow[i].addEventListener("click", (e) => {
+                    let arrowParent = e.target.parentElement.parentElement;
+                    arrowParent.classList.toggle("showMenu");
+                });
+            }
+
+
+            let sidebar = document.querySelector(".sidebar");
+            let sidebarBtn = document.querySelector(".bx-menu");
+            sidebarBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("close");
+            });
+            console.log(sidebarBtn);
+
+        </script>
 </body>
 
 </html>
