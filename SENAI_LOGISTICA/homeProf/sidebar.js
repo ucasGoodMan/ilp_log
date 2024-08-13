@@ -5,6 +5,7 @@ for (var i = 0; i < arrow.length; i++) {
     arrowParent.classList.toggle("showMenu");
     });
 }   
+   
 
 let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".bx-menu");
