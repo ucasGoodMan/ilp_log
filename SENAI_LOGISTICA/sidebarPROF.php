@@ -17,7 +17,7 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="../homeProf/index.php">
+                <a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/index.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
@@ -31,13 +31,13 @@
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href=".">Pedidos</a></li>
-                    <li><a href="../homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
+                    <li><a href="">Pedidos</a></li>
+                    <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
                 </ul>
             </li>
             <li>
                 <div class="iocn-links">
-                    <a href="">
+                    <a href="/SENAI_LOGISTICA/">
                         <i class="fa-solid fa-file-invoice-dollar"></i>
                         <span class="link_name">Danfe</span>
                     </a>
@@ -45,8 +45,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Danfe</a></li>
-                    <li><a href="">Criar danfe</a></li>
-                    <li><a href="">Minhas danfe</a></li>
+                    <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/itens/danfe.php">Minhas danfe</a></li>
                 </ul>
             </li>
 
@@ -68,7 +67,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Aluno</a></li>
-                    <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
+                    <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/alunos/turmas.php">Turmas</a></li>
                 </ul>
             </li>
             <li>
@@ -357,15 +356,16 @@
                 position: absolute;
             }
 
-            .sidebar.close~.home-section .bx-menu {
+            .sidebar.close~.bx-menu {
                 left: 5%;
                 position: absolute;
             }
 
             .home-section {
                 position: absolute;
-                width: 100%;
-                height: 100%;
+                top: 0px;
+                left: 230px;
+                height: 2%;
                 display: flex;
             }
 
@@ -378,9 +378,10 @@
                 transition: all 0.5s ease;
             }
 
-            .home-section .bx-menu {
-                position: relative;
+             .bx-menu {
+                position: absolute;
                 left: 15%;
+                top: 1%;
                 cursor: pointer;
                 font-size: 2.5rem;
                 transition: all 0.5s ease;
@@ -408,10 +409,9 @@
             }
         </style>
     </div>
-    <section class="home-section">
+
         <i class='bx bx-menu'></i>
-        <img class="imgProf" src="../imagens/Classroom-cuate.svg" alt="Professor img">
-    </section>
+
     <script>
             let arrow = document.querySelectorAll(".arrow")
             for (var i = 0; i < arrow.length; i++) {
