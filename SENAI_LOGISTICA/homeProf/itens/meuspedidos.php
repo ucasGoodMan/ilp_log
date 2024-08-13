@@ -9,10 +9,10 @@
     <title>Pedidos Doca</title>
 </head>
 <body>
-    <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
     <div class="container">
         <h1>Lista de Pedidos</h1>
         <?php
+     
         $servername = "localhost";
         $username = "root";
         $password = "root"; 
