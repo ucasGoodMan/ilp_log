@@ -356,15 +356,16 @@
                 position: absolute;
             }
 
-            .sidebar.close~.home-section .bx-menu {
+            .sidebar.close~.bx-menu {
                 left: 5%;
                 position: absolute;
             }
 
             .home-section {
                 position: absolute;
-                width: 100%;
-                height: 100%;
+                top: 0px;
+                left: 230px;
+                height: 2%;
                 display: flex;
             }
 
@@ -377,9 +378,10 @@
                 transition: all 0.5s ease;
             }
 
-            .home-section .bx-menu {
-                position: relative;
+             .bx-menu {
+                position: absolute;
                 left: 15%;
+                top: 1%;
                 cursor: pointer;
                 font-size: 2.5rem;
                 transition: all 0.5s ease;
@@ -407,10 +409,9 @@
             }
         </style>
     </div>
-    <section class="home-section">
+
         <i class='bx bx-menu'></i>
-        <img class="imgProf" src="../imagens/Classroom-cuate.svg" alt="Professor img">
-    </section>
+
     <script>
             let arrow = document.querySelectorAll(".arrow")
             for (var i = 0; i < arrow.length; i++) {
