@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 13-Ago-2024 às 14:14
+-- Generation Time: 14-Ago-2024 às 12:42
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -38,11 +38,11 @@ CREATE TABLE `alunos` (
 --
 
 INSERT INTO `alunos` (`id`, `nome`, `senha`, `turma_id`) VALUES
-(53, 'aluno1', 'QZAQ0', 24),
-(54, 'aluno2', 'SZBKV', 24),
-(55, 'aluno3', '5J24C', 24),
-(56, 'aluno4', '10PHO', 24),
-(57, 'aluno5', '0V85E', 24);
+(63, 'aluno1', '7hkit', 25),
+(64, 'aluno2', '0plcr', 25),
+(65, 'aluno3', 'nq2d0', 25),
+(66, 'aluno4', 'xib8u', 25),
+(67, 'aluno5', 'qqhw9', 25);
 
 -- --------------------------------------------------------
 
@@ -55,16 +55,16 @@ CREATE TABLE `detalhes_danfe` (
   `pedido_id` int(11) DEFAULT NULL,
   `cod_danfe` int(11) DEFAULT NULL,
   `chave_acesso_danfe` varchar(44) DEFAULT NULL,
-  `data_emissao` date DEFAULT NULL,
-  `data_entrega` date DEFAULT NULL,
-  `nome_produto` varchar(255) NOT NULL,
-  `un_prod` varchar(4) NOT NULL,
-  `qtd_prod` int(5) NOT NULL,
-  `rsunit_prod` float NOT NULL,
-  `ncm_prod` int(8) NOT NULL,
-  `cst_prod` int(3) NOT NULL,
-  `cfop_prod` int(4) NOT NULL
+  `data_emissao` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `detalhes_danfe`
+--
+
+INSERT INTO `detalhes_danfe` (`id`, `pedido_id`, `cod_danfe`, `chave_acesso_danfe`, `data_emissao`) VALUES
+(5, 5, 1, '1', '2024-08-14'),
+(6, 5, 1, '1', '2024-08-14');
 
 -- --------------------------------------------------------
 
@@ -217,7 +217,9 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`pedido`, `data_entrega`, `data_pedido`, `observacoes`) VALUES
-('1', '2024-08-08', '2024-08-08', '');
+('1', '2024-08-08', '2024-08-08', ''),
+('10', '2024-08-13', '2024-08-09', ''),
+('5', '2024-08-05', '2024-08-05', '');
 
 -- --------------------------------------------------------
 
@@ -243,7 +245,11 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `pedidob`, `cod_prod`, `nome_produto`, `un_prod`, `qtd_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
-(1, '1', '1', 'tesoura', 'palete', 1, '5.00', '1', '1', '1');
+(1, '1', '1', 'tesoura', 'palete', 1, '5.00', '1', '1', '1'),
+(2, '5', '5', '5', 'kilograma', 5, '5.00', '5', '5', '5'),
+(3, '10', '10', '10', 'caixa', 10, '10.00', '10', '10', '10'),
+(4, '10', '11', '11', 'peÃ§a', 11, '11.00', '11', '11', '11'),
+(5, '10', '12', '12', 'palete', 12, '12.00', '12', '12', '12');
 
 -- --------------------------------------------------------
 
@@ -294,7 +300,7 @@ CREATE TABLE `turma` (
 --
 
 INSERT INTO `turma` (`id`, `nturma`, `nometurma`, `qntalunos`) VALUES
-(24, 2, 'turma 2', 5);
+(25, 1, 'turma 1', 5);
 
 -- --------------------------------------------------------
 
@@ -494,18 +500,7 @@ ALTER TABLE `alunos`
 -- Indexes for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `nome_produto` (`nome_produto`,`un_prod`,`qtd_prod`,`rsunit_prod`,`ncm_prod`,`cst_prod`,`cfop_prod`),
-  ADD KEY `cfop_prod` (`cfop_prod`),
-  ADD KEY `cfop_prod_2` (`cfop_prod`),
-  ADD KEY `un_prod` (`un_prod`,`qtd_prod`,`rsunit_prod`,`ncm_prod`,`cst_prod`),
-  ADD KEY `rsunit_prod` (`rsunit_prod`,`ncm_prod`,`cst_prod`),
-  ADD KEY `rsunit_prod_2` (`rsunit_prod`,`ncm_prod`,`cst_prod`),
-  ADD KEY `qtd_prod` (`qtd_prod`),
-  ADD KEY `cst_prod` (`cst_prod`),
-  ADD KEY `ncm_prod` (`ncm_prod`),
-  ADD KEY `nome_produto_2` (`nome_produto`),
-  ADD KEY `nome_produto_3` (`nome_produto`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `doca_pedidos`
@@ -594,12 +589,12 @@ ALTER TABLE `vistoriaconferenciacontainer`
 -- AUTO_INCREMENT for table `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `doca_pedidos`
 --
@@ -629,7 +624,7 @@ ALTER TABLE `movimentacaoestoque`
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --
@@ -644,7 +639,7 @@ ALTER TABLE `solicitacoes`
 -- AUTO_INCREMENT for table `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `vagas`
 --
