@@ -59,7 +59,6 @@ if (!isset($_SESSION['id'])) {
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Danfe</a></li>
-                    <li><a href="">Criar danfe</a></li>
                     <li><a href="">Minhas danfe</a></li>
                 </ul>
             </li>
@@ -106,6 +105,4 @@ if (!isset($_SESSION['id'])) {
         <img class="imgProf" src="../imagens/Classroom-cuate.svg" alt="Professor img">
     </section>
     <script src="sidebar.js"></script>
-
-
 </html>

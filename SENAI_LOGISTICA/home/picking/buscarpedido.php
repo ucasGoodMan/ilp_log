@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='pt-br'>
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -9,61 +9,151 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Detalhes do Pedido</title>
     <style>
-        .container {
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
             text-align: center;
+            color: rgb(37, 91, 168);
             margin-top: 20px;
+            font-size: 28px;
+            position: absolute;
+            
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
         }
 
         .produto-list {
             list-style-type: none;
-            padding: 250px;
-            margin-top: 20px;
-            text-align: left;
-            display: inline-block;
+            padding: 0;
+            margin: 20px 0;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
         }
 
         .produto-item {
-            margin-bottom: 15px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 10px;
+            border: 1px solid rgb(37, 91, 168);
         }
+
 
         .produto-info {
             list-style-type: none;
-            padding: 0px;
+            padding: 0;
             margin: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 18px;
+            color: #333;
         }
 
         .back-button {
-            display: inline-block;
-            margin-bottom: 20px;
+            color: rgb(37, 91, 168);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .back-button i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .back-button:hover {
+            color: #1f5c9d;
         }
 
         .doca-section {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+            font-size: 16px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background-color: #ffffff;
+            color: #333;
+            font-size: 18px;
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button[type="submit"] {
+            background-color: rgb(37, 91, 168);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 18px;
             margin-top: 20px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #1f5c9d;
         }
 
         .ok-button {
-            background-color: red;
+            background-color: rgb(37, 91, 168);
             color: white;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
-            border-radius: 4px;
-            margin-left: 20px; /* Ajuste de margem para a direita */
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .ok-button:hover {
+            background-color: #1f5c9d;
         }
 
         .ok-button.clicked {
-            background-color: green;
+            background-color: #4caf50;
         }
     </style>
 </head>
 
 <body>
-    <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
+    <h1>Detalhes do Pedido</h1>
+
     <div class="container">
-        <h1>Detalhes do Pedido</h1>
+        <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
         <form action="processar_doca.php" method="post">
             <ul class="produto-list">
                 <?php
