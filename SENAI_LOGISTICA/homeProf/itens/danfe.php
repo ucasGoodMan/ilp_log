@@ -9,23 +9,156 @@
 
     <title>Detalhes do Pedido</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
         .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
             padding: 20px;
+            margin: 20px;
+
+        }
+
+        .header p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        form input[type="text"],
+        form input[type="date"],
+        form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form input[type="submit"] {
+            background: #255ba8;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #45a049;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-        }
-
-        table, th, td {
-            border: 1px solid black;
+            margin-top: 20px;
+            background-color: #fafafa;
         }
 
         th, td {
-            padding: 8px;
+            padding: 12px;
             text-align: left;
+            border-bottom: 1px solid #ddd;
         }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+
+        td {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .info-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        .info-section h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #4CAF50;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .dropdown-button {
+            background: #255ba8;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-button:hover {
+            background: #255ba8;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 100%;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .dropdown-content div {
+            cursor: pointer;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content div:hover {
+            background-color: #ddd;
+        }
+    </style>
     </style>
 </head>
 
@@ -68,7 +201,7 @@
 
                 echo '<form method="POST">';
                 echo '<label for="cod_danfe">Código da DANFE:</label>';
-                echo '<input type="text" id="cod_danfe" name="cod_danfe" placeholder="32415" required>';
+                echo '<input type="text" id="cod_danfe" name="cod_danfe" required>';
 
                 echo '<label for="chave_acesso_danfe">Chave de Acesso da DANFE:</label>';
                 echo '<input type="text" id="chave_acesso_danfe" name="chave_acesso_danfe" required>';
