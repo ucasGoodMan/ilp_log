@@ -1,5 +1,7 @@
 <?php
-include "../../sidebarPROF.php";
+include ("../../logoutProcess.php");
+include ("../../sidebarPROF.php");
+
 // Conexão com o banco de dados
 $hostname = "127.0.0.1";
 $user = "root";

@@ -404,7 +404,7 @@
             .imgProf {
                 position: absolute;
                 width: 850px;
-                left: 29%;
+                left: 29%; 
                 top: 200px;
             }
         </style>

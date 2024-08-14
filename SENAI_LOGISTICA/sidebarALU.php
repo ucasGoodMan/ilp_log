@@ -12,11 +12,11 @@
 <body>
     <div class="sidebar">
         <div class="logo-details">
-<<<<<<< HEAD
+
             <img class="img1" src="../../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
-=======
+
             <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
->>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
+
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
@@ -35,11 +35,10 @@
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-<<<<<<< HEAD
+
                     <li><a href=".">Pedidos</a></li>
-=======
+
                     <li><a href="..\homeProf\itens\pedidos.php">Pedidos</a></li>
->>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
                     <li><a href="../homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
                 </ul>
             </li>
@@ -82,11 +81,7 @@
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-<<<<<<< HEAD
                     <img src="../../imagens/senai-logo-1.png" alt="senai">
-=======
-                    <img src="../imagens/senai-logo-1.png" alt="senai">
->>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
                 </div>
             </li>
         </ul>

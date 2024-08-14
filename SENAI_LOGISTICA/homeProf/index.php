@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['id'])) {
+    // Se não estiver logado, redireciona para a página de login
+    header('Location: ../login.php');
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,11 +85,17 @@
                     <li><a href="../homeProf/turmas/turmas.php">Alunos</a></li>
                 </ul>
             </li>
-            <li>
-                <div class="profile-details">
-                    <i class='bx bx-log-out'></i>
+            <li> 
+                
+                <form action="logout.php" method="POST" style="display:inline;">
+                     <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
+                     <div class="profile-details">
+                       <i class='bx bx-log-out'></i> 
                     <img src="../imagens/senai-logo-1.png" alt="senai">
-                </div>
+                    </div>
+                  </button>
+                </form>
+
             </li>
         </ul>
     </div>
