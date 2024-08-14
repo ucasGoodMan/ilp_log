@@ -10,84 +10,77 @@
 </head>
 
 <body>
-    <div class="sidebar">
+<div class="sidebar">
         <div class="logo-details">
-<<<<<<< HEAD
-            <img class="img1" src="../../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
-=======
-            <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
->>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
+            <img class="img1" src="/ILP_LOG/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="../homeProf/index.php">
+                <a href="index.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
             </li>
-            <li>
+            <li> 
                 <div class="iocn-links">
-                    <a href="">
-                        <i class="fa-solid fa-file-circle-plus"></i>
-                        <span class="link_name">Pedidos</span>
+                    <a href="index.php">
+                        <i class="fa-solid fa-truck"></i>   
+                        <span class="link_name">Recebimento</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-<<<<<<< HEAD
-                    <li><a href=".">Pedidos</a></li>
-=======
-                    <li><a href="..\homeProf\itens\pedidos.php">Pedidos</a></li>
->>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
-                    <li><a href="../homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
+                    <li><a class="link_name">Recebimento</a></li>
+                    <li><a href="../home/recebimento/Container/recebimento_container.php">Container</a></li>
+                    <li><a href="../home/recebimento/CARGA/vistoriaCarga.php">Carga</a></li>
                 </ul>
-            </li>
+            </li> 
             <li>
                 <div class="iocn-links">
                     <a href="">
-                        <i class="fa-solid fa-file-invoice-dollar"></i>
-                        <span class="link_name">Danfe</span>
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="link_name">Controle</span> 
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name">Danfe</a></li>
-                    <li><a href="">Criar danfe</a></li>
-                    <li><a href="">Minhas danfe</a></li>
+                    <li><a class="link_name">Controle</a></li>
+                    <li><a href="movimentacao\docaRecebimento.php">Doca de recebimento<br>(solicitar movimentação)</a></li>
+                    <li><a href="movimentacao\solicitacoesMovimentacao.php">Concluir movimentação<br> do item</a></li>
+                </ul>
+            </li>   
+            <li>
+                <div class="iocn-links">
+                        <a href="">
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <span class="link_name">Expedição</span> 
+                        </a>
+                        <i class='bx bx-chevron-down arrow'></i>
+                    </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name">Expedição</a></li>
+                    <li><a href="../home/picking/picking.php">Expedir</a></li>
+                    <li><a href="../home/picking/processar_pedido.php">Pedido Carregado</a></li>
+                </ul>
+               
                 </ul>
             </li>
-
             <li>
-                <a href="">
-                    <i class="fa-solid fa-sliders"></i>
-                    <span class="link_name">Controle</span>
+                <a href="../home/movimentacao/estadoEstoque.php">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                    <span class="link_name">Estoque</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a class="blank" href="">Controle</a></li>
-                </ul>
-            <li>
-                <div class="iocn-links">
-                    <a href="">
-                        <i class="fa-solid fa-address-card"></i>
-                        <span class="link_name">Aluno</span>
-                    </a>
-                    <i class='bx bx-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name">Aluno</a></li>
-                    <li><a href="../homeProf/alunos/turmas.php">Turmas</a></li>
+                    <li><a class="blank" href="../home/movimentacao/estadoEstoque.php">Estoque</a></li>
                 </ul>
             </li>
+            
             <li>
-                <div class="profile-details">
+            <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-<<<<<<< HEAD
-                    <img src="../../imagens/senai-logo-1.png" alt="senai">
-=======
-                    <img src="../imagens/senai-logo-1.png" alt="senai">
->>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
-                </div>
+                    <img src="/ILP_LOG/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
+            </div>
             </li>
         </ul>
 
@@ -270,7 +263,7 @@
                 opacity: 1;
                 pointer-events: auto;
                 transition: all 0.4s ease;
-            }
+            } 
 
             .sidebar.close .nav-links li .sub-menu .link_name {
                 display: none;
@@ -359,7 +352,7 @@
 
             .home-section {
                 position: absolute;
-                background-color: rgba(233, 117, 117, 0.1);
+                background-color: #ffff;
                 transition: all 0.5s ease;
 
             }
@@ -422,11 +415,6 @@
     </div>
     <section class="home-section">
         <i class='bx bx-menu'></i>
-<<<<<<< HEAD
-=======
-        <span class="text">Home do Docente</span>
-        <span class="prof">Bem vindo, Docente</span>
->>>>>>> 7005dae9ca1578cbe2882d3cd8ce5c3267f3c13d
         <img class="imgProf" src="../imagens/Classroom-cuate.svg" alt="Professor img">
     </section>
     <script>
