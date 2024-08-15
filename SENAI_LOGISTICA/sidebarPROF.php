@@ -17,7 +17,7 @@
     </div>
     <ul class="nav-links">
         <li>
-            <a href="../SENAI_LOGISTICA/home">
+            <a href="http://localhost/ILP_LOG/SENAI_LOGISTICA/homeProf/">
                 <i class="fa-solid fa-house"></i>
                 <span class="link_name">Home</span>
             </a>
@@ -31,8 +31,8 @@
                 <i class='bx bx-chevron-down arrow'></i>
             </div>
             <ul class="sub-menu">
-                <li><a href="">Pedidos</a></li>
-                <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
+                <li><a href="http://localhost/ILP_LOG/SENAI_LOGISTICA/homeProf/itens/pedidos.php">Pedidos</a></li>
+                <li><a href="http://localhost/ILP_LOG/SENAI_LOGISTICA/homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
             </ul>
         </li>
         <li>
@@ -45,7 +45,7 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name">Danfe</a></li>
-                <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/itens/danfe.php">Minhas danfe</a></li>
+                <li><a href="">Minhas danfe</a></li>
             </ul>
         </li>
 
@@ -67,7 +67,7 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name">Aluno</a></li>
-                <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/turmas/turmas.php">Turmas</a></li>
+                <li><a href="http://localhost/ILP_LOG/SENAI_LOGISTICA/homeProf/turmas/turmas.php">Turmas</a></li>
             </ul>
         </li>
         <li>
