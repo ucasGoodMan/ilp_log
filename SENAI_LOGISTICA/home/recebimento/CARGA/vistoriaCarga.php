@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
 
         body {
             font-family: "Poppins", sans-serif;
-            background-color: #ffff;
+            background-color: #f2f2f2;
             margin: 0;
             min-height: 100vh;
             padding: 20px;
@@ -241,8 +241,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             background-color: rgb(37, 91, 140);
         }
 
-        input[type="checkbox"] {
-            margin-right: 10px;
+         input[type="checkbox"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            background-color: #fff;
+            transition: background-color 0.3s, border-color 0.3s;
+            margin-right: 10px; /* Espaçamento entre checkbox e texto */
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: rgb(37, 91, 168);
+            border-color: rgb(37, 91, 168);
+        }
+
+         input[type="checkbox"]:checked::before {
+            content: '✔';
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+        }
+
+         input[type="checkbox"]:disabled {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+        }
+
+         input[type="checkbox"]:disabled:checked {
+            background-color: #b0bec5;
         }
 
         .result {
