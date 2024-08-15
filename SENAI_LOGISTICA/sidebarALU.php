@@ -10,7 +10,11 @@
 </head>
 
 <body>
-<div class="sidebar">
+    <?php
+    define('BASE_URL','http://localhost/ilp_log/SENAI_LOGISTICA/home/
+    ')
+    ?>
+    <div class="sidebar">
         <div class="logo-details">
             <img class="img1" src="/ILP_LOG/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
             <span class="logo_name">ILP LOG</span>
@@ -22,25 +26,25 @@
                     <span class="link_name">Home</span>
                 </a>
             </li>
-            <li> 
+            <li>
                 <div class="iocn-links">
-                    <a href="index.php">
-                        <i class="fa-solid fa-truck"></i>   
-                        <span class="link_name">Recebimento</span>
+                    <a class="hrefs">
+                        <i class="fa-solid fa-truck"></i>
+                        <span style="pointer-events: none;" class="link_name">Recebimento</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Recebimento</a></li>
-                    <li><a href="../home/recebimento/Container/recebimento_container.php">Container</a></li>
-                    <li><a href="../home/recebimento/CARGA/vistoriaCarga.php">Carga</a></li>
+                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/recebimento/Container/recebimento_container.php">Container</a></li>
+                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/recebimento/CARGA/vistoriaCarga.php">Carga</a></li>
                 </ul>
-            </li> 
+            </li>
             <li>
                 <div class="iocn-links">
-                    <a href="">
+                    <a class="hrefs">
                         <i class="fa-solid fa-sliders"></i>
-                        <span class="link_name">Controle</span> 
+                        <span style="pointer-events: none;" class="link_name">Controle</span>
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
@@ -49,39 +53,36 @@
                     <li><a href="movimentacao\docaRecebimento.php">Doca de recebimento<br>(solicitar movimentação)</a></li>
                     <li><a href="movimentacao\solicitacoesMovimentacao.php">Concluir movimentação<br> do item</a></li>
                 </ul>
-            </li>   
+            </li>
             <li>
                 <div class="iocn-links">
-                        <a href="">
-                            <i class="fa-solid fa-truck-fast"></i>
-                            <span class="link_name">Expedição</span> 
-                        </a>
-                        <i class='bx bx-chevron-down arrow'></i>
-                    </div>
+                    <a class="hrefs">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <span style="pointer-events: none;" class="link_name">Expedição</span>
+                    </a>
+                    <i class='bx bx-chevron-down arrow'></i>
+                </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Expedição</a></li>
                     <li><a href="../home/picking/picking.php">Expedir</a></li>
                     <li><a href="../home/picking/processar_pedido.php">Pedido Carregado</a></li>
                 </ul>
-               
-                </ul>
-            </li>
-            <li>
-                <a href="../home/movimentacao/estadoEstoque.php">
+        </li>
+        <li>
+                <div class="iocn-links">
+                    <a href="">
                     <i class="fa-solid fa-boxes-stacked"></i>
-                    <span class="link_name">Estoque</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="../home/movimentacao/estadoEstoque.php">Estoque</a></li>
-                </ul>
-            </li>
-            
-            <li>
+                        <span style="pointer-events: none;" class="link_name">Estoque</span>
+                    </a>
+                </div>
+        </li>
+
+        <li>
             <div class="profile-details">
-                    <i class='bx bx-log-out'></i>
-                    <img src="/ILP_LOG/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
+                <i class='bx bx-log-out'></i>
+                <img src="/ILP_LOG/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
             </div>
-            </li>
+        </li>
         </ul>
 
         <style>
@@ -208,12 +209,14 @@
                 text-decoration: none;
                 display: flex;
                 align-items: center;
+                z-index: 1;
             }
 
             .sidebar .nav-links li a .link_name {
-                font-size: 18px;
+                font-size: 18px;    
                 font-weight: 400;
                 color: #fff;
+                z-index: 2;
             }
 
             .sidebar.close .nav-links li a .link_name {
@@ -263,7 +266,7 @@
                 opacity: 1;
                 pointer-events: auto;
                 transition: all 0.4s ease;
-            } 
+            }
 
             .sidebar.close .nav-links li .sub-menu .link_name {
                 display: none;
@@ -350,28 +353,21 @@
                 font-size: 12px;
             }
 
-            .home-section {
-                position: absolute;
-                background-color: #ffff;
-                transition: all 0.5s ease;
 
-            }
-
-            .sidebar.close~.home-section .text {
-                left: 8%;
-                position: absolute;
-            }
 
             .sidebar.close~.home-section .bx-menu {
-                left: 5%;
+                left: -20%;
                 position: absolute;
             }
 
             .home-section {
                 position: absolute;
-                width: 100%;
-                height: 100%;
+                width: 50%;
+                left: 15%;
+                top: 1%;
                 display: flex;
+                background-color: #ffff;
+                transition: all 0.5s ease;
             }
 
 
@@ -385,7 +381,7 @@
 
             .home-section .bx-menu {
                 position: relative;
-                left: 15%;
+                left: 0%;
                 cursor: pointer;
                 font-size: 2.5rem;
                 transition: all 0.5s ease;
@@ -396,45 +392,38 @@
                 font-weight: 600;
             }
 
-
-            .prof {
-                position: absolute;
-                left: 40%;
-                font-size: 2.3rem;
-                font-weight: 600;
-                top: 100px;
-            }
-
-            .imgProf {
-                position: absolute;
-                width: 850px;
-                left: 29%;
-                top: 200px;
-            }
         </style>
     </div>
     <section class="home-section">
         <i class='bx bx-menu'></i>
-        <img class="imgProf" src="../imagens/Classroom-cuate.svg" alt="Professor img">
     </section>
     <script>
-            let arrow = document.querySelectorAll(".arrow")
-            for (var i = 0; i < arrow.length; i++) {
-                arrow[i].addEventListener("click", (e) => {
-                    let arrowParent = e.target.parentElement.parentElement;
-                    arrowParent.classList.toggle("showMenu");
-                });
-            }
-
-
-            let sidebar = document.querySelector(".sidebar");
-            let sidebarBtn = document.querySelector(".bx-menu");
-            sidebarBtn.addEventListener("click", () => {
-                sidebar.classList.toggle("close");
+        let arrow = document.querySelectorAll(".arrow")
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e) => {
+                let arrowParent = e.target.parentElement.parentElement;
+                arrowParent.classList.toggle("showMenu");
             });
-            console.log(sidebarBtn);
+        }
 
-        </script>
+        let links = document.querySelectorAll("a.hrefs");
+        links.forEach((link) => {
+            link.addEventListener("click", (e) => {
+                let linkParent = e.target.parentElement.parentElement;
+                linkParent.classList.toggle("showMenu");
+            });
+        });
+
+
+
+
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+        console.log(sidebarBtn);
+    </script>
 </body>
 
 </html>
