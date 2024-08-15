@@ -118,14 +118,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             font-family: "Poppins", sans-serif;
             background-color: #ffff;
             margin: 0;
+            min-height: 100vh;
             padding: 20px;
-            display: block;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .container {
             max-width: 800px;
+            width: 100%;
             margin: 0 auto;
             background: #fff;
             padding: 20px;
@@ -173,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
         }
 
         input[type="text"] {
-            width: 97%;
+            width: 100%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ddd;
@@ -211,6 +213,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
 </head>
 
 <body>
+    <?php
+    include "../../../sidebarALU.php";  
+    ?>
     <div class="container">
         <!-- Formulário de consulta -->
         <form action="vistoriaCarga.php" method="post">
