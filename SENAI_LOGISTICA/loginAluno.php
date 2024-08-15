@@ -11,11 +11,11 @@
 		exit();
 	} else {
 		// Evita caracteres especiais (SQL Inject)
-		$user = $conexao -> real_escape_string($_POST['user']);
+		$nome = $conexao -> real_escape_string($_POST['nome']);
 		$senha = $conexao -> real_escape_string($_POST['senhaa']);
 		
-		$sql="SELECT `email` FROM `senai`.`alunos`
-			WHERE `email` = '".$user."'
+		$sql="SELECT `nome` FROM `senai`.`alunos`
+			WHERE `nome` = '".$nome."'
 			AND `senha` = '".$senha."';";
             
 		$resultado = $conexao->query($sql);
@@ -23,7 +23,6 @@
 		if($resultado->num_rows != 0) {
 			session_start();
 			$row = $resultado -> fetch_array();
-			
 			$_SESSION['id'] = $row[0];
 			$conexao -> close();
 			

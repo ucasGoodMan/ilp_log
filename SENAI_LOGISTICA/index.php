@@ -11,7 +11,8 @@
     <title>Pagina de Login</title>
   </head>
   <body>
-    <div class="container">
+
+  <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
           <!-- Logsor -->
@@ -53,7 +54,7 @@
       </div>
       <div class="panels-container">
         <div class="panel left-panel">
-          <div class="content">
+          <div class="content"> 
             <h3>Sou Aluno</h3>
             <p>
               Login estudante
@@ -78,7 +79,7 @@
         </div>
       </div>
     </div>
-
+ 
     <script src="app.js"></script>
   </body>
 </html>

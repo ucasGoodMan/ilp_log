@@ -20,7 +20,6 @@
     <div class="image-aluno">
             <img class="aluno" src="../imagens/Students-rafiki.svg" alt="Estudantes">
     </div>
-
 </body>
 
 </html>
