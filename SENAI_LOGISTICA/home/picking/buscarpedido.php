@@ -4,31 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../home/movimentacao/docar.css">
+    <link rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Detalhes do Pedido</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
+            background-color: #f2f2f2;
             margin: 0;
-            padding: 0;
             min-height: 100vh;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
         }
 
         h1 {
             text-align: center;
             color: rgb(37, 91, 168);
-            margin-top: 20px;
             font-size: 28px;
-            position: absolute;
-            
+            margin-bottom: 50px;
+
+
         }
 
         .container {
@@ -69,25 +67,7 @@
             color: #333;
         }
 
-        .back-button {
-            color: rgb(37, 91, 168);
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            transition: color 0.3s ease;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-
-        .back-button i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-
-        .back-button:hover {
-            color: #1f5c9d;
-        }
+    
 
         .doca-section {
             margin-top: 40px;
@@ -150,11 +130,14 @@
 </head>
 
 <body>
-    <h1>Detalhes do Pedido</h1>
-
+<?php
+    include "../../sidebarALU.php";
+    ?>  
     <div class="container">
-        <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
+        <h1>Detalhes do Pedido</h1>
+
         <form action="processar_doca.php" method="post">
+            
             <ul class="produto-list">
                 <?php
                 $servername = "localhost";
@@ -188,8 +171,8 @@
                                 echo "    <li class='produto-nome'>Produto: " . $nome_produto . "</li>";
                                 echo "    <input type='hidden' name='nome_produto[]' value='" . $nome_produto . "'>";
                                 echo "    <li><button type='button' class='ok-button'>Ok</button></li>";
-                                echo "  </ul>"; 
-                                echo "</li>"; 
+                                echo "  </ul>";
+                                echo "</li>";
                             }
                         } else {
                             echo "<li>Nenhum produto encontrado para este pedido.</li>";
@@ -221,6 +204,7 @@
             });
         });
     </script>
+    
 </body>
 
 </html>

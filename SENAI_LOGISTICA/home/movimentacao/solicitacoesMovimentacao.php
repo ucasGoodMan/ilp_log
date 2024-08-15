@@ -8,14 +8,20 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f2f2f2;
             margin: 0;
+            min-height: 100vh;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         h1 {
-            color: #333;
             text-align: center;
+            color: rgb(37, 91, 168);
+            margin-bottom: 20px;
+
         }
 
         .back-button {
@@ -41,11 +47,14 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
+            max-height: 1500px;
+            width: 100%;
+            height: 100%;
             margin: 0 auto;
             padding: 20px;
             background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             border-radius: 8px;
         }
 
@@ -99,7 +108,9 @@
     </style>
 </head>
 <body>
-<a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
+    <?php
+    include "../../sidebarALU.php"
+    ?>
 <div class="container">
     <h1>Solicitações de Movimentação</h1>
     <?php

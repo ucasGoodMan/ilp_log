@@ -8,7 +8,7 @@
         <style>
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                background-color: #ffffff;
+                background-color: #f2f2f2;
                 margin: 0;
                 padding: 20px;
                 display: flex;
@@ -107,7 +107,9 @@
         </style>
     </head>
     <body>
-        <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
+        <?php
+        include "../../sidebarALU.php";
+        ?>
         <div class="container">
             <h1>Despacho de Produtos</h1>
             <?php

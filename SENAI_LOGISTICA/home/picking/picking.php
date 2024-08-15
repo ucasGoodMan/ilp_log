@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="docaM.css">
+    <link rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Pedidos Doca</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #ffffff;
+            background-color: #f2f2f2;
             color: #000000;
             margin: 0;
             padding: 0;
@@ -106,7 +106,9 @@
 </head>
 
 <body>
-    <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
+<?php
+    include "../../sidebarALU.php";
+    ?>  
     <div class="container">
         <h1>Lista de Pedidos</h1>
         <?php
