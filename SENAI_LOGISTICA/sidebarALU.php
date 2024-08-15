@@ -17,9 +17,7 @@
     <div class="sidebar">
         <div class="logo-details">
 
-            <img class="img1" src="../../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
-
-            <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+            <img class="img1" src="/ILP_LOG/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
 
             <span class="logo_name">ILP LOG</span>
         </div>
@@ -39,11 +37,6 @@
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-
-                    <li><a href=".">Pedidos</a></li>
-
-                    <li><a href="..\homeProf\itens\pedidos.php">Pedidos</a></li>
-                    <li><a href="../homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
 
                     <li><a class="link_name">Recebimento</a></li>
                     <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/recebimento/Container/recebimento_container.php">Container</a></li>
