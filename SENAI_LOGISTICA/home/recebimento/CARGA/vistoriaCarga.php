@@ -37,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedidob']) && !isset($
             // Exibindo as informações do pedido
             $resultado .= "<h2>Informações do Pedido</h2>";
             while ($row = $result->fetch_assoc()) {
-                $resultado .= "Número do Pedido: " . htmlspecialchars($row['pedidob']) . "<br>";
                 $resultado .= "Nome do Produto: " . htmlspecialchars($row['nome_produto']) . "<br>";
                 $resultado .= "Quantidade: " . htmlspecialchars($row['qtd_prod']) . "<br>";
 
