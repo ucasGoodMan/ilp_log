@@ -359,17 +359,17 @@
 
 
             .sidebar.close~.home-section .bx-menu {
-                left: -20%;
+                left: -1%;
                 position: absolute;
             }
 
             .home-section {
                 position: absolute;
-                width: 50%;
-                left: 15%;
+                width: 15%;
+                left: 5%;
                 top: 1%;
                 display: flex;
-                background-color: #ffff;
+                background-color: #f2f2f2;
                 transition: all 0.5s ease;
             }
 
@@ -384,7 +384,7 @@
 
             .home-section .bx-menu {
                 position: relative;
-                left: 0%;
+                left: 65%;
                 cursor: pointer;
                 font-size: 2.5rem;
                 transition: all 0.5s ease;
