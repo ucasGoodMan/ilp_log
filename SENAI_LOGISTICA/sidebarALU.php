@@ -70,11 +70,12 @@
         </li>
         <li>
                 <div class="iocn-links">
-                    <a href="">
+                    <a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao/estadoEstoque.php">
                     <i class="fa-solid fa-boxes-stacked"></i>
                         <span style="pointer-events: none;" class="link_name">Estoque</span>
                     </a>
                 </div>
+                
         </li>
 
         <li>

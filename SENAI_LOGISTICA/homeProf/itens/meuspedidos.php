@@ -12,7 +12,7 @@
     <div class="container">
         <h1>Lista de Pedidos</h1>
         <?php
-     
+        include "../../sidebarPROF.php";
         $servername = "localhost";
         $username = "root";
         $password = "root"; 
