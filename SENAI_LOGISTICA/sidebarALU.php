@@ -85,7 +85,7 @@
                      <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
                      <div class="profile-details">
                        <i class='bx bx-log-out'></i> 
-                    <img src="../imagens/senai-logo-1.png" alt="senai">
+                    <img src="/ILP_LOG/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
                     </div>
                   </button>
                 </form>
