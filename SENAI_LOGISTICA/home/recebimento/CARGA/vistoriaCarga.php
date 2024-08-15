@@ -113,13 +113,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <title>Consulta de Pedido</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
         body {
             font-family: "Poppins", sans-serif;
-            background-color: #f4f4f4;
+            background-color: #ffff;
             margin: 0;
             padding: 20px;
+            display: block;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
@@ -127,7 +130,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             margin: 0 auto;
             background: #fff;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            display: block;
+            justify-content: center;
+            align-items: center;
         }
 
         .back-button {
@@ -142,6 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             display: flex;
             align-items: center;
             cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .back-button:hover {
@@ -153,12 +161,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
         }
 
         h2 {
-            color: #333;
+            color: rgb(37, 91, 168);
+            border-bottom: 2px solid rgb(37, 91, 168);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
             margin-bottom: 5px;
+            color: #333;
         }
 
         input[type="text"] {
@@ -167,6 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         input[type="submit"] {
@@ -177,6 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             background-color: rgb(37, 91, 168);
             color: white;
             cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         input[type="submit"]:hover {
@@ -198,7 +212,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
 </head>
 
 <body>
-    <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
     <div class="container">
         <!-- Formulário de consulta -->
         <form action="vistoriaCarga.php" method="post">
