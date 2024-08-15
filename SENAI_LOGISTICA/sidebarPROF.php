@@ -61,13 +61,13 @@
             <div class="iocn-links">
                 <a class="hrefs">
                     <i class="fa-solid fa-address-card"></i>
-                    <span style="pointer-events: none;" class="link_name">Aluno</span>
+                    <span style="pointer-events: none;" class="link_name">Turmas</span>
                 </a>
                 <i class='bx bx-chevron-down arrow'></i>
             </div>
             <ul class="sub-menu">
-                <li><a class="link_name">Aluno</a></li>
-                <li><a href="http://localhost/ILP_LOG/SENAI_LOGISTICA/homeProf/turmas/turmas.php">Turmas</a></li>
+                <li><a class="link_name">Alunos</a></li>
+                <li><a href="http://localhost/ILP_LOG/SENAI_LOGISTICA/homeProf/turmas/turmas.php">Alunos</a></li>
             </ul>
         </li>
         <li>
