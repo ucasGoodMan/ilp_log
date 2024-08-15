@@ -37,4 +37,9 @@ $stmt_update->execute();
 
 echo "Produto pegado com sucesso!";
 $conn->close();
+
+// Redireciona de volta para a página visProdPend.php
+header("Location: visProdPend.php");
+exit();
+?>
 ?>
