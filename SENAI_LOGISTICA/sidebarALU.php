@@ -10,10 +10,7 @@
 </head>
 
 <body>
-    <?php
-    define('BASE_URL','http://localhost/ilp_log/SENAI_LOGISTICA/home/
-    ')
-    ?>
+   
     <div class="sidebar">
         <div class="logo-details">
 
