@@ -81,7 +81,8 @@
         </li>
 
         <li>
-        <form action="../logoutProcess.php" method="POST" style="display:inline;">
+        <li>
+                <form action="../logoutProcess.php" method="POST" style="display:inline;">
                      <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
                      <div class="profile-details">
                        <i class='bx bx-log-out'></i> 
@@ -90,7 +91,7 @@
                   </button>
                 </form>
         </li>
-        </ul>
+    </ul>
 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');

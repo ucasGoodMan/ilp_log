@@ -8,6 +8,6 @@ if (session_status() === PHP_SESSION_NONE) {
 session_destroy();
 
 // Redireciona para a página de login
-header('Location: ');
+header('Location: ../SENAI_LOGISTICA/index.php');
 exit();
 ?>
