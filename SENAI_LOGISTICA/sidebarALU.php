@@ -50,7 +50,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Controle</a></li>
-                    <li><a href="movimentacao\docaRecebimento.php">Doca de recebimento<br>(solicitar movimentação)</a></li>
+                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao/docaRecebimento.php">Doca de recebimento<br>(solicitar movimentação)</a></li>
                     <li><a href="movimentacao\solicitacoesMovimentacao.php">Concluir movimentação<br> do item</a></li>
                 </ul>
             </li>
