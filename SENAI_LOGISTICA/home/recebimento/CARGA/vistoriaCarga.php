@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedidob']) && !isset($
                 $resultado .= "Quantidade: " . htmlspecialchars($row['qtd_prod']) . "<br>";
 
                 // Adiciona os dados para o formulário de inserção na nova tabela
-                $dadosPedido = [
+                $dadosPedido[] = [
                     'pedidob' => htmlspecialchars($row['pedidob']),
                     'nome_produto' => htmlspecialchars($row['nome_produto']),
                     'qtd_prod' => htmlspecialchars($row['qtd_prod']),
@@ -57,20 +57,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedidob']) && !isset($
     } else {
         $erro = "Erro na preparação da consulta: " . $conn->error;
     }
-    
+
     $conn->close();
 }
 
 // Verifica se o formulário de salvamento foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
-    // Obtém os dados do formulário
-    $pedidob = $_POST['pedidob'];
-    $nome_produto = $_POST['nome_produto'];
-    $qtd_prod = $_POST['qtd_prod'];
-    $avariado = isset($_POST['avariado']) ? 1 : 0;
-    $faltando = isset($_POST['faltando']) ? 1 : 0;
-    $observacoes = $_POST['comentarios'];
-
     // Criando a conexão
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -79,23 +71,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
         die("Conexão falhou: " . $conn->connect_error);
     }
 
-    // Inserção na nova tabela
-    $sql = "INSERT INTO vistoriacarga (pedidob, nome_produto, qtd_prod, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
+    // Itera sobre os produtos enviados no formulário
+    foreach ($_POST['produtos'] as $produto) {
+        $pedidob = $produto['pedidob'];
+        $nome_produto = $produto['nome_produto'];
+        $qtd_prod = $produto['qtd_prod'];
+        $avariado = isset($produto['avariado']) ? 1 : 0;
+        $faltando = isset($produto['faltando']) ? 1 : 0;
+        $observacoes = $produto['comentarios'];
 
-    if ($stmt) {
-        $stmt->bind_param("ssisii", $pedidob, $nome_produto, $qtd_prod, $avariado, $faltando, $observacoes);
+        // Inserção na nova tabela
+        $sql = "INSERT INTO vistoriacarga (pedidob, nome_produto, qtd_prod, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
 
-        if ($stmt->execute()) {
-            $resultado = "Dados salvos com sucesso!";
+        if ($stmt) {
+            $stmt->bind_param("ssisii", $pedidob, $nome_produto, $qtd_prod, $avariado, $faltando, $observacoes);
+
+            if (!$stmt->execute()) {
+                $erro = "Erro ao salvar os dados: " . $stmt->error;
+                break;
+            }
         } else {
-            $erro = "Erro ao salvar os dados: " . $stmt->error;
+            $erro = "Erro na preparação da consulta: " . $conn->error;
+            break;
         }
+    }
 
-        // Fechando a conexão
-        $stmt->close();
-    } else {
-        $erro = "Erro na preparação da consulta: " . $conn->error;
+    if (empty($erro)) {
+        $resultado = "Dados salvos com sucesso!";
     }
 
     $conn->close();
@@ -104,25 +107,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <title>Consulta de Pedido</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
         body {
             font-family: "Poppins", sans-serif;
-            background-color: #f4f4f4;
+            background-color: #ffff;
             margin: 0;
             padding: 20px;
+            display: block;
+            justify-content: center;
+            align-items: center;
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             background: #fff;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            display: block;
+            justify-content: center;
+            align-items: center;
         }
 
         .back-button {
@@ -137,6 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             display: flex;
             align-items: center;
             cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .back-button:hover {
@@ -148,87 +161,106 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
         }
 
         h2 {
-            color: #333;
+            color: rgb(37, 91, 168);
+            border-bottom: 2px solid rgb(37, 91, 168);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
+            color: #333;
         }
+
         input[type="text"] {
-            width: 97%; /* Define uma largura específica */
+            width: 97%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         input[type="submit"] {
             padding: 10px 20px;
             width: 100%;
             border: none;
             border-radius: 4px;
-            background-color:  rgb(37, 91, 168);
+            background-color: rgb(37, 91, 168);
             color: white;
             cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         input[type="submit"]:hover {
             background-color: rgb(37, 91, 140);
         }
+
         input[type="checkbox"] {
             margin-right: 10px;
         }
+
         .result {
             margin-top: 20px;
         }
+
         .error {
             color: red;
         }
     </style>
 </head>
+
 <body>
-<a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
-<div class="container">
-    <!-- Formulário de consulta -->
-    <form action="vistoriaCarga.php" method="post">
-        <label for="pedidob">Número do Pedido:</label>
-        <input type="text" id="pedidob" name="pedidob" required>
-        <input type="submit" value="Consultar">
-    </form>
-
-    <div class="result">
-    <?php
-    // Exibe o resultado ou a mensagem de erro
-    if ($resultado) {
-        echo $resultado;
-
-        // Exibe o formulário de salvamento apenas se houver resultados
-        if (!empty($dadosPedido)) {
-    ?>
-        <h2>Salvar Informações Adicionais</h2>
+    <div class="container">
+        <!-- Formulário de consulta -->
         <form action="vistoriaCarga.php" method="post">
-            <input type="hidden" name="pedidob" value="<?php echo $dadosPedido['pedidob']; ?>">
-            <input type="hidden" name="nome_produto" value="<?php echo $dadosPedido['nome_produto']; ?>">
-            <input type="hidden" name="qtd_prod" value="<?php echo $dadosPedido['qtd_prod']; ?>">
-
-            <label for="avariado">Avariado?</label>
-            <input type="checkbox" id="avariado" name="avariado" value="1"><br>
-
-            <label for="faltando">Faltando?</label>
-            <input type="checkbox" id="faltando" name="faltando" value="1"><br>
-
-            <label for="comentarios">Observações:</label>
-            <input type="text" id="comentarios" name="comentarios"><br>
-
-            <input type="hidden" name="salvar" value="1">
-            <input type="submit" value="Salvar">
+            <label for="pedidob">Número do Pedido:</label>
+            <input type="text" id="pedidob" name="pedidob" required>
+            <input type="submit" value="Consultar">
         </form>
-    <?php
-        }
-    } elseif ($erro) {
-        echo '<p class="error">' . $erro . '</p>';
-    }
-    ?>
+
+        <div class="result">
+            <?php
+            // Exibe o resultado ou a mensagem de erro
+            if ($resultado) {
+                echo $resultado;
+
+                // Exibe o formulário de salvamento apenas se houver resultados
+                if (!empty($dadosPedido)) {
+            ?>
+                    <h2>Salvar Informações Adicionais</h2>
+                    <form action="vistoriaCarga.php" method="post">
+                        <?php foreach ($dadosPedido as $index => $produto) { ?>
+                            <div class="product-container">
+                                <h3>Produto <?php echo $index + 1; ?></h3>
+                                <input type="hidden" name="produtos[<?php echo $index; ?>][pedidob]" value="<?php echo $produto['pedidob']; ?>">
+                                <input type="hidden" name="produtos[<?php echo $index; ?>][nome_produto]" value="<?php echo $produto['nome_produto']; ?>">
+                                <input type="hidden" name="produtos[<?php echo $index; ?>][qtd_prod]" value="<?php echo $produto['qtd_prod']; ?>">
+
+                                <label for="avariado_<?php echo $index; ?>">Avariado?</label>
+                                <input type="checkbox" id="avariado_<?php echo $index; ?>" name="produtos[<?php echo $index; ?>][avariado]" value="1"><br>
+
+                                <label for="faltando_<?php echo $index; ?>">Faltando?</label>
+                                <input type="checkbox" id="faltando_<?php echo $index; ?>" name="produtos[<?php echo $index; ?>][faltando]" value="1"><br>
+
+                                <label for="comentarios_<?php echo $index; ?>">Observações:</label>
+                                <input type="text" id="comentarios_<?php echo $index; ?>" name="produtos[<?php echo $index; ?>][comentarios]"><br>
+                            </div>
+                        <?php } ?>
+
+                        <input type="hidden" name="salvar" value="1">
+                        <input type="submit" value="Salvar">
+                    </form>
+            <?php
+                }
+            } elseif ($erro) {
+                echo '<p class="error">' . $erro . '</p>';
+            }
+            ?>
+        </div>
     </div>
-</div>
 
 </body>
+
 </html>

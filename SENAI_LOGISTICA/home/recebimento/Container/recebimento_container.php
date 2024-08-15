@@ -1,3 +1,6 @@
+<?php 
+    include "../../../sidebarALU.php";
+    ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Container</title>
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -159,9 +163,6 @@
     </style>
 </head>
 <body> 
-    <?php 
-    include "../../../sidebarALU.php";
-    ?>
     <div class="divContainer">
     <h1>Recebimento container</h1>
         <form method="post" action="process.php" id="form1" name="form1">

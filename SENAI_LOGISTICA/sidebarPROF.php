@@ -10,75 +10,73 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="logo-details">
-            <img class="img1" src="../../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
-            <span class="logo_name">ILP LOG</span>
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/index.php">
-                    <i class="fa-solid fa-house"></i>
-                    <span class="link_name">Home</span>
+<div class="sidebar">
+    <div class="logo-details">
+        <img class="img1" src="../../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+        <span class="logo_name">ILP LOG</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a href="../SENAI_LOGISTICA/home">
+                <i class="fa-solid fa-house"></i>
+                <span class="link_name">Home</span>
+            </a>
+        </li>
+        <li>
+            <div class="iocn-links">
+                <a class="hrefs">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                    <span style="pointer-events: none;" class="link_name">Pedidos</span>
                 </a>
-            </li>
-            <li>
-                <div class="iocn-links">
-                    <a href="">
-                        <i class="fa-solid fa-file-circle-plus"></i>
-                        <span class="link_name">Pedidos</span>
-                    </a>
-                    <i class='bx bx-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a href="">Pedidos</a></li>
-                    <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-links">
-                    <a href="/SENAI_LOGISTICA/">
-                        <i class="fa-solid fa-file-invoice-dollar"></i>
-                        <span class="link_name">Danfe</span>
-                    </a>
-                    <i class='bx bx-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name">Danfe</a></li>
-                    <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/itens/danfe.php">Minhas danfe</a></li>
-                </ul>
-            </li>
+                <i class='bx bx-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a href="">Pedidos</a></li>
+                <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="iocn-links">
+                <a class="hrefs">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <span style="pointer-events: none;" class="link_name">Danfe</span>
+                </a>
+                <i class='bx bx-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name">Danfe</a></li>
+                <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/itens/danfe.php">Minhas danfe</a></li>
+            </ul>
+        </li>
 
-            <li>
-                <a href="">
-                    <i class="fa-solid fa-sliders"></i>
-                    <span class="link_name">Controle</span>
+        <li>
+            <a class="hrefs">
+                <i class="fa-solid fa-sliders"></i>
+                <span style="pointer-events: none;" class="link_name">Controle</span>
+            </a>
+            <ul class="sub-menu">
+                <li><a class="blank" href="">Controle</a></li>
+            </ul>
+        <li>
+            <div class="iocn-links">
+                <a class="hrefs">
+                    <i class="fa-solid fa-address-card"></i>
+                    <span style="pointer-events: none;" class="link_name">Aluno</span>
                 </a>
-                <ul class="sub-menu">
-                    <li><a class="blank" href="">Controle</a></li>
-                </ul>
-            <li>
-                <div class="iocn-links">
-                    <a href="">
-                        <i class="fa-solid fa-address-card"></i>
-                        <span class="link_name">Aluno</span>
-                    </a>
-                    <i class='bx bx-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name">Aluno</a></li>
-                    <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/turmas/turmas.php">Turmas</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="profile-details">
-                    <i class='bx bx-log-out'></i>
-                 <a href="../../logoutProcess.php"></a>
-                    
-                    <img src="../../imagens/senai-logo-1.png" alt="senai">
-                </div>
-            </li>
-        </ul>
+                <i class='bx bx-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name">Aluno</a></li>
+                <li><a href="/ILP_LOG/SENAI_LOGISTICA/homeProf/turmas/turmas.php">Turmas</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="profile-details">
+                <i class='bx bx-log-out'></i>
+                <img src="../../imagens/senai-logo-1.png" alt="senai">
+            </div>
+        </li>
+    </ul>
 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -204,12 +202,14 @@
                 text-decoration: none;
                 display: flex;
                 align-items: center;
+                z-index: 1;
             }
 
             .sidebar .nav-links li a .link_name {
-                font-size: 18px;
+                font-size: 18px;    
                 font-weight: 400;
                 color: #fff;
+                z-index: 2;
             }
 
             .sidebar.close .nav-links li a .link_name {
@@ -348,7 +348,7 @@
 
             .home-section {
                 position: absolute;
-                background-color: rgba(233, 117, 117, 0.1);
+                background-color: #ffff;
                 transition: all 0.5s ease;
 
             }
@@ -358,16 +358,14 @@
                 position: absolute;
             }
 
-            .sidebar.close~.bx-menu {
-                left: 5%;
+            .sidebar.close~.home-section .bx-menu {
+                left: 2%;
                 position: absolute;
             }
 
             .home-section {
                 position: absolute;
-                top: 0px;
-                left: 230px;
-                height: 2%;
+                width: 30%;
                 display: flex;
             }
 
@@ -380,10 +378,9 @@
                 transition: all 0.5s ease;
             }
 
-             .bx-menu {
-                position: absolute;
-                left: 15%;
-                top: 1%;
+            .home-section .bx-menu {
+                position: relative;
+                left: 0%;
                 cursor: pointer;
                 font-size: 2.5rem;
                 transition: all 0.5s ease;
@@ -394,44 +391,36 @@
                 font-weight: 600;
             }
 
-
-            .prof {
-                position: absolute;
-                left: 40%;
-                font-size: 2.3rem;
-                font-weight: 600;
-                top: 100px;
-            }
-
-            .imgProf {
-                position: absolute;
-                width: 850px;
-                left: 29%; 
-                top: 200px;
-            }
         </style>
     </div>
-
+    <section class="home-section">
         <i class='bx bx-menu'></i>
-
+    </section>
     <script>
-            let arrow = document.querySelectorAll(".arrow")
-            for (var i = 0; i < arrow.length; i++) {
-                arrow[i].addEventListener("click", (e) => {
-                    let arrowParent = e.target.parentElement.parentElement;
-                    arrowParent.classList.toggle("showMenu");
-                });
-            }
-
-
-            let sidebar = document.querySelector(".sidebar");
-            let sidebarBtn = document.querySelector(".bx-menu");
-            sidebarBtn.addEventListener("click", () => {
-                sidebar.classList.toggle("close");
+        let arrow = document.querySelectorAll(".arrow")
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e) => {
+                let arrowParent = e.target.parentElement.parentElement;
+                arrowParent.classList.toggle("showMenu");
             });
-            console.log(sidebarBtn);
+        }
 
-        </script>
+        let links = document.querySelectorAll("a.hrefs");
+        links.forEach((link) => {
+            link.addEventListener("click", (e) => {
+                let linkParent = e.target.parentElement.parentElement;
+                linkParent.classList.toggle("showMenu");
+            });
+        });
+
+
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+        console.log(sidebarBtn);
+    </script>
 </body>
 
 </html>
