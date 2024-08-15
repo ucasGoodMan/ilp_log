@@ -20,7 +20,7 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="index.php">
+                <a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/index.php">
                     <i class="fa-solid fa-house"></i>
                     <span class="link_name">Home</span>
                 </a>
@@ -64,8 +64,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Expedição</a></li>
-                    <li><a href="../home/picking/picking.php">Expedir</a></li>
-                    <li><a href="../home/picking/processar_pedido.php">Pedido Carregado</a></li>
+                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/picking/picking.php">Expedir</a></li>
+                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/picking/processar_pedido.php">Pedido Carregado</a></li>
                 </ul>
         </li>
         <li>
