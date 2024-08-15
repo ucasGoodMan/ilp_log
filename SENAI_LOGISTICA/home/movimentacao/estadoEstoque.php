@@ -36,7 +36,6 @@
             margin-right: 5px;
         }
 
-
         table {
             position: relative;
             top: 100px;
@@ -146,6 +145,33 @@
             ?>
         </tr>
         <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "root";
+        $dbname = "senai";
+        // Conexão com o banco de dados
+        $conn = new mysqli("localhost", "root", "root", "senai");
+
+        // Verifica a conexão
+        if ($conn->connect_error) {
+            die("Falha na conexão: " . $conn->connect_error);
+        }
+
+        // Consulta para buscar os dados das vagas
+        $sql = "SELECT posicaoVaga, statusVaga, pesoAtual, pesoMaximo FROM estoque";
+        $result = $conn->query($sql);
+
+        $statusVagas = [];
+        $pesosAtuais = [];
+        $pesosMaximos = [];
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $statusVagas[$row['posicaoVaga']] = $row['statusVaga'];
+                $pesosAtuais[$row['posicaoVaga']] = $row['pesoAtual'];
+                $pesosMaximos[$row['posicaoVaga']] = $row['pesoMaximo'];
+            }
+        }
 
         // Pesos correspondentes para os andares
         $pesos = [
@@ -164,10 +190,12 @@
 
             foreach (range('A', 'E') as $letra) {
                 $vaga = "$letra$linha";
-                $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "";
-                echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>Status: $status</span>";
-                echo "<div class='dropdown'>";
+                $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "Vazia";
+                $pesoAtual = isset($pesosAtuais[$vaga]) ? $pesosAtuais[$vaga] : 0;
+                $pesoMaximo = isset($pesosMaximos[$vaga]) ? $pesosMaximos[$vaga] : 0;
 
+                echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>Status: $status</span><br><span>Peso Atual: {$pesoAtual}kg / {$pesoMaximo}kg</span>";
+                echo "<div class='dropdown'>";
                 echo "<button class='dropbtn'>Alterar Status</button>";
                 echo "<div class='dropdown-content'>";
                 echo "<a href='atualizar_status.php?vaga=$vaga&status=Cheia'>Cheia</a><br>";
@@ -180,6 +208,7 @@
             echo "</tr>";
         }
 
+        $conn->close();
         ?>
     </table>
 </body>

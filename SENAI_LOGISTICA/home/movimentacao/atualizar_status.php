@@ -1,44 +1,48 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "senai";
-
-    // Cria a conexão
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
+   $servername = "localhost";
+   $username = "root";
+   $password = "root";
+   $dbname = "senai";
+   // Conexão com o banco de dados
+   $conn = new mysqli("localhost", "root", "root", "senai");
+    
     // Verifica a conexão
     if ($conn->connect_error) {
         die("Conexão falhou: " . $conn->connect_error);
-    } else {
-        echo "Conexão bem-sucedida<br>";
     }
-
-    // Pega os parâmetros da URL
-    $statusVaga = isset($_GET['statusVaga']) ? $_GET['statusVaga'] : null;
-    $vaga = isset($_GET['vaga']) ? $_GET['vaga'] : null;
-
-    // Verifica se os parâmetros foram recebidos
-    if ($statusVaga && $vaga) {
-        // Atualiza o status da vaga no banco de dados
-        $updateSql = "UPDATE estoque SET status = ? WHERE posicao = ?";
-        $stmt = $conn->prepare($updateSql);
-
-        if ($stmt) {
-            $stmt->bind_param("ss", $statusVaga, $vaga);
-            if ($stmt->execute()) {
-                echo "Status da vaga $vaga atualizado para $statusVaga.<br>";
+    
+    if (isset($_GET['vaga']) && isset($_GET['status']) && isset($_GET['peso'])) {
+        $vaga = $_GET['vaga'];
+        $status = $_GET['status'];
+        $pesoItem = intval($_GET['peso']);
+    
+        // Verifica o peso máximo permitido na posição
+        $sql = "SELECT pesoMaximo, pesoAtual FROM estoque WHERE posicaoVaga='$vaga'";
+        $result = $conn->query($sql);
+    
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $pesoAtual = $row['pesoAtual'];
+            $pesoMaximo = $row['pesoMaximo'];
+    
+            // Atualiza o peso se ele não ultrapassar o peso máximo
+            if ($pesoAtual + $pesoItem <= $pesoMaximo) {
+                $novoPeso = $pesoAtual + $pesoItem;
+                $sql = "UPDATE estoque SET statusVaga='$status', pesoAtual='$novoPeso' WHERE posicaoVaga='$vaga'";
+    
+                if ($conn->query($sql) === TRUE) {
+                    echo "Status atualizado com sucesso";
+                } else {
+                    echo "Erro ao atualizar status: " . $conn->error;
+                }
             } else {
-                echo "Erro ao atualizar o status da vaga: " . $stmt->error . "<br>";
+                echo "Erro: O peso excede o máximo permitido!";
             }
-            $stmt->close();
         } else {
-            echo "Erro na preparação da consulta: " . $conn->error . "<br>";
+            echo "Erro: Vaga não encontrada!";
         }
-    } else {
-        echo "Parâmetros 'statusVaga' e/ou 'vaga' não fornecidos.<br>";
     }
-
-    // Fecha a conexão
+    
     $conn->close();
-?>
+    header("Location: estadoEstoque.php");
+    ?>
