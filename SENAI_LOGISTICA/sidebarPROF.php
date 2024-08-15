@@ -73,6 +73,8 @@
             <li>
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
+                 <a href="../../logoutProcess.php"></a>
+                    
                     <img src="../../imagens/senai-logo-1.png" alt="senai">
                 </div>
             </li>

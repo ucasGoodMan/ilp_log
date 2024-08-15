@@ -1,5 +1,13 @@
 <?php
-include ("../../logoutProcess.php");
+session_start();
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['id'])) {
+    // Se não estiver logado, redireciona para a página de login
+    header('Location: ../../index.php');
+    exit();
+}
+
 include ("../../sidebarPROF.php");
 
 // Conexão com o banco de dados
@@ -21,20 +29,21 @@ $resultado = $conexao->query($sql);
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="turmas.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'>
     <title>Turmas</title>
 </head>
-
 <body>
     <div class="container">
         <h1>Cadastro de Turmas</h1>
         <button class="button-79" onclick="openModal()">Adicionar Turma</button>
+        
+        <!-- Link de Logout -->
+        <a href="../../logoutProcess.php" class="logout-button">Logout</a>
 
         <div class="divTable">
             <table>
@@ -86,7 +95,6 @@ $resultado = $conexao->query($sql);
 
     <script src="script.js"></script>
 </body>
-
 </html>
 
 <?php $conexao->close(); ?>

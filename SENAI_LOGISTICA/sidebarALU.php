@@ -12,15 +12,11 @@
 <body>
 <div class="sidebar">
         <div class="logo-details">
-<<<<<<< HEAD
 
             <img class="img1" src="../../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
 
             <img class="img1" src="../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
 
-=======
-            <img class="img1" src="/ILP_LOG/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
->>>>>>> 536a3919dce05cd6cead58ffeeba6fcd7e2a753b
             <span class="logo_name">ILP LOG</span>
         </div>
         <ul class="nav-links">
@@ -39,17 +35,16 @@
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-<<<<<<< HEAD
 
                     <li><a href=".">Pedidos</a></li>
 
                     <li><a href="..\homeProf\itens\pedidos.php">Pedidos</a></li>
                     <li><a href="../homeProf/itens/meuspedidos.php">Meus pedidos</a></li>
-=======
+
                     <li><a class="link_name">Recebimento</a></li>
                     <li><a href="../home/recebimento/Container/recebimento_container.php">Container</a></li>
                     <li><a href="../home/recebimento/CARGA/vistoriaCarga.php">Carga</a></li>
->>>>>>> 536a3919dce05cd6cead58ffeeba6fcd7e2a753b
+
                 </ul>
             </li> 
             <li>
@@ -94,14 +89,15 @@
             
             <li>
             <div class="profile-details">
+                    
                     <i class='bx bx-log-out'></i>
-<<<<<<< HEAD
+
                     <img src="../../imagens/senai-logo-1.png" alt="senai">
                 </div>
-=======
+
                     <img src="/ILP_LOG/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
             </div>
->>>>>>> 536a3919dce05cd6cead58ffeeba6fcd7e2a753b
+
             </li>
         </ul>
 

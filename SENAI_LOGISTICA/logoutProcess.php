@@ -1,9 +1,13 @@
 <?php
-session_start();
-// Verifica se o usuário está logado
-if (!isset($_SESSION['id'])) {
-    // Se não estiver logado, redireciona para a página de login
-    header('Location: ../login.php');
-    exit();
+// Verifica se uma sessão já foi iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
-?> 
+
+// Destroi a sessão
+session_destroy();
+
+// Redireciona para a página de login
+header('Location: ../SENAI_LOGISTICA/index.php');
+exit();
+?>

@@ -4,7 +4,7 @@ session_start();
 // Verifica se o usuário está logado
 if (!isset($_SESSION['id'])) {
     // Se não estiver logado, redireciona para a página de login
-    header('Location: ../login.php');
+    header('Location: ../../index.php');
     exit();
 }
 ?>
@@ -86,7 +86,7 @@ if (!isset($_SESSION['id'])) {
             </li>
             <li> 
                 
-                <form action="logout.php" method="POST" style="display:inline;">
+                <form action="../logoutProcess.php" method="POST" style="display:inline;">
                      <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
                      <div class="profile-details">
                        <i class='bx bx-log-out'></i> 
