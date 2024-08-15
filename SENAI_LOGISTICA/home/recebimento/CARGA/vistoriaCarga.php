@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedidob']) && !isset($
                 $resultado .= "Quantidade: " . htmlspecialchars($row['qtd_prod']) . "<br>";
 
                 // Adiciona os dados para o formulário de inserção na nova tabela
-                $dadosPedido = [
+                $dadosPedido[] = [
                     'pedidob' => htmlspecialchars($row['pedidob']),
                     'nome_produto' => htmlspecialchars($row['nome_produto']),
                     'qtd_prod' => htmlspecialchars($row['qtd_prod']),
@@ -63,14 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedidob']) && !isset($
 
 // Verifica se o formulário de salvamento foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
-    // Obtém os dados do formulário
-    $pedidob = $_POST['pedidob'];
-    $nome_produto = $_POST['nome_produto'];
-    $qtd_prod = $_POST['qtd_prod'];
-    $avariado = isset($_POST['avariado']) ? 1 : 0;
-    $faltando = isset($_POST['faltando']) ? 1 : 0;
-    $observacoes = $_POST['comentarios'];
-
     // Criando a conexão
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -79,23 +71,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
         die("Conexão falhou: " . $conn->connect_error);
     }
 
-    // Inserção na nova tabela
-    $sql = "INSERT INTO vistoriacarga (pedidob, nome_produto, qtd_prod, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
+    // Itera sobre os produtos enviados no formulário
+    foreach ($_POST['produtos'] as $produto) {
+        $pedidob = $produto['pedidob'];
+        $nome_produto = $produto['nome_produto'];
+        $qtd_prod = $produto['qtd_prod'];
+        $avariado = isset($produto['avariado']) ? 1 : 0;
+        $faltando = isset($produto['faltando']) ? 1 : 0;
+        $observacoes = $produto['comentarios'];
 
-    if ($stmt) {
-        $stmt->bind_param("ssisii", $pedidob, $nome_produto, $qtd_prod, $avariado, $faltando, $observacoes);
+        // Inserção na nova tabela
+        $sql = "INSERT INTO vistoriacarga (pedidob, nome_produto, qtd_prod, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
 
-        if ($stmt->execute()) {
-            $resultado = "Dados salvos com sucesso!";
+        if ($stmt) {
+            $stmt->bind_param("ssisii", $pedidob, $nome_produto, $qtd_prod, $avariado, $faltando, $observacoes);
+
+            if (!$stmt->execute()) {
+                $erro = "Erro ao salvar os dados: " . $stmt->error;
+                break;
+            }
         } else {
-            $erro = "Erro ao salvar os dados: " . $stmt->error;
+            $erro = "Erro na preparação da consulta: " . $conn->error;
+            break;
         }
+    }
 
-        // Fechando a conexão
-        $stmt->close();
-    } else {
-        $erro = "Erro na preparação da consulta: " . $conn->error;
+    if (empty($erro)) {
+        $resultado = "Dados salvos com sucesso!";
     }
 
     $conn->close();
@@ -228,18 +231,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             ?>
                     <h2>Salvar Informações Adicionais</h2>
                     <form action="vistoriaCarga.php" method="post">
-                        <input type="hidden" name="pedidob" value="<?php echo $dadosPedido['pedidob']; ?>">
-                        <input type="hidden" name="nome_produto" value="<?php echo $dadosPedido['nome_produto']; ?>">
-                        <input type="hidden" name="qtd_prod" value="<?php echo $dadosPedido['qtd_prod']; ?>">
+                        <?php foreach ($dadosPedido as $index => $produto) { ?>
+                            <div class="product-container">
+                                <h3>Produto <?php echo $index + 1; ?></h3>
+                                <input type="hidden" name="produtos[<?php echo $index; ?>][pedidob]" value="<?php echo $produto['pedidob']; ?>">
+                                <input type="hidden" name="produtos[<?php echo $index; ?>][nome_produto]" value="<?php echo $produto['nome_produto']; ?>">
+                                <input type="hidden" name="produtos[<?php echo $index; ?>][qtd_prod]" value="<?php echo $produto['qtd_prod']; ?>">
 
-                        <label for="avariado">Avariado?</label>
-                        <input type="checkbox" id="avariado" name="avariado" value="1"><br>
+                                <label for="avariado_<?php echo $index; ?>">Avariado?</label>
+                                <input type="checkbox" id="avariado_<?php echo $index; ?>" name="produtos[<?php echo $index; ?>][avariado]" value="1"><br>
 
-                        <label for="faltando">Faltando?</label>
-                        <input type="checkbox" id="faltando" name="faltando" value="1"><br>
+                                <label for="faltando_<?php echo $index; ?>">Faltando?</label>
+                                <input type="checkbox" id="faltando_<?php echo $index; ?>" name="produtos[<?php echo $index; ?>][faltando]" value="1"><br>
 
-                        <label for="comentarios">Observações:</label>
-                        <input type="text" id="comentarios" name="comentarios"><br>
+                                <label for="comentarios_<?php echo $index; ?>">Observações:</label>
+                                <input type="text" id="comentarios_<?php echo $index; ?>" name="produtos[<?php echo $index; ?>][comentarios]"><br>
+                            </div>
+                        <?php } ?>
 
                         <input type="hidden" name="salvar" value="1">
                         <input type="submit" value="Salvar">

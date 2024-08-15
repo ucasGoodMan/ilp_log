@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 15-Ago-2024 às 10:24
+-- Generation Time: 15-Ago-2024 às 12:34
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -204,6 +204,30 @@ CREATE TABLE `movimentacaoestoque` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `movimentacaopvist`
+--
+
+CREATE TABLE `movimentacaopvist` (
+  `id` int(11) NOT NULL,
+  `produto_id` int(11) NOT NULL,
+  `nome_produto` varchar(50) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'pendente'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `movimentacaopvist`
+--
+
+INSERT INTO `movimentacaopvist` (`id`, `produto_id`, `nome_produto`, `quantidade`, `status`) VALUES
+(225, 12, '100', 12, 'pendente'),
+(226, 2, 'core i6', 89, 'concluido'),
+(227, 2, 'core i6', 89, 'pendente'),
+(228, 2, 'core i6', 89, 'pendente');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `pedidos`
 --
 
@@ -219,7 +243,8 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`pedido`, `data_entrega`, `data_pedido`, `observacoes`) VALUES
-('1', '2024-08-08', '2024-08-08', '');
+('1', '2024-08-08', '2024-08-08', ''),
+('2', '2024-08-15', '2024-08-15', '');
 
 -- --------------------------------------------------------
 
@@ -245,7 +270,9 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `pedidob`, `cod_prod`, `nome_produto`, `un_prod`, `qtd_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
-(1, '1', '1', 'tesoura', 'palete', 1, '5.00', '1', '1', '1');
+(1, '1', '1', 'tesoura', 'palete', 1, '5.00', '1', '1', '1'),
+(2, '2', '32', 'core i5', 'unidade', 76, '1.00', '88385000', '783', '100'),
+(3, '2', '33', 'core i6', 'unidade', 89, '1.00', '88385000', '387', '001');
 
 -- --------------------------------------------------------
 
@@ -416,14 +443,21 @@ CREATE TABLE `vistoriacarga` (
 
 INSERT INTO `vistoriacarga` (`id`, `pedidob`, `nome_produto`, `qtd_prod`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
 (4, '19', '18', 9, 1, 0, 'problema no joelho', '2024-07-19'),
-(3, '12', '100', 12, 0, 0, '', '2024-07-19'),
+(3, '12', '100', 12, 1, 0, '', '2024-07-19'),
 (5, '11', '23', 9, 0, 0, '', '2024-07-23'),
 (6, '20', '1', 9, 0, 0, '', '2024-07-23'),
 (7, '21', '1', 1, 0, 0, '', '2024-07-23'),
 (8, '11', '23', 9, 1, 1, 'aaaaaaa', '2024-07-27'),
 (9, '11', '23', 9, 1, 1, 'sem observacoes', '2024-07-27'),
 (10, '5', '5', 5, 1, 1, '55', NULL),
-(11, '4', '4', 4, 1, 1, '0', NULL);
+(11, '4', '4', 4, 1, 1, '0', NULL),
+(12, '2', 'core i6', 89, 1, 0, '0', NULL),
+(13, '2', 'core i6', 89, 0, 0, '0', NULL),
+(14, '2', 'core i6', 89, 1, 0, '0', NULL),
+(15, '2', 'core i6', 89, 0, 0, '0', NULL),
+(16, '2', 'core i6', 89, 0, 0, '0', NULL),
+(17, '2', 'core i6', 89, 0, 0, '0', NULL),
+(18, '2', 'core i6', 89, 0, 0, '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -540,6 +574,12 @@ ALTER TABLE `movimentacaoestoque`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `movimentacaopvist`
+--
+ALTER TABLE `movimentacaopvist`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pedidos`
 --
 ALTER TABLE `pedidos`
@@ -628,10 +668,15 @@ ALTER TABLE `movimentacao`
 ALTER TABLE `movimentacaoestoque`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `movimentacaopvist`
+--
+ALTER TABLE `movimentacaopvist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+--
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --
@@ -656,7 +701,7 @@ ALTER TABLE `vagas`
 -- AUTO_INCREMENT for table `vistoriacarga`
 --
 ALTER TABLE `vistoriacarga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `vistoriaconferenciacontainer`
 --
