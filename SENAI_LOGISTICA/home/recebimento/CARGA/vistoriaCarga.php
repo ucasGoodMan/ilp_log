@@ -1,5 +1,4 @@
 <?php
-// Configurações do banco de dados
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -38,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedidob']) && !isset($
             $resultado .= "<h2>Informações do Pedido</h2>";
             while ($row = $result->fetch_assoc()) {
                 $resultado .= "Nome do Produto: " . htmlspecialchars($row['nome_produto']) . "<br>";
-                $resultado .= "Quantidade: " . htmlspecialchars($row['qtd_prod']) . "<br>";
+                $resultado .= "Quantidade: " . htmlspecialchars($row['qtd_prod']) . "<br><br>"; // Adiciona espaçamento entre as informações
 
                 // Adiciona os dados para o formulário de inserção na nova tabela
                 $dadosPedido[] = [
@@ -55,6 +54,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedidob']) && !isset($
         $stmt->close();
     } else {
         $erro = "Erro na preparação da consulta: " . $conn->error;
+    }
+
+    $conn->close();
+}
+
+// Verifica se o formulário de salvamento foi enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
+    // Criando a conexão
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Verificando a conexão
+    if ($conn->connect_error) {
+        die("Conexão falhou: " . $conn->connect_error);
+    }
+
+    // Itera sobre os produtos enviados no formulário
+    foreach ($_POST['produtos'] as $produto) {
+        $pedidob = $produto['pedidob'];
+        $nome_produto = $produto['nome_produto'];
+        $qtd_prod = $produto['qtd_prod'];
+        $avariado = isset($produto['avariado']) ? 1 : 0;
+        $faltando = isset($produto['faltando']) ? 1 : 0;
+        $observacoes = $produto['comentarios'];
+        $data_registro = date('Y-m-d'); // Data atual
+
+        // Inserção na nova tabela
+        $sql = "INSERT INTO vistoriacarga (pedidob, nome_produto, qtd_prod, avariado, faltando, observacoes, data_registro) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param("ssiiiss", $pedidob, $nome_produto, $qtd_prod, $avariado, $faltando, $observacoes, $data_registro);
+
+            if (!$stmt->execute()) {
+                $erro = "Erro ao salvar os dados: " . $stmt->error;
+                break;
+            }
+        } else {
+            $erro = "Erro na preparação da consulta: " . $conn->error;
+            break;
+        }
+    }
+
+    if (empty($erro)) {
+        $resultado = "Dados salvos com sucesso!";
     }
 
     $conn->close();
@@ -248,7 +291,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
 
 <body>
     <?php
-    include "../../../sidebarALU.php";  
+    include "../../../sidebarALU.php";
     ?>
     <div class="container">
         <!-- Formulário de consulta -->

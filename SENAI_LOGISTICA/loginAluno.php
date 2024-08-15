@@ -11,7 +11,7 @@
 		exit();
 	} else {
 		// Evita caracteres especiais (SQL Inject)
-		$nome = $conexao -> real_escape_string($_POST['nome']);
+		$nome = $conexao -> real_escape_string($_POST['user']);
 		$senha = $conexao -> real_escape_string($_POST['senhaa']);
 		
 		$sql="SELECT `nome` FROM `senai`.`alunos`
