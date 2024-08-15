@@ -26,7 +26,7 @@ if (!isset($_SESSION['id'])) {
 <body>
     <div class="container">
         <?php
-        include "../sidebarALU.php";
+        include "../sidebarPROF.php";
         ?>
         <div class="ImageProf">
             <h1>Bem vindo Docente</h1>

@@ -14,10 +14,11 @@
 
 <body>
     <div class="container">
-     <?php
+<?php
+   // include '../auth.php';
     include "../sidebarALU.php";
     
-    ?>
+?>
     <div class="image-aluno">
             <img class="aluno" src="../imagens/Students-rafiki.svg" alt="Estudantes">
     </div>
