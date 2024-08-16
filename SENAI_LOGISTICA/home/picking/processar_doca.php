@@ -10,7 +10,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "senai";
 
 // Cria a conexão

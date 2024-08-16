@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
         }
@@ -58,8 +58,8 @@
         }
 
         th {
-            background-color: #255ba8;
-            color: #fff;
+            background-color: #f2f2f2;
+            color: black;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -134,7 +134,7 @@
 </head>
 
 <body>
-    <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
+    <h1>SLA O QUE ACONTECEU COM ESSA TELA</h1>
     <table>
         <tr>
             <th></th>
@@ -150,7 +150,7 @@
         $password = "root";
         $dbname = "senai";
         // Conexão com o banco de dados
-        $conn = new mysqli("localhost", "root", "root", "senai");
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
         // Verifica a conexão
         if ($conn->connect_error) {

@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "senai";
 
 // Conexão ao banco de dados
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    echo "<div class='success-message'>Operação finalizada com sucesso!</div>";
+    $message = "Operação finalizada com sucesso!";
 }
 
 // Consulta SQL para obter os produtos pendentes
@@ -36,63 +36,55 @@ $result = $conn->query($sql);
     <title>Produtos Pendentes</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
-        .produto-grid {
-            width: 80%;
+        .container {
             max-width: 900px;
-            background: #fff;
+            width: 100%;
+            background: #ffffff;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            position: absolute;
         }
-        .produto-row {
+        .header {   
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 2px solid rgb(37, 91, 168);
+            padding-bottom: 10px;
+            margin-bottom: 40px;
         }
-        .produto-header, .produto-item {
-            flex: 1;
-            text-align: center;
+
+        .header h1 {
+            color: rgb(37, 91, 168);
+            font-size: 28px;
+            margin: 0;
         }
-        .produto-header {
-            font-weight: bold;
-            color: #333;
-        }
-        .produto-item input {
-            border: none;
-            background: #f9f9f9;
-            padding: 5px;
+
+        table {
             width: 100%;
-            max-width: 200px;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
             text-align: center;
+            border: 1px solid #ddd;
         }
-        .produto-item input[readonly] {
-            cursor: not-allowed;
+        th {
+            background-color: #f2f2f2;
+            color: rgb(37, 91, 168);
         }
-        .produto-item:last-child {
-            border-bottom: none;
-        }
-        .produto-item .status-ok {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .produto-item .status-ok:hover {
-            background-color: #218838;
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
         .success-message {
             background-color: #d4edda;
@@ -100,47 +92,64 @@ $result = $conn->query($sql);
             padding: 10px;
             border: 1px solid #c3e6cb;
             border-radius: 5px;
-            margin-bottom: 15px;
+            margin-top: 20px;
             text-align: center;
+
+        }
+        button {
+            background-color: rgb(37, 91, 168);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2d72b7;
         }
     </style>
 </head>
 <body>
-
 <?php
-if ($result->num_rows > 0) {
-    echo "<div class='produto-grid'>";
-    
-    // Headers
-    echo "<div class='produto-row'>";
-    echo "<div class='produto-header'>Produto ID</div>";
-    echo "<div class='produto-header'>Nome do Produto</div>";
-    echo "<div class='produto-header'>Quantidade</div>";
-    echo "<div class='produto-header'>Ação</div>";
-    echo "</div>";
+    include "../../sidebarALU.php";
+    ?>
+<div class="container">
+    <div class="header">
+        <h1>Produtos Pendentes</h1>
+    </div>
 
-    // Data rows
-    while ($row = $result->fetch_assoc()) {
-        echo "<div class='produto-row'>";
-        echo "<div class='produto-item'><input type='text' value='" . $row["produto_id"] . "' readonly></div>";
-        echo "<div class='produto-item'><input type='text' value='" . $row["nome_produto"] . "' readonly></div>";
-        echo "<div class='produto-item'><input type='text' value='" . $row["quantidade"] . "' readonly></div>";
-        echo "<div class='produto-item'>";
-        echo "<form action='visProdPend.php' method='post'>";
-        echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
-        echo "<button class='status-ok' type='submit'>Finalizar</button>";
-        echo "</form>";
-        echo "</div>";
-        echo "</div>";
+    <?php
+    if ($result->num_rows > 0) {
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Produto ID</th><th>Nome do Produto</th><th>Quantidade</th><th>Ação</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row["id"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["produto_id"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["nome_produto"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["quantidade"]) . "</td>";
+            echo "<td>";
+            echo "<form action='visProdPend.php' method='post'>";
+            echo "<input type='hidden' name='id' value='" . htmlspecialchars($row["id"]) . "'>";
+            echo "<button type='submit'>Finalizar</button>";
+            echo "</form>";
+            echo "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p style='text-align: center;'>Nenhum Produto pendente.</p>";
     }
 
-    echo "</div>";
-} else {
-    echo "<div class='produto-grid'>Nenhum produto pendente encontrado.</div>";
-}
+    if (isset($message)) {
+        echo "<div class='success-message'>$message</div>";
+    }
 
-$conn->close();
-?>
+    $conn->close();
+    ?>
+
+</div>
 
 </body>
 </html>

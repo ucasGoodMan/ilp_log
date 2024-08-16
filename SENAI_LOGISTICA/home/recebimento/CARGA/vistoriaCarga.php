@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "senai";
 
 // Variáveis para armazenar o resultado da consulta
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pedidob']) && !isset($
                 ];
             }
         } else {
-            $erro = "Nenhum pedido encontrado com esse número.";
+            $erro = "<p style='text-align: center;' >Nenhum pedido encontrado com esse número.</p>";
         }
 
         // Fechando a conexão
@@ -103,48 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
     $conn->close();
 }
 
-// Verifica se o formulário de salvamento foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
-    // Criando a conexão
-    $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Verificando a conexão
-    if ($conn->connect_error) {
-        die("Conexão falhou: " . $conn->connect_error);
-    }
-
-    // Itera sobre os produtos enviados no formulário
-    foreach ($_POST['produtos'] as $produto) {
-        $pedidob = $produto['pedidob'];
-        $nome_produto = $produto['nome_produto'];
-        $qtd_prod = $produto['qtd_prod'];
-        $avariado = isset($produto['avariado']) ? 1 : 0;
-        $faltando = isset($produto['faltando']) ? 1 : 0;
-        $observacoes = $produto['comentarios'];
-
-        // Inserção na nova tabela
-        $sql = "INSERT INTO vistoriacarga (pedidob, nome_produto, qtd_prod, avariado, faltando, observacoes) VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-
-        if ($stmt) {
-            $stmt->bind_param("ssisii", $pedidob, $nome_produto, $qtd_prod, $avariado, $faltando, $observacoes);
-
-            if (!$stmt->execute()) {
-                $erro = "Erro ao salvar os dados: " . $stmt->error;
-                break;
-            }
-        } else {
-            $erro = "Erro na preparação da consulta: " . $conn->error;
-            break;
-        }
-    }
-
-    if (empty($erro)) {
-        $resultado = "Dados salvos com sucesso!";
-    }
-
-    $conn->close();
-}
 ?>
 
 <!DOCTYPE html>
@@ -281,11 +240,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
 
         .result {
             margin-top: 20px;
+
         }
 
         .error {
             color: red;
         }
+
     </style>
 </head>
 

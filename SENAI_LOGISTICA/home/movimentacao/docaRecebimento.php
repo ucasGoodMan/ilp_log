@@ -3,16 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="docar.css">
+    <link rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Pedidos Doca</title>
 </head> 
 <body>
-<a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h1 {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 <div class="container">
-    <h1>Lista de Pedidos</h1>
+    <h1>Lista de Pedidos
+        ESSA TELA NAO FUNCIONA POREM BOTEI A SIDEBAR, FIZ MINHA PARTE. PP
+    </h1>
     <?php
+    include "../../sidebarALU.php";
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -55,6 +74,5 @@
     $conn->close();
     ?>
 </div>
-<script src="sidebar.js"></script>
 </body>
 </html>
