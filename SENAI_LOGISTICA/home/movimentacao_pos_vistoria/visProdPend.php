@@ -13,12 +13,13 @@ if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-// Atualiza o status para "concluído" quando o usuário clica em "finalizar"
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
+// Atualiza o status para "concluído" e a posição no estoque quando o usuário clica em "finalizar"
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"]) && isset($_POST["posicao"])) {
     $id = $_POST["id"];
-    $sql = "UPDATE movimentacaopvist SET status = 'concluido' WHERE id = ?";
+    $posicao = $_POST["posicao"];
+    $sql = "UPDATE movimentacaopvist SET status = 'concluido', posicao_estoque = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
+    $stmt->bind_param("si", $posicao, $id);
     $stmt->execute();
     echo "<div class='success-message'>Operação finalizada com sucesso!</div>";
 }
@@ -94,6 +95,14 @@ $result = $conn->query($sql);
         .produto-item .status-ok:hover {
             background-color: #218838;
         }
+        .produto-item select {
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            padding: 5px;
+            width: 100%;
+            max-width: 150px;
+            text-align: center;
+        }
         .success-message {
             background-color: #d4edda;
             color: #155724;
@@ -116,6 +125,7 @@ if ($result->num_rows > 0) {
     echo "<div class='produto-header'>Produto ID</div>";
     echo "<div class='produto-header'>Nome do Produto</div>";
     echo "<div class='produto-header'>Quantidade</div>";
+    echo "<div class='produto-header'>Posição no Estoque</div>";
     echo "<div class='produto-header'>Ação</div>";
     echo "</div>";
 
@@ -128,6 +138,16 @@ if ($result->num_rows > 0) {
         echo "<div class='produto-item'>";
         echo "<form action='visProdPend.php' method='post'>";
         echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+        echo "<select name='posicao'>";
+        for ($letra = 'A'; $letra <= 'E'; $letra++) {
+            for ($numero = 1; $numero <= 5; $numero++) {
+                $valor = $letra . $numero;
+                echo "<option value='$valor'>$valor</option>";
+            }
+        }
+        echo "</select>";
+        echo "</div>";
+        echo "<div class='produto-item'>";
         echo "<button class='status-ok' type='submit'>Finalizar</button>";
         echo "</form>";
         echo "</div>";
@@ -137,6 +157,7 @@ if ($result->num_rows > 0) {
     echo "</div>";
 } else {
     echo "<div class='produto-grid'>Nenhum produto pendente encontrado.</div>";
+    header ('Location: http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao_pos_vistoria/movimentacaoPVist.php');
 }
 
 $conn->close();
