@@ -136,13 +136,13 @@
     <div class="container">
         <h1>Detalhes do Pedido</h1>
 
-        <form action="processar_doca.php" method="post">
+        <form action="buscarpedido.php" method="post">
             
             <ul class="produto-list">
                 <?php
                 $servername = "localhost";
                 $username = "root";
-                $password = "root";
+                $password = "";
                 $dbname = "senai";
 
                 // Cria a conexão
@@ -183,6 +183,24 @@
                 } else {
                     echo "<li>Erro: Pedido ID não fornecido.</li>";
                 }
+
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $pedido_id = $_POST['pedido_id'];
+                    $numero_doca = $_POST['numero_doca'];
+                    $nomes_produtos = $_POST['nome_produto'];
+                
+                    foreach ($nomes_produtos as $nome_produto) {
+                        $sql_insert = "INSERT INTO doca_pedidos (pedido_id, nome_produto, numero_doca) VALUES ('$pedido_id', '$nome_produto', '$numero_doca')";
+                
+                        if ($conn->query($sql_insert) !== TRUE) {
+                            echo "Erro: " . $sql_insert . "<br>" . $conn->error;
+                        }
+                    }
+                
+                    echo "Solicitação de movimentação feita com sucesso!";
+                }
+
+                
 
                 // Fecha a conexão
                 $conn->close();

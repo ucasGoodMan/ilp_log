@@ -114,7 +114,7 @@
         <?php
         $servername = "localhost";
         $username = "root";
-        $password = "root";
+        $password = "";
         $dbname = "senai";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
