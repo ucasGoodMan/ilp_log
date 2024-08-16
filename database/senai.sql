@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 15-Ago-2024 às 12:34
--- Versão do servidor: 5.7.11
--- PHP Version: 7.0.3
+-- Generation Time: 16-Ago-2024 às 23:09
+-- Versão do servidor: 5.6.20-log
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `senai`
@@ -26,12 +26,12 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `alunos`
 --
 
-CREATE TABLE `alunos` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `alunos` (
+`id` int(11) NOT NULL,
   `nome` varchar(60) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `turma_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
 
 --
 -- Extraindo dados da tabela `alunos`
@@ -51,8 +51,8 @@ INSERT INTO `alunos` (`id`, `nome`, `senha`, `turma_id`) VALUES
 -- Estrutura da tabela `detalhes_danfe`
 --
 
-CREATE TABLE `detalhes_danfe` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `detalhes_danfe` (
+`id` int(11) NOT NULL,
   `pedido_id` int(11) DEFAULT NULL,
   `cod_danfe` int(11) DEFAULT NULL,
   `chave_acesso_danfe` varchar(44) DEFAULT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE `detalhes_danfe` (
   `ncm_prod` int(8) NOT NULL,
   `cst_prod` int(3) NOT NULL,
   `cfop_prod` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -73,14 +73,14 @@ CREATE TABLE `detalhes_danfe` (
 -- Estrutura da tabela `doca_pedidos`
 --
 
-CREATE TABLE `doca_pedidos` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `doca_pedidos` (
+`id` int(11) NOT NULL,
   `pedido_id` int(11) DEFAULT NULL,
   `numero_doca` int(11) DEFAULT NULL,
   `data_hora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `nome_produto` varchar(255) NOT NULL,
   `status` varchar(65) NOT NULL DEFAULT 'Pendente'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `doca_pedidos`
@@ -101,13 +101,13 @@ INSERT INTO `doca_pedidos` (`id`, `pedido_id`, `numero_doca`, `data_hora`, `nome
 -- Estrutura da tabela `estoque`
 --
 
-CREATE TABLE `estoque` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `estoque` (
+`id` int(11) NOT NULL,
   `posicaoVaga` varchar(20) NOT NULL,
   `statusVaga` varchar(20) DEFAULT 'Vazia',
   `itens` varchar(255) DEFAULT NULL,
   `posicao` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Extraindo dados da tabela `estoque`
@@ -147,11 +147,11 @@ INSERT INTO `estoque` (`id`, `posicaoVaga`, `statusVaga`, `itens`, `posicao`) VA
 -- Estrutura da tabela `loginp`
 --
 
-CREATE TABLE `loginp` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `loginp` (
+`id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `loginp`
@@ -166,14 +166,14 @@ INSERT INTO `loginp` (`id`, `email`, `senha`) VALUES
 -- Estrutura da tabela `movimentacao`
 --
 
-CREATE TABLE `movimentacao` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `movimentacao` (
+`id` int(11) NOT NULL,
   `npedido` varchar(255) NOT NULL,
   `produto` varchar(255) NOT NULL,
   `qtd` int(11) NOT NULL,
   `posicao` varchar(255) NOT NULL,
   `status` varchar(20) DEFAULT 'Pendente'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `movimentacao`
@@ -191,15 +191,15 @@ INSERT INTO `movimentacao` (`id`, `npedido`, `produto`, `qtd`, `posicao`, `statu
 -- Estrutura da tabela `movimentacaoestoque`
 --
 
-CREATE TABLE `movimentacaoestoque` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `movimentacaoestoque` (
+`id` int(11) NOT NULL,
   `nPedido` int(11) NOT NULL COMMENT 'puxa o numero do pedido e o adiciona na vaga correspondente, com status pendente ou concluida',
   `statusVaga` varchar(20) NOT NULL DEFAULT 'Vazia' COMMENT 'vazia, cheia, quase cheia',
   `item` varchar(255) NOT NULL COMMENT 'itens na vaga',
   `vaga` varchar(20) NOT NULL COMMENT 'a1,a2,a3...',
   `qtdItem` int(11) NOT NULL COMMENT 'qtd de itens na vaga',
   `statusMovimentacao` varchar(20) NOT NULL DEFAULT 'Pendente' COMMENT 'status da moviemntação: pendente/concluida'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -207,23 +207,35 @@ CREATE TABLE `movimentacaoestoque` (
 -- Estrutura da tabela `movimentacaopvist`
 --
 
-CREATE TABLE `movimentacaopvist` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `movimentacaopvist` (
+`id` int(11) NOT NULL,
   `produto_id` int(11) NOT NULL,
   `nome_produto` varchar(50) NOT NULL,
   `quantidade` int(11) NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'pendente'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` varchar(20) NOT NULL DEFAULT 'pendente',
+  `posicao_estoque` varchar(4) DEFAULT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=240 ;
 
 --
 -- Extraindo dados da tabela `movimentacaopvist`
 --
 
-INSERT INTO `movimentacaopvist` (`id`, `produto_id`, `nome_produto`, `quantidade`, `status`) VALUES
-(225, 12, '100', 12, 'pendente'),
-(226, 2, 'core i6', 89, 'concluido'),
-(227, 2, 'core i6', 89, 'pendente'),
-(228, 2, 'core i6', 89, 'pendente');
+INSERT INTO `movimentacaopvist` (`id`, `produto_id`, `nome_produto`, `quantidade`, `status`, `posicao_estoque`) VALUES
+(225, 12, '100', 12, 'concluido', NULL),
+(226, 2, 'core i6', 89, 'concluido', NULL),
+(227, 2, 'core i6', 89, 'concluido', NULL),
+(228, 2, 'core i6', 89, 'concluido', NULL),
+(229, 11, '23', 9, 'concluido', NULL),
+(230, 4041, 'telcado', 7, 'concluido', NULL),
+(231, 4041, 'telcado', 7, 'concluido', NULL),
+(232, 4041, 'telcado', 7, 'concluido', NULL),
+(233, 4041, 'telcado', 7, 'concluido', NULL),
+(234, 4041, 'telcado', 7, 'concluido', NULL),
+(235, 4041, 'telcado', 7, 'concluido', NULL),
+(236, 2, 'core i6', 89, 'concluido', NULL),
+(237, 2, 'core i6', 89, 'concluido', NULL),
+(238, 2, 'core i6', 89, 'concluido', 'A1'),
+(239, 4041, 'telcado', 7, 'concluido', 'A1');
 
 -- --------------------------------------------------------
 
@@ -231,7 +243,7 @@ INSERT INTO `movimentacaopvist` (`id`, `produto_id`, `nome_produto`, `quantidade
 -- Estrutura da tabela `pedidos`
 --
 
-CREATE TABLE `pedidos` (
+CREATE TABLE IF NOT EXISTS `pedidos` (
   `pedido` varchar(255) NOT NULL,
   `data_entrega` date DEFAULT NULL,
   `data_pedido` date DEFAULT NULL,
@@ -244,7 +256,9 @@ CREATE TABLE `pedidos` (
 
 INSERT INTO `pedidos` (`pedido`, `data_entrega`, `data_pedido`, `observacoes`) VALUES
 ('1', '2024-08-08', '2024-08-08', ''),
-('2', '2024-08-15', '2024-08-15', '');
+('2', '2024-08-15', '2024-08-15', ''),
+('4040', '0000-00-00', '0000-00-00', ''),
+('4041', '2024-08-16', '2024-08-16', '');
 
 -- --------------------------------------------------------
 
@@ -252,8 +266,8 @@ INSERT INTO `pedidos` (`pedido`, `data_entrega`, `data_pedido`, `observacoes`) V
 -- Estrutura da tabela `produtos`
 --
 
-CREATE TABLE `produtos` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `produtos` (
+`id` int(11) NOT NULL,
   `pedidob` varchar(255) NOT NULL,
   `cod_prod` varchar(255) NOT NULL,
   `nome_produto` varchar(255) NOT NULL,
@@ -263,7 +277,7 @@ CREATE TABLE `produtos` (
   `ncm_prod` varchar(50) DEFAULT NULL,
   `cst_prod` varchar(50) DEFAULT NULL,
   `cfop_prod` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `produtos`
@@ -272,7 +286,9 @@ CREATE TABLE `produtos` (
 INSERT INTO `produtos` (`id`, `pedidob`, `cod_prod`, `nome_produto`, `un_prod`, `qtd_prod`, `rsunit_prod`, `ncm_prod`, `cst_prod`, `cfop_prod`) VALUES
 (1, '1', '1', 'tesoura', 'palete', 1, '5.00', '1', '1', '1'),
 (2, '2', '32', 'core i5', 'unidade', 76, '1.00', '88385000', '783', '100'),
-(3, '2', '33', 'core i6', 'unidade', 89, '1.00', '88385000', '387', '001');
+(3, '2', '33', 'core i6', 'unidade', 89, '1.00', '88385000', '387', '001'),
+(4, '4040', '3', 'telcado', 'caixa', 4, '5.00', '', '', ''),
+(5, '4041', '3', 'telcado', 'caixa', 7, '1.00', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -280,11 +296,11 @@ INSERT INTO `produtos` (`id`, `pedidob`, `cod_prod`, `nome_produto`, `un_prod`, 
 -- Estrutura da tabela `relatorio`
 --
 
-CREATE TABLE `relatorio` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `relatorio` (
+`id` int(11) NOT NULL,
   `conteudo` text NOT NULL,
   `data` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `relatorio`
@@ -299,11 +315,11 @@ INSERT INTO `relatorio` (`id`, `conteudo`, `data`) VALUES
 -- Estrutura da tabela `solicitacoes`
 --
 
-CREATE TABLE `solicitacoes` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `solicitacoes` (
+`id` int(11) NOT NULL,
   `solicitacao` varchar(255) DEFAULT NULL,
   `observacoes` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -311,12 +327,12 @@ CREATE TABLE `solicitacoes` (
 -- Estrutura da tabela `turma`
 --
 
-CREATE TABLE `turma` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `turma` (
+`id` int(11) NOT NULL,
   `nturma` int(11) NOT NULL,
   `nometurma` varchar(60) NOT NULL,
   `qntalunos` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT AUTO_INCREMENT=25 ;
 
 --
 -- Extraindo dados da tabela `turma`
@@ -331,12 +347,12 @@ INSERT INTO `turma` (`id`, `nturma`, `nometurma`, `qntalunos`) VALUES
 -- Estrutura da tabela `vagas`
 --
 
-CREATE TABLE `vagas` (
-  `id` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vagas` (
+`id` int(3) NOT NULL,
   `vaga` varchar(64) NOT NULL,
   `statusVaga` varchar(10) DEFAULT 'vazia',
   `itens` varchar(500) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=77 ;
 
 --
 -- Extraindo dados da tabela `vagas`
@@ -426,8 +442,8 @@ INSERT INTO `vagas` (`id`, `vaga`, `statusVaga`, `itens`) VALUES
 -- Estrutura da tabela `vistoriacarga`
 --
 
-CREATE TABLE `vistoriacarga` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vistoriacarga` (
+`id` int(11) NOT NULL,
   `pedidob` varchar(50) NOT NULL,
   `nome_produto` varchar(50) NOT NULL,
   `qtd_prod` int(11) NOT NULL,
@@ -435,7 +451,7 @@ CREATE TABLE `vistoriacarga` (
   `faltando` tinyint(50) NOT NULL,
   `observacoes` varchar(50) DEFAULT NULL,
   `data_registro` date DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
 
 --
 -- Extraindo dados da tabela `vistoriacarga`
@@ -444,7 +460,7 @@ CREATE TABLE `vistoriacarga` (
 INSERT INTO `vistoriacarga` (`id`, `pedidob`, `nome_produto`, `qtd_prod`, `avariado`, `faltando`, `observacoes`, `data_registro`) VALUES
 (4, '19', '18', 9, 1, 0, 'problema no joelho', '2024-07-19'),
 (3, '12', '100', 12, 1, 0, '', '2024-07-19'),
-(5, '11', '23', 9, 0, 0, '', '2024-07-23'),
+(5, '11', '23', 9, 1, 0, '', '2024-07-23'),
 (6, '20', '1', 9, 0, 0, '', '2024-07-23'),
 (7, '21', '1', 1, 0, 0, '', '2024-07-23'),
 (8, '11', '23', 9, 1, 1, 'aaaaaaa', '2024-07-27'),
@@ -455,9 +471,15 @@ INSERT INTO `vistoriacarga` (`id`, `pedidob`, `nome_produto`, `qtd_prod`, `avari
 (13, '2', 'core i6', 89, 0, 0, '0', NULL),
 (14, '2', 'core i6', 89, 1, 0, '0', NULL),
 (15, '2', 'core i6', 89, 0, 0, '0', NULL),
-(16, '2', 'core i6', 89, 0, 0, '0', NULL),
-(17, '2', 'core i6', 89, 0, 0, '0', NULL),
-(18, '2', 'core i6', 89, 0, 0, '0', NULL);
+(16, '2', 'core i6', 89, 1, 0, '0', NULL),
+(17, '2', 'core i6', 89, 1, 0, '0', NULL),
+(18, '2', 'core i6', 89, 1, 0, '0', NULL),
+(46, '4041', 'telcado', 7, 1, 0, '0', NULL),
+(45, '4041', 'telcado', 7, 0, 0, '', '2024-08-16'),
+(44, '4041', 'telcado', 7, 1, 0, '0', NULL),
+(43, '4041', 'telcado', 7, 1, 0, '', '2024-08-16'),
+(41, '4041', 'telcado', 7, 1, 0, '', '2024-08-16'),
+(42, '4041', 'telcado', 7, 1, 0, '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -465,8 +487,8 @@ INSERT INTO `vistoriacarga` (`id`, `pedidob`, `nome_produto`, `qtd_prod`, `avari
 -- Estrutura da tabela `vistoriaconferenciacontainer`
 --
 
-CREATE TABLE `vistoriaconferenciacontainer` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vistoriaconferenciacontainer` (
+`id` int(11) NOT NULL,
   `PlacaCaminhao` varchar(8) DEFAULT NULL,
   `NomeMotorista` varchar(55) DEFAULT NULL,
   `Container` varchar(15) DEFAULT NULL,
@@ -493,7 +515,7 @@ CREATE TABLE `vistoriaconferenciacontainer` (
   `SemCaboEnergia` tinyint(1) DEFAULT NULL,
   `SemLona` tinyint(1) DEFAULT NULL,
   `data` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Extraindo dados da tabela `vistoriaconferenciacontainer`
@@ -523,110 +545,97 @@ INSERT INTO `vistoriaconferenciacontainer` (`id`, `PlacaCaminhao`, `NomeMotorist
 -- Indexes for table `alunos`
 --
 ALTER TABLE `alunos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `turma_id` (`turma_id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `turma_id` (`turma_id`);
 
 --
 -- Indexes for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `nome_produto` (`nome_produto`,`un_prod`,`qtd_prod`,`rsunit_prod`,`ncm_prod`,`cst_prod`,`cfop_prod`),
-  ADD KEY `cfop_prod` (`cfop_prod`),
-  ADD KEY `cfop_prod_2` (`cfop_prod`),
-  ADD KEY `un_prod` (`un_prod`,`qtd_prod`,`rsunit_prod`,`ncm_prod`,`cst_prod`),
-  ADD KEY `rsunit_prod` (`rsunit_prod`,`ncm_prod`,`cst_prod`),
-  ADD KEY `rsunit_prod_2` (`rsunit_prod`,`ncm_prod`,`cst_prod`),
-  ADD KEY `qtd_prod` (`qtd_prod`),
-  ADD KEY `cst_prod` (`cst_prod`),
-  ADD KEY `ncm_prod` (`ncm_prod`),
-  ADD KEY `nome_produto_2` (`nome_produto`),
-  ADD KEY `nome_produto_3` (`nome_produto`);
+ ADD PRIMARY KEY (`id`), ADD KEY `nome_produto` (`nome_produto`,`un_prod`,`qtd_prod`,`rsunit_prod`,`ncm_prod`,`cst_prod`,`cfop_prod`), ADD KEY `cfop_prod` (`cfop_prod`), ADD KEY `cfop_prod_2` (`cfop_prod`), ADD KEY `un_prod` (`un_prod`,`qtd_prod`,`rsunit_prod`,`ncm_prod`,`cst_prod`), ADD KEY `rsunit_prod` (`rsunit_prod`,`ncm_prod`,`cst_prod`), ADD KEY `rsunit_prod_2` (`rsunit_prod`,`ncm_prod`,`cst_prod`), ADD KEY `qtd_prod` (`qtd_prod`), ADD KEY `cst_prod` (`cst_prod`), ADD KEY `ncm_prod` (`ncm_prod`), ADD KEY `nome_produto_2` (`nome_produto`), ADD KEY `nome_produto_3` (`nome_produto`);
 
 --
 -- Indexes for table `doca_pedidos`
 --
 ALTER TABLE `doca_pedidos`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `estoque`
 --
 ALTER TABLE `estoque`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `loginp`
 --
 ALTER TABLE `loginp`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `movimentacao`
 --
 ALTER TABLE `movimentacao`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `movimentacaoestoque`
 --
 ALTER TABLE `movimentacaoestoque`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `movimentacaopvist`
 --
 ALTER TABLE `movimentacaopvist`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`pedido`);
+ ADD PRIMARY KEY (`pedido`);
 
 --
 -- Indexes for table `produtos`
 --
 ALTER TABLE `produtos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_pedido` (`pedidob`);
+ ADD PRIMARY KEY (`id`), ADD KEY `fk_pedido` (`pedidob`);
 
 --
 -- Indexes for table `relatorio`
 --
 ALTER TABLE `relatorio`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `solicitacoes`
 --
 ALTER TABLE `solicitacoes`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `turma`
 --
 ALTER TABLE `turma`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `vagas`
 --
 ALTER TABLE `vagas`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `vistoriacarga`
 --
 ALTER TABLE `vistoriacarga`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `vistoriaconferenciacontainer`
 --
 ALTER TABLE `vistoriaconferenciacontainer`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -636,77 +645,77 @@ ALTER TABLE `vistoriaconferenciacontainer`
 -- AUTO_INCREMENT for table `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `doca_pedidos`
 --
 ALTER TABLE `doca_pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `estoque`
 --
 ALTER TABLE `estoque`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `loginp`
 --
 ALTER TABLE `loginp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `movimentacao`
 --
 ALTER TABLE `movimentacao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `movimentacaoestoque`
 --
 ALTER TABLE `movimentacaoestoque`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `movimentacaopvist`
 --
 ALTER TABLE `movimentacaopvist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=240;
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --
 ALTER TABLE `relatorio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `solicitacoes`
 --
 ALTER TABLE `solicitacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `vagas`
 --
 ALTER TABLE `vagas`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT for table `vistoriacarga`
 --
 ALTER TABLE `vistoriacarga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `vistoriaconferenciacontainer`
 --
 ALTER TABLE `vistoriaconferenciacontainer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- Constraints for dumped tables
 --
@@ -715,14 +724,14 @@ ALTER TABLE `vistoriaconferenciacontainer`
 -- Limitadores para a tabela `alunos`
 --
 ALTER TABLE `alunos`
-  ADD CONSTRAINT `alunos_ibfk_1` FOREIGN KEY (`turma_id`) REFERENCES `turma` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `alunos_ibfk_1` FOREIGN KEY (`turma_id`) REFERENCES `turma` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `produtos`
 --
 ALTER TABLE `produtos`
-  ADD CONSTRAINT `fk_pedido` FOREIGN KEY (`pedidob`) REFERENCES `pedidos` (`pedido`) ON DELETE CASCADE,
-  ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`pedidob`) REFERENCES `pedidos` (`pedido`) ON DELETE CASCADE;
+ADD CONSTRAINT `fk_pedido` FOREIGN KEY (`pedidob`) REFERENCES `pedidos` (`pedido`) ON DELETE CASCADE,
+ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`pedidob`) REFERENCES `pedidos` (`pedido`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
