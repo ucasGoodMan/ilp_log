@@ -1,4 +1,8 @@
+<!-- os dados dessa tela vem da tabela "produtos" -->
 <?php
+
+date_default_timezone_set('America/Sao_Paulo');
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
