@@ -3,11 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Pagina de Login</title>
   </head>
   <body>
@@ -23,8 +20,8 @@
              <img class="img1" src="../SENAI_LOGISTICA/imagens/png-clipart-computer-icons-professor-farnsworth-teacher-education-professor-angle-text.png" alt="Professor">
             </div>
             <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="email" placeholder="Email" name="emailp" id="emailp" />
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Email" name="emailp" id="emailp" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>

@@ -22,11 +22,19 @@
             flex-direction: column;
         }
 
-        h1 {
-            text-align: center;
-            color: rgb(37, 91, 168);
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgb(37, 91, 168);
+            padding-bottom: 10px;
             margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: rgb(37, 91, 168);
             font-size: 28px;
+            margin: 0;
         }
 
         .container {
@@ -110,11 +118,13 @@
     include "../../sidebarALU.php";
     ?>  
     <div class="container">
+        <div class="header">
         <h1>Lista de Pedidos</h1>
+        </div>
         <?php
         $servername = "localhost";
         $username = "root";
-        $password = "root";
+        $password = "";
         $dbname = "senai";
 
         $conn = new mysqli($servername, $username, $password, $dbname);

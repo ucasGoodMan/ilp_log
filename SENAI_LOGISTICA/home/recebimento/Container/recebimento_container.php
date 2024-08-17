@@ -166,11 +166,19 @@ include "../../../sidebarALU.php";
             background-color: #b0bec5;
         }
 
-        h1 {
-            color: rgb(37, 91, 168);
-            text-align: center;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgb(37, 91, 168);
+            padding-bottom: 10px;
             margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: rgb(37, 91, 168);
             font-size: 28px;
+            margin: 0;
         }
 
         .checklist {
@@ -183,7 +191,9 @@ include "../../../sidebarALU.php";
 
 <body>
     <div class="divContainer">
+        <div class="header">
         <h1>Recebimento container</h1>
+        </div>
         <form method="post" action="process.php" id="form1" name="form1">
             <div class="container">
                 <div class="bloco">

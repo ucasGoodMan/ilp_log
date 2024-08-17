@@ -1,15 +1,17 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>criação de pedido</title>
+    <title>Criação de Pedido</title>
     <?php
     include '../../sidebarPROF.php';
     ?>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f2f2f2;
             display: flex;
             justify-content: center;
@@ -19,46 +21,75 @@
         }
 
         .container {
-            background-color: white;
+            background-color: #ffffff;
             padding: 20px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            width: 900px;
+            border-radius: 12px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            width: 100%;
+            max-width: 1000px;
         }
 
         h1 {
             text-align: center;
-            color: black;
+            color: rgb(37, 91, 168);
+            margin-bottom: 20px;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 3fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr auto;
-            gap: 10px;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .label {
+        .form-group {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            color: black;
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
-        input[type="text"], input[type="number"], textarea, select, input[type="date"] {
+        .form-group .label {
+            flex: 1;
+            min-width: 150px;
+            font-weight: bold;
+            color: rgb(37, 91, 168);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select,
+        .form-group input[type="date"] {
+            flex: 2;
             padding: 10px;
-            width: 100%;
-            box-sizing: border-box;
             border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            width: 100%;
         }
 
         textarea {
             resize: none;
+        }
+
+        .products-header {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            font-weight: bold;
+            background-color: rgb(37, 91, 168);
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .products-grid input[type="text"],
+        .products-grid input[type="number"],
+        .products-grid select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
         }
 
         button {
@@ -68,11 +99,16 @@
             border: none;
             cursor: pointer;
             width: 100%;
-            box-sizing: border-box;
+            border-radius: 8px;
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: rgb(29, 70, 130);
+            background-color: #2d72b7;
+        }
+
+        .add-button {
+            margin-top: 15px;
         }
     </style>
     <script>
@@ -80,13 +116,13 @@
 
         function addProductLine() {
             const maxProducts = 10;
-            const productLines = document.querySelectorAll('#products .grid').length;
+            const productLines = document.querySelectorAll('#products .products-grid').length;
             
             if (productLines < maxProducts) { 
                 productCount++;
                 
                 const grid = document.createElement('div');
-                grid.className = 'grid';
+                grid.className = 'products-grid';
                 grid.id = `product${productCount}`;
 
                 grid.innerHTML = `
@@ -132,28 +168,32 @@
     <div class="container">
         <h1>Pedido de Compra</h1>
         <form method="post" action="process.php">
-            <div class="grid">
-                <div class="label">Pedido Nº :</div>
-                <input type="text" name="pedido" style="grid-column: span 3;">
-                <div class="label" style="grid-column: span 3;">Data Entrega</div>
-                <input type="date" name="data_entrega" style="grid-column: span 2;">
-                <div class="label" style="grid-column: span 3;">Data Pedido</div>
-                <input type="date" name="data_pedido" style="grid-column: span 2;">
+            <div class="form-group">
+                <label class="label" for="pedido">Pedido Nº:</label>
+                <input type="text" id="pedido" name="pedido">
             </div>
-            <div class="grid">
-                
-                <div class="label" style="grid-column: 1 / span 1;">COD. PROD (SKU)</div>
-                <div class="label" style="grid-column: 2 / span 1;">Produtos</div>
-                <div class="label" style="grid-column: 3 / span 1;">UN</div>
-                <div class="label" style="grid-column: 4 / span 1;">QTC</div>
-                <div class="label" style="grid-column: 5 / span 1;">R$/unit</div>
-                <div class="label" style="grid-column: 6 / span 1;">NCM</div>
-                <div class="label" style="grid-column: 7 / span 1;">CST</div>
-                <div class="label" style="grid-column: 8 / span 1;">CFOP</div>
-
+            <div class="form-group">
+                <label class="label" for="data_pedido">Data Pedido:</label>
+                <input type="date" id="data_pedido" name="data_pedido">
+            </div>
+            <div class="form-group">
+                <label class="label" for="data_entrega">Data Entrega:</label>
+                <input type="date" id="data_entrega" name="data_entrega">
+            </div>
+            
+            <div class="products-header">
+                <div>COD. PROD (SKU)</div>
+                <div>Produto</div>
+                <div>UN</div>
+                <div>Quantidade</div>
+                <div>R$/unit</div>
+                <div>NCM</div>
+                <div>CST</div>
+                <div>CFOP</div>
+                <div>Ação</div>
             </div>
             <div id="products">
-                <div class="grid" id="product1">
+                <div class="products-grid" id="product1">
                     <input id="npedido" type="number" name="cod[]" placeholder="Código">
                     <input id="produtos" type="text" name="produto[]" placeholder="Produto">
                     <select name="un[]">
@@ -172,7 +212,6 @@
                         <option value="fardo">fardo</option>
                         <option value="bandeja">bandeja</option>
                     </select>
-                
                     <input id="quantidade" type="number" name="qtd[]" placeholder="Quantidade">
                     <input id="vlrporunidade" type="number" name="rsunit[]" placeholder="Preço">
                     <input id="ncm" type="number" name="ncm[]" placeholder="NCM">
@@ -181,15 +220,12 @@
                     <button type="button" onclick="removeProductLine('product1')">Remover</button>
                 </div>
             </div>
-            <div class="grid">
-                <button type="button" onclick="addProductLine()" style="grid-column: span 10;">Adicionar Produto</button>
+            <button class="add-button" type="button" onclick="addProductLine()">Adicionar Produto</button>
+            <div class="form-group">
+                <label class="label" for="observacoes">Observações:</label>
+                <textarea id="observacoes" name="observacoes" rows="4"></textarea>
             </div>
-            <div class="grid">
-                <textarea name="observacoes" rows="4" style="grid-column: span 10;"></textarea>
-            </div>
-            <div class="grid">
-                <button type="submit" style="grid-column: span 10;">Enviar</button>
-            </div>
+            <button type="submit">Enviar</button>
         </form>
     </div>
 </body>

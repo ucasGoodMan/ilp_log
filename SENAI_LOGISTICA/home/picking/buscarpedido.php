@@ -20,13 +20,19 @@
             align-items: center;
         }
 
-        h1 {
-            text-align: center;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgb(37, 91, 168);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
             color: rgb(37, 91, 168);
             font-size: 28px;
-            margin-bottom: 50px;
-
-
+            margin: 0;
         }
 
         .container {
@@ -134,7 +140,9 @@
     include "../../sidebarALU.php";
     ?>  
     <div class="container">
+        <div class="header">
         <h1>Detalhes do Pedido</h1>
+        </div>
 
         <form action="buscarpedido.php" method="post">
             
@@ -142,7 +150,7 @@
                 <?php
                 $servername = "localhost";
                 $username = "root";
-                $password = "root";
+                $password = "";
                 $dbname = "senai";
 
                 // Cria a conexão

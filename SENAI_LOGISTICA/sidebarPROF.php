@@ -12,7 +12,7 @@
 <body>
 <div class="sidebar">
     <div class="logo-details">
-        <img class="img1" src="../../imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
+        <img class="img1" src="/ILP_LOG/SENAI_LOGISTICA/imagens/ILP ICONE BRANCO sf.png" alt="LUCAS">
         <span class="logo_name">ILP LOG</span>
     </div>
     <ul class="nav-links">
@@ -75,7 +75,7 @@
             <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
-                    <img src="../../imagens/senai-logo-1.png" alt="senai">
+                    <img src="/ILP_LOG/SENAI_LOGISTICA/imagens/senai-logo-1.png" alt="senai">
             
                 </div>
             </button>
