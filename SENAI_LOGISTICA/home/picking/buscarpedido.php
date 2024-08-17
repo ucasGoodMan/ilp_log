@@ -142,7 +142,7 @@
                 <?php
                 $servername = "localhost";
                 $username = "root";
-                $password = "";
+                $password = "root";
                 $dbname = "senai";
 
                 // Cria a conexão
