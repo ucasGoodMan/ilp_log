@@ -5,7 +5,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "senai";
 
 // Variáveis para armazenar o resultado da consulta
