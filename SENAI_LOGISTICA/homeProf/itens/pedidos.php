@@ -1,7 +1,6 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,12 +26,22 @@
             box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             width: 100%;
             max-width: 1000px;
+            margin: 20px;
         }
 
-        h1 {
-            text-align: center;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgb(37, 91, 168);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
             color: rgb(37, 91, 168);
-            margin-bottom: 20px;
+            font-size: 28px;
+            margin: 0;
         }
 
         .form-group {
@@ -46,7 +55,7 @@
             flex: 1;
             min-width: 150px;
             font-weight: bold;
-            color: rgb(37, 91, 168);
+            color: black;
         }
 
         .form-group input[type="text"],
@@ -70,10 +79,13 @@
             display: grid;
             grid-template-columns: repeat(9, 1fr);
             font-weight: bold;
-            background-color: rgb(37, 91, 168);
-            color: #ffffff;
-            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            color: black;
+            margin-bottom: 20px;
+            padding: 5px;
             border-radius: 5px;
+            text-align: center;
         }
 
         .products-grid {
@@ -117,10 +129,10 @@
         function addProductLine() {
             const maxProducts = 10;
             const productLines = document.querySelectorAll('#products .products-grid').length;
-            
-            if (productLines < maxProducts) { 
+
+            if (productLines < maxProducts) {
                 productCount++;
-                
+
                 const grid = document.createElement('div');
                 grid.className = 'products-grid';
                 grid.id = `product${productCount}`;
@@ -153,7 +165,7 @@
                 `;
 
                 document.getElementById('products').appendChild(grid);
-            } 
+            }
         }
 
         function removeProductLine(id) {
@@ -164,13 +176,16 @@
         }
     </script>
 </head>
+
 <body>
     <div class="container">
+        <div class="header">
         <h1>Pedido de Compra</h1>
+        </div>
         <form method="post" action="process.php">
             <div class="form-group">
                 <label class="label" for="pedido">Pedido Nº:</label>
-                <input type="text" id="pedido" name="pedido">
+                <input type="text" id="pedido" placeholder="Digite o número" name="pedido">
             </div>
             <div class="form-group">
                 <label class="label" for="data_pedido">Data Pedido:</label>
@@ -180,7 +195,7 @@
                 <label class="label" for="data_entrega">Data Entrega:</label>
                 <input type="date" id="data_entrega" name="data_entrega">
             </div>
-            
+
             <div class="products-header">
                 <div>COD. PROD (SKU)</div>
                 <div>Produto</div>
@@ -222,11 +237,4 @@
             </div>
             <button class="add-button" type="button" onclick="addProductLine()">Adicionar Produto</button>
             <div class="form-group">
-                <label class="label" for="observacoes">Observações:</label>
-                <textarea id="observacoes" name="observacoes" rows="4"></textarea>
-            </div>
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
-</body>
-</html>
+                <

@@ -28,18 +28,192 @@ $resultado = $conexao->query($sql);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="turmas.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'>
-    <title>Turmas</title>
+    <title>Cadastro de Turmas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 1200px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgb(37, 91, 168);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: rgb(37, 91, 168);
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .button-79 {
+            background-color: rgb(37, 91, 168); /* Azul */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-79:hover {
+            background-color: rgb(37, 91, 168); /* Azul mais escuro */
+        }
+
+        .logout-button {
+            display: inline-block;
+            background-color: rgb(37, 91, 168); /* Azul */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .logout-button:hover {
+            background-color: rgb(37, 91, 168); /* Azul mais escuro */
+        }
+
+        .divTable {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        thead {
+            background-color: #f2f2f2; /* Azul */
+            color: black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        button {
+            background-color: rgb(37, 91, 168); /* Azul */
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 2px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: rgb(37, 91, 168); /* Azul mais escuro */
+        }
+
+        .modal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease;
+        }
+
+        .modal-container.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .modal label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .modal input[type="number"],
+        .modal input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .modal button {
+            background-color: rgb(37, 91, 168); /* Azul */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+
+
+
+
+    </style>
 </head>
 <body>
     <div class="container">
+        <div class="header">
         <h1>Cadastro de Turmas</h1>
+        </div>
         <button class="button-79" onclick="openModal()">Adicionar Turma</button>
         
         <!-- Link de Logout -->
@@ -89,11 +263,18 @@ $resultado = $conexao->query($sql);
 
                 <button id="botao" type="submit">Salvar</button>
             </form>
-            <button onclick="closeModal()">Fechar</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function openModal() {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+    </script>
 </body>
 </html>
 

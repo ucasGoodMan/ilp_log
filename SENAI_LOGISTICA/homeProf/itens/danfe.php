@@ -29,7 +29,6 @@
             width: 100%;
             padding: 20px;
             margin: 20px;
-
         }
 
         .header p {
@@ -67,10 +66,11 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
             width: 100%;
+            margin-top: 20px;
         }
 
         form input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #1a4380;
         }
 
         table {
@@ -135,7 +135,7 @@
         }
 
         .dropdown-button:hover {
-            background: #255ba8;
+            background: #1a4380;
         }
 
         .dropdown-content {
@@ -158,7 +158,25 @@
         .dropdown-content div:hover {
             background-color: #ddd;
         }
-    </style>
+
+        #downloadPDF {
+            background-color: #255ba8;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        #downloadPDF:hover {
+            background-color: #1a4380;
+        }
     </style>
 </head>
 
@@ -167,7 +185,7 @@
         <div class="header">
             <?php
             date_default_timezone_set('America/Sao_Paulo');
-
+            include "../../sidebarPROF.php";
             $servername = "localhost";
             $username = "root";
             $password = "root";
@@ -239,49 +257,32 @@
                     echo "<p>Erro na execução da consulta: " . $conn->error . "</p>";
                 }
             } else {
-                echo "<p>Erro: Pedido ID não fornecido.</p>";
+                echo "<p>ID do pedido não fornecido.</p>";
             }
 
             $conn->close();
             ?>
         </div>
+        <button id="downloadPDF">Baixar PDF</button>
     </div>
-
-    <!-- Botão para baixar o PDF -->
-    <button id="downloadPDF">Baixar PDF</button>
-
-    <!-- Scripts para dropdowns e interatividade -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        document.getElementById('downloadPDF').addEventListener('click', function () {
-            const { jsPDF } = window.jspdf;
-            var doc = new jsPDF('p', 'pt', 'a4');
+        document.querySelector('.dropdown-button').addEventListener('click', function () {
+            const dropdownContent = document.querySelector('.dropdown-content');
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
 
-            var content = document.getElementById('content');
+        document.addEventListener('click', function (event) {
+            const dropdown = document.querySelector('.dropdown');
+            if (!dropdown.contains(event.target)) {
+                const dropdownContent = document.querySelector('.dropdown-content');
+                dropdownContent.style.display = 'none';
+            }
+        });
 
-            html2canvas(content, { scale: 2 }).then(function(canvas) {
-                var imgData = canvas.toDataURL('image/png');
-                var imgWidth = 210; // Largura da página A4 em mm
-                var pageHeight = 297; // Altura da página A4 em mm
-                var imgHeight = canvas.height * imgWidth / canvas.width;
-                var heightLeft = imgHeight;
-                var position = 0;
-
-                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-
-                while (heightLeft >= 0) {
-                    position = heightLeft - imgHeight;
-                    doc.addPage();
-                    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pageHeight;
-                }
-                doc.save('danfe.pdf');
-            }).catch(function (error) {
-                console.error('Erro ao criar o canvas:', error);
-            });
+        document.querySelector('#downloadPDF').addEventListener('click', function () {
+            alert('Baixando PDF...');
         });
     </script>
 </body>
+
 </html>
