@@ -18,7 +18,6 @@ if (empty($turma_id)) {
 
 $sql = "SELECT * FROM `alunos` WHERE `turma_id` = '$turma_id'";
 $resultado = $conexao->query($sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -31,40 +30,56 @@ $resultado = $conexao->query($sql);
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
         }
 
         .container {
-            width: 80%;
-            max-width: 800px;
+            width: 100%;
+            max-width: 1000px;
             background-color: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgb(37, 91, 168);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: rgb(37, 91, 168);
+            font-size: 28px;
+            margin: 0;
         }
 
         .button-79 {
+            margin-top: 20px;
             display: block;
-            margin: 0 auto 20px;
+            margin: 20px auto;
             padding: 10px 20px;
-            background-color: #5cb85c;
+            background-color: rgb(37, 91, 168);
             color: white;
             border: none;
-            cursor: pointer;
             border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
-        .divTable {
-            overflow-x: auto;
+        .button-79:hover {
+            background-color: rgb(29, 70, 130);
         }
 
         table {
@@ -74,34 +89,54 @@ $resultado = $conexao->query($sql);
         }
 
         th, td {
-            padding: 10px;
+            padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
 
-        .modal-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
+        th {
+     
+            color: black;
+            font-size: 16px;
         }
 
-        .modal {
-            background-color: white;
-            padding: 20px;
+        td {
+            font-size: 14px;
+        }
+
+        td input {
+            border: 1px solid #ccc;
             border-radius: 5px;
-            width: 300px;
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .button-action {
+            background-color: rgb(37, 91, 168);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-action:hover {
+            background-color: rgb(29, 70, 130);
+        }
+
+        .button-action + .button-action {
+            margin-left: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="header">
         <h1>Alunos da Turma</h1>
+        </div>
         <form method="post" action="salvar_alunos.php">
             <input type="hidden" name="turma_id" value="<?= $turma_id ?>">
             <div class="divTable">
@@ -124,7 +159,7 @@ $resultado = $conexao->query($sql);
                                     <input type="text" name="senha[]" value="<?= htmlspecialchars($row['senha']) ?>" required>
                                 </td>
                                 <td>
-                                    <button type="button" onclick="gerarSenha(this)">Gerar Senha</button>
+                                    <button type="button" class="button-action" onclick="gerarSenha(this)">Gerar Senha</button>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

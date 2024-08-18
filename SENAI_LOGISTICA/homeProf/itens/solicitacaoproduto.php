@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: white;
+            background-color: #f5f5f5;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,41 +16,51 @@
         }
 
         .container {
-            background-color: #f0f0f0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            border: 2px solid #ccc;
             width: 600px;
         }
 
-        h1 {
-            text-align: center;
-            color: black;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgb(37, 91, 168);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: rgb(37, 91, 168);
+            font-size: 28px;
+            margin: 0;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: 1fr 4fr 1fr 1fr;
+            grid-template-columns: 1fr 2fr 1fr 1fr;
             gap: 10px;
+            margin-bottom: 15px;
             align-items: center;
-            margin-bottom: 10px;
         }
 
         .label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background-color: #f0f0f0;
-            color: black;
+            color: #555;
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             text-align: center;
         }
 
         input[type="text"], input[type="number"], textarea, select {
             padding: 10px;
-            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             box-sizing: border-box;
-            border: 1px solid #ccc;
+            width: 100%;
         }
 
         textarea {
@@ -58,19 +68,83 @@
         }
 
         button {
-            background-color: rgb(37, 91, 168);
+            background-color: #255ba8;
             color: white;
-            padding: 10px;
+            padding: 12px;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
             width: 100%;
             box-sizing: border-box;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: rgb(29, 70, 130);
+            background-color: #1e4b8e;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px; /* Adiciona espaço abaixo dos botões */
         }
     </style>
+</head>
+<body>
+    <?php
+    include "../../sidebarPROF.php";
+    ?>
+    <div class="container">
+        <div class="header">
+        <h1>Criação de Solicitação de Produto</h1>
+        </div>
+        <form action="process_request.php" method="post">
+            <div class="grid">
+                <div class="label">Solicitação Nº:</div>
+                <input type="text" name="solicitacao" style="grid-column: span 3;">
+            </div>
+            <div class="grid">
+                <div class="label">Produto</div>
+                <div class="label">UN</div>
+                <div class="label">QTD</div>
+            </div>
+            <div id="products">
+                <div class="grid" id="product1">
+                    <input type="text" name="produto1" placeholder="Produto">
+                    <select name="un1">
+                        <option value="caixa">caixa</option>
+                        <option value="unidade">unidade</option>
+                        <option value="peça">peça</option>
+                        <option value="kilograma">kilograma</option>
+                        <option value="litro">litro</option>
+                        <option value="palete">palete</option>
+                        <option value="pacote">pacote</option>
+                        <option value="cartão">cartão</option>
+                        <option value="rolo">rolo</option>
+                        <option value="tonelada">tonelada</option>
+                        <option value="bloco">bloco</option>
+                        <option value="saco">saco</option>
+                        <option value="fardo">fardo</option>
+                        <option value="bandeja">bandeja</option>
+                    </select>
+                    <input type="number" name="qtd1" placeholder="Quantidade">
+                    <button type="button" onclick="removeProductLine('product1')">Remover</button>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="button" onclick="addProductLine()">Adicionar Produto</button>
+            </div>
+            <div class="grid">
+                <div class="label" style="grid-column: span 4;">Observações</div>
+                <textarea name="observacoes" rows="4" style="grid-column: span 4;"></textarea>
+            </div>
+            <div class="button-container">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
     <script>
         let productCount = 1;
 
@@ -118,52 +192,5 @@
             }
         }
     </script>
-</head>
-<body>
-    <div class="container">
-        <h1>Criação de solicitação de produto - simulação</h1>
-        <form action="process_request.php" method="post">
-            <div class="grid">
-                <div class="label">Solicitação Nº :</div>
-                <input type="text" name="solicitacao" style="grid-column: span 3;">
-            </div>
-            <div class="grid">
-                <div class="label" style="grid-column: 1 / span 1;">Produtos</div>
-                <div class="label" style="grid-column: 3 / span 1;">UN</div>
-                <div class="label" style="grid-column: 4 / span 1;">QTD</div>
-            </div>
-            <div id="products">
-                <div class="grid" id="product1">
-                    <input type="text" name="produto1" placeholder="Produto">
-                    <select name="un1">
-                        <option value="caixa">caixa</option>
-                        <option value="unidade">unidade</option>
-                        <option value="peça">peça</option>
-                        <option value="kilograma">kilograma</option>
-                        <option value="litro">litro</option>
-                        <option value="palete">palete</option>
-                        <option value="pacote">pacote</option>
-                        <option value="cartão">cartão</option>
-                        <option value="rolo">rolo</option>
-                        <option value="tonelada">tonelada</option>
-                        <option value="bloco">bloco</option>
-                        <option value="saco">saco</option>
-                        <option value="fardo">fardo</option>
-                        <option value="bandeja">bandeja</option>
-                    </select>
-                    <input type="number" name="qtd1" placeholder="Quantidade">
-                    <button type="button" onclick="removeProductLine('product1')">Remover</button>
-                </div>
-            </div>
-            <button type="button" onclick="addProductLine()" style="grid-column: span 4;">Adicionar Produto</button>
-            <div class="grid">
-                <div class="label" style="grid-column: span 4;">Observações</div>
-                <textarea name="observacoes" rows="4" style="grid-column: span 4;"></textarea>
-            </div>
-            <div class="grid">
-                <button type="submit" style="grid-column: span 4;">Enviar</button>
-            </div>
-        </form>
-    </div>
 </body>
 </html>
