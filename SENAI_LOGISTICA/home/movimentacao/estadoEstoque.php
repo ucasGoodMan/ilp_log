@@ -7,6 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Estoque</title>
     <style>
+        /* Estilos do corpo da página e botão de voltar */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -36,19 +37,42 @@
             margin-right: 5px;
         }
 
+        /* Estilos da div com rolagem */
+        .scroll-container {
+            width: 50%; /* Ajuste a largura conforme necessário */
+            float: left; /* Posiciona a div à esquerda */
+            margin: 20px; /* Ajuste as margens conforme necessário */
+            border: 1px solid #ddd;
+            background: #fff;
+        }
+
+        .right-frame {
+            width: 25%; /* Ajuste a largura conforme necessário */
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            padding: 20px;
+            height: 900px; /* Ajuste a altura conforme necessário */
+            float: right;
+            overflow: auto;
+        }
+
+        /* Estilos do iframe */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Estilos da tabela */
         table {
-            position: relative;
-            top: 100px;
-            width: 50%;
-            margin: 20px auto;
+            width: 100%;
             border-collapse: collapse;
             background-color: #fff;
             box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
             border-radius: 8px;
         }
 
-        th,
-        td {
+        th, td {
             border: 1px solid #f2f2f2;
             padding: 12px;
             text-align: center;
@@ -82,13 +106,7 @@
             margin-top: 6px;
         }
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            margin-top: 8px;
-        }
-
-        .dropbtn {
+        .scroll-container button {
             background: rgb(37, 91, 168);
             color: white;
             padding: 8px 12px;
@@ -97,120 +115,94 @@
             cursor: pointer;
             border-radius: 4px;
             transition: background-color 0.3s;
+            margin-top: 5px;
         }
 
-        .dropbtn:hover {
+        .scroll-container button:hover {
             background: rgb(56, 130, 235);
         }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border-radius: 4px;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 12px;
-            transition: background-color 0.3s;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
     </style>
-
 </head>
 
 <body>
-    <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
-    <table>
-        <tr>
-            <th></th>
+
+    <!-- Container para a div com rolagem -->
+    <div class="scroll-container">
+        <table>
+            <tr>
+                <th></th>
+                <?php
+                foreach (range('A', 'E') as $letra) {
+                    echo "<th>Rua $letra</th>";
+                }
+                ?>
+            </tr>
             <?php
-            foreach (range('A', 'E') as $letra) {
-                echo "<th>Rua $letra</th>";
+            $servername = "localhost";
+            $username = "root";
+            $password = "root";
+            $dbname = "senai";
+            // Conexão com o banco de dados
+            $conn = new mysqli("localhost", "root", "root", "senai");
+
+            // Verifica a conexão
+            if ($conn->connect_error) {
+                die("Falha na conexão: " . $conn->connect_error);
             }
+
+            // Consulta para buscar os dados das vagas
+            $sql = "SELECT posicaoVaga, statusVaga, quantidadeAtual, quantidadeMaxima FROM estoque";
+            $result = $conn->query($sql);
+
+            $statusVagas = [];
+            $quantidadesAtuais = [];
+            $quantidadesMaximas = [];
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $statusVagas[$row['posicaoVaga']] = $row['statusVaga'];
+                    $quantidadesAtuais[$row['posicaoVaga']] = $row['quantidadeAtual'];
+                    $quantidadesMaximas[$row['posicaoVaga']] = $row['quantidadeMaxima'];
+                }
+            }
+
+            // Quantidades correspondentes para os andares
+            $quantidades = [
+                1 => '50 itens',
+                2 => '100 itens',
+                3 => '150 itens',
+                4 => '200 itens',
+                5 => '250 itens'
+            ];
+
+            // Exibir vagas de A1 a E5 em linhas e colunas
+            foreach (range(5, 1) as $linha) {
+                echo "<tr>";
+                // Exibir números (1, 2, 3, 4, 5) como cabeçalho da linha com quantidade correspondente
+                echo "<th>Andar $linha<br><span>Quantidade: {$quantidades[$linha]}</span></th>";
+
+                foreach (range('A', 'E') as $letra) {
+                    $vaga = "$letra$linha";
+                    $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "Vazia";
+                    $quantidadeAtual = isset($quantidadesAtuais[$vaga]) ? $quantidadesAtuais[$vaga] : 0;
+                    $quantidadeMaxima = isset($quantidadesMaximas[$vaga]) ? $quantidadesMaximas[$vaga] : 0;
+
+                    echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>Status: $status</span><br><span>Quantidade Atual: {$quantidadeAtual} itens / {$quantidadeMaxima} itens</span>";
+                    echo "<button>Monitorar Vaga</button>";
+                    echo "</td>";
+                }
+                echo "</tr>";
+            }
+
+            $conn->close();
             ?>
-        </tr>
-        <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $dbname = "senai";
-        // Conexão com o banco de dados
-        $conn = new mysqli("localhost", "root", "root", "senai");
+        </table>
+    </div>
 
-        // Verifica a conexão
-        if ($conn->connect_error) {
-            die("Falha na conexão: " . $conn->connect_error);
-        }
-
-        // Consulta para buscar os dados das vagas
-        $sql = "SELECT posicaoVaga, statusVaga, pesoAtual, pesoMaximo FROM estoque";
-        $result = $conn->query($sql);
-
-        $statusVagas = [];
-        $pesosAtuais = [];
-        $pesosMaximos = [];
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $statusVagas[$row['posicaoVaga']] = $row['statusVaga'];
-                $pesosAtuais[$row['posicaoVaga']] = $row['pesoAtual'];
-                $pesosMaximos[$row['posicaoVaga']] = $row['pesoMaximo'];
-            }
-        }
-
-        // Pesos correspondentes para os andares
-        $pesos = [
-            1 => '900kg',
-            2 => '500kg',
-            3 => '350kg',
-            4 => '200kg',
-            5 => '150kg'
-        ];
-
-        // Exibir vagas de A1 a E5 em linhas e colunas
-        foreach (range(5, 1) as $linha) {
-            echo "<tr>";
-            // Exibir números (1, 2, 3, 4, 5) como cabeçalho da linha com peso correspondente
-            echo "<th>Andar $linha<br><span>Peso: {$pesos[$linha]}</span></th>";
-
-            foreach (range('A', 'E') as $letra) {
-                $vaga = "$letra$linha";
-                $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "Vazia";
-                $pesoAtual = isset($pesosAtuais[$vaga]) ? $pesosAtuais[$vaga] : 0;
-                $pesoMaximo = isset($pesosMaximos[$vaga]) ? $pesosMaximos[$vaga] : 0;
-
-                echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>Status: $status</span><br><span>Peso Atual: {$pesoAtual}kg / {$pesoMaximo}kg</span>";
-                echo "<div class='dropdown'>";
-                echo "<button class='dropbtn'>Alterar Status</button>";
-                echo "<div class='dropdown-content'>";
-                echo "<a href='atualizar_status.php?vaga=$vaga&status=Cheia'>Cheia</a><br>";
-                echo "<a href='atualizar_status.php?vaga=$vaga&status=Quase Cheia'>Quase Cheia</a><br>";
-                echo "<a href='atualizar_status.php?vaga=$vaga&status=Vazia'>Vazia</a>";
-                echo "</div>";
-                echo "</div>";
-                echo "</td>";
-            }
-            echo "</tr>";
-        }
-
-        $conn->close();
-        ?>
-    </table>
+    <!-- Div com iframe -->
+    <div class="right-frame">
+        <iframe src="inventario.php" title="Estoque"></iframe>
+    </div>
 </body>
 
 </html>
