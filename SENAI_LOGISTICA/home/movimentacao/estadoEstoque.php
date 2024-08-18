@@ -52,6 +52,7 @@
             background: #f9f9f9;
             padding: 20px;
             height: 900px; /* Ajuste a altura conforme necessário */
+            max-height: 900px;
             float: right;
             overflow: auto;
         }
@@ -61,6 +62,7 @@
             width: 100%;
             height: 100%;
             border: none;
+            max-height: 900px;
         }
 
         /* Estilos da tabela */
