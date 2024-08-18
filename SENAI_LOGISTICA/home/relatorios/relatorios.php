@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Relatório Semanal</title>
     <style>
         table {
@@ -23,7 +24,7 @@
     <h1>Relatório Semanal</h1>
 
     <?php
-    include ("fusohorario.php");
+    include ("../../../fusohorario.php");
 
     $servername = "localhost";
     $username = "root";
@@ -48,7 +49,7 @@
 
     echo "<h2>Produtos Avariados e Faltando</h2>";
     // Consulta para produtos avariados e faltando
-    $sql = "SELECT id, cod_prod, nome_produto, qtd_prod, avariado, faltando, observacoes FROM vistoriacarga WHERE avariado = 1 OR faltando = 1";
+    $sql = "SELECT id, pedidob, nome_produto, qtd_prod, avariado, faltando, observacoes FROM vistoriacarga WHERE avariado = 1 OR faltando = 1";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -57,7 +58,7 @@
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . htmlspecialchars($row["id"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["cod_prod"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["pedidob"]) . "</td>";
             echo "<td>" . htmlspecialchars($row["nome_produto"]) . "</td>";
             echo "<td>" . htmlspecialchars($row["qtd_prod"]) . "</td>";
             echo "<td>" . htmlspecialchars($row["avariado"] ? 'Sim' : 'Não') . "</td>";
