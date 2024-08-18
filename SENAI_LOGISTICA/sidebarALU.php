@@ -50,8 +50,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Controle</a></li>
-                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao/docaRecebimento.php">Doca de recebimento<br>(solicitar movimentação)</a></li>
-                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao/solicitacoesMovimentacao.php">Concluir movimentação<br> do item</a></li>
+                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao_pos_vistoria/movimentacaoPVist.php">Pré-movimentação</a></li>
+                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao_pos_vistoria/visProdPend.php">Movimentação concluída</a></li>
                 </ul>
             </li>
             <li>
@@ -62,7 +62,7 @@
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
-                <ul class="sub-menu">
+                <ul class="sub-menu"> 
                     <li><a class="link_name">Expedição</a></li>
                     <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/picking/picking.php">Expedir</a></li>
                     <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/picking/processar_pedido.php">Pedido Carregado</a></li>

@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos Faltando/Avariados</title>
+
 <html>
 <head>
     <title>Produtos Faltando/Avariados</title>
@@ -35,8 +41,8 @@
         die("Falha na conexão: " . $conn->connect_error);
     }
 
-    // Consulta para pegar produtos faltando ou avariados
-    $sql = "SELECT * FROM pfaltava";
+    // Consulta para pegar produtos que estão faltando ou avariados
+    $sql = "SELECT id, pedidob, nome_produto, qtd_prod, avariado, faltando, observacoes FROM vistoriacarga WHERE avariado = 1 OR faltando = 1";
     $result = $conn->query($sql);
 
     // Verifica se a consulta foi bem-sucedida
@@ -47,16 +53,17 @@
     // Verifica se há resultados
     if ($result->num_rows > 0) {
         echo "<table>";
-        echo "<tr><th>ID</th><th>Produto ID</th><th>Nome do Produto</th><th>Quantidade</th><th>Status</th><th>Data Registro</th></tr>";
+        echo "<tr><th>ID</th><th>Código do Produto</th><th>Nome do Produto</th><th>Quantidade</th><th>Avariado</th><th>Faltando</th><th>Observações</th></tr>";
 
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . htmlspecialchars($row["id"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["produto_id"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["pedidob"]) . "</td>";
             echo "<td>" . htmlspecialchars($row["nome_produto"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["quantidade"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["status"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["data_registro"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["qtd_prod"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["avariado"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["faltando"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["observacoes"]) . "</td>";
             echo "</tr>";
         }
 
