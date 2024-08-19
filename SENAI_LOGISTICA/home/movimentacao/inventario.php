@@ -44,7 +44,8 @@ $result = $conn->query($sql);
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow: auto;
+            overflow-x: hidden;
             /* Evita rolagem no iframe */
         }
 
@@ -88,9 +89,9 @@ $result = $conn->query($sql);
 
         /* Estilos para a tabela */
         table {
-            width: 100%;
+            width: 75%;
             border-collapse: collapse;
-            margin: 10px;
+            margin: 55px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -98,7 +99,7 @@ $result = $conn->query($sql);
         td {
             border: 1px solid #ddd;
             padding: 8px;
-            text-align: left;
+            text-align: center;
             font-size: 12px;
         }
 
@@ -145,7 +146,7 @@ $result = $conn->query($sql);
         <label for="nome_produto">Nome do Produto:</label>
         <input type="text" id="nome_produto" name="nome_produto" value="<?php echo htmlspecialchars($nome_produto); ?>">
 
-        <label for="cod_prod">Código do Produto:</label>
+        <label for="cod_prod">Código do Pedido:</label>
         <input type="text" id="cod_prod" name="cod_prod" value="<?php echo htmlspecialchars($cod_prod); ?>">
 
         <label for="un_prod">Unidade:</label>
@@ -164,7 +165,7 @@ $result = $conn->query($sql);
     <table>
         <thead>
             <tr>
-                <th>Produto ID</th>
+                <th>pedido Nº</th>
                 <th>Nome do Produto</th>
                 <th>Quantidade</th>
                 <th>Posição no Estoque</th>

@@ -39,22 +39,21 @@
 
         /* Estilos da div com rolagem */
         .scroll-container {
-            width: 50%; /* Ajuste a largura conforme necessário */
-            float: left; /* Posiciona a div à esquerda */
-            margin: 20px; /* Ajuste as margens conforme necessário */
+            width: 50%;
+            float: left;
+            margin: 20px;
             border: 1px solid #ddd;
             background: #fff;
         }
 
         .right-frame {
-            width: 25%; /* Ajuste a largura conforme necessário */
+            width: 25%;
             border: 1px solid #ddd;
             background: #f9f9f9;
             padding: 20px;
-            height: 900px; /* Ajuste a altura conforme necessário */
+            height: 900px;
             max-height: 900px;
             float: right;
-            overflow: auto;
         }
 
         /* Estilos do iframe */
@@ -123,85 +122,137 @@
         .scroll-container button:hover {
             background: rgb(56, 130, 235);
         }
+
+        /* Estilos do modal */
+        #modalProdutos {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        #modalProdutos .modal-content {
+            background-color: white;
+            width: 50%;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        #fecharModal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
-
-    <!-- Container para a div com rolagem -->
     <div class="scroll-container">
         <table>
             <tr>
-                <th></th>
-                <?php
-                foreach (range('A', 'E') as $letra) {
-                    echo "<th>Rua $letra</th>";
-                }
-                ?>
+                <th>Vaga</th>
+                <th>Quantidade Atual</th>
+                <th>Quantidade Máximo</th>
+                <th>Quantidade Livre</th>
+                <th>Ações</th>
             </tr>
             <?php
             $servername = "localhost";
             $username = "root";
             $password = "root";
             $dbname = "senai";
+
             // Conexão com o banco de dados
-            $conn = new mysqli("localhost", "root", "root", "senai");
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
             // Verifica a conexão
             if ($conn->connect_error) {
                 die("Falha na conexão: " . $conn->connect_error);
             }
 
+            // Atualiza a quantidade atual
+            if (!$conn->query("CALL atualizar_quantidade_atual();")) {
+                die("Erro ao atualizar a quantidade: " . $conn->error);
+            }
+
             // Consulta para buscar os dados das vagas
-            $sql = "SELECT posicaoVaga, statusVaga, quantidadeAtual, quantidadeMaxima FROM estoque";
+            $sql = "SELECT posicaoVaga, quantidadeAtual, quantidadeMaxima FROM estoque";
             $result = $conn->query($sql);
 
-            $statusVagas = [];
-            $quantidadesAtuais = [];
-            $quantidadesMaximas = [];
+            // Verifica se a consulta foi bem-sucedida
+            if (!$result) {
+                die("Erro na consulta: " . $conn->error);
+            }
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    $statusVagas[$row['posicaoVaga']] = $row['statusVaga'];
-                    $quantidadesAtuais[$row['posicaoVaga']] = $row['quantidadeAtual'];
-                    $quantidadesMaximas[$row['posicaoVaga']] = $row['quantidadeMaxima'];
+                    $vaga = $row['posicaoVaga'];
+                    $quantidadeAtual = $row['quantidadeAtual'];
+                    $quantidadeMaxima = $row['quantidadeMaxima'];
+                    $quantidadeLivre = $quantidadeMaxima - $quantidadeAtual;
+
+                    echo "<tr>";
+                    echo "<td>$vaga</td>";
+                    echo "<td>$quantidadeAtual </td>";
+                    echo "<td>$quantidadeMaxima </td>";
+                    echo "<td>$quantidadeLivre </td>";
+                    echo "<td><button>Monitorar Vaga</button></td>";
+                    echo "</tr>";
                 }
-            }
-
-            // Quantidades correspondentes para os andares
-            $quantidades = [
-                1 => '50 itens',
-                2 => '100 itens',
-                3 => '150 itens',
-                4 => '200 itens',
-                5 => '250 itens'
-            ];
-
-            // Exibir vagas de A1 a E5 em linhas e colunas
-            foreach (range(5, 1) as $linha) {
-                echo "<tr>";
-                // Exibir números (1, 2, 3, 4, 5) como cabeçalho da linha com quantidade correspondente
-                echo "<th>Andar $linha<br><span>Quantidade: {$quantidades[$linha]}</span></th>";
-
-                foreach (range('A', 'E') as $letra) {
-                    $vaga = "$letra$linha";
-                    $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "Vazia";
-                    $quantidadeAtual = isset($quantidadesAtuais[$vaga]) ? $quantidadesAtuais[$vaga] : 0;
-                    $quantidadeMaxima = isset($quantidadesMaximas[$vaga]) ? $quantidadesMaximas[$vaga] : 0;
-
-                    echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>Status: $status</span><br><span>Quantidade Atual: {$quantidadeAtual} itens / {$quantidadeMaxima} itens</span>";
-                    echo "<button>Monitorar Vaga</button>";
-                    echo "</td>";
-                }
-                echo "</tr>";
+            } else {
+                echo "<tr><td colspan='6'>Nenhum dado encontrado</td></tr>";
             }
 
             $conn->close();
             ?>
         </table>
     </div>
+            
+    <!-- Modal -->
+    <div id="modalProdutos" style="display: none;">
+        <div class="modal-content">
+            <h2>Produtos na Vaga <span id="vagaTitulo"></span></h2>
+            <div id="produtosLista"></div>
+            <button id="fecharModal">Fechar</button>
+        </div>
+    </div>
 
-    <!-- Div com iframe -->
+    <script>
+        document.querySelectorAll('.scroll-container button').forEach(button => {
+            button.addEventListener('click', function() {
+                const vaga = this.parentElement.parentElement.querySelector('td').textContent;
+                document.getElementById('vagaTitulo').textContent = vaga;
+
+                // Chamada AJAX para buscar os produtos
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'buscar_produtos.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        document.getElementById('produtosLista').innerHTML = xhr.responseText;
+                        document.getElementById('modalProdutos').style.display = 'block';
+                    }
+                };
+                xhr.send('vaga=' + vaga);
+            });
+        });
+
+        // Fechar o modal ao clicar no botão de fechar
+        document.getElementById('fecharModal').addEventListener('click', function() {
+            document.getElementById('modalProdutos').style.display = 'none';
+        });
+    </script>
     <div class="right-frame">
         <iframe src="inventario.php" title="Estoque"></iframe>
     </div>
