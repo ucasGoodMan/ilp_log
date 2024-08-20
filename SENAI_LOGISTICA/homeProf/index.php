@@ -29,7 +29,7 @@ if (!isset($_SESSION['id'])) {
         include "../sidebarPROF.php";
         ?>
         <div class="ImageProf">
-            <h1>Bem vindo Docente</h1>
+            <h1>Bem vindo Docente 3</h1>
             <img class="prof" src="../imagens/Classroom-cuate.svg" alt="Estudantes">
         </div>
     </div>

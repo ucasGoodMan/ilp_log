@@ -54,29 +54,31 @@
             padding: 20px;
             box-sizing: border-box;
         }
+        
+    /* Estilos da rolagem personalizada para scroll-container e right-frame */
+    .scroll-container,
+    .right-frame {
+        scrollbar-width: thin;
+        scrollbar-color: rgb(37, 91, 168) #e0e0e0;
+    }
 
-        .scroll-container::-webkit-scrollbar,
-        .right-frame::-webkit-scrollbar {
-            width: 10px;
-        }
+    .scroll-container::-webkit-scrollbar,
+    .right-frame::-webkit-scrollbar {
+        width: 8px;
+    }
 
-        .scroll-container::-webkit-scrollbar-track,
-        .right-frame::-webkit-scrollbar-track {
-            background: #f2f2f2;
-            border-radius: 6px;
-        }
+    .scroll-container::-webkit-scrollbar-thumb,
+    .right-frame::-webkit-scrollbar-thumb {
+        background-color: rgb(37, 91, 168);
+        border-radius: 10px;
+    }
 
-        .scroll-container::-webkit-scrollbar-thumb,
-        .right-frame::-webkit-scrollbar-thumb {
-            background-color: rgb(37, 91, 168);
-            border-radius: 6px;
-            border: 2px solid #f2f2f2;
-        }
+    .scroll-container::-webkit-scrollbar-track,
+    .right-frame::-webkit-scrollbar-track {
+        background-color: #e0e0e0;
+        border-radius: 10px;
+    }
 
-        .scroll-container::-webkit-scrollbar-thumb:hover,
-        .right-frame::-webkit-scrollbar-thumb:hover {
-            background-color: #2d72b7;
-        }
 
 
         .content {
