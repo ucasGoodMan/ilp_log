@@ -106,7 +106,7 @@
     left: 0;
     height: 100%;
     width: 14%;
-    background: #255ba8;
+    background: red;
     z-index: 100;
     transition: all 0.5s ease;
 }
