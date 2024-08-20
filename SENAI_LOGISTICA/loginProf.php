@@ -28,7 +28,7 @@ if ($conexao -> connect_errno) {
         $conexao -> close();
 
         // Redireciona para a página protegida
-        header('Location: ../SENAI_LOGISTICA/homeProf/index.php');
+        header('Location: /ILP_LOG/SENAI_LOGISTICA/homeProf/index.php');
         exit();
     } else {
         $conexao -> close();

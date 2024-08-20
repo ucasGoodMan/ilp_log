@@ -217,7 +217,6 @@ $resultado = $conexao->query($sql);
         <button class="button-79" onclick="openModal()">Adicionar Turma</button>
         
         <!-- Link de Logout -->
-        <a href="../../logoutProcess.php" class="logout-button">Logout</a>
 
         <div class="divTable">
             <table>

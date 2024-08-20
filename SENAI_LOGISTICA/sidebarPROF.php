@@ -50,13 +50,7 @@
         </li>
 
         <li>
-            <a class="hrefs">
-                <i class="fa-solid fa-sliders"></i>
-                <span style="pointer-events: none;" class="link_name">Controle</span>
-            </a>
-            <ul class="sub-menu">
-                <li><a class="blank" href="">Controle</a></li>
-            </ul>
+
         <li>
             <div class="iocn-links">
                 <a class="hrefs">
@@ -71,7 +65,7 @@
             </ul>
         </li>
         <li>
-            <form action='../logoutProcess.php' method="POST" style="display:inline;">
+            <form action='/ILP_LOG/SENAI_LOGISTICA/logoutProcess.php' method="POST" style="display:inline;">
             <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
                 <div class="profile-details">
                     <i class='bx bx-log-out'></i>
