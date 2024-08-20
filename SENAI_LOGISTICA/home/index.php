@@ -15,7 +15,7 @@
 <body>
     <div class="container">
 <?php
-   // include '../auth.php';
+    include '../auth.php';
     include "../sidebarALU.php";
     
 ?>
