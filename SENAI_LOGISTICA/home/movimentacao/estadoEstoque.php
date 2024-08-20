@@ -9,10 +9,14 @@
     <style>
         /* Estilos do corpo da página e botão de voltar */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .back-button {
@@ -23,14 +27,16 @@
             color: white;
             padding: 10px 20px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .back-button:hover {
-            background-color: rgb(37, 91, 140);
+            background-color: #2d72b7;
         }
 
         .back-button i {
@@ -39,21 +45,28 @@
 
         /* Estilos da div com rolagem */
         .scroll-container {
-            width: 50%;
-            float: left;
+            width: 55%;
             margin: 20px;
-            border: 1px solid #ddd;
+            border-radius: 12px;
             background: #fff;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            overflow-y: auto;
+            max-height: 90vh;
         }
 
         .right-frame {
-            width: 25%;
-            border: 1px solid #ddd;
-            background: #f9f9f9;
+            width: 30%;
+            margin-left: 20px;
+            background: #ffffff;
             padding: 20px;
+            border-radius: 12px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             height: 900px;
             max-height: 900px;
-            float: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         /* Estilos do iframe */
@@ -61,50 +74,36 @@
             width: 100%;
             height: 100%;
             border: none;
-            max-height: 900px;
+            border-radius: 12px;
         }
 
         /* Estilos da tabela */
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-            border-radius: 8px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         th, td {
-            border: 1px solid #f2f2f2;
             padding: 12px;
             text-align: center;
             font-size: 14px;
-            background: #CDD6DD;
-            width: 5%;
+            border-bottom: 1px solid #f2f2f2;
         }
 
         th {
-            background-color: #255ba8;
+            background-color: rgb(37, 91, 168);
             color: #fff;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 14px;
-            width: 10%;
         }
 
-        .vaga {
-            position: relative;
-            height: 60px;
-            width: 60px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .vaga span {
-            display: block;
-            font-size: 12px;
-            color: #666;
-            margin-top: 6px;
+        td {
+            background-color: #f9f9f9;
         }
 
         .scroll-container button {
@@ -114,9 +113,9 @@
             font-size: 12px;
             border: none;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 8px;
             transition: background-color 0.3s;
-            margin-top: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .scroll-container button:hover {
@@ -132,14 +131,18 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
 
         #modalProdutos .modal-content {
             background-color: white;
-            width: 50%;
-            margin: 10% auto;
+            width: 40%;
+            margin: 0 auto;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 12px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             position: relative;
         }
 
@@ -153,44 +156,42 @@
             padding: 5px 10px;
             border-radius: 4px;
             cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 
 <body>
+
     <div class="scroll-container">
         <table>
             <tr>
                 <th>Vaga</th>
                 <th>Quantidade Atual</th>
-                <th>Quantidade Máximo</th>
+                <th>Quantidade Máxima</th>
                 <th>Quantidade Livre</th>
                 <th>Ações</th>
             </tr>
             <?php
+            include "../../sidebarALU.php";
             $servername = "localhost";
             $username = "root";
             $password = "root";
             $dbname = "senai";
 
-            // Conexão com o banco de dados
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Verifica a conexão
             if ($conn->connect_error) {
                 die("Falha na conexão: " . $conn->connect_error);
             }
 
-            // Atualiza a quantidade atual
             if (!$conn->query("CALL atualizar_quantidade_atual();")) {
                 die("Erro ao atualizar a quantidade: " . $conn->error);
             }
 
-            // Consulta para buscar os dados das vagas
             $sql = "SELECT posicaoVaga, quantidadeAtual, quantidadeMaxima FROM estoque";
             $result = $conn->query($sql);
 
-            // Verifica se a consulta foi bem-sucedida
             if (!$result) {
                 die("Erro na consulta: " . $conn->error);
             }
@@ -204,28 +205,31 @@
 
                     echo "<tr>";
                     echo "<td>$vaga</td>";
-                    echo "<td>$quantidadeAtual </td>";
-                    echo "<td>$quantidadeMaxima </td>";
-                    echo "<td>$quantidadeLivre </td>";
+                    echo "<td>$quantidadeAtual</td>";
+                    echo "<td>$quantidadeMaxima</td>";
+                    echo "<td>$quantidadeLivre</td>";
                     echo "<td><button>Monitorar Vaga</button></td>";
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='6'>Nenhum dado encontrado</td></tr>";
+                echo "<tr><td colspan='5'>Nenhum dado encontrado</td></tr>";
             }
 
             $conn->close();
             ?>
         </table>
     </div>
-            
-    <!-- Modal -->
-    <div id="modalProdutos" style="display: none;">
+
+    <div id="modalProdutos">
         <div class="modal-content">
             <h2>Produtos na Vaga <span id="vagaTitulo"></span></h2>
             <div id="produtosLista"></div>
             <button id="fecharModal">Fechar</button>
         </div>
+    </div>
+
+    <div class="right-frame">
+        <iframe src="inventario.php" title="Estoque"></iframe>
     </div>
 
     <script>
@@ -234,28 +238,23 @@
                 const vaga = this.parentElement.parentElement.querySelector('td').textContent;
                 document.getElementById('vagaTitulo').textContent = vaga;
 
-                // Chamada AJAX para buscar os produtos
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', 'buscar_produtos.php', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         document.getElementById('produtosLista').innerHTML = xhr.responseText;
-                        document.getElementById('modalProdutos').style.display = 'block';
+                        document.getElementById('modalProdutos').style.display = 'flex';
                     }
                 };
                 xhr.send('vaga=' + vaga);
             });
         });
 
-        // Fechar o modal ao clicar no botão de fechar
         document.getElementById('fecharModal').addEventListener('click', function() {
             document.getElementById('modalProdutos').style.display = 'none';
         });
     </script>
-    <div class="right-frame">
-        <iframe src="inventario.php" title="Estoque"></iframe>
-    </div>
 </body>
 
 </html>
