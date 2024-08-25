@@ -206,6 +206,9 @@
                     $chave_acesso_danfe = $conn->real_escape_string($_POST['chave_acesso_danfe']);
                     $data_emissao = date('Y-m-d'); // Data atual para emissão
 
+
+
+
                     $sql_insert = "INSERT INTO detalhes_danfe 
                     (pedido_id, cod_danfe, chave_acesso_danfe, data_emissao) 
                     VALUES ('$pedido_id', '$cod_danfe', '$chave_acesso_danfe', '$data_emissao')";
@@ -226,6 +229,15 @@
 
                 echo '<label for="data_emissao">Data de Emissão:</label>';
                 echo '<input type="date" id="data_emissao" name="data_emissao" value="'.date('Y-m-d').'" readonly required>';
+
+
+
+
+
+
+
+
+
 
                 echo '<input type="submit" value="Salvar">';
                 echo '</form>';
