@@ -207,16 +207,14 @@ $resultado = $conexao->query($sql);
 
 
 
-    </style>
+        </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-        <h1>Cadastro de Turmas</h1>
+            <h1>Cadastro de Turmas</h1>
         </div>
         <button class="button-79" onclick="openModal()">Adicionar Turma</button>
-        
-        <!-- Link de Logout -->
 
         <div class="divTable">
             <table>
@@ -233,12 +231,18 @@ $resultado = $conexao->query($sql);
                 <tbody>
                     <?php while ($row = $resultado->fetch_assoc()): ?>
                         <tr>
-                            <td><?= $row['nturma'] ?></td>
-                            <td><?= $row['nometurma'] ?></td>
-                            <td><?= $row['qntalunos'] ?></td>
-                            <td><button onclick="editTurma(<?= $row['id'] ?>, '<?= $row['nturma'] ?>', '<?= $row['nometurma'] ?>', '<?= $row['qntalunos'] ?>')">Editar</button></td>
-                            <td><button onclick="deleteTurma(<?= $row['id'] ?>)">Excluir</button></td>
-                            <td><button onclick="window.location.href='alunos.php?turma_id=<?= $row['id'] ?>'">Ver/Editar Alunos</button></td>
+                            <td><?= htmlspecialchars($row['nturma']) ?></td>
+                            <td><?= htmlspecialchars($row['nometurma']) ?></td>
+                            <td><?= htmlspecialchars($row['qntalunos']) ?></td>
+                            <td>
+                                <button onclick="editTurma(<?= $row['id'] ?>, '<?= htmlspecialchars($row['nturma']) ?>', '<?= htmlspecialchars($row['nometurma']) ?>', <?= $row['qntalunos'] ?>)">Editar</button>
+                            </td>
+                            <td>
+                                <button onclick="deleteTurma(<?= $row['id'] ?>)">Excluir</button>
+                            </td>
+                            <td>
+                                <button onclick="window.location.href='alunos.php?turma_id=<?= $row['id'] ?>'">Ver/Editar Alunos</button>
+                            </td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
@@ -273,8 +277,20 @@ $resultado = $conexao->query($sql);
         function closeModal() {
             document.getElementById('modal').classList.remove('active');
         }
+
+        function editTurma(id, nturma, nometurma, qntalunos) {
+            document.getElementById('id').value = id;
+            document.getElementById('nturma').value = nturma;
+            document.getElementById('nometurma').value = nometurma;
+            document.getElementById('qntalunos').value = qntalunos;
+            openModal();
+        }
+
+        function deleteTurma(id) {
+            if (confirm('Tem certeza de que deseja excluir esta turma?')) {
+                window.location.href = 'delete.php?id=' + id;
+            }
+        }
     </script>
 </body>
 </html>
-
-<?php $conexao->close(); ?>
