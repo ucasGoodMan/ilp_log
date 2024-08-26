@@ -223,9 +223,8 @@ $resultado = $conexao->query($sql);
                         <th>N° Turma</th>
                         <th>Nome da Turma</th>
                         <th>Quantidade de Alunos</th>
-                        <th>Editar</th>
                         <th>Excluir</th>
-                        <th>Ver/Editar Alunos</th>
+                        <th>Ver-Editar Alunos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -235,13 +234,10 @@ $resultado = $conexao->query($sql);
                             <td><?= htmlspecialchars($row['nometurma']) ?></td>
                             <td><?= htmlspecialchars($row['qntalunos']) ?></td>
                             <td>
-                                <button onclick="editTurma(<?= $row['id'] ?>, '<?= htmlspecialchars($row['nturma']) ?>', '<?= htmlspecialchars($row['nometurma']) ?>', <?= $row['qntalunos'] ?>)">Editar</button>
-                            </td>
-                            <td>
                                 <button onclick="deleteTurma(<?= $row['id'] ?>)">Excluir</button>
                             </td>
                             <td>
-                                <button onclick="window.location.href='alunos.php?turma_id=<?= $row['id'] ?>'">Ver/Editar Alunos</button>
+                                <button onclick="window.location.href='alunos.php?turma_id=<?= $row['id'] ?>'">Ver-Editar Alunos</button>
                             </td>
                         </tr>
                     <?php endwhile; ?>
