@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 19-Ago-2024 às 17:14
+-- Generation Time: 27-Ago-2024 às 03:50
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -55,7 +55,7 @@ CREATE TABLE `alunos` (
 --
 
 INSERT INTO `alunos` (`id`, `nome`, `senha`, `turma_id`) VALUES
-(53, 'aluno1', 'QZAQ0', 24),
+(53, 'aluno1', 'wljwf', 24),
 (54, 'aluno2', 'SZBKV', 24),
 (55, 'aluno3', '5J24C', 24),
 (56, 'aluno4', '10PHO', 24),
@@ -65,23 +65,39 @@ INSERT INTO `alunos` (`id`, `nome`, `senha`, `turma_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id_cliente` int(11) NOT NULL,
+  `nome_destinatario` varchar(255) DEFAULT NULL,
+  `nome_endereco` varchar(255) DEFAULT NULL,
+  `nome_remetente` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `clientes`
+--
+
+INSERT INTO `clientes` (`id_cliente`, `nome_destinatario`, `nome_endereco`, `nome_remetente`) VALUES
+(1, '1', NULL, NULL),
+(3, NULL, '1', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `detalhes_danfe`
 --
 
 CREATE TABLE `detalhes_danfe` (
   `id` int(11) NOT NULL,
-  `pedido_id` int(11) DEFAULT NULL,
-  `cod_danfe` int(11) DEFAULT NULL,
-  `chave_acesso_danfe` varchar(44) DEFAULT NULL,
-  `data_emissao` date DEFAULT NULL,
-  `data_entrega` date DEFAULT NULL,
-  `nome_produto` varchar(255) NOT NULL,
-  `un_prod` varchar(4) NOT NULL,
-  `qtd_prod` int(5) NOT NULL,
-  `rsunit_prod` float NOT NULL,
-  `ncm_prod` int(8) NOT NULL,
-  `cst_prod` int(3) NOT NULL,
-  `cfop_prod` int(4) NOT NULL
+  `pedido_id` varchar(255) NOT NULL,
+  `cod_danfe` varchar(255) NOT NULL,
+  `chave_acesso_danfe` varchar(255) NOT NULL,
+  `destinatario` varchar(255) NOT NULL,
+  `endereco` varchar(255) NOT NULL,
+  `remetente` varchar(255) NOT NULL,
+  `data_emissao` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -580,21 +596,20 @@ ALTER TABLE `alunos`
   ADD KEY `turma_id` (`turma_id`);
 
 --
+-- Indexes for table `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id_cliente`),
+  ADD UNIQUE KEY `nome_destinatario` (`nome_destinatario`),
+  ADD UNIQUE KEY `nome_remetente` (`nome_remetente`),
+  ADD UNIQUE KEY `nome_endereco` (`nome_endereco`);
+
+--
 -- Indexes for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `nome_produto` (`nome_produto`,`un_prod`,`qtd_prod`,`rsunit_prod`,`ncm_prod`,`cst_prod`,`cfop_prod`),
-  ADD KEY `cfop_prod` (`cfop_prod`),
-  ADD KEY `cfop_prod_2` (`cfop_prod`),
-  ADD KEY `un_prod` (`un_prod`,`qtd_prod`,`rsunit_prod`,`ncm_prod`,`cst_prod`),
-  ADD KEY `rsunit_prod` (`rsunit_prod`,`ncm_prod`,`cst_prod`),
-  ADD KEY `rsunit_prod_2` (`rsunit_prod`,`ncm_prod`,`cst_prod`),
-  ADD KEY `qtd_prod` (`qtd_prod`),
-  ADD KEY `cst_prod` (`cst_prod`),
-  ADD KEY `ncm_prod` (`ncm_prod`),
-  ADD KEY `nome_produto_2` (`nome_produto`),
-  ADD KEY `nome_produto_3` (`nome_produto`);
+  ADD KEY `pedido_id` (`pedido_id`);
 
 --
 -- Indexes for table `doca_pedidos`
@@ -691,6 +706,11 @@ ALTER TABLE `vistoriaconferenciacontainer`
 ALTER TABLE `alunos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
+-- AUTO_INCREMENT for table `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
@@ -769,6 +789,12 @@ ALTER TABLE `vistoriaconferenciacontainer`
 --
 ALTER TABLE `alunos`
   ADD CONSTRAINT `alunos_ibfk_1` FOREIGN KEY (`turma_id`) REFERENCES `turma` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `detalhes_danfe`
+--
+ALTER TABLE `detalhes_danfe`
+  ADD CONSTRAINT `detalhes_danfe_ibfk_1` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`pedido`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `produtos`
