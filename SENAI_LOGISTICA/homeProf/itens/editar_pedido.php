@@ -5,132 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedido de Compra</title>
     <style>
+        /* Estilo global da página */
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f7f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
+        /* Container principal */
         .container {
-            width: 90%;
-            max-width: 900px;
-            margin: 50px auto;
             background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            height: 80vh; /* Limita a altura do container */
+            overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+            margin: 20px;
         }
 
+        /* Estilo da barra de rolagem */
+        .container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #f2f2f2;
+            border-radius: 6px;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background-color: rgb(37, 91, 168);
+            border-radius: 6px;
+            border: 2px solid #ffffff;
+        }
+
+        /* Cabeçalho */
         h2 {
-            color: #4a90e2;
-            border-bottom: 3px solid #4a90e2;
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-            font-size: 26px;
-            font-weight: 500;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            color: rgb(37, 91, 168);
+            text-align: center;
             margin-bottom: 20px;
         }
 
+        /* Estilo dos grupos de formulário */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
         .form-group label {
-            width: 100%;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #333;
+            display: block;
+            font-weight: bold;
+            color: rgb(37, 91, 168);
+            margin-bottom: 5px;
         }
 
         .form-group input[type="text"],
         .form-group input[type="date"],
         .form-group input[type="number"],
-        .form-group select,
-        .form-group textarea {
-            width: 48%;
-            padding: 12px 15px;
-            border: 2px solid #dfe6e9;
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 6px;
             box-sizing: border-box;
-            font-size: 15px;
-            background-color: #f9f9f9;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            font-size: 14px;
         }
 
-        .form-group input[type="text"]:focus,
-        .form-group input[type="date"]:focus,
-        .form-group input[type="number"]:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: #4a90e2;
-            box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
-            outline: none;
-        }
-
-        .form-group textarea {
-            width: 100%;
-        }
-
+        /* Botões de ação */
         button[type="submit"],
-        button.remove-btn {
-            background-color: #4a90e2;
+        .remove-btn {
+            background-color: rgb(37, 91, 168);
             color: white;
-            padding: 12px 20px;
+            padding: 10px 15px;
             border: none;
             border-radius: 6px;
-            font-size: 16px;
             cursor: pointer;
-            margin-top: 20px;
-            transition: background-color 0.3s, transform 0.3s;
-            width: 100%;
-        }
-
-        button[type="submit"]:hover,
-        button.remove-btn:hover {
-            background-color: #357ab8;
-            transform: translateY(-2px);
-        }
-
-        button.remove-btn {
-            background-color: #e74c3c;
-            padding: 10px 15px;
             font-size: 14px;
+            transition: background-color 0.3s;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             margin-top: 10px;
         }
 
-        button.remove-btn:hover {
-            background-color: #c0392b;
+        button[type="submit"]:hover,
+        .remove-btn:hover {
+            background-color: #2d72b7;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
-
-            .form-group input[type="text"],
-            .form-group input[type="date"],
-            .form-group input[type="number"],
-            .form-group select,
-            .form-group textarea,
-            button[type="submit"] {
-                font-size: 14px;
-                padding: 10px;
-            }
-
-            .form-group input[type="text"],
-            .form-group input[type="date"],
-            .form-group input[type="number"],
-            .form-group select {
-                width: 100%;
-            }
+        .remove-btn {
+            background-color: red;
+            margin-top: 10px;
+            float: right;
         }
     </style>
 </head>
