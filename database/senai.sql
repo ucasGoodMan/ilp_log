@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 27-Ago-2024 às 03:50
+-- Generation Time: 28-Ago-2024 às 04:29
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -55,9 +55,9 @@ CREATE TABLE `alunos` (
 --
 
 INSERT INTO `alunos` (`id`, `nome`, `senha`, `turma_id`) VALUES
-(53, 'aluno1', 'wljwf', 24),
-(54, 'aluno2', 'SZBKV', 24),
-(55, 'aluno3', '5J24C', 24),
+(53, 'aluno1', 'v05dh', 24),
+(54, 'aluno2', 'd15d5', 24),
+(55, 'aluno3', 'udn6d', 24),
 (56, 'aluno4', '10PHO', 24),
 (57, 'aluno5', '0V85E', 24),
 (58, 'dev', '123', 24);
@@ -69,19 +69,25 @@ INSERT INTO `alunos` (`id`, `nome`, `senha`, `turma_id`) VALUES
 --
 
 CREATE TABLE `clientes` (
-  `id_cliente` int(11) NOT NULL,
-  `nome_destinatario` varchar(255) DEFAULT NULL,
-  `nome_endereco` varchar(255) DEFAULT NULL,
-  `nome_remetente` varchar(255) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `tipo_cliente` enum('transportadora','destinatario') NOT NULL,
+  `cnpj` varchar(20) NOT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
+  `cep` varchar(10) DEFAULT NULL,
+  `bairro` varchar(100) DEFAULT NULL,
+  `rua` varchar(100) DEFAULT NULL,
+  `cidade` varchar(100) DEFAULT NULL,
+  `estado` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `clientes`
 --
 
-INSERT INTO `clientes` (`id_cliente`, `nome_destinatario`, `nome_endereco`, `nome_remetente`) VALUES
-(1, '1', NULL, NULL),
-(3, NULL, '1', NULL);
+INSERT INTO `clientes` (`id`, `nome`, `tipo_cliente`, `cnpj`, `telefone`, `cep`, `bairro`, `rua`, `cidade`, `estado`) VALUES
+(3, 'nome', 'transportadora', 'cnpj', 'telefone', 'cep', 'bairro', 'rua', 'cidade', 'estado'),
+(4, 'nome 1', 'destinatario', 'cnpj 1', 'telefone 1', 'cep 1', 'bairro 1', 'rua 1', 'cidade 1', 'estado 1');
 
 -- --------------------------------------------------------
 
@@ -91,13 +97,12 @@ INSERT INTO `clientes` (`id_cliente`, `nome_destinatario`, `nome_endereco`, `nom
 
 CREATE TABLE `detalhes_danfe` (
   `id` int(11) NOT NULL,
-  `pedido_id` varchar(255) NOT NULL,
-  `cod_danfe` varchar(255) NOT NULL,
-  `chave_acesso_danfe` varchar(255) NOT NULL,
-  `destinatario` varchar(255) NOT NULL,
-  `endereco` varchar(255) NOT NULL,
-  `remetente` varchar(255) NOT NULL,
-  `data_emissao` date NOT NULL
+  `pedido_id` varchar(50) NOT NULL,
+  `cod_danfe` varchar(50) NOT NULL,
+  `chave_acesso_danfe` varchar(50) NOT NULL,
+  `data_emissao` date NOT NULL,
+  `transportadora_id` int(11) NOT NULL,
+  `destinatario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -599,17 +604,15 @@ ALTER TABLE `alunos`
 -- Indexes for table `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id_cliente`),
-  ADD UNIQUE KEY `nome_destinatario` (`nome_destinatario`),
-  ADD UNIQUE KEY `nome_remetente` (`nome_remetente`),
-  ADD UNIQUE KEY `nome_endereco` (`nome_endereco`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `pedido_id` (`pedido_id`);
+  ADD KEY `transportadora_id` (`transportadora_id`),
+  ADD KEY `destinatario_id` (`destinatario_id`);
 
 --
 -- Indexes for table `doca_pedidos`
@@ -704,12 +707,12 @@ ALTER TABLE `vistoriaconferenciacontainer`
 -- AUTO_INCREMENT for table `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 --
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `detalhes_danfe`
 --
@@ -749,7 +752,7 @@ ALTER TABLE `pfaltava`
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --
@@ -764,7 +767,7 @@ ALTER TABLE `solicitacoes`
 -- AUTO_INCREMENT for table `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `vagas`
 --
@@ -794,7 +797,8 @@ ALTER TABLE `alunos`
 -- Limitadores para a tabela `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
-  ADD CONSTRAINT `detalhes_danfe_ibfk_1` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`pedido`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `detalhes_danfe_ibfk_1` FOREIGN KEY (`transportadora_id`) REFERENCES `clientes` (`id`),
+  ADD CONSTRAINT `detalhes_danfe_ibfk_2` FOREIGN KEY (`destinatario_id`) REFERENCES `clientes` (`id`);
 
 --
 -- Limitadores para a tabela `produtos`
