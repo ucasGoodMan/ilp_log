@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang='pt-br'>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="danfe.js">
 
     <title>Detalhes do Pedido</title>
     <style>
@@ -220,7 +220,6 @@
         }
     </style>
 </head>
-
 <body>
     <div class="container" id="content">
         <div class="header">
@@ -304,28 +303,94 @@
             $conn->close();
             ?>
 
-            <script>
-                function openModal(modalId) {
-                    document.getElementById(modalId).style.display = "block";
-                }
+            <!-- Botão para Transportadora -->
+            <div class="dropdown">
+                <button class="dropdown-button" id="showTransportadoras">Mostrar Transportadoras</button>
+                <div class="dropdown-content" id="transportadoraDropdown"></div>
+            </div>
 
-                function closeModal(modalId) {
-                    document.getElementById(modalId).style.display = "none";
-                }
-                document.querySelectorAll('select').forEach(function(select) {
-                    select.addEventListener('change', function() {
-                        if (this.value === 'add') {
-                            openModal('modal_' + this.id);
-                        }
+            <!-- Botão para Destinatário -->
+            <div class="dropdown">
+                <button class="dropdown-button" id="showDestinatarios">Mostrar Destinatários</button>
+                <div class="dropdown-content" id="destinatarioDropdown"></div>
+            </div>
+
+            <!-- Informações sobre Transportadora e Destinatário -->
+            <div id="infoTransportadora" class="info-section"></div>
+            <div id="infoDestinatario" class="info-section"></div>
+        </div>
+    </div>
+
+            <div id="modal_destinatario" class="modal-content" style="display:none;">
+                <span class="close" onclick="closeModal('modal_destinatario')">&times;</span>
+                <!-- Conteúdo do modal para adicionar novo destinatário -->
+                <form method="POST" action="adicionar_destinatario.php">
+                    <label for="nome_destinatario">Nome do Destinatário:</label>
+                    <input type="text" id="nome_destinatario" name="nome_destinatario" required>
+                    <input type="submit" value="Adicionar Destinatário">
+                </form>
+            </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+    // Função para carregar opções no dropdown
+    function loadOptions(url, dropdownId, infoId) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const dropdown = document.getElementById(dropdownId);
+                dropdown.innerHTML = '';
+                data.forEach(item => {
+                    const div = document.createElement('div');
+                    div.textContent = item.nome;
+                    div.dataset.id = item.id;
+                    div.addEventListener('click', function() {
+                        document.getElementById(infoId).innerHTML = 'ID: ' + this.dataset.id + '<br>Nome: ' + this.textContent;
+                        document.getElementById(infoId).style.display = 'block';
                     });
+                    dropdown.appendChild(div);
                 });
-            </script>
+            })
+            .catch(error => console.error('Erro ao carregar opções:', error));
+    }
+
+    // Função para fechar todos os dropdowns
+    function closeDropdowns() {
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            dropdown.style.display = 'none';
+        });
+    }
+
+    // Função para mostrar o dropdown e fechar outros dropdowns
+    function showDropdown(dropdownId) {
+        closeDropdowns();
+        const dropdown = document.getElementById(dropdownId);
+        dropdown.style.display = 'block';
+    }
+
+    // Event listeners para os botões de dropdown
+    document.getElementById('showTransportadoras').addEventListener('click', function(event) {
+        event.stopPropagation(); // Evita que o clique no botão feche o dropdown
+        loadOptions('get_transportadoras.php', 'transportadoraDropdown', 'infoTransportadora');
+        showDropdown('transportadoraDropdown');
+    });
+
+    document.getElementById('showDestinatarios').addEventListener('click', function(event) {
+        event.stopPropagation(); // Evita que o clique no botão feche o dropdown
+        loadOptions('get_destinatarios.php', 'destinatarioDropdown', 'infoDestinatario');
+        showDropdown('destinatarioDropdown');
+    });
+
+    // Fecha os dropdowns ao clicar fora deles
+    document.addEventListener('click', function() {
+        closeDropdowns();
+    });
+});
+    </script>
         </div>
     </div>
     <div class="right-frame">
         <iframe src="ciracao.php" title="Estoque"></iframe>
     </div>
-
 </body>
-
 </html>

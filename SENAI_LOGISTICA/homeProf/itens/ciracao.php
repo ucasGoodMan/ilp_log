@@ -43,7 +43,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criação de Fornecedor ou Destinatário</title>
+    <title>Criação de transportadora ou Destinatário</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -110,13 +110,13 @@ $conn->close();
         <div class="form-group">
             <label for="tipo_cliente">Tipo de Cliente:</label>
             <select id="tipo_cliente" name="tipo_cliente">
-                <option value="fornecedor">Fornecedor</option>
+                <option value="transportadora">transportadora</option>
                 <option value="destinatario">Destinatário</option>
             </select>
         </div>
 
         <div class="dropdown">
-            <button type="button" id="toggleForm">Abrir Formulário</button>
+            <button type="button" id="toggleForm">Adicionar</button>
             <div id="dropdownContent" class="dropdown-content">
                 <div class="form-group">
                     <label for="cnpj">CNPJ:</label>
