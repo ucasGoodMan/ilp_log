@@ -36,17 +36,7 @@
             </ul>
         </li>
         <li>
-            <div class="iocn-links">
-                <a class="hrefs">
-                    <i class="fa-solid fa-file-invoice-dollar"></i>
-                    <span style="pointer-events: none;" class="link_name">Danfe</span>
-                </a>
-                <i class='bx bx-chevron-down arrow'></i>
-            </div>
-            <ul class="sub-menu">
-                <li><a class="link_name">Danfe</a></li>
-                <li><a href="">Minhas danfe</a></li>
-            </ul>
+           
         </li>
 
         <li>

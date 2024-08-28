@@ -224,7 +224,7 @@
 
 <body>
     <div class="container" id="content">
-        <div class="header">
+        <div class="header">            
             <?php
             date_default_timezone_set('America/Sao_Paulo');
             include "../../sidebarPROF.php";
@@ -247,12 +247,10 @@
                     $cod_danfe = $conn->real_escape_string($_POST['cod_danfe']);
                     $chave_acesso_danfe = $conn->real_escape_string($_POST['chave_acesso_danfe']);
                     $data_emissao = date('Y-m-d'); // Data atual para emissão
-                    $transportadora_id = $conn->real_escape_string($_POST['transportadora_id']);
-                    $destinatario_id = $conn->real_escape_string($_POST['destinatario_id']);
 
                     $sql_insert = "INSERT INTO detalhes_danfe 
-        (pedido_id, cod_danfe, chave_acesso_danfe, data_emissao, transportadora_id, destinatario_id) 
-        VALUES ('$pedido_id', '$cod_danfe', '$chave_acesso_danfe', '$data_emissao', '$transportadora_id', '$destinatario_id')";
+        (pedido_id, cod_danfe, chave_acesso_danfe, data_emissao) 
+        VALUES ('$pedido_id', '$cod_danfe', '$chave_acesso_danfe', '$data_emissao')";
 
                     if ($conn->query($sql_insert) === TRUE) {
                         echo "<p>Danfe cadastrada com sucesso!</p>";
@@ -271,8 +269,7 @@
                 echo '<label for="data_emissao">Data de Emissão:</label>';
                 echo '<input type="date" id="data_emissao" name="data_emissao" value="' . date('Y-m-d') . '" readonly required>';
 
-                echo '<input type="hidden" id="transportadora_id" name="transportadora_id">';
-                echo '<input type="hidden" id="destinatario_id" name="destinatario_id">';
+            
 
                 echo '<input type="submit" value="Salvar">';
                 echo '</form>';
@@ -329,7 +326,7 @@
     <div id="modal_destinatario" class="modal-content" style="display:none;">
         <span class="close" onclick="closeModal('modal_destinatario')">&times;</span>
         <!-- Conteúdo do modal para adicionar novo destinatário -->
-        <form method="POST" action="adicionar_destinatario.php">
+        <form method="POST"     ="adicionar_destinatario.php">
             <label for="nome_destinatario">Nome do Destinatário:</label>
             <input type="text" id="nome_destinatario" name="nome_destinatario" required>
             <input type="submit" value="Adicionar Destinatário">
