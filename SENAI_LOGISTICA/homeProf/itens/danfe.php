@@ -80,7 +80,8 @@
             background-color: #fafafa;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
@@ -177,6 +178,46 @@
         #downloadPDF:hover {
             background-color: #1a4380;
         }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .right-frame {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            height: 571px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
     </style>
 </head>
 
@@ -201,7 +242,7 @@
                 $pedido_id = $conn->real_escape_string($_GET['pedido_id']);
                 echo "<p>Pedido Número: " . htmlspecialchars($pedido_id) . "</p>";
 
-                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['add_new'])) {
                     $cod_danfe = $conn->real_escape_string($_POST['cod_danfe']);
                     $chave_acesso_danfe = $conn->real_escape_string($_POST['chave_acesso_danfe']);
                     $data_emissao = date('Y-m-d'); // Data atual para emissão
@@ -225,7 +266,7 @@
                 echo '<input type="text" id="chave_acesso_danfe" name="chave_acesso_danfe" required>';
 
                 echo '<label for="data_emissao">Data de Emissão:</label>';
-                echo '<input type="date" id="data_emissao" name="data_emissao" value="'.date('Y-m-d').'" readonly required>';
+                echo '<input type="date" id="data_emissao" name="data_emissao" value="' . date('Y-m-d') . '" readonly required>';
 
                 echo '<input type="submit" value="Salvar">';
                 echo '</form>';
@@ -262,27 +303,29 @@
 
             $conn->close();
             ?>
+
+            <script>
+                function openModal(modalId) {
+                    document.getElementById(modalId).style.display = "block";
+                }
+
+                function closeModal(modalId) {
+                    document.getElementById(modalId).style.display = "none";
+                }
+                document.querySelectorAll('select').forEach(function(select) {
+                    select.addEventListener('change', function() {
+                        if (this.value === 'add') {
+                            openModal('modal_' + this.id);
+                        }
+                    });
+                });
+            </script>
         </div>
-        <button id="downloadPDF">Baixar PDF</button>
     </div>
-    <script>
-        document.querySelector('.dropdown-button').addEventListener('click', function () {
-            const dropdownContent = document.querySelector('.dropdown-content');
-            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-        });
+    <div class="right-frame">
+        <iframe src="ciracao.php" title="Estoque"></iframe>
+    </div>
 
-        document.addEventListener('click', function (event) {
-            const dropdown = document.querySelector('.dropdown');
-            if (!dropdown.contains(event.target)) {
-                const dropdownContent = document.querySelector('.dropdown-content');
-                dropdownContent.style.display = 'none';
-            }
-        });
-
-        document.querySelector('#downloadPDF').addEventListener('click', function () {
-            alert('Baixando PDF...');
-        });
-    </script>
 </body>
 
 </html>

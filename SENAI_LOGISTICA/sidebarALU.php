@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>Document</title>
+    <title>Document 1</title>
 </head>
 
 <body>
@@ -50,8 +50,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name">Controle</a></li>
-                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao/docaRecebimento.php">Doca de recebimento<br>(solicitar movimentação)</a></li>
-                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao/solicitacoesMovimentacao.php">Concluir movimentação<br> do item</a></li>
+                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao_pos_vistoria/movimentacaoPVist.php">Pré-movimentação</a></li>
+                    <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao_pos_vistoria/visProdPend.php">Movimentação concluída</a></li>
                 </ul>
             </li>
             <li>
@@ -62,7 +62,7 @@
                     </a>
                     <i class='bx bx-chevron-down arrow'></i>
                 </div>
-                <ul class="sub-menu">
+                <ul class="sub-menu"> 
                     <li><a class="link_name">Expedição</a></li>
                     <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/picking/picking.php">Expedir</a></li>
                     <li><a href="http://localhost/ilp_log/SENAI_LOGISTICA/home/picking/processar_pedido.php">Pedido Carregado</a></li>
@@ -80,7 +80,7 @@
 
         <li>
         <li>
-                <form action="../logoutProcess.php" method="POST" style="display:inline;">
+                <form action="../../logoutProcess.php" method="POST" style="display:inline;">
                      <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer;">
                      <div class="profile-details">
                        <i class='bx bx-log-out'></i> 

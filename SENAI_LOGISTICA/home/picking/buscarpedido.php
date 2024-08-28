@@ -150,7 +150,7 @@
                 <?php
                 $servername = "localhost";
                 $username = "root";
-                $password = "";
+                $password = "root";
                 $dbname = "senai";
 
                 // Cria a conexão
@@ -189,7 +189,7 @@
                         echo "<li>Erro na execução da consulta: " . $conn->error . "</li>";
                     }
                 } else {
-                    echo "<li>Erro: Pedido ID não fornecido.</li>";
+                   
                 }
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {

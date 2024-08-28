@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "senai";
 
 // Conexão ao banco de dados
@@ -181,8 +181,13 @@ $result = $conn->query($sql);
         echo "</table>";
     } else {
         echo "<p style='text-align: center;'>Nenhum produto pendente encontrado.</p>";
+        echo "<div style='text-align: center;'>
+                <button onclick=\"window.location.href='http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao_pos_vistoria/movimentacaoPVist.php'\">Voltar</button>
+              </div>";
     }
-
+    
+        
+    
     $conn->close();
     ?>
 </div>

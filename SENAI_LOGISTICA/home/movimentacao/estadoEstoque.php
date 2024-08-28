@@ -7,11 +7,17 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Estoque</title>
     <style>
+        /* Estilos do corpo da página e botão de voltar */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
         }
 
         .back-button {
@@ -22,195 +28,320 @@
             color: white;
             padding: 10px 20px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .back-button:hover {
-            background-color: rgb(37, 91, 140);
+            background-color: #2d72b7;
         }
 
         .back-button i {
             margin-right: 5px;
         }
 
+        /* Estilos do container principal */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+    /* Estilos da rolagem personalizada para scroll-container e right-frame */
+    .scroll-container,
+    .right-frame {
+        scrollbar-width: thin;
+        scrollbar-color: rgb(37, 91, 168) #e0e0e0;
+    }
+
+    .scroll-container::-webkit-scrollbar,
+    .right-frame::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb,
+    .right-frame::-webkit-scrollbar-thumb {
+        background-color: rgb(37, 91, 168);
+        border-radius: 10px;
+    }
+
+    .scroll-container::-webkit-scrollbar-track,
+    .right-frame::-webkit-scrollbar-track {
+        background-color: #e0e0e0;
+        border-radius: 10px;
+    }
+
+
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        /* Estilos da div com rolagem */
+        .scroll-container {
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            overflow-y: auto;
+            max-height: 60vh;
+        }
+
+        /* Estilos da tabela */
         table {
-            position: relative;
-            top: 100px;
-            width: 50%;
-            margin: 20px auto;
+            width: 100%;
             border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+            background-color: #ffffff;
             border-radius: 8px;
+            overflow: hidden;
         }
 
         th,
         td {
-            border: 1px solid #f2f2f2;
             padding: 12px;
             text-align: center;
             font-size: 14px;
-            background: #CDD6DD;
-            width: 5%;
+            border-bottom: 1px solid #f2f2f2;
         }
 
         th {
-            background-color: #255ba8;
+            background-color: rgb(37, 91, 168);
             color: #fff;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 14px;
-            width: 10%;
         }
 
-        .vaga {
-            position: relative;
-            height: 60px;
-            width: 60px;
-            text-align: center;
-            font-size: 14px;
+        td {
+            background-color: #f9f9f9;
         }
 
-        .vaga span {
-            display: block;
-            font-size: 12px;
-            color: #666;
-            margin-top: 6px;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            margin-top: 8px;
-        }
-
-        .dropbtn {
+        .scroll-container button {
             background: rgb(37, 91, 168);
             color: white;
             padding: 8px 12px;
             font-size: 12px;
             border: none;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 10px;
             transition: background-color 0.3s;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .dropbtn:hover {
+        .scroll-container button:hover {
             background: rgb(56, 130, 235);
         }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border-radius: 4px;
+        /* Estilos do iframe */
+        .right-frame {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            height: 571px;
         }
 
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 12px;
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+
+        /* Estilos do modal */
+        #modalProdutos {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        #modalProdutos .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #modalProdutos .modal-content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: rgb(37, 91, 168);
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 2px solid #f2f2f2;
+            padding-bottom: 10px;
+        }
+
+        #modalProdutos .modal-content #produtosLista {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #fecharModal {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: rgb(37, 91, 168);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5%;
+            cursor: pointer;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s;
         }
 
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
+        #fecharModal:hover {
+            background-color: rgb(56, 130, 235);
         }
     </style>
-
 </head>
 
 <body>
-    <a class="back-button" onclick="window.history.back();"><i class='bx bx-log-out'></i> Voltar</a>
-    <table>
-        <tr>
-            <th></th>
-            <?php
-            foreach (range('A', 'E') as $letra) {
-                echo "<th>Rua $letra</th>";
-            }
-            ?>
-        </tr>
-        <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $dbname = "senai";
-        // Conexão com o banco de dados
-        $conn = new mysqli("localhost", "root", "root", "senai");
 
-        // Verifica a conexão
-        if ($conn->connect_error) {
-            die("Falha na conexão: " . $conn->connect_error);
-        }
+    <div class="container">
+        <div class="content">
+            <div class="scroll-container">
+                <table>
+                    <tr>
+                        <th>Vaga</th>
+                        <th>Quantidade Atual</th>
+                        <th>Quantidade Máxima</th>
+                        <th>Quantidade Livre</th>
+                        <th>Ações</th>
+                    </tr>
+                    <?php
+                    include "../../sidebarALU.php";
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "root";
+                    $dbname = "senai";
 
-        // Consulta para buscar os dados das vagas
-        $sql = "SELECT posicaoVaga, statusVaga, pesoAtual, pesoMaximo FROM estoque";
-        $result = $conn->query($sql);
+                    $conn = new mysqli($servername, $username, $password, $dbname);
 
-        $statusVagas = [];
-        $pesosAtuais = [];
-        $pesosMaximos = [];
+                    if ($conn->connect_error) {
+                        die("Falha na conexão: " . $conn->connect_error);
+                    }
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $statusVagas[$row['posicaoVaga']] = $row['statusVaga'];
-                $pesosAtuais[$row['posicaoVaga']] = $row['pesoAtual'];
-                $pesosMaximos[$row['posicaoVaga']] = $row['pesoMaximo'];
-            }
-        }
+                    if (!$conn->query("CALL atualizar_quantidade_atual();")) {
+                        die("Erro ao atualizar a quantidade: " . $conn->error);
+                    }
 
-        // Pesos correspondentes para os andares
-        $pesos = [
-            1 => '900kg',
-            2 => '500kg',
-            3 => '350kg',
-            4 => '200kg',
-            5 => '150kg'
-        ];
+                    $sql = "SELECT posicaoVaga, quantidadeAtual, quantidadeMaxima FROM estoque";
+                    $result = $conn->query($sql);
 
-        // Exibir vagas de A1 a E5 em linhas e colunas
-        foreach (range(5, 1) as $linha) {
-            echo "<tr>";
-            // Exibir números (1, 2, 3, 4, 5) como cabeçalho da linha com peso correspondente
-            echo "<th>Andar $linha<br><span>Peso: {$pesos[$linha]}</span></th>";
+                    if (!$result) {
+                        die("Erro na consulta: " . $conn->error);
+                    }
 
-            foreach (range('A', 'E') as $letra) {
-                $vaga = "$letra$linha";
-                $status = isset($statusVagas[$vaga]) ? $statusVagas[$vaga] : "Vazia";
-                $pesoAtual = isset($pesosAtuais[$vaga]) ? $pesosAtuais[$vaga] : 0;
-                $pesoMaximo = isset($pesosMaximos[$vaga]) ? $pesosMaximos[$vaga] : 0;
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $vaga = $row['posicaoVaga'];
+                            $quantidadeAtual = $row['quantidadeAtual'];
+                            $quantidadeMaxima = $row['quantidadeMaxima'];
+                            $quantidadeLivre = $quantidadeMaxima - $quantidadeAtual;
 
-                echo "<td class='vaga' data-vaga='$vaga'>$vaga<br><span>Status: $status</span><br><span>Peso Atual: {$pesoAtual}kg / {$pesoMaximo}kg</span>";
-                echo "<div class='dropdown'>";
-                echo "<button class='dropbtn'>Alterar Status</button>";
-                echo "<div class='dropdown-content'>";
-                echo "<a href='atualizar_status.php?vaga=$vaga&status=Cheia'>Cheia</a><br>";
-                echo "<a href='atualizar_status.php?vaga=$vaga&status=Quase Cheia'>Quase Cheia</a><br>";
-                echo "<a href='atualizar_status.php?vaga=$vaga&status=Vazia'>Vazia</a>";
-                echo "</div>";
-                echo "</div>";
-                echo "</td>";
-            }
-            echo "</tr>";
-        }
+                            echo "<tr>";
+                            echo "<td>$vaga</td>";
+                            echo "<td>$quantidadeAtual</td>";
+                            echo "<td>$quantidadeMaxima</td>";
+                            echo "<td>$quantidadeLivre</td>";
+                            echo "<td><button>Monitorar Vaga</button></td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='5'>Nenhum dado encontrado</td></tr>";
+                    }
 
-        $conn->close();
-        ?>
-    </table>
+                    $conn->close();
+                    ?>
+                </table>
+            </div>
+
+            <div class="right-frame">
+                <iframe src="inventario.php" title="Estoque"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalProdutos">
+        <div class="modal-content">
+            <h2>Produtos na Vaga <span id="vagaTitulo"></span></h2>
+            <div id="produtosLista"></div>
+            <button id="fecharModal">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.scroll-container button').forEach(button => {
+            button.addEventListener('click', function() {
+                const vaga = this.parentElement.parentElement.querySelector('td').textContent;
+                document.getElementById('vagaTitulo').textContent = vaga;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'buscar_produtos.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        document.getElementById('produtosLista').innerHTML = xhr.responseText;
+                        document.getElementById('modalProdutos').style.display = 'flex';
+                    }
+                };
+                xhr.send('vaga=' + vaga);
+            });
+        });
+
+        document.getElementById('fecharModal').addEventListener('click', function() {
+            document.getElementById('modalProdutos').style.display = 'none';
+        });
+    </script>
 </body>
 
 </html>

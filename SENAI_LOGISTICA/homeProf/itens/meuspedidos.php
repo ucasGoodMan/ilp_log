@@ -111,7 +111,7 @@
         include "../../sidebarPROF.php";
         $servername = "localhost";
         $username = "root";
-        $password = ""; 
+        $password = "root"; 
         $dbname = "senai";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
