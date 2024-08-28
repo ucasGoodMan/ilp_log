@@ -15,10 +15,10 @@
 
 </head>
 
-<body>
+<body>  
     <div class="container">
 <?php
-    include '../auth.php';
+    //Include '../logoutProcess.php';
     include "../sidebarALU.php";
     
 ?>
