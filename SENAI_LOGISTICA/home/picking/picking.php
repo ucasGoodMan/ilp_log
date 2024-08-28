@@ -45,6 +45,23 @@
             max-width: 600px;
             width: 100%;
             text-align: center;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #f2f2f2;
+            border-radius: 6px;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background-color: rgb(37, 91, 168);
+            border-radius: 6px;
+            border: 2px solid #ffffff;
         }
 
         .pedido-list {

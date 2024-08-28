@@ -85,9 +85,8 @@ include "../../../sidebarALU.php";
             padding: 10px;
             margin-bottom: 2px;
             /* Espaçamento entre os inputs */
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
             border-radius: 4px;
-            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
             font-size: 16px;
         }
 

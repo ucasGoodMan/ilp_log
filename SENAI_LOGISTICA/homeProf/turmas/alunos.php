@@ -46,8 +46,24 @@ $resultado = $conexao->query($sql);
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
+        .container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #f2f2f2;
+            border-radius: 6px;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background-color: rgb(37, 91, 168);
+            border-radius: 6px;
+            border: 2px solid #ffffff;
+        }
         .header {
             display: flex;
             justify-content: space-between;

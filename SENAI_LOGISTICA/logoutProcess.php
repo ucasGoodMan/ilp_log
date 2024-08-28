@@ -20,6 +20,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy(); 
 
 // Redireciona para a página de login
-header('Location: http://localhost/ilp_log/SENAI_LOGISTICA/');
+header('Location: http://localhost/ILP_LOG/SENAI_LOGISTICA/');
 exit();
 ?>
