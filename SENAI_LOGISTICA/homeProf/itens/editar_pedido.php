@@ -93,15 +93,17 @@
             margin-top: 10px;
         }
 
-        button[type="submit"]:hover,
-        .remove-btn:hover {
+        button[type="submit"]:hover {
             background-color: #2d72b7;
         }
 
         .remove-btn {
             background-color: red;
             margin-top: 10px;
-            float: right;
+            float: none; /* Remove o alinhamento flutuante */
+            display: block; /* Torna o botão um elemento de bloco */
+            width: 100%; /* Faz com que o botão ocupe toda a largura disponível */
+            text-align: center; /* Centraliza o texto dentro do botão */
         }
     </style>
 </head>
@@ -110,9 +112,10 @@
 <div class="container">
     <h2>Pedido de Compra</h2>
     <?php
+    include "../../sidebarPROF.php";
     $servername = "localhost";
     $username = "root";
-    $password = "root";
+    $password = "";
     $dbname = "senai";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -202,6 +205,7 @@
                 echo "<input type='text' id='cfop_prod' name='cfop_prod[]' value='" . htmlspecialchars($produto['cfop_prod']) . "'>";
                 echo "</div>";
 
+                // Botão de remover produto
                 echo "<button type='button' class='remove-btn'>Remover Produto</button>";
             }
 

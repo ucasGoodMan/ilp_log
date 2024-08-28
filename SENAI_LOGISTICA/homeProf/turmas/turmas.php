@@ -13,7 +13,7 @@ include ("../../sidebarPROF.php");
 // Conexão com o banco de dados
 $hostname = "127.0.0.1";
 $user = "root";
-$password = "root";
+$password = "";
 $database = "senai";
 
 $conexao = new mysqli($hostname, $user, $password, $database);
@@ -52,8 +52,24 @@ $resultado = $conexao->query($sql);
             width: 80%;
             max-width: 1200px;
             box-sizing: border-box;
+            max-height: 70vh;
+            overflow-y: auto;
         }
 
+        .container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #f2f2f2;
+            border-radius: 6px;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background-color: rgb(37, 91, 168);
+            border-radius: 6px;
+            border: 2px solid #ffffff;
+        }
         .header {
             display: flex;
             justify-content: space-between;
