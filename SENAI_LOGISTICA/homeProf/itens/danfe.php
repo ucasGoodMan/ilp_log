@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='pt-br'>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -220,6 +221,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container" id="content">
         <div class="header">
@@ -228,12 +230,12 @@
             include "../../sidebarPROF.php";
             $servername = "localhost";
             $username = "root";
-            $password = "";
+            $password = "root";
             $dbname = "senai";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-                    if ($conn->connect_error) {
+            if ($conn->connect_error) {
                 die("Falha na conexão: " . $conn->connect_error);
             }
 
@@ -241,14 +243,16 @@
                 $pedido_id = $conn->real_escape_string($_GET['pedido_id']);
                 echo "<p>Pedido Número: " . htmlspecialchars($pedido_id) . "</p>";
 
-                if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['add_new'])) {
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $cod_danfe = $conn->real_escape_string($_POST['cod_danfe']);
                     $chave_acesso_danfe = $conn->real_escape_string($_POST['chave_acesso_danfe']);
                     $data_emissao = date('Y-m-d'); // Data atual para emissão
+                    $transportadora_id = $conn->real_escape_string($_POST['transportadora_id']);
+                    $destinatario_id = $conn->real_escape_string($_POST['destinatario_id']);
 
                     $sql_insert = "INSERT INTO detalhes_danfe 
-                    (pedido_id, cod_danfe, chave_acesso_danfe, data_emissao) 
-                    VALUES ('$pedido_id', '$cod_danfe', '$chave_acesso_danfe', '$data_emissao')";
+        (pedido_id, cod_danfe, chave_acesso_danfe, data_emissao, transportadora_id, destinatario_id) 
+        VALUES ('$pedido_id', '$cod_danfe', '$chave_acesso_danfe', '$data_emissao', '$transportadora_id', '$destinatario_id')";
 
                     if ($conn->query($sql_insert) === TRUE) {
                         echo "<p>Danfe cadastrada com sucesso!</p>";
@@ -257,7 +261,7 @@
                     }
                 }
 
-                echo '<form method="POST">';
+                echo '<form method="POST" id="danfeForm">';
                 echo '<label for="cod_danfe">Código da DANFE:</label>';
                 echo '<input type="text" id="cod_danfe" name="cod_danfe" required>';
 
@@ -266,6 +270,9 @@
 
                 echo '<label for="data_emissao">Data de Emissão:</label>';
                 echo '<input type="date" id="data_emissao" name="data_emissao" value="' . date('Y-m-d') . '" readonly required>';
+
+                echo '<input type="hidden" id="transportadora_id" name="transportadora_id">';
+                echo '<input type="hidden" id="destinatario_id" name="destinatario_id">';
 
                 echo '<input type="submit" value="Salvar">';
                 echo '</form>';
@@ -291,16 +298,14 @@
                         }
                         echo "</table>";
                     } else {
-                        echo "<p>Nenhum produto encontrado para este pedido.</p>";
+                        echo "<p>Não há produtos para este pedido.</p>";
                     }
                 } else {
-                    echo "<p>Erro na execução da consulta: " . $conn->error . "</p>";
+                    echo "<p>Erro ao buscar produtos: " . $conn->error . "</p>";
                 }
-            } else {
-                echo "<p>ID do pedido não fornecido.</p>";
-            }
 
-            $conn->close();
+                $conn->close();
+            }
             ?>
 
             <!-- Botão para Transportadora -->
@@ -321,76 +326,96 @@
         </div>
     </div>
 
-            <div id="modal_destinatario" class="modal-content" style="display:none;">
-                <span class="close" onclick="closeModal('modal_destinatario')">&times;</span>
-                <!-- Conteúdo do modal para adicionar novo destinatário -->
-                <form method="POST" action="adicionar_destinatario.php">
-                    <label for="nome_destinatario">Nome do Destinatário:</label>
-                    <input type="text" id="nome_destinatario" name="nome_destinatario" required>
-                    <input type="submit" value="Adicionar Destinatário">
-                </form>
-            </div>
+    <div id="modal_destinatario" class="modal-content" style="display:none;">
+        <span class="close" onclick="closeModal('modal_destinatario')">&times;</span>
+        <!-- Conteúdo do modal para adicionar novo destinatário -->
+        <form method="POST" action="adicionar_destinatario.php">
+            <label for="nome_destinatario">Nome do Destinatário:</label>
+            <input type="text" id="nome_destinatario" name="nome_destinatario" required>
+            <input type="submit" value="Adicionar Destinatário">
+        </form>
+    </div>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-    // Função para carregar opções no dropdown
-    function loadOptions(url, dropdownId, infoId) {
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                const dropdown = document.getElementById(dropdownId);
-                dropdown.innerHTML = '';
-                data.forEach(item => {
-                    const div = document.createElement('div');
-                    div.textContent = item.nome;
-                    div.dataset.id = item.id;
-                    div.addEventListener('click', function() {
-                        document.getElementById(infoId).innerHTML = 'ID: ' + this.dataset.id + '<br>Nome: ' + this.textContent;
-                        document.getElementById(infoId).style.display = 'block';
-                    });
-                    dropdown.appendChild(div);
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Função para carregar opções no dropdown
+            function loadOptions(url, dropdownId, infoId, idField) {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const dropdown = document.getElementById(dropdownId);
+                        dropdown.innerHTML = '';
+                        data.forEach(item => {
+                            const div = document.createElement('div');
+                            div.textContent = item.nome;
+                            div.dataset.id = item.id; // Armazena o ID
+                            div.dataset.cnpj = item.cnpj;
+                            div.dataset.telefone = item.telefone;
+                            div.dataset.cep = item.cep;
+                            div.dataset.bairro = item.bairro;
+                            div.dataset.rua = item.rua;
+                            div.dataset.cidade = item.cidade;
+                            div.dataset.estado = item.estado;
+                            div.addEventListener('click', function() {
+                                document.getElementById(infoId).innerHTML = `
+                            <strong>Nome:</strong> ${this.textContent}<br>
+                            <strong>CNPJ:</strong> ${this.dataset.cnpj}<br>
+                            <strong>Telefone:</strong> ${this.dataset.telefone}<br>
+                            <strong>CEP:</strong> ${this.dataset.cep}<br>
+                            <strong>Bairro:</strong> ${this.dataset.bairro}<br>
+                            <strong>Rua:</strong> ${this.dataset.rua}<br>
+                            <strong>Cidade:</strong> ${this.dataset.cidade}<br>
+                            <strong>Estado:</strong> ${this.dataset.estado}<br>
+                        `;
+                                document.getElementById(infoId).style.display = 'block';
+
+                                // Atualiza o campo oculto com o ID selecionado
+                                document.getElementById(idField).value = this.dataset.id;
+                            });
+                            dropdown.appendChild(div);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao carregar opções:', error));
+            }
+
+            // Função para fechar todos os dropdowns
+            function closeDropdowns() {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.style.display = 'none';
                 });
-            })
-            .catch(error => console.error('Erro ao carregar opções:', error));
-    }
+            }
 
-    // Função para fechar todos os dropdowns
-    function closeDropdowns() {
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.style.display = 'none';
+            // Função para mostrar o dropdown e fechar outros dropdowns
+            function showDropdown(dropdownId) {
+                closeDropdowns();
+                const dropdown = document.getElementById(dropdownId);
+                dropdown.style.display = 'block';
+            }
+
+            // Event listeners para os botões de dropdown
+            document.getElementById('showTransportadoras').addEventListener('click', function(event) {
+                event.stopPropagation(); // Evita que o clique no botão feche o dropdown
+                loadOptions('get_transportadoras.php', 'transportadoraDropdown', 'infoTransportadora', 'transportadora_id');
+                showDropdown('transportadoraDropdown');
+            });
+
+            document.getElementById('showDestinatarios').addEventListener('click', function(event) {
+                event.stopPropagation(); // Evita que o clique no botão feche o dropdown
+                loadOptions('get_destinatarios.php', 'destinatarioDropdown', 'infoDestinatario', 'destinatario_id');
+                showDropdown('destinatarioDropdown');
+            });
+
+            // Fecha os dropdowns ao clicar fora deles
+            document.addEventListener('click', function() {
+                closeDropdowns();
+            });
         });
-    }
-
-    // Função para mostrar o dropdown e fechar outros dropdowns
-    function showDropdown(dropdownId) {
-        closeDropdowns();
-        const dropdown = document.getElementById(dropdownId);
-        dropdown.style.display = 'block';
-    }
-
-    // Event listeners para os botões de dropdown
-    document.getElementById('showTransportadoras').addEventListener('click', function(event) {
-        event.stopPropagation(); // Evita que o clique no botão feche o dropdown
-        loadOptions('get_transportadoras.php', 'transportadoraDropdown', 'infoTransportadora');
-        showDropdown('transportadoraDropdown');
-    });
-
-    document.getElementById('showDestinatarios').addEventListener('click', function(event) {
-        event.stopPropagation(); // Evita que o clique no botão feche o dropdown
-        loadOptions('get_destinatarios.php', 'destinatarioDropdown', 'infoDestinatario');
-        showDropdown('destinatarioDropdown');
-    });
-
-    // Fecha os dropdowns ao clicar fora deles
-    document.addEventListener('click', function() {
-        closeDropdowns();
-    });
-});
     </script>
-        </div>
+    </div>
     </div>
     <div class="right-frame">
         <iframe src="ciracao.php" title="Estoque"></iframe>
     </div>
 </body>
+
 </html>

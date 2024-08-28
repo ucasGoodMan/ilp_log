@@ -7,21 +7,18 @@ $dbname = "senai";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Falha na conexão: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, CONCAT(cnpj, ' - ', rua, ', ', cidade) as nome FROM clientes WHERE tipo_cliente = 'transportadora'";
+$sql = "SELECT id, nome, cnpj, telefone, cep, bairro, rua, cidade, estado FROM clientes WHERE tipo_cliente = 'transportadora'";
 $result = $conn->query($sql);
 
-$transportadoras = array();
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $transportadoras[] = $row;
-    }
+$data = [];
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row;
 }
 
-echo json_encode($transportadoras);
+echo json_encode($data);
 
 $conn->close();
 ?>
