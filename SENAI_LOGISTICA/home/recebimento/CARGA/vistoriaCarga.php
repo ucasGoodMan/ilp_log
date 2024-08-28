@@ -142,8 +142,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             display: block;
             justify-content: center;
             align-items: center;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
+        .container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #f2f2f2;
+            border-radius: 6px;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background-color: rgb(37, 91, 168);
+            border-radius: 6px;
+            border: 2px solid #ffffff;
+        }
         .back-button {
             position: absolute;
             top: 20px;
@@ -184,10 +200,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salvar'])) {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
             border-radius: 4px;
-            box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
+                }
 
         input[type="submit"] {
             padding: 10px 20px;
