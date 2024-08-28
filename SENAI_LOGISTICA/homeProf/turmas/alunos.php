@@ -2,7 +2,7 @@
 include "../../sidebarPROF.php";
 $hostname = "127.0.0.1";
 $user = "root";
-$password = "";
+$password = "root";
 $database = "senai";
 
 $conexao = new mysqli($hostname, $user, $password, $database);
