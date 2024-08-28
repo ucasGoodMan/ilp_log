@@ -21,11 +21,28 @@
         .container {
             max-width: 800px;
             width: 100%;
+            max-height: 60vh;
             margin: 0 auto;
             padding: 40px;
             background: #ffffff;
             box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             border-radius: 12px;
+            overflow-y: auto;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #f2f2f2;
+            border-radius: 6px;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background-color: rgb(37, 91, 168);
+            border-radius: 6px;
+            border: 2px solid #ffffff;
         }
 
         .header {
