@@ -21,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"]) && isset($_POST[
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si", $posicao, $id);
     $stmt->execute();
-    echo "<p class='success'>Operação finalizada com sucesso!</p>";
 }
 
 // Consulta SQL para obter os produtos pendentes
@@ -139,6 +138,15 @@ $result = $conn->query($sql);
             box-shadow: 0 0 5px rgba(37, 91, 168, 0.5);
             outline: none;
         }
+
+        button {
+            background: rgb(37, 91, 168);
+            border: none;
+            color: white;
+            width: 10%;
+                
+
+        }
     </style>
 </head>
 <body>
@@ -180,6 +188,7 @@ $result = $conn->query($sql);
 
         echo "</table>";
     } else {
+        echo "<p class='success'>Operação finalizada com sucesso!</p>";
         echo "<p style='text-align: center;'>Nenhum produto pendente encontrado.</p>";
         echo "<div style='text-align: center;'>
                 <button onclick=\"window.location.href='http://localhost/ilp_log/SENAI_LOGISTICA/home/movimentacao_pos_vistoria/movimentacaoPVist.php'\">Voltar</button>

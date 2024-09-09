@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 28-Ago-2024 às 04:29
+-- Generation Time: 28-Ago-2024 às 11:44
 -- Versão do servidor: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -60,7 +60,57 @@ INSERT INTO `alunos` (`id`, `nome`, `senha`, `turma_id`) VALUES
 (55, 'aluno3', 'udn6d', 24),
 (56, 'aluno4', '10PHO', 24),
 (57, 'aluno5', '0V85E', 24),
-(58, 'dev', '123', 24);
+(58, 'dev', '123', 24),
+(159, 'aluno1', 'senha1', 27),
+(160, 'aluno2', 'senha2', 27),
+(161, 'aluno3', 'senha3', 27),
+(162, 'aluno4', 'senha4', 27),
+(163, 'aluno5', 'senha5', 27),
+(164, 'aluno6', 'senha6', 27),
+(165, 'aluno7', 'senha7', 27),
+(166, 'aluno8', 'senha8', 27),
+(167, 'aluno9', 'senha9', 27),
+(168, 'aluno10', 'senha10', 27),
+(169, 'aluno11', 'senha11', 27),
+(170, 'aluno12', 'senha12', 27),
+(171, 'aluno13', 'senha13', 27),
+(172, 'aluno14', 'senha14', 27),
+(173, 'aluno15', 'senha15', 27),
+(174, 'aluno16', 'senha16', 27),
+(175, 'aluno17', 'senha17', 27),
+(176, 'aluno18', 'senha18', 27),
+(177, 'aluno19', 'senha19', 27),
+(178, 'aluno20', 'senha20', 27),
+(179, 'aluno21', 'senha21', 27),
+(180, 'aluno22', 'senha22', 27),
+(181, 'aluno23', 'senha23', 27),
+(182, 'aluno24', 'senha24', 27),
+(183, 'aluno25', 'senha25', 27),
+(184, 'aluno26', 'senha26', 27),
+(185, 'aluno27', 'senha27', 27),
+(186, 'aluno28', 'senha28', 27),
+(187, 'aluno29', 'senha29', 27),
+(188, 'aluno30', 'senha30', 27),
+(189, 'aluno31', 'senha31', 27),
+(190, 'aluno32', 'senha32', 27),
+(191, 'aluno33', 'senha33', 27),
+(192, 'aluno34', 'senha34', 27),
+(193, 'aluno35', 'senha35', 27),
+(194, 'aluno36', 'senha36', 27),
+(195, 'aluno37', 'senha37', 27),
+(196, 'aluno38', 'senha38', 27),
+(197, 'aluno39', 'senha39', 27),
+(198, 'aluno40', 'senha40', 27),
+(199, 'aluno41', 'senha41', 27),
+(200, 'aluno42', 'senha42', 27),
+(201, 'aluno43', 'senha43', 27),
+(202, 'aluno44', 'senha44', 27),
+(203, 'aluno45', 'senha45', 27),
+(204, 'aluno46', 'senha46', 27),
+(205, 'aluno47', 'senha47', 27),
+(206, 'aluno48', 'senha48', 27),
+(207, 'aluno49', 'senha49', 27),
+(208, 'aluno50', 'senha50', 27);
 
 -- --------------------------------------------------------
 
@@ -87,7 +137,8 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id`, `nome`, `tipo_cliente`, `cnpj`, `telefone`, `cep`, `bairro`, `rua`, `cidade`, `estado`) VALUES
 (3, 'nome', 'transportadora', 'cnpj', 'telefone', 'cep', 'bairro', 'rua', 'cidade', 'estado'),
-(4, 'nome 1', 'destinatario', 'cnpj 1', 'telefone 1', 'cep 1', 'bairro 1', 'rua 1', 'cidade 1', 'estado 1');
+(4, 'nome 1', 'destinatario', 'cnpj 1', 'telefone 1', 'cep 1', 'bairro 1', 'rua 1', 'cidade 1', 'estado 1'),
+(5, 'corinthians', 'transportadora', '06.580.121/0001-36', '4733452727', '88385000', 'armaÃ§Ã£o', 'eugenio krause', 'rio de janeiro', 'rj');
 
 -- --------------------------------------------------------
 
@@ -100,10 +151,17 @@ CREATE TABLE `detalhes_danfe` (
   `pedido_id` varchar(50) NOT NULL,
   `cod_danfe` varchar(50) NOT NULL,
   `chave_acesso_danfe` varchar(50) NOT NULL,
-  `data_emissao` date NOT NULL,
-  `transportadora_id` int(11) NOT NULL,
-  `destinatario_id` int(11) NOT NULL
+  `data_emissao` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `detalhes_danfe`
+--
+
+INSERT INTO `detalhes_danfe` (`id`, `pedido_id`, `cod_danfe`, `chave_acesso_danfe`, `data_emissao`) VALUES
+(1, '1', '1223', '429202837785484684652484', '2024-08-28'),
+(2, '1', '123', '123', '2024-08-28'),
+(3, '1', '1', '1', '2024-08-28');
 
 -- --------------------------------------------------------
 
@@ -379,7 +437,8 @@ CREATE TABLE `turma` (
 --
 
 INSERT INTO `turma` (`id`, `nturma`, `nometurma`, `qntalunos`) VALUES
-(24, 2, 'turma 2', 5);
+(24, 2, 'turma 2', 5),
+(27, 57, '3 ds', 50);
 
 -- --------------------------------------------------------
 
@@ -610,9 +669,7 @@ ALTER TABLE `clientes`
 -- Indexes for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `transportadora_id` (`transportadora_id`),
-  ADD KEY `destinatario_id` (`destinatario_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `doca_pedidos`
@@ -707,17 +764,17 @@ ALTER TABLE `vistoriaconferenciacontainer`
 -- AUTO_INCREMENT for table `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 --
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `detalhes_danfe`
 --
 ALTER TABLE `detalhes_danfe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `doca_pedidos`
 --
@@ -752,7 +809,7 @@ ALTER TABLE `pfaltava`
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `relatorio`
 --
@@ -767,7 +824,7 @@ ALTER TABLE `solicitacoes`
 -- AUTO_INCREMENT for table `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `vagas`
 --
@@ -792,13 +849,6 @@ ALTER TABLE `vistoriaconferenciacontainer`
 --
 ALTER TABLE `alunos`
   ADD CONSTRAINT `alunos_ibfk_1` FOREIGN KEY (`turma_id`) REFERENCES `turma` (`id`) ON DELETE CASCADE;
-
---
--- Limitadores para a tabela `detalhes_danfe`
---
-ALTER TABLE `detalhes_danfe`
-  ADD CONSTRAINT `detalhes_danfe_ibfk_1` FOREIGN KEY (`transportadora_id`) REFERENCES `clientes` (`id`),
-  ADD CONSTRAINT `detalhes_danfe_ibfk_2` FOREIGN KEY (`destinatario_id`) REFERENCES `clientes` (`id`);
 
 --
 -- Limitadores para a tabela `produtos`
