@@ -85,7 +85,7 @@ $conn->close();
         button {
             width: 100%;
             padding: 10px;
-            background-color: #007BFF;
+            background-color: #0056b3;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -111,7 +111,7 @@ $conn->close();
 
         .mensagem {
             margin-top: 20px;
-            color: #007BFF;
+            color: #00FF1E;
         }
     </style>
 </head>
@@ -164,7 +164,7 @@ $conn->close();
                         <label for="estado">Estado:</label>
                         <input type="text" id="estado" name="estado" required>
                     </div>
-                    <button type="submit">Salvar Cliente</button>
+                    <button type="submit">Salvar</button>
                 </div>
             </div>
         </form>
